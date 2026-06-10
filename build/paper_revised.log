@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.7)  10 JUN 2026 21:35
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.7)  10 JUN 2026 23:15
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **paper_revised.tex
 (./paper_revised.tex
@@ -13,9 +14,11 @@ File: ctexbackend.cfg 2022/07/14 v2.5.10 Backend configuration file (CTEX)
 (d:/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2026-01-19 L3 programming layer (loader) 
 
-(d:/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count275
+(d:/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
+\g__graphics_track_int=\count271
+\g__pdfannot_backend_int=\count272
+\g__pdfannot_backend_link_int=\count273
 ))
 Document Class: ctexart 2022/07/14 v2.5.10 Chinese adapter for class article (C
 TEX)
@@ -286,168 +289,147 @@ put line 193.
 LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on inpu
 t line 194.
 ))
-\l__ctex_tmp_int=\count276
+\l__ctex_tmp_int=\count274
 \l__ctex_tmp_box=\box53
 \l__ctex_tmp_dim=\dimen148
-\g__ctex_section_depth_int=\count277
-\g__ctex_font_size_int=\count278
+\g__ctex_section_depth_int=\count275
+\g__ctex_font_size_int=\count276
 
 (d:/texlive/2026/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
 File: ctexopts.cfg 2022/07/14 v2.5.10 Option configuration file (CTEX)
 )
-
-Class ctexart Warning: UTF8 will be used as the default encoding.
-
 (d:/texlive/2026/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
-(d:/texlive/2026/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+(d:/texlive/2026/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count279
-\c@section=\count280
-\c@subsection=\count281
-\c@subsubsection=\count282
-\c@paragraph=\count283
-\c@subparagraph=\count284
-\c@figure=\count285
-\c@table=\count286
+\c@part=\count277
+\c@section=\count278
+\c@subsection=\count279
+\c@subsubsection=\count280
+\c@paragraph=\count281
+\c@subparagraph=\count282
+\c@figure=\count283
+\c@table=\count284
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen149
 )
-(d:/texlive/2026/texmf-dist/tex/latex/ctex/engine/ctex-engine-pdftex.def
-File: ctex-engine-pdftex.def 2022/07/14 v2.5.10 (pdf)LaTeX adapter (CTEX)
+(d:/texlive/2026/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
+File: ctex-engine-xetex.def 2022/07/14 v2.5.10 XeLaTeX adapter (CTEX)
 
-(d:/texlive/2026/texmf-dist/tex/latex/cjk/texinput/CJKutf8.sty
-Package: CJKutf8 2021/10/16 4.8.5
+(d:/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+Package: xeCJK 2022/08/05 v3.9.1 Typesetting CJK scripts with XeLaTeX
 
-(d:/texlive/2026/texmf-dist/tex/generic/iftex/ifpdf.sty
-Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+(d:/texlive/2026/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
+Package: xtemplate 2025-10-09 L3 Experimental prototype document functions
+)
+\l__xeCJK_tmp_int=\count285
+\l__xeCJK_tmp_box=\box54
+\l__xeCJK_tmp_dim=\dimen150
+\l__xeCJK_tmp_skip=\skip51
+\g__xeCJK_space_factor_int=\count286
+\l__xeCJK_begin_int=\count287
+\l__xeCJK_end_int=\count288
+\c__xeCJK_CJK_class_int=\XeTeXcharclass1
+\c__xeCJK_FullLeft_class_int=\XeTeXcharclass2
+\c__xeCJK_FullRight_class_int=\XeTeXcharclass3
+\c__xeCJK_HalfLeft_class_int=\XeTeXcharclass4
+\c__xeCJK_HalfRight_class_int=\XeTeXcharclass5
+\c__xeCJK_NormalSpace_class_int=\XeTeXcharclass6
+\c__xeCJK_CM_class_int=\XeTeXcharclass7
+\c__xeCJK_HangulJamo_class_int=\XeTeXcharclass8
+\l__xeCJK_last_skip=\skip52
+\c__xeCJK_none_node=\count289
+\g__xeCJK_node_int=\count290
+\c__xeCJK_CJK_node_dim=\dimen151
+\c__xeCJK_CJK-space_node_dim=\dimen152
+\c__xeCJK_default_node_dim=\dimen153
+\c__xeCJK_CJK-widow_node_dim=\dimen154
+\c__xeCJK_normalspace_node_dim=\dimen155
+\c__xeCJK_default-space_node_skip=\skip53
+\l__xeCJK_ccglue_skip=\skip54
+\l__xeCJK_ecglue_skip=\skip55
+\l__xeCJK_punct_kern_skip=\skip56
+\l__xeCJK_indent_box=\box55
+\l__xeCJK_last_penalty_int=\count291
+\l__xeCJK_last_bound_dim=\dimen156
+\l__xeCJK_last_kern_dim=\dimen157
+\l__xeCJK_widow_penalty_int=\count292
 
-(d:/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2024/12/12 v1.0g TeX engine tests
-))
-(d:/texlive/2026/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks17
-\inpenc@posthook=\toks18
-)
-(d:/texlive/2026/texmf-dist/tex/latex/cjk/texinput/CJK.sty
-Package: CJK 2021/10/16 4.8.5
+LaTeX template Info: Declaring template type 'xeCJK/punctuation' taking 0
+(template)           argument(s) on line 2396.
 
-(d:/texlive/2026/texmf-dist/tex/latex/cjk/texinput/mule/MULEenc.sty
-Package: MULEenc 2021/10/16 4.8.5
+\l__xeCJK_fixed_punct_width_dim=\dimen158
+\l__xeCJK_mixed_punct_width_dim=\dimen159
+\l__xeCJK_middle_punct_width_dim=\dimen160
+\l__xeCJK_fixed_margin_width_dim=\dimen161
+\l__xeCJK_mixed_margin_width_dim=\dimen162
+\l__xeCJK_middle_margin_width_dim=\dimen163
+\l__xeCJK_bound_punct_width_dim=\dimen164
+\l__xeCJK_bound_margin_width_dim=\dimen165
+\l__xeCJK_margin_minimum_dim=\dimen166
+\l__xeCJK_kerning_total_width_dim=\dimen167
+\l__xeCJK_same_align_margin_dim=\dimen168
+\l__xeCJK_different_align_margin_dim=\dimen169
+\l__xeCJK_kerning_margin_width_dim=\dimen170
+\l__xeCJK_kerning_margin_minimum_dim=\dimen171
+\l__xeCJK_bound_dim=\dimen172
+\l__xeCJK_reverse_bound_dim=\dimen173
+\l__xeCJK_margin_dim=\dimen174
+\l__xeCJK_minimum_bound_dim=\dimen175
+\l__xeCJK_kerning_margin_dim=\dimen176
+\g__xeCJK_family_int=\count293
+\l__xeCJK_fam_int=\count294
+\g__xeCJK_fam_allocation_int=\count295
+\l__xeCJK_verb_case_int=\count296
+\l__xeCJK_verb_exspace_skip=\skip57
+
+(d:/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.sty
+(d:/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2025-10-09 L3 Experimental document command parser
 )
-(d:/texlive/2026/texmf-dist/tex/latex/cjk/texinput/CJK.enc
-File: CJK.enc 2021/10/16 4.8.5
-Now handling font encoding C00 ...
-... no UTF-8 mapping file for font encoding C00
-Now handling font encoding C05 ...
-... no UTF-8 mapping file for font encoding C05
-Now handling font encoding C09 ...
-... no UTF-8 mapping file for font encoding C09
-Now handling font encoding C10 ...
-... no UTF-8 mapping file for font encoding C10
-Now handling font encoding C20 ...
-... no UTF-8 mapping file for font encoding C20
-Now handling font encoding C19 ...
-... no UTF-8 mapping file for font encoding C19
-Now handling font encoding C40 ...
-... no UTF-8 mapping file for font encoding C40
-Now handling font encoding C42 ...
-... no UTF-8 mapping file for font encoding C42
-Now handling font encoding C43 ...
-... no UTF-8 mapping file for font encoding C43
-Now handling font encoding C50 ...
-... no UTF-8 mapping file for font encoding C50
-Now handling font encoding C52 ...
-... no UTF-8 mapping file for font encoding C52
-Now handling font encoding C49 ...
-... no UTF-8 mapping file for font encoding C49
-Now handling font encoding C60 ...
-... no UTF-8 mapping file for font encoding C60
-Now handling font encoding C61 ...
-... no UTF-8 mapping file for font encoding C61
-Now handling font encoding C63 ...
-... no UTF-8 mapping file for font encoding C63
-Now handling font encoding C64 ...
-... no UTF-8 mapping file for font encoding C64
-Now handling font encoding C65 ...
-... no UTF-8 mapping file for font encoding C65
-Now handling font encoding C70 ...
-... no UTF-8 mapping file for font encoding C70
-Now handling font encoding C31 ...
-... no UTF-8 mapping file for font encoding C31
-Now handling font encoding C32 ...
-... no UTF-8 mapping file for font encoding C32
-Now handling font encoding C33 ...
-... no UTF-8 mapping file for font encoding C33
-Now handling font encoding C34 ...
-... no UTF-8 mapping file for font encoding C34
-Now handling font encoding C35 ...
-... no UTF-8 mapping file for font encoding C35
-Now handling font encoding C36 ...
-... no UTF-8 mapping file for font encoding C36
-Now handling font encoding C37 ...
-... no UTF-8 mapping file for font encoding C37
-Now handling font encoding C80 ...
-... no UTF-8 mapping file for font encoding C80
-Now handling font encoding C81 ...
-... no UTF-8 mapping file for font encoding C81
-Now handling font encoding C01 ...
-... no UTF-8 mapping file for font encoding C01
-Now handling font encoding C11 ...
-... no UTF-8 mapping file for font encoding C11
-Now handling font encoding C21 ...
-... no UTF-8 mapping file for font encoding C21
-Now handling font encoding C41 ...
-... no UTF-8 mapping file for font encoding C41
-Now handling font encoding C62 ...
-... no UTF-8 mapping file for font encoding C62
-)
-\CJK@indent=\box54
-)
+Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
+
+(d:/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count297
+\l__fontspec_language_int=\count298
+\l__fontspec_strnum_int=\count299
+\l__fontspec_tmp_int=\count300
+\l__fontspec_tmpa_int=\count301
+\l__fontspec_tmpb_int=\count302
+\l__fontspec_tmpc_int=\count303
+\l__fontspec_em_int=\count304
+\l__fontspec_emdef_int=\count305
+\l__fontspec_strong_int=\count306
+\l__fontspec_strongdef_int=\count307
+\l__fontspec_tmpa_dim=\dimen177
+\l__fontspec_tmpb_dim=\dimen178
+\l__fontspec_tmpc_dim=\dimen179
+
 (d:/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+)
+(d:/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(d:/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
+File: xeCJK.cfg 2022/08/05 v3.9.1 Configuration file for xeCJK package
 ))
-(d:/texlive/2026/texmf-dist/tex/latex/cjkpunct/CJKpunct.sty
-Package: CJKpunct 2016/05/14 4.8.4
-\CJKpunct@cnta=\count287
-\CJKpunct@cntb=\count288
-\CJKpunct@cntc=\count289
-\CJKpunct@cntd=\count290
-\CJKpunct@cnte=\count291
-   defining Unicode char U+2018 (decimal 8216)
-   defining Unicode char U+2019 (decimal 8217)
-   defining Unicode char U+201C (decimal 8220)
-   defining Unicode char U+201D (decimal 8221)
-   defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2026 (decimal 8230)
-
-(d:/texlive/2026/texmf-dist/tex/latex/cjkpunct/CJKpunct.spa))
-(d:/texlive/2026/texmf-dist/tex/latex/cjk/texinput/CJKspace.sty
-Package: CJKspace 2021/10/16 3.8.0
+\ccwd=\dimen180
+\l__ctex_ccglue_skip=\skip58
 )
-(d:/texlive/2026/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.bdg
-File: UTF8.bdg 2021/10/16 4.8.5
-)
-(d:/texlive/2026/texmf-dist/tex/latex/ctex/ctexspa.def
-File: ctexspa.def 2022/07/14 v2.5.10 Space info for CJKpunct (CTEX)
-)
-\ccwd=\dimen150
-\l__ctex_ccglue_skip=\skip51
-)
-\l__ctex_ziju_dim=\dimen151
+\l__ctex_ziju_dim=\dimen181
 
 (d:/texlive/2026/texmf-dist/tex/latex/zhnumber/zhnumber.sty
 Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
-\l__zhnum_scale_int=\count292
-\l__zhnum_tmp_int=\count293
+\l__zhnum_scale_int=\count308
+\l__zhnum_tmp_int=\count309
 
 (d:/texlive/2026/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
 File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
 ))
-\l__ctex_heading_skip=\skip52
+\l__ctex_heading_skip=\skip59
 
 (d:/texlive/2026/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-article.d
 ef
@@ -459,6 +441,37 @@ File: ctex-name-utf8.cfg 2022/07/14 v2.5.10 Caption with encoding UTF-8 (CTEX)
 (d:/texlive/2026/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windows.def
 File: ctex-fontset-windows.def 2022/07/14 v2.5.10 Windows fonts definition (CTE
 X)
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "KaiTi/B" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimHei/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimSun/BI" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'SimSun(0)' created for font 'SimSun' with
+(fontspec)             options
+(fontspec)             [Script={CJK},BoldFont={SimHei},ItalicFont={KaiTi}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"SimHei/OT:script=hani;language=dflt;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"KaiTi/OT:script=hani;language=dflt;"
+
 ))
 (d:/texlive/2026/texmf-dist/tex/latex/ctex/config/ctex.cfg
 File: ctex.cfg 2022/07/14 v2.5.10 Configuration file (CTEX)
@@ -468,79 +481,151 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (d:/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks19
+\KV@toks@=\toks17
 )
 (d:/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(d:/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count310
+\Gm@cntv=\count311
+\c@Gm@tempcnt=\count312
+\Gm@bindingoffset=\dimen182
+\Gm@wd@mp=\dimen183
+\Gm@odd@mp=\dimen184
+\Gm@even@mp=\dimen185
+\Gm@layoutwidth=\dimen186
+\Gm@layoutheight=\dimen187
+\Gm@layouthoffset=\dimen188
+\Gm@layoutvoffset=\dimen189
+\Gm@dimlist=\toks18
 )
-\Gm@cnth=\count294
-\Gm@cntv=\count295
-\c@Gm@tempcnt=\count296
-\Gm@bindingoffset=\dimen152
-\Gm@wd@mp=\dimen153
-\Gm@odd@mp=\dimen154
-\Gm@even@mp=\dimen155
-\Gm@layoutwidth=\dimen156
-\Gm@layoutheight=\dimen157
-\Gm@layouthoffset=\dimen158
-\Gm@layoutvoffset=\dimen159
-\Gm@dimlist=\toks20
-)
+
+Package fontspec Info: 
+(fontspec)             Font family 'TimesNewRoman(0)' created for font 'Times
+(fontspec)             New Roman' with options [Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Times New
+(fontspec)             Roman/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Times New
+(fontspec)             Roman/OT:script=latn;language=dflt;+smcp;mapping=tex-tex
+t;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Times New
+(fontspec)             Roman/B/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"Times
+(fontspec)             New
+(fontspec)             Roman/B/OT:script=latn;language=dflt;+smcp;mapping=tex-t
+ext;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Times New
+(fontspec)             Roman/I/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"Times New
+(fontspec)             Roman/I/OT:script=latn;language=dflt;+smcp;mapping=tex-t
+ext;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Times New
+(fontspec)             Roman/BI/OT:script=latn;language=dflt;mapping=tex-text;"
+
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"Times New
+(fontspec)             Roman/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-
+text;"
+
+
+
+Package xeCJK Warning: Redefining CJKfamily `\CJKrmdefault' (SimSun(0)).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimSun/BI" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimSun/B" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimSun/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'SimSun(1)' created for font 'SimSun' with
+(fontspec)             options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=dflt;"
+
+
+Package xeCJK Warning: Redefining CJKfamily `\CJKsfdefault' (Microsoft YaHei).
+
+
+Package xeCJK Warning: Redefining CJKfamily `\CJKttdefault' (FangSong).
+
 (d:/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
-\f@nch@headwidth=\skip53
-\f@nch@offset@elh=\skip54
-\f@nch@offset@erh=\skip55
-\f@nch@offset@olh=\skip56
-\f@nch@offset@orh=\skip57
-\f@nch@offset@elf=\skip58
-\f@nch@offset@erf=\skip59
-\f@nch@offset@olf=\skip60
-\f@nch@offset@orf=\skip61
-\f@nch@height=\skip62
-\f@nch@footalignment=\skip63
-\f@nch@widthL=\skip64
-\f@nch@widthC=\skip65
-\f@nch@widthR=\skip66
-\@temptokenb=\toks21
+\f@nch@headwidth=\skip60
+\f@nch@offset@elh=\skip61
+\f@nch@offset@erh=\skip62
+\f@nch@offset@olh=\skip63
+\f@nch@offset@orh=\skip64
+\f@nch@offset@elf=\skip65
+\f@nch@offset@erf=\skip66
+\f@nch@offset@olf=\skip67
+\f@nch@offset@orf=\skip68
+\f@nch@height=\skip69
+\f@nch@footalignment=\skip70
+\f@nch@widthL=\skip71
+\f@nch@widthC=\skip72
+\f@nch@widthR=\skip73
+\@temptokenb=\toks19
 )
 (d:/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen160
-\lightrulewidth=\dimen161
-\cmidrulewidth=\dimen162
-\belowrulesep=\dimen163
-\belowbottomsep=\dimen164
-\aboverulesep=\dimen165
-\abovetopsep=\dimen166
-\cmidrulesep=\dimen167
-\cmidrulekern=\dimen168
-\defaultaddspace=\dimen169
-\@cmidla=\count297
-\@cmidlb=\count298
-\@aboverulesep=\dimen170
-\@belowrulesep=\dimen171
-\@thisruleclass=\count299
-\@lastruleclass=\count300
-\@thisrulewidth=\dimen172
+\heavyrulewidth=\dimen190
+\lightrulewidth=\dimen191
+\cmidrulewidth=\dimen192
+\belowrulesep=\dimen193
+\belowbottomsep=\dimen194
+\aboverulesep=\dimen195
+\abovetopsep=\dimen196
+\cmidrulesep=\dimen197
+\cmidrulekern=\dimen198
+\defaultaddspace=\dimen199
+\@cmidla=\count313
+\@cmidlb=\count314
+\@aboverulesep=\dimen256
+\@belowrulesep=\dimen257
+\@thisruleclass=\count315
+\@lastruleclass=\count316
+\@thisrulewidth=\dimen258
 )
 (d:/texlive/2026/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip67
-\multirow@cntb=\count301
-\multirow@dima=\skip68
-\bigstrutjot=\dimen173
+\multirow@colwidth=\skip74
+\multirow@cntb=\count317
+\multirow@dima=\skip75
+\bigstrutjot=\dimen259
 )
 (d:/texlive/2026/texmf-dist/tex/latex/tools/array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen174
-\ar@mcellbox=\box55
-\extrarowheight=\dimen175
-\NC@list=\toks22
-\extratabsurround=\skip69
-\backup@length=\skip70
-\ar@cellbox=\box56
+\col@sep=\dimen260
+\ar@mcellbox=\box56
+\extrarowheight=\dimen261
+\NC@list=\toks20
+\extratabsurround=\skip76
+\backup@length=\skip77
+\ar@cellbox=\box57
 )
 (d:/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
@@ -554,46 +639,46 @@ Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 (d:/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 106.
+Package graphics Info: Driver file: xetex.def on input line 106.
 
-(d:/texlive/2026/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+(d:/texlive/2026/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
 ))
-\Gin@req@height=\dimen176
-\Gin@req@width=\dimen177
+\Gin@req@height=\dimen262
+\Gin@req@width=\dimen263
 )
 (d:/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (d:/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen178
-\captionmargin=\dimen179
-\caption@leftmargin=\dimen180
-\caption@rightmargin=\dimen181
-\caption@width=\dimen182
-\caption@indent=\dimen183
-\caption@parindent=\dimen184
-\caption@hangindent=\dimen185
+\caption@tempdima=\dimen264
+\captionmargin=\dimen265
+\caption@leftmargin=\dimen266
+\caption@rightmargin=\dimen267
+\caption@width=\dimen268
+\caption@indent=\dimen269
+\caption@parindent=\dimen270
+\caption@hangindent=\dimen271
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count302
-\c@continuedfloat=\count303
+\c@caption@flags=\count318
+\c@continuedfloat=\count319
 )
 (d:/texlive/2026/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
 (d:/texlive/2026/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count304
-\float@exts=\toks23
-\float@box=\box57
-\@float@everytoks=\toks24
-\@floatcapt=\box58
+\c@float@type=\count320
+\float@exts=\toks21
+\float@box=\box58
+\@float@everytoks=\toks22
+\@floatcapt=\box59
 )
 (d:/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
-\@mathmargin=\skip71
+\@mathmargin=\skip78
 
 For additional information on amsmath, use the `?' option.
 (d:/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -601,61 +686,61 @@ Package: amstext 2024/11/17 v2.01 AMS text
 
 (d:/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks25
-\ex@=\dimen186
+\@emptytoks=\toks23
+\ex@=\dimen272
 ))
 (d:/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen187
+\pmbraise@=\dimen273
 )
 (d:/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count305
+\inf@bad=\count321
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count306
-\leftroot@=\count307
+\uproot@=\count322
+\leftroot@=\count323
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count308
-\DOTSCASE@=\count309
+\classnum@=\count324
+\DOTSCASE@=\count325
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
-\Mathstrutbox@=\box59
-\strutbox@=\box60
+\Mathstrutbox@=\box60
+\strutbox@=\box61
 LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen188
+\big@size=\dimen274
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count310
+\macc@depth=\count326
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count311
+\c@MaxMatrixCols=\count327
 \dotsspace@=\muskip17
-\c@parentequation=\count312
-\dspbrk@lvl=\count313
-\tag@help=\toks26
-\row@=\count314
-\column@=\count315
-\maxfields@=\count316
-\andhelp@=\toks27
-\eqnshift@=\dimen189
-\alignsep@=\dimen190
-\tagshift@=\dimen191
-\tagwidth@=\dimen192
-\totwidth@=\dimen193
-\lineht@=\dimen194
-\@envbody=\toks28
-\multlinegap=\skip72
-\multlinetaggap=\skip73
-\mathdisplay@stack=\toks29
+\c@parentequation=\count328
+\dspbrk@lvl=\count329
+\tag@help=\toks24
+\row@=\count330
+\column@=\count331
+\maxfields@=\count332
+\andhelp@=\toks25
+\eqnshift@=\dimen275
+\alignsep@=\dimen276
+\tagshift@=\dimen277
+\tagwidth@=\dimen278
+\totwidth@=\dimen279
+\lineht@=\dimen280
+\@envbody=\toks26
+\multlinegap=\skip79
+\multlinetaggap=\skip80
+\mathdisplay@stack=\toks27
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
 )
@@ -670,6 +755,18 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
+(d:/texlive/2026/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box62
+\beforetitleunit=\skip81
+\aftertitleunit=\skip82
+\ttl@plus=\dimen281
+\ttl@minus=\dimen282
+\ttl@toksa=\toks28
+\titlewidth=\dimen283
+\titlewidthlast=\dimen284
+\titlewidthfirst=\dimen285
+)
 (d:/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
 
@@ -694,7 +791,7 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode not found.
 ))
 (d:/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
@@ -711,34 +808,30 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (d:/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count317
+\c@section@level=\count333
 )
 (d:/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count318
+\etb@tempcnta=\count334
 )
 (d:/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen195
-\Hy@linkcounter=\count319
-\Hy@pagecounter=\count320
+\@linkdim=\dimen286
+\Hy@linkcounter=\count335
+\Hy@pagecounter=\count336
 
 (d:/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
 )
 (d:/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count321
+\Hy@SavedSpaceFactor=\count337
 
 (d:/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
-Now handling font encoding PU ...
-... no UTF-8 mapping file for font encoding PU
 )
 Package hyperref Info: Option `unicode' set `true' on input line 4072.
 Package hyperref Info: Hyper figures OFF on input line 4201.
@@ -748,14 +841,14 @@ Package hyperref Info: Plain pages OFF on input line 4216.
 Package hyperref Info: Backreferencing OFF on input line 4221.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4468.
-\c@Hy@tempcnt=\count322
+\c@Hy@tempcnt=\count338
 
 (d:/texlive/2026/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4807.
-\XeTeXLinkMargin=\dimen196
+\XeTeXLinkMargin=\dimen287
 
 (d:/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -764,9 +857,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count323
-\Field@Width=\dimen197
-\Fld@charsize=\dimen198
+\Fld@menulength=\count339
+\Field@Width=\dimen288
+\Fld@charsize=\dimen289
 Package hyperref Info: Hyper figures OFF on input line 6084.
 Package hyperref Info: Link nesting OFF on input line 6089.
 Package hyperref Info: Hyper index ON on input line 6092.
@@ -774,16 +867,19 @@ Package hyperref Info: backreferencing OFF on input line 6099.
 Package hyperref Info: Link coloring OFF on input line 6104.
 Package hyperref Info: Link coloring with OCG OFF on input line 6109.
 Package hyperref Info: PDF/A mode OFF on input line 6114.
-\Hy@abspage=\count324
-\c@Item=\count325
-\c@Hfootnote=\count326
+\Hy@abspage=\count340
+\c@Item=\count341
+\c@Hfootnote=\count342
 )
-Package hyperref Info: Driver (autodetected): hpdftex.
+Package hyperref Info: Driver (autodetected): hxetex.
 
-(d:/texlive/2026/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2026-01-29 v7.01p Hyperref driver for pdfTeX
-\Fld@listcount=\count327
-\c@bookmark@seq@number=\count328
+(d:/texlive/2026/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2026-01-29 v7.01p Hyperref driver for XeTeX
+\pdfm@box=\box63
+\c@Hy@AnnotLevel=\count343
+\HyField@AnnotCount=\count344
+\Fld@listcount=\count345
+\c@bookmark@seq@number=\count346
 
 (d:/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
@@ -794,131 +890,127 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip74
+\Hy@SectionHShift=\skip83
 )
 (d:/texlive/2026/texmf-dist/tex/latex/titling/titling.sty
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip75
-\thanksmargin=\skip76
-\droptitle=\skip77
-)
-(d:/texlive/2026/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.enc
-File: UTF8.enc 2021/10/16 4.8.5
-)
-(d:/texlive/2026/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.chr
-File: UTF8.chr 2021/10/16 4.8.5
+\thanksmarkwidth=\skip84
+\thanksmargin=\skip85
+\droptitle=\skip86
 )
 (build/paper_revised.aux)
 \openout1 = `paper_revised.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+
+Package fontspec Info: 
+(fontspec)             Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 70.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 70.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 70.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 70.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 70.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 70.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 70.
+LaTeX Font Info:    Redeclaring math accent \check on input line 70.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 70.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 70.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 70.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 70.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 70.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 7
+0.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 70.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 
+70.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on 
+input line 70.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line
+ 70.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 
+70.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 70.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 70.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on 
+input line 70.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input lin
+e 70.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 70.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 70.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
-* v-part:(T,H,B)=(62.59596pt, 719.85492pt, 62.59596pt)
+* h-part:(L,W,R)=(48.36958pt, 500.7687pt, 48.36958pt)
+* v-part:(T,H,B)=(56.9055pt, 736.9263pt, 51.21504pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=483.69687pt
-* \textheight=719.85492pt
-* \oddsidemargin=-15.36449pt
-* \evensidemargin=-15.36449pt
-* \topmargin=-46.67403pt
+* \textwidth=500.7687pt
+* \textheight=736.9263pt
+* \oddsidemargin=-23.9004pt
+* \evensidemargin=-23.9004pt
+* \topmargin=-52.36449pt
 * \headheight=14.0pt
 * \headsep=25.0pt
-* \topskip=11.0pt
+* \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=50.0pt
-* \marginparsep=10.0pt
-* \columnsep=22.76228pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=19.91684pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -928,1543 +1020,283 @@ LaTeX Font Info:    ... okay on input line 49.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(d:/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count329
-\scratchdimen=\dimen199
-\scratchbox=\box61
-\nofMPsegments=\count330
-\nofMParguments=\count331
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count332
-\MPscratchDim=\dimen256
-\MPnumerator=\count333
-\makeMPintoPDFobject=\count334
-\everyMPtoPDFconversion=\toks31
-) (d:/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(d:/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 49.
-
+Package hyperref Info: Link coloring OFF on input line 70.
 (build/paper_revised.out) (build/paper_revised.out)
 \@outlinefile=\write3
 \openout3 = `paper_revised.out'.
 
-LaTeX Font Info:    Trying to load font information for C70+rm on input line 57
-.
 
-(d:/texlive/2026/texmf-dist/tex/latex/ctex/fd/c70rm.fd
-File: c70rm.fd 2022/07/14 v2.5.10 Chinese font definition (CTEX)
-)
-Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (
-quanjiao) on input line 57.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimHei/BI" (it probably doesn't
+(fontspec)             exist).
 
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimHei/B" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimHei/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'SimHei(0)' created for font 'SimHei' with
+(fontspec)             options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SimHei/OT:script=hani;language=dflt;"
+
+
+
+LaTeX Font Warning: Font shape `TU/SimHei(0)/b/n' undefined
+(Font)              using `TU/SimHei(0)/m/n' instead on input line 78.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
 
 (d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 
 
 (d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 5
-7.
-
-(d:/texlive/2026/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 57.
-<figures/fig_gallery.pdf, id=225, 458.9145pt x 440.84702pt>
 File: figures/fig_gallery.pdf Graphic file (type pdf)
 <use figures/fig_gallery.pdf>
-Package pdftex.def Info: figures/fig_gallery.pdf  used on input line 61.
-(pdftex.def)             Requested size: 386.95897pt x 371.72832pt.
-LaTeX Font Info:    Trying to load font information for C70+zhhei on input line
- 62.
 
-(d:/texlive/2026/texmf-dist/tex/latex/zhmetrics/c70zhhei.fd
-File: c70zhhei.fd 2009/09/23 4.8.2
-)
-Package CJKpunct Info: use punctuation spaces for family 'zhhei' with punctstyl
-e (quanjiao) on input line 62.
-<figures/fig_variant_progress.pdf, id=240, 455.30101pt x 136.22896pt>
+
+LaTeX Font Warning: Font shape `TU/SimSun(1)/b/n' undefined
+(Font)              using `TU/SimSun(1)/m/n' instead on input line 83.
+
 File: figures/fig_variant_progress.pdf Graphic file (type pdf)
 <use figures/fig_variant_progress.pdf>
-Package pdftex.def Info: figures/fig_variant_progress.pdf  used on input line 6
-8.
-(pdftex.def)             Requested size: 386.95897pt x 115.78474pt.
-<figures/fig_variant_compare.pdf, id=244, 480.95685pt x 173.80936pt>
 File: figures/fig_variant_compare.pdf Graphic file (type pdf)
 <use figures/fig_variant_compare.pdf>
-Package pdftex.def Info: figures/fig_variant_compare.pdf  used on input line 75
-.
-(pdftex.def)             Requested size: 386.95897pt x 139.84329pt.
+[1
 
-(d:/texlive/2026/texmf-dist/tex/generic/ctex/zhmap/ctex-zhmap-windows.tex
-File: ctex-zhmap-windows.tex 2022/07/14 v2.5.10 Windows font map loader for pdf
-TeX and DVIPDFMx (CTEX)
-{d:/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{UGBK.sfd}{Unicod
-e.sfd}) [1
+]
 
- <./figures/fig_gallery.pdf>] [2 <./figures/fig_variant_progress.pdf> <./figure
-s/fig_variant_compare.pdf>]
-Overfull \hbox (16.62544pt too wide) in paragraph at lines 102--103
-[]\C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm/m/n/10.95/8f ¡ \C70/rm/
-m/n/10.95/79 ˚ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/53 — \C70/rm/m/n/10.95/
-5c U \C70/rm/m/n/10.95/7e œ \C70/rm/m/n/10.95/53 Ü \C70/rm/m/n/10.95/4e Ü Œ \C7
-0/rm/m/n/10.95/97 ^ \C70/rm/m/n/10.95/53 ¬ \C70/rm/m/n/10.95/65 p \C70/rm/m/n/1
-0.95/53 ^^V \C70/rm/m/n/10.95/7e π \C70/rm/m/n/10.95/74 ^^F \C70/rm/m/n/10.95/5
-4 ^^H \C70/rm/m/n/10.95/62 ^^P\OT1/cmr/m/n/10.95 [1]|\C70/rm/m/n/10.95/30 ^^A|
+LaTeX Font Warning: Font shape `TU/SimSun(1)/m/it' undefined
+(Font)              using `TU/SimSun(1)/m/n' instead on input line 101.
+
+[2]
+Overfull \hbox (67.93996pt too wide) in paragraph at lines 123--124
+\TU/SimSun(1)/m/n/10 ÂèëÔºå|  Á†î Á©∂ ‰∫∫ Âëò Ëá™ ÁÑ∂ Âú∞ Â∞Ü Êâ© Êï£ Ê®° Âûã Êâ© Â±ï Ëá≥ È£é Ê†º ËøÅ Áßª ‰ªª Âä° \TU/TimesNe
+wRoman(0)/m/n/10 [12,13,14,15,16,17]\TU/SimSun(1)/m/n/10 „ÄÇ|
  []
 
 
-Overfull \hbox (8.12096pt too wide) in paragraph at lines 102--103
-\C70/rm/m/n/10.95/57 ˙ \C70/rm/m/n/10.95/4e é \C70/rm/m/n/10.95/4f ^^X \C70/rm/
-m/n/10.95/53 ^^V \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/79 ^ \C70/rm/m/n/10.9
-5/7e œ \C70/rm/m/n/10.95/7f Q \C70/rm/m/n/10.95/7e ‹ \C70/rm/m/n/10.95/65 π \C7
-0/rm/m/n/10.95/6c ’\OT1/cmr/m/n/10.95 [2]|\C70/rm/m/n/10.95/30 ^^A| \C70/rm/m/n
-/10.95/52 M \C70/rm/m/n/10.95/99 à \C70/rm/m/n/10.95/53 w \C70/rm/m/n/10.95/79 
-Ô \C70/rm/m/n/10.95/7f Q \C70/rm/m/n/10.95/7e ‹\OT1/cmr/m/n/10.95 [3,4]\C70/rm/
-m/n/10.95/52 0
+Overfull \hbox (3.12875pt too wide) in paragraph at lines 140--141
+\TU/SimSun(1)/m/n/10 Áîü Êàê ÂØπ Êäó ÁΩë Áªú Âú® ‰∏ç Êàê ÂØπ Âõæ ÂÉè Áøª ËØë ‰ªª Âä° ‰∏ä Âèñ Âæó ‰∫Ü Êòæ Ëëó Ëøõ Â±ï„ÄÇ|
  []
 
 
-Overfull \hbox (4.30069pt too wide) in paragraph at lines 102--103
-\C70/rm/m/n/10.95/79 Õ \C70/rm/m/n/10.95/83 ^^C \C70/rm/m/n/10.95/5f ^^O \C70/r
-m/m/n/10.95/90 ˝ \C70/rm/m/n/10.95/5e & \C70/rm/m/n/10.95/67 e \C70/rm/m/n/10.9
-5/4e Ü \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n/10.95/62 ^^P \C70/rm/m/n/10.95/90 ^
-^_ \C70/rm/m/n/10.95/5e ¶ \C70/rm/m/n/10.95/4e ^^N \C70/rm/m/n/10.95/8f ¡ \C70/
-rm/m/n/10.95/79 ˚ \C70/rm/m/n/10.95/8d ( \C70/rm/m/n/10.95/91 œ \C70/rm/m/n/10.
-95/76 Ñ \C70/rm/m/n/10.95/66 > \C70/rm/m/n/10.95/84 W \C70/rm/m/n/10.95/63 – \C
-70/rm/m/n/10.95/53 G|\C70/rm/m/n/10.95/ff ^^L|
- []
-
-
-Overfull \hbox (1.50533pt too wide) in paragraph at lines 102--103
-\C70/rm/m/n/10.95/4f F \C70/rm/m/n/10.95/54 ^^L \C70/rm/m/n/10.95/65 ˆ \C70/rm/
-m/n/10.95/4e _ \C70/rm/m/n/10.95/5b X \C70/rm/m/n/10.95/57 ( \C70/rm/m/n/10.95/
-56 ˙ \C70/rm/m/n/10.95/67 	 \C70/rm/m/n/10.95/5c @ \C70/rm/m/n/10.95/96 P|\C70/
-rm/m/n/10.95/ff ^^Z| \OT1/cmr/m/n/10.95 GAN\C70/rm/m/n/10.95/7c { \C70/rm/m/n/1
-0.95/65 π \C70/rm/m/n/10.95/6c ’ \C70/rm/m/n/10.95/90 ^^Z \C70/rm/m/n/10.95/5e 
-8 \C70/rm/m/n/10.95/5c @ \C70/rm/m/n/10.95/96 P \C70/rm/m/n/10.95/4e é
- []
-
-
-Overfull \hbox (2.98657pt too wide) in paragraph at lines 102--103
-\C70/rm/m/n/10.95/8b ≠ \C70/rm/m/n/10.95/7e √ \C70/rm/m/n/10.95/96 6 \C70/rm/m/
-n/10.95/6b µ \C70/rm/m/n/10.95/62 @ \C70/rm/m/n/10.95/89 ¡ \C70/rm/m/n/10.95/8f
- « \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm
-/m/n/10.95/57 ﬂ|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/96 æ \C70/rm/m/n/10
-.95/4e Â \C70/rm/m/n/10.95/6c € \C70/rm/m/n/10.95/53 ^^V \C70/rm/m/n/10.95/81 Û
- \C70/rm/m/n/10.95/4e ˚ \C70/rm/m/n/10.95/61 ^^O \C70/rm/m/n/10.95/98 Œ \C70/rm
-/m/n/10.95/68 <|\C70/rm/m/n/10.95/ff ^^[|
- []
-
-
-Overfull \hbox (22.02138pt too wide) in paragraph at lines 104--105
-[]\C70/rm/m/n/10.95/8f — \C70/rm/m/n/10.95/5e t \C70/rm/m/n/10.95/67 e|\C70/rm/
-m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/65 c \C70/rm/m/n/10.
-95/6a ! \C70/rm/m/n/10.95/57 ã |\C70/rm/m/n/10.95/ff ^^H|\OT1/cmr/m/n/10.95 Dif
-fusion Mod-els|\C70/rm/m/n/10.95/ff 	| \OT1/cmr/m/n/10.95 [8,9,10]\C70/rm/m/n/1
-0.95/76 Ñ
- []
-
-
-Overfull \hbox (4.56232pt too wide) in paragraph at lines 104--105
-\OT1/cmr/m/n/10.95 Dif-fu-sion[11]\C70/rm/m/n/10.95/53   \C70/rm/m/n/10.95/51 v
- \C70/rm/m/n/10.95/54 ^^N \C70/rm/m/n/10.95/7e Ì \C70/rm/m/n/10.95/72 H \C70/rm
-/m/n/10.95/67 , \C70/rm/m/n/10.95/51 Ì \C70/rm/m/n/10.95/50 ^^_ \C70/rm/m/n/10.
-95/6f \ \C70/rm/m/n/10.95/57 ( \C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/65 c \C
-70/rm/m/n/10.95/67 : \C70/rm/m/n/10.95/52 6 \C70/rm/m/n/10.95/4e ^^N §
- []
-
-
-Overfull \hbox (4.4589pt too wide) in paragraph at lines 104--105
-\C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/65 c \C70/rm/m/n/10.95/6a ! \C70/rm/m/
-n/10.95/57 ã \C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/5c U \C70/rm/m/n/10.95/81
- Û \C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm/m/n/10.95/8f ¡ \C70/rm
-/m/n/10.95/79 ˚ \C70/rm/m/n/10.95/4e ˚ \C70/rm/m/n/10.95/52 °\OT1/cmr/m/n/10.95
- [12,13,14,15,16,17]|\C70/rm/m/n/10.95/30 ^^B|
- []
-
-
-Overfull \hbox (3.97203pt too wide) in paragraph at lines 104--105
-\C70/rm/m/n/10.95/71 6 \C70/rm/m/n/10.95/80 ^^L|\C70/rm/m/n/10.95/ff ^^L| \C70/
-rm/m/n/10.95/73 ∞ \C70/rm/m/n/10.95/67 	 \C70/rm/m/n/10.95/57 ˙ \C70/rm/m/n/10.
-95/4e é \C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/65 c \C70/rm/m/n/10.95/76 Ñ \C
-70/rm/m/n/10.95/65 π \C70/rm/m/n/10.95/6c ’ \C70/rm/m/n/10.95/4e Õ \C70/rm/m/n/
-10.95/97 b \C70/rm/m/n/10.95/4e 4 \C70/rm/m/n/10.95/82 Â \C70/rm/m/n/10.95/5e r
- \C70/rm/m/n/10.95/66 > \C70/rm/m/n/10.95/84 W \C70/rm/m/n/10.95/63 ^^Q \C70/rm
-/m/n/10.95/62 ^^X|\C70/rm/m/n/10.95/30 ^^B|
- []
-
-
-Overfull \hbox (2.55486pt too wide) in paragraph at lines 104--105
-\C70/rm/m/n/10.95/99 ñ \C70/rm/m/n/10.95/51 H|\C70/rm/m/n/10.95/ff ^^L| \OT1/cm
-r/m/n/10.95 InST[12]\C70/rm/m/n/10.95/54 å\OT1/cmr/m/n/10.95 StyleDiffusion[13]
-\C70/rm/m/n/10.95/7b I \C70/rm/m/n/10.95/65 π \C70/rm/m/n/10.95/6c ’ \C70/rm/m/
-n/10.95/97 ^^@ \C70/rm/m/n/10.95/89 Å \C70/rm/m/n/10.95/5b ˘
- []
-
-
-Overfull \hbox (6.6355pt too wide) in paragraph at lines 106--107
-[]\C70/rm/m/n/10.95/94 à \C70/rm/m/n/10.95/5b ˘ \C70/rm/m/n/10.95/4e 
- \C70/rm/m/n/10.95/8f  \C70/rm/m/n/10.95/63 ^^Q \C70/rm/m/n/10.95/62 ^^X|\C70/
-rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/67 , \C70/rm/m/n/10.95/65 á \C70/rm/m/n/
-10.95/63 – \C70/rm/m/n/10.95/51 ˙\OT1/cmr/m/n/10.95 AdaIN StyleKV |\C70/rm/m/n/
-10.95/20 ^^T||^^T|
- []
-
-
-Overfull \hbox (17.36755pt too wide) in paragraph at lines 106--107
-\C70/rm/m/n/10.95/91 œ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/98 Œ \C70/rm/m/
-n/10.95/68 < \C70/rm/m/n/10.95/53 ^^V|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.
-95/57 ( \C70/rm/m/n/10.95/7e ” \C70/rm/m/n/10.95/67 Ñ \C70/rm/m/n/10.95/4f › \C
-70/rm/m/n/10.95/63 ^^A \C70/rm/m/n/10.95/65 π \C70/rm/m/n/10.95/97 b|\C70/rm/m/
-n/10.95/ff ^^L| \C70/rm/m/n/10.95/8b Â \C70/rm/m/n/10.95/68 F \C70/rm/m/n/10.95
-/67 ∂ \C70/rm/m/n/10.95/5f ^^U \C70/rm/m/n/10.95/51 e\OT1/cmr/m/n/10.95 Canny\C
-70/rm/m/n/10.95/8f π
- []
-
-
-Overfull \hbox (17.42845pt too wide) in paragraph at lines 106--107
-\C70/rm/m/n/10.95/5b π \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/7a 3 \C70/rm/m/
-n/10.95/5b ö \C70/rm/m/n/10.95/60 '|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.95
-/57 ( \C70/rm/m/n/10.95/7e π \C70/rm/m/n/10.95/74 ^^F \C70/rm/m/n/10.95/8f ¡ \C
-70/rm/m/n/10.95/79 ˚ \C70/rm/m/n/10.95/65 π \C70/rm/m/n/10.95/97 b|\C70/rm/m/n/
-10.95/ff ^^L| \C70/rm/m/n/10.95/53 ◊\OT1/cmr/m/n/10.95 InstantStyle[17]\C70/rm/
-m/n/10.95/54 /
- []
-
-
-Overfull \hbox (2.03761pt too wide) in paragraph at lines 106--107
-\C70/rm/m/n/10.95/75 e|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/4e ≈ \C70/rm
-/m/n/10.95/57 ( \C70/rm/m/n/10.95/72 y \C70/rm/m/n/10.95/5b ö \C70/rm/m/n/10.95
-/76 Ñ\OT1/cmr/m/n/10.95 UNet\C70/rm/m/n/10.95/89 „ \C70/rm/m/n/10.95/78 ^^A \C7
-0/rm/m/n/10.95/56 h \C70/rm/m/n/10.95/57 W \C70/rm/m/n/10.95/4e - \C70/rm/m/n/1
-0.95/5c ^^F \C70/rm/m/n/10.95/51 Ö \C70/rm/m/n/10.95/5b π \C70/rm/m/n/10.95/56 
-˛ \C70/rm/m/n/10.95/50 œ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/81 Í
- []
-
-
-Overfull \hbox (26.27876pt too wide) in paragraph at lines 108--109
-[]\C70/rm/m/n/10.95/62 ^^Q \C70/rm/m/n/10.95/4e Ï \C70/rm/m/n/10.95/57 (\OT1/cm
-r/m/n/10.95 MS COCO[18]\C70/rm/m/n/10.95/51 Ö \C70/rm/m/n/10.95/5b π \C70/rm/m/
-n/10.95/65 p \C70/rm/m/n/10.95/63 n \C70/rm/m/n/10.95/96 ∆ \C70/rm/m/n/10.95/54
- å\OT1/cmr/m/n/10.95 WikiArt[19]\C70/rm/m/n/10.95/98 Œ
- []
-
-
-Overfull \hbox (26.37105pt too wide) in paragraph at lines 108--109
-\C70/rm/m/n/10.95/8b ¡|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.95/5b ö \C70/rm
-/m/n/10.95/91 œ \C70/rm/m/n/10.95/8b ƒ \C70/rm/m/n/10.95/4f 0 \C70/rm/m/n/10.95
-/6d µ \C70/rm/m/n/10.95/76 ÷\OT1/cmr/m/n/10.95 ArtFID[20]|\C70/rm/m/n/10.95/30 
-^^A| \OT1/cmr/m/n/10.95 FID[21]\C70/rm/m/n/10.95/54 å\OT1/cmr/m/n/10.95 LPIPS[2
-2]\C70/rm/m/n/10.95/7b I
- []
-
-
-Overfull \hbox (70.50557pt too wide) in paragraph at lines 108--109
-\C70/rm/m/n/10.95/68 < \C70/rm/m/n/10.95/4f › \C70/rm/m/n/10.95/77 ^^_ \C70/rm/
-m/n/10.95/5e ¶ \C70/rm/m/n/10.95/4e ^^N \C70/rm/m/n/10.95/51 Ö \C70/rm/m/n/10.9
-5/5b π \C70/rm/m/n/10.95/4f › \C70/rm/m/n/10.95/75 Y \C70/rm/m/n/10.95/4e K \C7
-0/rm/m/n/10.95/95 Ù \C70/rm/m/n/10.95/53 ÷ \C70/rm/m/n/10.95/5f ó \C70/rm/m/n/1
-0.95/4e Ü \C70/rm/m/n/10.95/8f É \C70/rm/m/n/10.95/4f ^^X \C70/rm/m/n/10.95/5e 
-s \C70/rm/m/n/10.95/88 a|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/4e Â\OT1/c
-mr/m/n/10.95 85.43\C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 ArtFID\C70/rm/m/n/10
-.95/50 <
- []
-
-
-Overfull \hbox (1.97665pt too wide) in paragraph at lines 108--109
-\C70/rm/m/n/10.95/9a å|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/7c ˚ \C70/rm
-/m/n/10.95/7e ﬂ \C70/rm/m/n/10.95/63 Ì \C70/rm/m/n/10.95/79 : \C70/rm/m/n/10.95
-/4e Ü ^^M \C70/rm/m/n/10.95/54 ^^L \C70/rm/m/n/10.95/91 M \C70/rm/m/n/10.95/7f 
-n |\C70/rm/m/n/10.95/ff ^^H|\C70/rm/m/n/10.95/59 Ç\OT1/cmr/m/n/10.95 KV\C70/rm/
-m/n/10.95/87 ç \C70/rm/m/n/10.95/54 ^^H \C70/rm/m/n/10.95/57 W \C70/rm/m/n/10.9
-5/65 p \C70/rm/m/n/10.95/91 œ|\C70/rm/m/n/10.95/30 ^^A| \C70/rm/m/n/10.95/87 ç
- []
-
-
-Overfull \hbox (7.05634pt too wide) in paragraph at lines 108--109
-\C70/rm/m/n/10.95/7c ˚ \C70/rm/m/n/10.95/7e ﬂ|\C70/rm/m/n/10.95/ff ^^L| \C70/rm
-/m/n/10.95/65 / \C70/rm/m/n/10.95/63 ^^A \C70/rm/m/n/10.95/75 ( \C70/rm/m/n/10.
-95/62 7 \C70/rm/m/n/10.95/5b û \C70/rm/m/n/10.95/65 ˆ \C70/rm/m/n/10.95/8c ^^C 
-\C70/rm/m/n/10.95/65 t \C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm/m/
-n/10.95/5f : \C70/rm/m/n/10.95/5e ¶|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.9
-5 ControlNet\C70/rm/m/n/10.95/53 ¬
- []
-
-
-Overfull \hbox (3.3913pt too wide) in paragraph at lines 117--118
-\C70/rm/m/n/10.95/75 (\OT1/cmr/m/n/10.95 VGG[23]\C70/rm/m/n/10.95/72 y \C70/rm/
-m/n/10.95/5f Å \C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 Gram\C70/rm/m/n/10.95/7
-7 È \C70/rm/m/n/10.95/96 5 \C70/rm/m/n/10.95/53 9 \C70/rm/m/n/10.95/91 M \C70/r
-m/m/n/10.95/90 ^^Z \C70/rm/m/n/10.95/8f « Ì \C70/rm/m/n/10.95/4e „ \C70/rm/m/n/
-10.95/4f ^^X \C70/rm/m/n/10.95/53 ^^V \C70/rm/m/n/10.95/5b û
- []
-
-
-Overfull \hbox (80.78638pt too wide) in paragraph at lines 117--118
-\C70/rm/m/n/10.95/52 M \C70/rm/m/n/10.95/99 à \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/
-n/10.95/50 œ \C70/rm/m/n/10.95/53 ÿ \C70/rm/m/n/10.95/63 b \C70/rm/m/n/10.95/7f
- Q \C70/rm/m/n/10.95/7e ‹|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/5b û \C70
-/rm/m/n/10.95/73 ∞ \C70/rm/m/n/10.95/4e Ü \C70/rm/m/n/10.95/5b û \C70/rm/m/n/10
-.95/65 ˆ \C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm/m/n/10.95/8f ¡ \
-C70/rm/m/n/10.95/79 ˚|\C70/rm/m/n/10.95/ff ^^[| \OT1/cmr/m/n/10.95 Huang\C70/rm
-/m/n/10.95/54 å\OT1/cmr/m/n/10.95 Belongie[4]\C70/rm/m/n/10.95/63 –
- []
-
-
-Overfull \hbox (32.59119pt too wide) in paragraph at lines 117--118
-\C70/rm/m/n/10.95/5b ˘ \C70/rm/m/n/10.95/6b ‘ \C70/rm/m/n/10.95/5b f \C70/rm/m/
-n/10.95/4e ` \C70/rm/m/n/10.95/68 F \C70/rm/m/n/10.95/67 ∂\OT1/cmr/m/n/10.95 [2
-9]|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.95/5c = \C70/rm/m/n/10.95/7b ° \C70
-/rm/m/n/10.95/8f Ÿ \C70/rm/m/n/10.95/4e õ \C70/rm/m/n/10.95/65 π \C70/rm/m/n/10
-.95/6c ’ \C70/rm/m/n/10.95/57 ( \C70/rm/m/n/10.95/90 ^^_ \C70/rm/m/n/10.95/5e ¶
- \C70/rm/m/n/10.95/4e 
- \C70/rm/m/n/10.95/76 ¯ \C70/rm/m/n/10.95/6b ‘\OT1/cmr/m/n/10.95 Gatys\C70/rm/m
-/n/10.95/7b I
- []
-
-
-Overfull \hbox (5.0671pt too wide) in paragraph at lines 121--122
-\C70/rm/m/n/10.95/80 ˝ \C70/rm/m/n/10.95/59 ^^_ \C70/rm/m/n/10.95/4e Â \C70/rm/
-m/n/10.95/53 U \C70/rm/m/n/10.95/4e ^^@ \C70/rm/m/n/10.95/6a ! \C70/rm/m/n/10.9
-5/57 ã \C70/rm/m/n/10.95/59 ^^D \C70/rm/m/n/10.95/74 ^^F \C70/rm/m/n/10.95/59 ^
-^Z \C70/rm/m/n/10.95/4e * \C70/rm/m/n/10.95/76 Ó \C70/rm/m/n/10.95/68 ^^G \C70/
-rm/m/n/10.95/57 ﬂ \C70/rm/m/n/10.95/4e K \C70/rm/m/n/10.95/95 Ù \C70/rm/m/n/10.
-95/76 Ñ \C70/rm/m/n/10.95/7f ˚ \C70/rm/m/n/10.95/8b — \C70/rm/m/n/10.95/4e ˚ \C
-70/rm/m/n/10.95/52 °|\C70/rm/m/n/10.95/30 ^^B|
- []
-
-
-Overfull \hbox (2.11377pt too wide) in paragraph at lines 121--122
-\C70/rm/m/n/10.95/6b d \C70/rm/m/n/10.95/59 ^^V|\C70/rm/m/n/10.95/ff ^^L| \C70/
-rm/m/n/10.95/4e Â\OT1/cmr/m/n/10.95 StyleGAN[7]\C70/rm/m/n/10.95/53   \C70/rm/m
-/n/10.95/51 v \C70/rm/m/n/10.95/53 ÿ \C70/rm/m/n/10.95/4f S\OT1/cmr/m/n/10.95 [
-30,31]\C70/rm/m/n/10.95/4e : „ \C70/rm/m/n/10.95/88 h \C70/rm/m/n/10.95/76 Ñ \C
-70/rm/m/n/10.95/9a ÿ
- []
-
-
-Overfull \hbox (6.06787pt too wide) in paragraph at lines 121--122
-\C70/rm/m/n/10.95/8c ^^C \C70/rm/m/n/10.95/62 ^^V \C70/rm/m/n/10.95/72 y \C70/r
-m/m/n/10.95/5f Å \C70/rm/m/n/10.95/89 „ \C70/rm/m/n/10.95/80 & \C70/rm/m/n/10.9
-5/7b V \C70/rm/m/n/10.95/75 e|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/96 æ 
-\C70/rm/m/n/10.95/4e Â \C70/rm/m/n/10.95/76 Ù \C70/rm/m/n/10.95/63 • \C70/rm/m/
-n/10.95/5b û \C70/rm/m/n/10.95/73 ∞ \C70/rm/m/n/10.95/4e ^^N\OT1/cmr/m/n/10.95 
-CycleGAN\C70/rm/m/n/10.95/7b I
+Overfull \hbox (12.91391pt too wide) in paragraph at lines 146--147
+\TU/SimSun(1)/m/n/10 Âπ∂ ‰øù Áïô ‰∫Ü ÂÜÖ ÂÆπ Áªì ÊûÑÔºå|  ‰ΩÜ ÂÖ∂ È¢ú Ëâ≤ ËøÅ Áßª ËÉΩ Âäõ Êúâ Èôê„ÄÇ| \TU/TimesNewRoman
+(0)/m/n/10 InstantStyle[17]
  []
 
 [3
 
 ]
-Overfull \hbox (5.0671pt too wide) in paragraph at lines 125--126
-[]\C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/65 c \C70/rm/m/n/10.95/6a ! \C70/rm/
-m/n/10.95/57 ã \C70/rm/m/n/10.95/5d Ú \C70/rm/m/n/10.95/62 ^^P \C70/rm/m/n/10.9
-5/4e : \C70/rm/m/n/10.95/9a ÿ \C70/rm/m/n/10.95/8d ( \C70/rm/m/n/10.95/91 œ \C7
-0/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.95/50 œ \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n
-/10.95/62 ^^P \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/4e ; \C70/rm/m/n/10.95/5
-b ¸ \C70/rm/m/n/10.95/83 ^^C \C70/rm/m/n/10.95/5f ^^O|\C70/rm/m/n/10.95/30 ^^B|
-
- []
-
-
-Overfull \hbox (16.2423pt too wide) in paragraph at lines 127--128
-\C70/rm/m/n/10.95/97 ^^@ \C70/rm/m/n/10.95/89 Å \C70/rm/m/n/10.95/5b ˘ \C70/rm/
-m/n/10.95/6b œ \C70/rm/m/n/10.95/79 Õ \C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/
-68 < \C70/rm/m/n/10.95/53 U \C70/rm/m/n/10.95/72 Ï \C70/rm/m/n/10.95/8f € \C70/
-rm/m/n/10.95/88 L \C70/rm/m/n/10.95/4f ^^X \C70/rm/m/n/10.95/53 ^^V|\C70/rm/m/n
-/10.95/30 ^^B| \OT1/cmr/m/n/10.95 StyleDiffusion[13]\C70/rm/m/n/10.95/5f ^^U
- []
-
-
-Overfull \hbox (2.64594pt too wide) in paragraph at lines 127--128
-\C70/rm/m/n/10.95/51 e \C70/rm/m/n/10.95/57 ˙ \C70/rm/m/n/10.95/4e é\OT1/cmr/m/
-n/10.95 CLIP\C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/63 _ \C70/rm/m/n/10.95/59 
-1 \C70/rm/m/n/10.95/51 ˝ \C70/rm/m/n/10.95/65 p \C70/rm/m/n/10.95/4e ^^N \C70/r
-m/m/n/10.95/5f Æ \C70/rm/m/n/10.95/8c ^^C \C70/rm/m/n/10.95/7b V \C70/rm/m/n/10
-.95/75 e|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/4e Â \C70/rm/m/n/10.95/5b 
-û \C70/rm/m/n/10.95/73 ∞ \C70/rm/m/n/10.95/51 Ö \C70/rm/m/n/10.95/5b π
- []
-
-
-Overfull \hbox (2.18976pt too wide) in paragraph at lines 127--128
-\C70/rm/m/n/10.95/4e ^^N \C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm/
-m/n/10.95/76 Ñ \C70/rm/m/n/10.95/89 „ \C70/rm/m/n/10.95/80 &|\C70/rm/m/n/10.95/
-30 ^^B| \OT1/cmr/m/n/10.95 DiffStyle[14]\C70/rm/m/n/10.95/66 / \C70/rm/m/n/10.9
-5/4e ^^@ \C70/rm/m/n/10.95/79 Õ \C70/rm/m/n/10.95/8f – \C70/rm/m/n/10.95/88 L \
-C70/rm/m/n/10.95/4e é \C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/65 c \C70/rm/m/n
-/10.95/6a !
- []
-
-
-Overfull \hbox (4.37979pt too wide) in paragraph at lines 127--128
-\OT1/cmr/m/n/10.95 Dif-fu-sion\C70/rm/m/n/10.95/65 ˆ \C70/rm/m/n/10.95/53 Ô \C7
-0/rm/m/n/10.95/80 ˝ \C70/rm/m/n/10.95/4f ^^Z \C70/rm/m/n/10.95/65 9 \C70/rm/m/n
-/10.95/53 ÿ \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.95/50 œ \C70/rm/m/n/10.95/76 
-Ñ \C70/rm/m/n/10.95/8b Ì \C70/rm/m/n/10.95/4e I \C70/rm/m/n/10.95/5e ^^C \C70/r
-m/m/n/10.95/5c @|\C70/rm/m/n/10.95/30 ^^B| \OT1/cmr/m/n/10.95 Style In-
- []
-
-
-Overfull \hbox (4.65355pt too wide) in paragraph at lines 127--128
-\OT1/cmr/m/n/10.95 jec-tion[16]\C70/rm/m/n/10.95/90 ^^Z \C70/rm/m/n/10.95/8f « 
-\C70/rm/m/n/10.95/5c ^^F \C70/rm/m/n/10.95/81 Í \C70/rm/m/n/10.95/6c Ë \C70/rm/
-m/n/10.95/61 ^^O \C70/rm/m/n/10.95/52 õ \C70/rm/m/n/10.95/5c B \C70/rm/m/n/10.9
-5/4e - \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/95 . \C70/rm/m/n/10.95/50 < \C7
-0/rm/m/n/10.95/72 y \C70/rm/m/n/10.95/5f Å \C70/rm/m/n/10.95/66 ˇ \C70/rm/m/n/1
-0.95/63 b \C70/rm/m/n/10.95/4e :
- []
-
-
-Overfull \hbox (50.27844pt too wide) in paragraph at lines 127--128
-\C70/rm/m/n/10.95/75 Y \C70/rm/m/n/10.95/4e Ü \C70/rm/m/n/10.95/51 Ö \C70/rm/m/
-n/10.95/5b π \C70/rm/m/n/10.95/7e ” \C70/rm/m/n/10.95/67 Ñ|\C70/rm/m/n/10.95/ff
- ^^L| \C70/rm/m/n/10.95/4f F \C70/rm/m/n/10.95/51 v \C70/rm/m/n/10.95/98 ú \C70
-/rm/m/n/10.95/82 r \C70/rm/m/n/10.95/8f ¡ \C70/rm/m/n/10.95/79 ˚ \C70/rm/m/n/10
-.95/80 ˝ \C70/rm/m/n/10.95/52 õ \C70/rm/m/n/10.95/67 	 \C70/rm/m/n/10.95/96 P|\
-C70/rm/m/n/10.95/30 ^^B| \OT1/cmr/m/n/10.95 InstantStyle[17]\C70/rm/m/n/10.95/5
-3 —
- []
-
-
-Overfull \hbox (2.03761pt too wide) in paragraph at lines 127--128
-\C70/rm/m/n/10.95/73 ∞ \C70/rm/m/n/10.95/4e ≈ \C70/rm/m/n/10.95/67 	 \C70/rm/m/
-n/10.95/72 y \C70/rm/m/n/10.95/5b ö \C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 UN
-et\C70/rm/m/n/10.95/57 W \C70/rm/m/n/10.95/5b ˘ \C70/rm/m/n/10.95/98 Œ \C70/rm/
-m/n/10.95/68 < \C70/rm/m/n/10.95/8f ¡ \C70/rm/m/n/10.95/79 ˚ \C70/rm/m/n/10.95/
-8d w \C70/rm/m/n/10.95/51 s \C70/rm/m/n/10.95/95 . \C70/rm/m/n/10.95/4f \ \C70/
-rm/m/n/10.95/75 (|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/5e v
- []
-
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 144.
+(caption)                particular \caption on input line 163.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (5.72408pt too wide) in paragraph at lines 148--149
-[]\C70/rm/m/n/10.95/88 h []\OT1/cmr/m/n/10.95 1[]\C70/rm/m/n/10.95/60 ; \C70/rm
-/m/n/10.95/7e ” \C70/rm/m/n/10.95/4e Ü \C70/rm/m/n/10.95/67 , \C70/rm/m/n/10.95
-/65 á π \C70/rm/m/n/10.95/6c ’ \C70/rm/m/n/10.95/4e ^^N „ \C70/rm/m/n/10.95/88 
-h \C70/rm/m/n/10.95/60 ' \C70/rm/m/n/10.95/65 π \C70/rm/m/n/10.95/6c ’ \C70/rm/
-m/n/10.95/76 Ñ \C70/rm/m/n/10.95/5f ^^B \C70/rm/m/n/10.95/54 ^^L|\C70/rm/m/n/10
-.95/30 ^^B| \C70/rm/m/n/10.95/67 ,
+Overfull \hbox (9.76027pt too wide) in paragraph at lines 171--172
+\TU/SimSun(1)/b/n/10 Áâà Êú¨ ÂØπ Â∫î \TU/lmtt/m/n/10 lllyasviel/control_v11p_sd15_canny
+\TU/SimSun(1)/b/n/10 Ôºõ| \TU/TimesNewRoman(0)/m/n/10 SDXL
  []
 
-
-Overfull \hbox (14.26521pt too wide) in paragraph at lines 148--149
-\C70/rm/m/n/10.95/65 á π \C70/rm/m/n/10.95/6c ’ \C70/rm/m/n/10.95/76 Ù \C70/rm/
-m/n/10.95/63 • \C70/rm/m/n/10.95/5e ˙ \C70/rm/m/n/10.95/7a À \C70/rm/m/n/10.95/
-57 (\OT1/cmr/m/n/10.95 InstantStyle\C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/57 
-W \C70/rm/m/n/10.95/90 	 \C70/rm/m/n/10.95/62 È \C70/rm/m/n/10.95/7b V \C70/rm/
-m/n/10.95/75 e|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 Style
- []
-
-
-Overfull \hbox (2.25073pt too wide) in paragraph at lines 148--149
-\OT1/cmr/m/n/10.95 In-jec-tion\C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 KV\C70/r
-m/m/n/10.95/66 ˇ \C70/rm/m/n/10.95/63 b \C70/rm/m/n/10.95/60 ^^] Û \C70/rm/m/n/
-10.95/4e Â \C70/rm/m/n/10.95/53  \OT1/cmr/m/n/10.95 ControlNet\C70/rm/m/n/10.95
-/76 Ñ \C70/rm/m/n/10.95/7e ” \C70/rm/m/n/10.95/67 Ñ \C70/rm/m/n/10.95/63 ß
- []
-
-
-Overfull \hbox (29.23004pt too wide) in paragraph at lines 148--149
-\C70/rm/m/n/10.95/52 6 \C70/rm/m/n/10.95/57 ˙ \C70/rm/m/n/10.95/78 @ \C70/rm/m/
-n/10.95/4e K 
-|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.95/57 ( \C70/rm/m/n/10.95/6b d \C70/r
-m/m/n/10.95/57 ˙ \C70/rm/m/n/10.95/78 @ \C70/rm/m/n/10.95/4e 
-|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/62 ^^Q \C70/rm/m/n/10.95/4e Ï \C70
-/rm/m/n/10.95/8f € \C70/rm/m/n/10.95/4e ^^@ \C70/rm/m/n/10.95/6b e \C70/rm/m/n/
-10.95/5f ^^U \C70/rm/m/n/10.95/51 e \C70/rm/m/n/10.95/4e Ü\OT1/cmr/m/n/10.95 Ad
-aIN\C70/rm/m/n/10.95/6a !
- []
-
-
-Overfull \hbox (3.28476pt too wide) in paragraph at lines 152--153
-[]\OT1/cmr/m/n/10.95 ControlNet[15]\C70/rm/m/n/10.95/63 – \C70/rm/m/n/10.95/51 
-˙ \C70/rm/m/n/10.95/4e Ü ^^@ \C70/rm/m/n/10.95/79 Õ ^ \C70/rm/m/n/10.95/7e œ \C
-70/rm/m/n/10.95/67 ∂ Ñ|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/4f ^^? \C70/
-rm/m/n/10.95/75 ( \C70/rm/m/n/10.95/96 ˆ
- []
-
-
-Overfull \hbox (71.18484pt too wide) in paragraph at lines 152--153
-\C70/rm/m/n/10.95/53 9 \C70/rm/m/n/10.95/91 M |\C70/rm/m/n/10.95/ff ^^H|\OT1/cm
-r/m/n/10.95 SD1.5\C70/rm/m/n/10.95/72 H \C70/rm/m/n/10.95/67 , \C70/rm/m/n/10.9
-5/5b ˘ \C70/rm/m/n/10.95/5e î \OT1/cmtt/m/n/10.95 lllyasviel/control[]v11p[]sd1
-5[]canny|\C70/rm/m/n/10.95/ff ^^[|
- []
-
-
-Overfull \hbox (58.1044pt too wide) in paragraph at lines 152--153
-\OT1/cmr/m/n/10.95 SDXL\C70/rm/m/n/10.95/72 H \C70/rm/m/n/10.95/67 , \C70/rm/m/
-n/10.95/5b ˘ \C70/rm/m/n/10.95/5e î \OT1/cmtt/m/n/10.95 diffusers/controlnet-ca
-nny-sdxl-1.0|\C70/rm/m/n/10.95/ff 	||\C70/rm/m/n/10.95/30 ^^B|
- []
-
-
-Overfull \hbox (0.97308pt too wide) in paragraph at lines 159--160
-\C70/rm/m/n/10.95/60 '\OT1/cmr/m/n/10.95 KV\C70/rm/m/n/10.95/87 ç \C70/rm/m/n/1
-0.95/54 ^^H|\C70/rm/m/n/10.95/30 ^^A| \C70/rm/m/n/10.95/52 ^^] \C70/rm/m/n/10.9
-5/59 À \C70/rm/m/n/10.95/6f \ \C70/rm/m/n/10.95/53 ÿ \C70/rm/m/n/10.95/91 œ\OT1
-/cmr/m/n/10.95 AdaIN|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 ControlNet\C7
-0/rm/m/n/10.95/96 ∆ \C70/rm/m/n/10.95/62 ^^P
- []
-
-
-Overfull \hbox (17.6717pt too wide) in paragraph at lines 166--167
-\C70/rm/m/n/10.95/56 ˛|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/4f \ \C70/rm
-/m/n/10.95/4e :\OT1/cmr/m/n/10.95 ControlNet\C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/
-10.95/67 a \C70/rm/m/n/10.95/4e ˆ \C70/rm/m/n/10.95/8f ì \C70/rm/m/n/10.95/51 e
-|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.95/71 6 \C70/rm/m/n/10.95/54 ^^N|\C70
-/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/4f ^^? \C70/rm/m/n/10.95/75 (\OT1/cmr/m
-/n/10.95 VAE\C70/rm/m/n/10.95/7f ^^V
- []
-
-
-Overfull \hbox (22.69026pt too wide) in paragraph at lines 169--170
-\C70/rm/bx/n/10.95/96 6 \C70/rm/bx/n/10.95/6b µ \C70/rm/bx/n/10.95/4e å|\C70/rm
-/bx/n/10.95/ff ^^Z| \OT1/cmr/bx/n/10.95 DDIM\C70/rm/bx/n/10.95/53 Õ \C70/rm/bx/
-n/10.95/6f ^^T \C70/rm/bx/n/10.95/4e ^^N \C70/rm/bx/n/10.95/72 y \C70/rm/bx/n/1
-0.95/5f Å \C70/rm/bx/n/10.95/7f ^^S \C70/rm/bx/n/10.95/5b X|\C70/rm/bx/n/10.95/
-30 ^^B|  \C70/rm/m/n/10.95/62 ^^Q \C70/rm/m/n/10.95/4e Ï \C70/rm/m/n/10.95/4f ^
-^? \C70/rm/m/n/10.95/75 (\OT1/cmr/m/n/10.95 DDIM\C70/rm/m/n/10.95/91 «
- []
-
-
-Overfull \hbox (41.2751pt too wide) in paragraph at lines 172--173
-\C70/rm/m/n/10.95/5c ^^F \C70/rm/m/n/10.95/51 Ö \C70/rm/m/n/10.95/5b π \C70/rm/
-m/n/10.95/56 ˛ \C70/rm/m/n/10.95/50 œ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/
-53 Õ \C70/rm/m/n/10.95/6f ^^T \C70/rm/m/n/10.95/7e ” \C70/rm/m/n/10.95/67 ú \C7
-0/rm/m/n/10.95/4f \ \C70/rm/m/n/10.95/4e : \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n
-/10.95/62 ^^P \C70/rm/m/n/10.95/8d w \C70/rm/m/n/10.95/70 π|\C70/rm/m/n/10.95/f
-f ^^L| \C70/rm/m/n/10.95/80 ^^L \C70/rm/m/n/10.95/66 / \C70/rm/m/n/10.95/4f ^^?
- \C70/rm/m/n/10.95/75 (\OT1/cmr/m/n/10.95 AdaIN\C70/rm/m/n/10.95/5b ˘
- []
-
-
-Overfull \hbox (0.33423pt too wide) in paragraph at lines 175--176
-\C70/rm/m/n/10.95/56 j \C70/rm/m/n/10.95/58  \C70/rm/m/n/10.95/5f ^^@ \C70/rm/
-m/n/10.95/59 À \C70/rm/m/n/10.95/62 g \C70/rm/m/n/10.95/88 L \C70/rm/m/n/10.95/
-53 Õ \C70/rm/m/n/10.95/54 ^^Q \C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/65 c \C7
-0/rm/m/n/10.95/8f « \C70/rm/m/n/10.95/7a |\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/
-n/10.95/57 ( \C70/rm/m/n/10.95/6b œ \C70/rm/m/n/10.95/4e * \C70/rm/m/n/10.95/65
- ˆ \C70/rm/m/n/10.95/95 Ù \C70/rm/m/n/10.95/6b e|\C70/rm/m/n/10.95/ff ^^Z| \OT1
-/cmr/m/n/10.95 (1)
- []
-
-[4]
-<figures/fig_method_pipeline.pdf, id=439, 753.05339pt x 565.15138pt>
 File: figures/fig_method_pipeline.pdf Graphic file (type pdf)
 <use figures/fig_method_pipeline.pdf>
-Package pdftex.def Info: figures/fig_method_pipeline.pdf  used on input line 18
-2.
-(pdftex.def)             Requested size: 230.46729pt x 172.96162pt.
-
-Overfull \hbox (5.72408pt too wide) in paragraph at lines 187--188
-[]\C70/rm/m/n/10.95/56 ˛ []\OT1/cmr/m/n/10.95 4[]\C70/rm/m/n/10.95/4e Â \C70/rm
-/m/n/10.95/53 Ô \C70/rm/m/n/10.95/89 ∆ \C70/rm/m/n/10.95/53 ^^V \C70/rm/m/n/10.
-95/65 π \C70/rm/m/n/10.95/5f ^^O \C70/rm/m/n/10.95/60 ; \C70/rm/m/n/10.95/7e ” 
-\C70/rm/m/n/10.95/4e Ü 
- \C70/rm/m/n/10.95/8f  \C70/rm/m/n/10.95/4e î \C70/rm/m/n/10.95/96 6 \C70/rm/m
-/n/10.95/6b µ \C70/rm/m/n/10.95/6d A \C70/rm/m/n/10.95/7a |\C70/rm/m/n/10.95/f
-f ^^L| \C70/rm/m/n/10.95/6e ^^E
- []
-
-
-Overfull \hbox (4.59254pt too wide) in paragraph at lines 193--194
-[]\C70/rm/m/n/10.95/57 (\OT1/cmr/m/n/10.95 U-Net\C70/rm/m/n/10.95/4e -|\C70/rm/
-m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/81 Í \C70/rm/m/n/10.95/6c Ë \C70/rm/m/n/10.
-95/61 ^^O \C70/rm/m/n/10.95/52 õ \C70/rm/m/n/10.95/5c B \C70/rm/m/n/10.95/76 Ñ 
-\C70/rm/m/n/10.95/8b ° \C70/rm/m/n/10.95/7b ó \C70/rm/m/n/10.95/65 π \C70/rm/m/
-n/10.95/5f ^^O \C70/rm/m/n/10.95/59 Ç \C70/rm/m/n/10.95/4e |\C70/rm/m/n/10.95/
-30 ^^B| \C70/rm/m/n/10.95/7e Ÿ
- []
-
-
-Overfull \hbox (3.0939pt too wide) in paragraph at lines 200--202
-\C70/rm/m/n/10.95/51 v \C70/rm/m/n/10.95/4e -$\OML/cmm/m/it/10.95 d[]$\C70/rm/m
-/n/10.95/66 / \C70/rm/m/n/10.95/67 Â \C70/rm/m/n/10.95/8b ‚ \C70/rm/m/n/10.95/5
-4 ^^Q \C70/rm/m/n/10.95/91 œ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/7e Ù \C70
-/rm/m/n/10.95/5e ¶|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.95/57 ( \C70/rm/m/n
-/10.95/68 ^^G \C70/rm/m/n/10.95/51 ∆ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/7
-5 ^^_ \C70/rm/m/n/10.95/62 ^^P \C70/rm/m/n/10.95/8f « \C70/rm/m/n/10.95/7a  \C
-70/rm/m/n/10.95/4e -|\C70/rm/m/n/10.95/ff ^^L|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 200--202
-
- []
-
-<figures/fig_unet_arch.pdf, id=441, 1415.04662pt x 959.74557pt>
 File: figures/fig_unet_arch.pdf Graphic file (type pdf)
 <use figures/fig_unet_arch.pdf>
-Package pdftex.def Info: figures/fig_unet_arch.pdf  used on input line 205.
-(pdftex.def)             Requested size: 230.46729pt x 156.30095pt.
-
-Overfull \hbox (3.16917pt too wide) in paragraph at lines 210--211
-[]\C70/rm/m/n/10.95/56 ˛ []\OT1/cmr/m/n/10.95 5[]\C70/rm/m/n/10.95/5c U \C70/rm
-/m/n/10.95/79 : \C70/rm/m/n/10.95/4e Ü\OT1/cmr/m/n/10.95 U-Net\C70/rm/m/n/10.95
-/76 Ñ \C70/rm/m/n/10.95/65 t \C70/rm/m/n/10.95/4f S \C70/rm/m/n/10.95/67 ∂ Ñ \C
-70/rm/m/n/10.95/53   \C70/rm/m/n/10.95/54 ^^D \C70/rm/m/n/10.95/5c B \C70/rm/m/
-n/10.95/4e - \C70/rm/m/n/10.95/81 Í \C70/rm/m/n/10.95/6c Ë \C70/rm/m/n/10.95/61
- ^^O
+[4]
+Overfull \hbox (102.68607pt too wide) in paragraph at lines 248--249
+[]\TU/TimesNewRoman(0)/b/n/10 2 \TU/SimSun(1)/b/n/10 ÂùóÔºö|  Êõø Êç¢ \TU/lmtt/m/n/10 u
+p_blocks.0.attentions.1 \TU/SimSun(1)/b/n/10 Âíå \TU/lmtt/m/n/10 down_blocks.2.at
+tentions.1 
  []
 
 
-Overfull \hbox (9.64182pt too wide) in paragraph at lines 214--215
-\C70/rm/m/n/10.95/81 Í \C70/rm/m/n/10.95/6c Ë \C70/rm/m/n/10.95/61 ^^O \C70/rm/
-m/n/10.95/52 õ \C70/rm/m/n/10.95/57 W \C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 
-K/V\C70/rm/m/n/10.95/8f € \C70/rm/m/n/10.95/88 L \C70/rm/m/n/10.95/52 † \C70/rm
-/m/n/10.95/67 C \C70/rm/m/n/10.95/87 ç \C70/rm/m/n/10.95/54 ^^H |\C70/rm/m/n/10
-.95/ff ^^H|\C70/rm/m/n/10.95/80 ^^L \C70/rm/m/n/10.95/97 ^ \C70/rm/m/n/10.95/76
- Ù \C70/rm/m/n/10.95/63 • \C70/rm/m/n/10.95/66 ˇ \C70/rm/m/n/10.95/63 b|\C70/rm
-/m/n/10.95/ff 	||^^Z|
+Overfull \hbox (3.07748pt too wide) in paragraph at lines 259--260
+[]\TU/SimSun(1)/b/n/10 ‰∏∫ Ëß£ ÂÜ≥ Ê≠§ ÈóÆ È¢òÔºå|  Êàë ‰ª¨ Èáá Áî® \TU/TimesNewRoman(0)/m/n/10 AdaIN
+ \TU/SimSun(1)/b/n/10 Ë∞É Âà∂ Âàù Âßã ÊΩú Âèò Èáè  |‚Äî ‚Äî|
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
-
+Overfull \hbox (11.68346pt too wide) in paragraph at lines 345--346
+\TU/SimSun(1)/b/n/10 ‰∏∫ Á≥ª Áªü ËØÑ ‰º∞ ÂêÑ ÁªÑ ‰ª∂ ÁöÑ Ë¥° ÁåÆÔºå|  Êàë ‰ª¨ ËÆæ ËÆ° ‰∫Ü \TU/TimesNewRoman(0)/m/
+n/10 7 \TU/SimSun(1)/b/n/10 ÁªÑ Êñπ Ê≥ï Âèò ‰Ωì  |ÔºàË°® []\TU/TimesNewRoman(0)/m/n/10 4[]\TU
+/SimSun(1)/b/n/10 Ôºâ Ôºå|
  []
 
-[5{d:/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./fig
-ures/fig_method_pipeline.pdf> <./figures/fig_unet_arch.pdf>]
-Overfull \hbox (4.90102pt too wide) detected at line 243
-[][][]\OML/cmm/m/it/10.95 z[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 ^^[\OT1/
-cmr/m/n/10.95 (\OML/cmm/m/it/10.95 z[]\OT1/cmr/m/n/10.95 ) [] + \OML/cmm/m/it/1
-0.95 ^^V\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 z[]\OT1/cmr/m/n/10.95 )
+[5]
+Overfull \hbox (1.24074pt too wide) in paragraph at lines 397--398
+\TU/SimSun(1)/b/n/10 Âõæ []\TU/TimesNewRoman(0)/m/n/10 10[]\TU/SimSun(1)/b/n/10 Ëøõ
+ ‰∏Ä Ê≠• Â±ï Á§∫ ‰∫Ü ÂêÑ Âèò ‰Ωì Âú® È£é Ê†º ‰øù Áúü Â∫¶ ‰∏é ÂÜÖ ÂÆπ ‰øù Áïô Â∫¶ ‰πã
  []
 
-
-Overfull \hbox (8.58159pt too wide) in paragraph at lines 243--245
-\C70/rm/m/n/10.95/51 v \C70/rm/m/n/10.95/4e -$\OML/cmm/m/it/10.95 ^^V\OT1/cmr/m
-/n/10.95 (\OMS/cmsy/m/n/10.95 ^^A\OT1/cmr/m/n/10.95 )$\C70/rm/m/n/10.95/54 å$\O
-ML/cmm/m/it/10.95 ^^[\OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 ^^A\OT1/cmr/m/n/10
-.95 )$\C70/rm/m/n/10.95/52 ^^F + \C70/rm/m/n/10.95/88 h \C70/rm/m/n/10.95/79 : 
-\C70/rm/m/n/10.95/90 ^^Z S \C70/rm/m/n/10.95/7e Ù \C70/rm/m/n/10.95/5e ¶ \C70/r
-m/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/57 G \C70/rm/m/n/10.95/50 < \C70/rm/m/n/10.9
-5/54 å \C70/rm/m/n/10.95/68 ^^G \C70/rm/m/n/10.95/51 ∆ \C70/rm/m/n/10.95/5d Ó|\
-C70/rm/m/n/10.95/30 ^^B|
- []
-
-
-Overfull \hbox (0.15929pt too wide) in paragraph at lines 243--245
-\C70/rm/m/n/10.95/72 y \C70/rm/m/n/10.95/60 '|\C70/rm/m/n/10.95/30 ^^B| \C70/rm
-/m/n/10.95/4e „ \C70/rm/m/n/10.95/78 ^^A \C70/rm/m/n/10.95/5b û \C70/rm/m/n/10.
-95/73 ∞ \C70/rm/m/n/10.95/4e -|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/5f ^
-^U \C70/rm/m/n/10.95/51 e \C70/rm/m/n/10.95/8d Ö \C70/rm/m/n/10.95/53 ¬ \C70/rm
-/m/n/10.95/65 p$\OML/cmm/m/it/10.95 $\C70/rm/m/n/10.95/54 å$\OML/cmm/m/it/10.9
-5 ^^L$\C70/rm/m/n/10.95/63 ß \C70/rm/m/n/10.95/52 6 \C70/rm/m/n/10.95/87 ç \C70
-/rm/m/n/10.95/54 ^^H \C70/rm/m/n/10.95/5f :
- []
-
-
-Overfull \hbox (18.46263pt too wide) in paragraph at lines 248--249
-[]\C70/rm/m/n/10.95/4e : \C70/rm/m/n/10.95/4f › \C70/rm/m/n/10.95/63 ^^A \C70/r
-m/m/n/10.95/51 Ö \C70/rm/m/n/10.95/5b π \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.9
-5/50 œ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/7a z \C70/rm/m/n/10.95/95 Ù \C7
-0/rm/m/n/10.95/7e ” \C70/rm/m/n/10.95/67 Ñ|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/
-n/10.95/62 ^^Q \C70/rm/m/n/10.95/4e Ï \C70/rm/m/n/10.95/96 ∆ \C70/rm/m/n/10.95/
-62 ^^P \C70/rm/m/n/10.95/4e Ü\OT1/cmr/m/n/10.95 Canny
- []
-
-
-Overfull \hbox (5.14027pt too wide) in paragraph at lines 248--249
-\OT1/cmr/m/n/10.95 Con-trol-Net|\C70/rm/m/n/10.95/30 ^^B| \OT1/cmr/m/n/10.95 Co
-ntrolNet\C70/rm/m/n/10.95/63 • \C70/rm/m/n/10.95/65 6\OT1/cmr/m/n/10.95 Canny\C
-70/rm/m/n/10.95/8f π \C70/rm/m/n/10.95/7f ^^X \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/
-n/10.95/4f \ \C70/rm/m/n/10.95/4e : \C70/rm/m/n/10.95/67 a
- []
-
-
-Overfull \hbox (34.43137pt too wide) in paragraph at lines 248--249
-\C70/rm/m/n/10.95/8d w \C70/rm/m/n/10.95/59 À \C70/rm/m/n/10.95/7a 3 \C70/rm/m/
-n/10.95/5b ö \C70/rm/m/n/10.95/60 '|\C70/rm/m/n/10.95/ff ^^[| \OT1/cmr/m/n/10.9
-5 (2) \C70/rm/m/n/10.95/95 ^^A \C70/rm/m/n/10.95/5b ö \C70/rm/m/n/10.95/53 ü \C
-70/rm/m/n/10.95/6a ! \C70/rm/m/n/10.95/57 ã \C70/rm/m/n/10.95/53 ¬ \C70/rm/m/n/
-10.95/65 p|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/4e ≈ \C70/rm/m/n/10.95/8
-b ≠ \C70/rm/m/n/10.95/7e √\OT1/cmr/m/n/10.95 ControlNet\C70/rm/m/n/10.95/90 Ë
- []
-
-
-Overfull \hbox (56.76944pt too wide) in paragraph at lines 248--249
-\C70/rm/m/n/10.95/67 ∂ Ñ|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.95/5b û \C70/
-rm/m/n/10.95/9a å \C70/rm/m/n/10.95/4e - \C70/rm/m/n/10.95/4f ^^? \C70/rm/m/n/1
-0.95/75 ( \C70/rm/m/n/10.95/4e ^^N \C70/rm/m/n/10.95/57 ˙ \C70/rm/m/n/10.95/78 
-@ \C70/rm/m/n/10.95/6a ! \C70/rm/m/n/10.95/57 ã \C70/rm/m/n/10.95/72 H \C70/rm/
-m/n/10.95/67 , \C70/rm/m/n/10.95/53 9 \C70/rm/m/n/10.95/91 M \C70/rm/m/n/10.95/
-76 Ñ \C70/rm/m/n/10.95/98 Ñ \C70/rm/m/n/10.95/8b ≠ \C70/rm/m/n/10.95/7e √\OT1/c
-mr/m/n/10.95 ControlNet|\C70/rm/m/n/10.95/ff ^^L|
- []
-
-
-Overfull \hbox (14.50616pt too wide) in paragraph at lines 267--268
-[]\C70/rm/bx/n/10.95/51 Ö \C70/rm/bx/n/10.95/5b π \C70/rm/bx/n/10.95/65 p \C70/
-rm/bx/n/10.95/63 n \C70/rm/bx/n/10.95/96 ∆|\C70/rm/bx/n/10.95/ff ^^Z| \C70/rm/m
-/n/10.95/4f ^^? \C70/rm/m/n/10.95/75 (\OT1/cmr/m/n/10.95 MS COCO 2017\C70/rm/m/
-n/10.95/65 p \C70/rm/m/n/10.95/63 n \C70/rm/m/n/10.95/96 ∆\OT1/cmr/m/n/10.95 [1
-8]\C70/rm/m/n/10.95/4e -
- []
-
-
-Overfull \hbox (11.49728pt too wide) in paragraph at lines 269--270
-[]\C70/rm/bx/n/10.95/98 Œ \C70/rm/bx/n/10.95/68 < \C70/rm/bx/n/10.95/65 p \C70/
-rm/bx/n/10.95/63 n \C70/rm/bx/n/10.95/96 ∆|\C70/rm/bx/n/10.95/ff ^^Z| \C70/rm/m
-/n/10.95/4f ^^? \C70/rm/m/n/10.95/75 (\OT1/cmr/m/n/10.95 WikiArt\C70/rm/m/n/10.
-95/65 p \C70/rm/m/n/10.95/63 n \C70/rm/m/n/10.95/96 ∆\OT1/cmr/m/n/10.95 [19]\C7
-0/rm/m/n/10.95/4e - \C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 40\C70/rm/m/n/10.9
-5/5f  
- []
-
-
-Overfull \hbox (3.20563pt too wide) in paragraph at lines 273--274
-[]\C70/rm/bx/n/10.95/65 p \C70/rm/bx/n/10.95/63 n \C70/rm/bx/n/10.95/89 ƒ \C70/
-rm/bx/n/10.95/6a !|\C70/rm/bx/n/10.95/ff ^^Z| \C70/rm/m/n/10.95/90 Ë \C70/rm/m/
-n/10.95/52 ^^F \C70/rm/m/n/10.95/91 M \C70/rm/m/n/10.95/5b ˘ \C70/rm/m/n/10.95/
-91 Õ \C70/rm/m/n/10.95/59 ^^M \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n/10.95/62 ^^P
- \C70/rm/m/n/10.95/4e Â \C70/rm/m/n/10.95/79 Ô \C70/rm/m/n/10.95/7d / \C70/rm/m
-/n/10.95/7e ﬂ \C70/rm/m/n/10.95/8b ° \C70/rm/m/n/10.95/91 œ|\C70/rm/m/n/10.95/f
-f ^^L|
- []
-
-
-Overfull \hbox (0.74458pt too wide) in paragraph at lines 277--278
-[]\OT1/cmr/bx/n/10.95 Art-FID|\C70/rm/bx/n/10.95/ff ^^Z| \C70/rm/m/n/10.95/4e ^
-^S \C70/rm/m/n/10.95/95 Ë \C70/rm/m/n/10.95/94 à \C70/rm/m/n/10.95/5b ˘ \C70/rm
-/m/n/10.95/82 z \C70/rm/m/n/10.95/67 / \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.95
-/50 œ \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n/10.95/62 ^^P \C70/rm/m/n/10.95/76 Ñ 
-\C70/rm/m/n/10.95/7e ¸ \C70/rm/m/n/10.95/54 ^^H \C70/rm/m/n/10.95/63 ^^G
- []
-
-
-Overfull \hbox (3.35187pt too wide) in paragraph at lines 279--280
-[]\OT1/cmr/bx/n/10.95 FID |\C70/rm/bx/n/10.95/ff ^^H|\OT1/cmr/bx/n/10.95 Fr^^Se
-chet In-cep-tion Dis-tance|\C70/rm/bx/n/10.95/ff 	| \OT1/cmr/bx/n/10.95 [21]|\C
-70/rm/bx/n/10.95/ff ^^Z|
- []
-
-
-Overfull \hbox (3.13272pt too wide) in paragraph at lines 279--280
-\C70/rm/m/n/10.95/88 a \C70/rm/m/n/10.95/91 œ \C70/rm/m/n/10.95/75 ^^_ \C70/rm/
-m/n/10.95/62 ^^P \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.95/50 œ \C70/rm/m/n/10.9
-5/4e ^^N \C70/rm/m/n/10.95/51 Ö \C70/rm/m/n/10.95/5b π \C70/rm/m/n/10.95/56 ˛ \
-C70/rm/m/n/10.95/50 œ \C70/rm/m/n/10.95/57 (\OT1/cmr/m/n/10.95 InceptionV3\C70/
-rm/m/n/10.95/72 y \C70/rm/m/n/10.95/5f Å \C70/rm/m/n/10.95/7a z \C70/rm/m/n/10.
-95/95 Ù
- []
-
-
-Overfull \hbox (14.72763pt too wide) in paragraph at lines 281--282
-[]\OT1/cmr/bx/n/10.95 LPIPS |\C70/rm/bx/n/10.95/ff ^^H|\OT1/cmr/bx/n/10.95 Lear
-ned Per-cep-tual Im-age Patch
- []
-
-
-Overfull \hbox (18.12796pt too wide) in paragraph at lines 281--282
-\C70/rm/m/n/10.95/4e -|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/75 1 \C70/rm
-/m/n/10.95/4e é \C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm/m/n/10.95
-/53 ^^V \C70/rm/m/n/10.95/5f ≈ \C70/rm/m/n/10.95/71 6 \C70/rm/m/n/10.95/5f ^^U 
-\C70/rm/m/n/10.95/51 e \C70/rm/m/n/10.95/61 ^^_ \C70/rm/m/n/10.95/77 Â \C70/rm/
-m/n/10.95/53 ÿ ^^V|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/90 ^^B \C70/rm/m
-/n/10.95/4e - \C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 LPIPS\C70/rm/m/n/10.95/5
-0 <
- []
-
-
-Overfull \hbox (6.24936pt too wide) in paragraph at lines 285--286
-[]\C70/rm/m/n/10.95/5b û \C70/rm/m/n/10.95/9a å \C70/rm/m/n/10.95/57 (\OT1/cmr/
-m/n/10.95 AutoDL\C70/rm/m/n/10.95/5e s \C70/rm/m/n/10.95/53  \C70/rm/m/n/10.95
-/79 ﬂ \C70/rm/m/n/10.95/75 (\OT1/cmr/m/n/10.95 NVIDIA V100-32GB
- []
-
-
-Overfull \hbox (4.46791pt too wide) in paragraph at lines 285--286
-\OT1/cmr/m/n/10.95 GPU\C70/rm/m/n/10.95/8f € \C70/rm/m/n/10.95/88 L|\C70/rm/m/n
-/10.95/30 ^^B| \C70/rm/m/n/10.95/78 l \C70/rm/m/n/10.95/4e ˆ ^^N \C70/rm/m/n/10
-.95/8d Ö \C70/rm/m/n/10.95/53 ¬ \C70/rm/m/n/10.95/65 p \C70/rm/m/n/10.95/91 M \
-C70/rm/m/n/10.95/7f n \C70/rm/m/n/10.95/52 ^^F + \C70/rm/m/n/10.95/59 Ç \C70/rm
-/m/n/10.95/88 h []\OT1/cmr/m/n/10.95 2[]\C70/rm/m/n/10.95/54 å \C70/rm/m/n/10.9
-5/88 h []\OT1/cmr/m/n/10.95 3[]\C70/rm/m/n/10.95/62 @
- []
-
-[6]
-Underfull \hbox (badness 2237) in paragraph at lines 330--330
-\C70/zhhei/m/n/10/65 H \C70/zhhei/m/n/10/67 ú|\C70/zhhei/m/n/10/ff ^^[| \OT1/cm
-ss/m/n/10 V5\C70/zhhei/m/n/10/9a å \C70/zhhei/m/n/10/8b ¡\OT1/cmss/m/n/10 Contr
-olNet\C70/zhhei/m/n/10/5b ˘ \C70/zhhei/m/n/10/51 Ö \C70/zhhei/m/n/10/5b π \C70/
-zhhei/m/n/10/7e ” \C70/zhhei/m/n/10/67 Ñ \C70/zhhei/m/n/10/4f › \C70/zhhei/m/n/
-10/63 ^^A \C70/zhhei/m/n/10/76 Ñ \C70/zhhei/m/n/10/8d ! \C70/zhhei/m/n/10/73 .|
-\C70/zhhei/m/n/10/ff ^^[|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 330--330
-\OT1/cmss/m/n/10 V6\C70/zhhei/m/n/10/4e ^^N\OT1/cmss/m/n/10 V7\C70/zhhei/m/n/10
-/57 (\OT1/cmss/m/n/10 5\C70/zhhei/m/n/10/57 W \C70/zhhei/m/n/10/91 M \C70/zhhei
-/m/n/10/7f n \C70/zhhei/m/n/10/4e  \C70/zhhei/m/n/10/6b ‘ \C70/zhhei/m/n/10/8f
- É\OT1/cmss/m/n/10 AdaIN\C70/zhhei/m/n/10/5e & \C70/zhhei/m/n/10/67 e \C70/zhhe
-i/m/n/10/76 Ñ \C70/zhhei/m/n/10/58 û \C70/zhhei/m/n/10/76  |\C70/zhhei/m/n/10/f
-f ^^L| \C70/zhhei/m/n/10/51 v
- []
-
-
-Overfull \hbox (48.99489pt too wide) in paragraph at lines 349--350
-\C70/rm/m/n/10.95/75 ( \C70/rm/m/n/10.95/4e ^^N \C70/rm/m/n/10.95/54 & \C70/rm/
-m/n/10.95/76 Ñ \C70/rm/m/n/10.95/65 H \C70/rm/m/n/10.95/67 ú |\C70/rm/m/n/10.95
-/ff ^^H|\OT1/cmr/m/n/10.95 1\C70/rm/m/n/10.95/57 W \C70/rm/m/n/10.95/4e ^^N\OT1
-/cmr/m/n/10.95 2\C70/rm/m/n/10.95/57 W \C70/rm/m/n/10.95/91 M \C70/rm/m/n/10.95
-/7f n|\C70/rm/m/n/10.95/ff 	||\C70/rm/m/n/10.95/30 ^^B| \OT1/cmr/m/n/10.95 V5\C
-70/rm/m/n/10.95/75 ( \C70/rm/m/n/10.95/4e é \C70/rm/m/n/10.95/9a å \C70/rm/m/n/
-10.95/8b ¡\OT1/cmr/m/n/10.95 ControlNet\C70/rm/m/n/10.95/5b ˘
- []
-
-
-Overfull \hbox (1.34418pt too wide) in paragraph at lines 353--354
-[]\C70/rm/m/n/10.95/88 h []\OT1/cmr/m/n/10.95 5[]\C70/rm/m/n/10.95/5c U \C70/rm
-/m/n/10.95/79 : \C70/rm/m/n/10.95/4e Ü\OT1/cmr/m/n/10.95 7\C70/rm/m/n/10.95/7e 
-ƒ \C70/rm/m/n/10.95/53 ÿ \C70/rm/m/n/10.95/4f S \C70/rm/m/n/10.95/57 (\OT1/cmr/
-m/n/10.95 5000\C70/rm/m/n/10.95/5f   \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n/10.95
-/62 ^^P \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.95/50 œ \C70/rm/m/n/10.95/4e 
- \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/5b ö
- []
-
-
-Overfull \hbox (1.99516pt too wide) in paragraph at lines 376--377
-|\C70/rm/m/n/10.95/ff ^^H|\OT1/cmr/m/n/10.95 85.43|\C70/rm/m/n/10.95/ff 	||^^L|
- \C70/rm/m/n/10.95/56 ‡ \C70/rm/m/n/10.95/4e : \C70/rm/m/n/10.95/5b É \C70/rm/m
-/n/10.95/54 ^^L \C70/rm/m/n/10.95/65 ˆ \C70/rm/m/n/10.95/52 ) \C70/rm/m/n/10.95
-/75 ( \C70/rm/m/n/10.95/4e Ü\OT1/cmr/m/n/10.95 ControlNet\C70/rm/m/n/10.95/76 Ñ
- \C70/rm/m/n/10.95/7e ” \C70/rm/m/n/10.95/67 Ñ \C70/rm/m/n/10.95/4f ›
- []
-
-
-Overfull \hbox (3.25432pt too wide) in paragraph at lines 376--377
-\C70/rm/m/n/10.95/63 ^^A \C70/rm/m/n/10.95/80 ˝ \C70/rm/m/n/10.95/52 õ|\C70/rm/
-m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 AdaIN\C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10
-.95/82 r \C70/rm/m/n/10.95/5f i \C70/rm/m/n/10.95/8f ¡ \C70/rm/m/n/10.95/79 ˚ \
-C70/rm/m/n/10.95/80 ˝ \C70/rm/m/n/10.95/52 õ \C70/rm/m/n/10.95/54 å \C70/rm/m/n
-/10.95/59 ^^Z \C70/rm/m/n/10.95/57 W\OT1/cmr/m/n/10.95 KV\C70/rm/m/n/10.95/87 ç
- \C70/rm/m/n/10.95/54 ^^H \C70/rm/m/n/10.95/76 Ñ
- []
-
-
-Overfull \hbox (8.75352pt too wide) in paragraph at lines 376--377
-\C70/rm/m/n/10.95/67 _ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/98 Ñ \C70/rm/m/
-n/10.95/67 ^^_ \C70/rm/m/n/10.95/4e ^^@ \C70/rm/m/n/10.95/81 Ù|\C70/rm/m/n/10.9
-5/30 ^^B| \C70/rm/m/n/10.95/4f ^^? \C70/rm/m/n/10.95/75 (\OT1/cmr/m/n/10.95 Ada
-IN\C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/53 ÿ \C70/rm/m/n/10.95/4f S |\C70/rm
-/m/n/10.95/ff ^^H|\OT1/cmr/m/n/10.95 V1|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/
-10.95 V2|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 V7|\C70/rm/m/n/10.95/ff 	
-|
- []
-
-
-Overfull \hbox (8.75352pt too wide) in paragraph at lines 376--377
-\C70/rm/m/n/10.95/82 r \C70/rm/m/n/10.95/5f i \C70/rm/m/n/10.95/53 O \C70/rm/m/
-n/10.95/8c ^^C \C70/rm/m/n/10.95/60 ' \C70/rm/m/n/10.95/66 Ù \C70/rm/m/n/10.95/
-4f ^^X|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/65 ‡\OT1/cmr/m/n/10.95 AdaIN
-\C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/53 ÿ \C70/rm/m/n/10.95/4f S |\C70/rm/m
-/n/10.95/ff ^^H|\OT1/cmr/m/n/10.95 V3|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10
-.95 V4|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 V6|\C70/rm/m/n/10.95/ff 	|
- []
-
-
-Overfull \hbox (1.61174pt too wide) in paragraph at lines 376--377
-\C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm/m/n/10.95/8f ¡ \C70/rm/m/
-n/10.95/79 ˚ \C70/rm/m/n/10.95/66 Ù \C70/rm/m/n/10.95/6f ¿ \C70/rm/m/n/10.95/8f
- € \C70/rm/m/n/10.95/4f F \C70/rm/m/n/10.95/82 r \C70/rm/m/n/10.95/5f i \C70/rm
-/m/n/10.95/50 O \C70/rm/m/n/10.95/51 ∑|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10
-.95/66 Ù \C70/rm/m/n/10.95/59 ^^Z \C70/rm/m/n/10.95/87 ç \C70/rm/m/n/10.95/54 ^
-^H \C70/rm/m/n/10.95/57 W |\C70/rm/m/n/10.95/ff ^^H|\OT1/cmr/m/n/10.95 V2 vs
- []
-
-<figures/image1.pdf, id=487, 1628.00224pt x 959.2638pt>
 File: figures/image1.pdf Graphic file (type pdf)
 <use figures/image1.pdf>
-Package pdftex.def Info: figures/image1.pdf  used on input line 382.
-(pdftex.def)             Requested size: 230.46729pt x 135.789pt.
-<figures/image2.pdf, id=488, 3295.03017pt x 1023.825pt>
 File: figures/image2.pdf Graphic file (type pdf)
 <use figures/image2.pdf>
-Package pdftex.def Info: figures/image2.pdf  used on input line 389.
-(pdftex.def)             Requested size: 230.46729pt x 71.59695pt.
-<figures/image3.pdf, id=489, 608.99518pt x 540.09782pt>
 File: figures/image3.pdf Graphic file (type pdf)
 <use figures/image3.pdf>
-Package pdftex.def Info: figures/image3.pdf  used on input line 396.
-(pdftex.def)             Requested size: 230.46729pt x 204.39046pt.
-<figures/fig_metrics_barchart.pdf, id=490, 4942.54538pt x 1535.7375pt>
 File: figures/fig_metrics_barchart.pdf Graphic file (type pdf)
 <use figures/fig_metrics_barchart.pdf>
-Package pdftex.def Info: figures/fig_metrics_barchart.pdf  used on input line 4
-03.
-(pdftex.def)             Requested size: 483.69687pt x 150.27863pt.
-<figures/fig_ref_metrics.pdf, id=491, 2109.56123pt x 1640.52902pt>
 File: figures/fig_ref_metrics.pdf Graphic file (type pdf)
 <use figures/fig_ref_metrics.pdf>
-Package pdftex.def Info: figures/fig_ref_metrics.pdf  used on input line 410.
-(pdftex.def)             Requested size: 230.46729pt x 179.20712pt.
-
-Overfull \hbox (23.40169pt too wide) in paragraph at lines 417--418
-\C70/rm/m/n/10.95/4e Ï \C70/rm/m/n/10.95/57 (\OT1/cmr/m/n/10.95 5\C70/rm/m/n/10
-.95/57 W \C70/rm/m/n/10.95/91 M \C70/rm/m/n/10.95/7f n \C70/rm/m/n/10.95/4e  \
-C70/rm/m/n/10.95/6d K \C70/rm/m/n/10.95/8b ’ \C70/rm/m/n/10.95/4e Ü$\OML/cmm/m/
-it/10.95 ^^M \OMS/cmsy/m/n/10.95 2 f\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\O
-T1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95
- :\OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/1
-0.95 :\OT1/cmr/m/n/10.95 4\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/
-it/10.95 :\OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cm
-m/m/it/10.95 :\OT1/cmr/m/n/10.95 8\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 1\OM
-L/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0\OMS/cmsy/m/n/10.95 g$\C70/rm/m/n/10.95/7
-6 Ñ
- []
-
-[7 <./figures/image1.pdf>]
-<figures/fig_gamma_5blk.pdf, id=512, 453.1329pt x 122.1363pt>
 File: figures/fig_gamma_5blk.pdf Graphic file (type pdf)
 <use figures/fig_gamma_5blk.pdf>
-Package pdftex.def Info: figures/fig_gamma_5blk.pdf  used on input line 443.
-(pdftex.def)             Requested size: 230.46729pt x 62.1191pt.
-<figures/fig_gamma_10blk.pdf, id=513, 453.1329pt x 125.0271pt>
 File: figures/fig_gamma_10blk.pdf Graphic file (type pdf)
 <use figures/fig_gamma_10blk.pdf>
-Package pdftex.def Info: figures/fig_gamma_10blk.pdf  used on input line 450.
-(pdftex.def)             Requested size: 230.46729pt x 63.58936pt.
-
-Overfull \hbox (9.33757pt too wide) in paragraph at lines 457--458
-[]\C70/rm/m/n/10.95/4e : \C70/rm/m/n/10.95/9a å \C70/rm/m/n/10.95/8b ¡ \C70/rm/
-m/n/10.95/76 Ó \C70/rm/m/n/10.95/68 ^^G \C70/rm/m/n/10.95/57 W \C70/rm/m/n/10.9
-5/65 p \C70/rm/m/n/10.95/91 œ \C70/rm/m/n/10.95/5b ˘ \C70/rm/m/n/10.95/98 Œ \C7
-0/rm/m/n/10.95/68 < \C70/rm/m/n/10.95/8f ¡ \C70/rm/m/n/10.95/79 ˚ \C70/rm/m/n/1
-0.95/65 H \C70/rm/m/n/10.95/67 ú \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/5f q 
-\C70/rm/m/n/10.95/54 Õ|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/57 (
- []
-
-
-Underfull \hbox (badness 1762) in paragraph at lines 461--461
-[]\C70/zhhei/m/n/10/88 h \OT1/cmss/m/n/10 7: |\C70/zhhei/m/n/10/57 W \C70/zhhei
-/m/n/10/65 p \C70/zhhei/m/n/10/6d à \C70/zhhei/m/n/10/87 ç \C70/zhhei/m/n/10/5b
- û \C70/zhhei/m/n/10/9a å \C70/zhhei/m/n/10/7e ” \C70/zhhei/m/n/10/67 ú |\C70/z
-hhei/m/n/10/ff ^^H|\C70/zhhei/m/n/10/56 ˙ \C70/zhhei/m/n/10/5b ö$\OML/cmm/m/it/
-10 ^^M \OT1/cmr/m/n/10 = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6$|\C70/zhhei/m/n/1
-0/ff ^^L| \C70/zhhei/m/n/10/4f ^^?
- []
-
-
-Overfull \hbox (8.49817pt too wide) in paragraph at lines 476--477
-\OT1/cmr/m/n/10.95 FID\C70/rm/m/n/10.95/4e Œ\OT1/cmr/m/n/10.95 103.17\C70/rm/m/
-n/10.95/96 M \C70/rm/m/n/10.95/81 Û\OT1/cmr/m/n/10.95 85.43|\C70/rm/m/n/10.95/f
-f 	||^^L| \C70/rm/m/n/10.95/4f F \C70/rm/m/n/10.95/8b ° \C70/rm/m/n/10.95/7b ó 
-\C70/rm/m/n/10.95/5f ^^@ \C70/rm/m/n/10.95/95 ^^@ \C70/rm/m/n/10.95/4e _ \C70/r
-m/m/n/10.95/76 ¯ \C70/rm/m/n/10.95/5e î \C70/rm/m/n/10.95/58 û \C70/rm/m/n/10.9
-5/52 †|\C70/rm/m/n/10.95/30 ^^B|
- []
-
-<figures/fig_block_compare.pdf, id=515, 456.02371pt x 217.5327pt>
+[6]
 File: figures/fig_block_compare.pdf Graphic file (type pdf)
 <use figures/fig_block_compare.pdf>
-Package pdftex.def Info: figures/fig_block_compare.pdf  used on input line 480.
-
-(pdftex.def)             Requested size: 230.46729pt x 109.93777pt.
-
-Underfull \hbox (badness 4266) in paragraph at lines 493--493
-[]\C70/zhhei/m/n/10/88 h \OT1/cmss/m/n/10 8: |\C70/zhhei/m/n/10/4e ^^M \C70/zhh
-ei/m/n/10/54 ^^L \C70/zhhei/m/n/10/57 W \C70/zhhei/m/n/10/65 p \C70/zhhei/m/n/1
-0/4e ^^N\OT1/cmss/m/n/10 AdaIN\C70/zhhei/m/n/10/91 M \C70/zhhei/m/n/10/7f n \C7
-0/zhhei/m/n/10/76 Ñ \C70/zhhei/m/n/10/5b ö \C70/zhhei/m/n/10/60 ' \C70/zhhei/m/
-n/10/5b ˘ \C70/zhhei/m/n/10/6b ‘|\C70/zhhei/m/n/10/30 ^^B| \C70/zhhei/m/n/10/4f
- ^^?
- []
-
-[8 <./figures/image2.pdf> <./figures/image3.pdf>]
-<figures/fig_adain_compare.pdf, id=530, 453.1329pt x 220.06215pt>
 File: figures/fig_adain_compare.pdf Graphic file (type pdf)
 <use figures/fig_adain_compare.pdf>
-Package pdftex.def Info: figures/fig_adain_compare.pdf  used on input line 511.
-
-(pdftex.def)             Requested size: 230.46729pt x 111.92464pt.
-
-Underfull \hbox (badness 1237) in paragraph at lines 512--512
-\C70/zhhei/m/n/10/7f n|\C70/zhhei/m/n/10/ff 	||\C70/zhhei/m/n/10/30 ^^B| \C70/z
-hhei/m/n/10/4e 
- \C70/zhhei/m/n/10/88 L \C70/zhhei/m/n/10/4e : \C70/zhhei/m/n/10/4f ^^? \C70/zh
-hei/m/n/10/75 (\OT1/cmss/m/n/10 AdaIN\C70/zhhei/m/n/10/76 Ñ \C70/zhhei/m/n/10/7
-5 ^^_ \C70/zhhei/m/n/10/62 ^^P \C70/zhhei/m/n/10/7e ” \C70/zhhei/m/n/10/67 ú|\C
-70/zhhei/m/n/10/ff ^^L| \C70/zhhei/m/n/10/4e  \C70/zhhei/m/n/10/88 L \C70/zhhe
-i/m/n/10/4e : ^^M \C70/zhhei/m/n/10/4f ^^?
- []
-
-[9 <./figures/fig_metrics_barchart.pdf> <./figures/fig_ref_metrics.pdf> <./figu
-res/fig_gamma_5blk.pdf> <./figures/fig_gamma_10blk.pdf> <./figures/fig_block_co
-mpare.pdf>]
-Overfull \hbox (9.22801pt too wide) in paragraph at lines 522--523
-\C70/rm/m/n/10.95/5b ˘ \C70/rm/m/n/10.95/4e 
- \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n/10.95/62 ^^P \C70/
-rm/m/n/10.95/7e ” \C70/rm/m/n/10.95/67 ú \C70/rm/m/n/10.95/8f € \C70/rm/m/n/10.
-95/88 L \C70/rm/m/n/10.95/4e Ü \C70/rm/m/n/10.95/63 í \C70/rm/m/n/10.95/5e è |\
-C70/rm/m/n/10.95/ff ^^H|\OT1/cmr/m/n/10.95 1\C70/rm/m/n/10.95/4e : \C70/rm/m/n/
-10.95/67 ^^@ \C70/rm/m/n/10.95/4f s|\C70/rm/m/n/10.95/ff ^^L| \OT1/cmr/m/n/10.9
-5 7\C70/rm/m/n/10.95/4e : \C70/rm/m/n/10.95/67 ^^@ \C70/rm/m/n/10.95/5d Ó|\C70/
-rm/m/n/10.95/ff 	||\C70/rm/m/n/10.95/30 ^^B|
- []
-
-
-Overfull \hbox (2.4506pt too wide) in paragraph at lines 522--523
-\C70/rm/m/n/10.95/60 ' \C70/rm/m/n/10.95/8d ã \C70/rm/m/n/10.95/52 ø|\C70/rm/m/
-n/10.95/ff ^^Z| \C70/rm/m/n/10.95/59 Ç \C70/rm/m/n/10.95/56 ˛ []\OT1/cmr/m/n/10
-.95 15[]\C70/rm/m/n/10.95/62 @ \C70/rm/m/n/10.95/79 :|\C70/rm/m/n/10.95/ff ^^L|
- \C70/rm/m/n/10.95/62 ^^Q \C70/rm/m/n/10.95/4e Ï \C70/rm/m/n/10.95/76 Ñ \C70/rm
-/m/n/10.95/5b å \C70/rm/m/n/10.95/65 t π \C70/rm/m/n/10.95/6c ’ |\C70/rm/m/n/10
-.95/ff ^^H|\OT1/cmr/m/n/10.95 V7, $\OML/cmm/m/it/10.95 ^^M \OT1/cmr/m/n/10.95 =
-
- []
-
-<figures/image4.pdf, id=553, 610.44057pt x 444.2196pt>
 File: figures/image4.pdf Graphic file (type pdf)
 <use figures/image4.pdf>
-Package pdftex.def Info: figures/image4.pdf  used on input line 526.
-(pdftex.def)             Requested size: 230.46729pt x 167.70712pt.
-<figures/fig_ref_comprehensive.pdf, id=554, 4415.69719pt x 1353.61716pt>
 File: figures/fig_ref_comprehensive.pdf Graphic file (type pdf)
 <use figures/fig_ref_comprehensive.pdf>
-Package pdftex.def Info: figures/fig_ref_comprehensive.pdf  used on input line 
-533.
-(pdftex.def)             Requested size: 483.69687pt x 148.25806pt.
-
-Overfull \hbox (5.0671pt too wide) in paragraph at lines 538--539
-\C70/rm/m/n/10.95/91 M \C70/rm/m/n/10.95/5b ˘ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/
-n/10.95/5b å \C70/rm/m/n/10.95/65 t \C70/rm/m/n/10.95/5b ˘ \C70/rm/m/n/10.95/6b
- ‘ \C70/rm/m/n/10.95/54 H \C70/rm/m/n/10.95/73 ∞ \C70/rm/m/n/10.95/4e Ü \C70/rm
-/m/n/10.95/67 , \C70/rm/m/n/10.95/65 á π \C70/rm/m/n/10.95/6c ’ \C70/rm/m/n/10.
-95/76 Ñ \C70/rm/m/n/10.95/65 t \C70/rm/m/n/10.95/4f S \C70/rm/m/n/10.95/8f ¡ \C
-70/rm/m/n/10.95/79 ˚ \C70/rm/m/n/10.95/65 H \C70/rm/m/n/10.95/67 ú|\C70/rm/m/n/
-10.95/30 ^^B|
+ [7] [8]
+Overfull \hbox (0.90382pt too wide) in paragraph at lines 567--568
+\TU/TimesNewRoman(0)/m/n/10 Canny \TU/SimSun(1)/b/n/10 Ëæπ Áºò Âõæ ÁöÑ Á≤æ ÁªÜ Á®ã Â∫¶ Áõ¥ Êé• ÂΩ± Âìç 
+Áîü Êàê Êïà Êûú Âíå Êé® ÁêÜ Êïà Áéá„ÄÇ|
  []
 
-
-Overfull \hbox (5.61409pt too wide) in paragraph at lines 538--539
-\C70/rm/m/n/10.95/56 ˛ []\OT1/cmr/m/n/10.95 16[]\C70/rm/m/n/10.95/52 ^^Y \C70/r
-m/m/n/10.95/7c ˚ \C70/rm/m/n/10.95/7e ﬂ \C70/rm/m/n/10.95/60 ' \C70/rm/m/n/10.9
-5/57 0 \C70/rm/m/n/10.95/5c U \C70/rm/m/n/10.95/79 : \C70/rm/m/n/10.95/4e Ü ^^M
- \C70/rm/m/n/10.95/54 ^^L \C70/rm/m/n/10.95/57 W \C70/rm/m/n/10.95/65 p|\C70/rm
-/m/n/10.95/30 ^^A| $\OML/cmm/m/it/10.95 ^^M$\C70/rm/m/n/10.95/50 < \C70/rm/m/n/
-10.95/54 å\OT1/cmr/m/n/10.95 AdaIN\C70/rm/m/n/10.95/5f ^^@
- []
-
-
-Underfull \hbox (badness 3838) in paragraph at lines 552--552
-[]\C70/zhhei/m/n/10/88 h \OT1/cmss/m/n/10 9: |Canny\C70/zhhei/m/n/10/52 ^^F \C7
-0/zhhei/m/n/10/8f ® \C70/zhhei/m/n/10/73 á \C70/zhhei/m/n/10/4e ^^N \C70/zhhei/
-m/n/10/63 ® \C70/zhhei/m/n/10/74 ^^F \C70/zhhei/m/n/10/65 ˆ \C70/zhhei/m/n/10/9
-5 Ù \C70/zhhei/m/n/10/5b ˘ \C70/zhhei/m/n/10/6b ‘|\C70/zhhei/m/n/10/30 ^^B| \C7
-0/zhhei/m/n/10/9a ÿ \C70/zhhei/m/n/10/52 ^^F \C70/zhhei/m/n/10/8f ®
- []
-
-<figures/fig_canny_res.pdf, id=559, 2442.00319pt x 1438.89572pt>
 File: figures/fig_canny_res.pdf Graphic file (type pdf)
 <use figures/fig_canny_res.pdf>
-Package pdftex.def Info: figures/fig_canny_res.pdf  used on input line 582.
-(pdftex.def)             Requested size: 230.46729pt x 135.79633pt.
-<figures/fig_input_res.pdf, id=560, 4942.54538pt x 1535.7375pt>
 File: figures/fig_input_res.pdf Graphic file (type pdf)
 <use figures/fig_input_res.pdf>
-Package pdftex.def Info: figures/fig_input_res.pdf  used on input line 589.
-(pdftex.def)             Requested size: 483.69687pt x 150.27863pt.
 
-Overfull \hbox (4.08163pt too wide) in paragraph at lines 594--595
-\C70/rm/m/n/10.95/57 ã \C70/rm/m/n/10.95/53 Ô \C70/rm/m/n/10.95/80 ˝ \C70/rm/m/
-n/10.95/75 ^^_ \C70/rm/m/n/10.95/62 ^^P \C70/rm/m/n/10.95/8f π \C70/rm/m/n/10.9
-5/7f ^^X \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.95/4e - ^^M \C70/rm/m/n/10.95/5b
- X \C70/rm/m/n/10.95/57 ( \C70/rm/m/n/10.95/4f F \C70/rm/m/n/10.95/7e ﬂ \C70/rm
-/m/n/10.95/8b ° \C70/rm/m/n/10.95/4e 
- \C70/rm/m/n/10.95/54 ^^H \C70/rm/m/n/10.95/74 ^^F \C70/rm/m/n/10.95/76 Ñ \C70/
-rm/m/n/10.95/7e ∆ \C70/rm/m/n/10.95/82 Ç|\C70/rm/m/n/10.95/ff ^^[|
+Overfull \hbox (0.85907pt too wide) in paragraph at lines 617--618
+\TU/SimSun(1)/b/n/10 Êâ© Êï£ Ê®° Âûã  |Ôºà\TU/TimesNewRoman(0)/m/n/10 Stable Diffusion \T
+U/SimSun(1)/b/n/10 Âü∫ Á°Ä Ê®° Âûã Á∫¶ \TU/TimesNewRoman(0)/m/n/10 7‚Äì8GB\TU/SimSun(1)/b/n
+/10 Ôºå|  Âä† ‰∏ä \TU/TimesNewRoman(0)/m/n/10 VAE\TU/SimSun(1)/b/n/10 „ÄÅ|
  []
 
-[10 <./figures/fig_adain_compare.pdf> <./figures/image4.pdf>]
-Overfull \hbox (12.4677pt too wide) in paragraph at lines 598--599
-[]\C70/rm/m/n/10.95/62 i \C70/rm/m/n/10.95/65 c \C70/rm/m/n/10.95/6a ! \C70/rm/
-m/n/10.95/57 ã |\C70/rm/m/n/10.95/ff ^^H|\OT1/cmr/m/n/10.95 Stable Dif-fu-sion\
-C70/rm/m/n/10.95/57 ˙ \C70/rm/m/n/10.95/78 @ \C70/rm/m/n/10.95/6a ! \C70/rm/m/n
-/10.95/57 ã \C70/rm/m/n/10.95/7e ¶\OT1/cmr/m/n/10.95 7--8GB|\C70/rm/m/n/10.95/f
-f ^^L|
- []
-
-
-Overfull \hbox (0.66895pt too wide) in paragraph at lines 598--599
-\C70/rm/m/n/10.95/66 > \C70/rm/m/n/10.95/5b X \C70/rm/m/n/10.95/97 ^^@ \C70/rm/
-m/n/10.95/6c B \C70/rm/m/n/10.95/7e ¶\OT1/cmr/m/n/10.95 15--20GB|\C70/rm/m/n/10
-.95/ff 	| \C70/rm/m/n/10.95/57 ( \C70/rm/m/n/10.95/6d à \C70/rm/m/n/10.95/8d 9 
-\C70/rm/m/n/10.95/7e ß\OT1/cmr/m/n/10.95 GPU\C70/rm/m/n/10.95/4e 
- \C70/rm/m/n/10.95/8f – \C70/rm/m/n/10.95/88 L \C70/rm/m/n/10.95/4e Õ \C70/rm/m
-/n/10.95/67 	
- []
-
-
-Overfull \hbox (0.7449pt too wide) in paragraph at lines 598--599
-\C70/rm/m/n/10.95/97 b \C70/rm/m/n/10.95/4e 4 \C70/rm/m/n/10.95/66 > \C70/rm/m/
-n/10.95/5b X \C70/rm/m/n/10.95/53 ã \C70/rm/m/n/10.95/52 õ \C70/rm/m/n/10.95/54
- å\OT1/cmr/m/n/10.95 GPU\C70/rm/m/n/10.95/8d D \C70/rm/m/n/10.95/6e ê \C70/rm/m
-/n/10.95/7a ﬁ \C70/rm/m/n/10.95/4e â \C70/rm/m/n/10.95/7b I \C70/rm/m/n/10.95/9
-5 Ó \C70/rm/m/n/10.95/98 ò|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/10.95/62 ^^Q \
-C70/rm/m/n/10.95/4e Ï \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/65 π
- []
-
-
-Overfull \hbox (31.34409pt too wide) in paragraph at lines 605--606
-[]\C70/rm/m/n/10.95/4e : \C70/rm/m/n/10.95/63 – \C70/rm/m/n/10.95/53 G \C70/rm/
-m/n/10.95/5b û \C70/rm/m/n/10.95/96 E \C70/rm/m/n/10.95/53 Ô \C70/rm/m/n/10.95/
-75 ( \C70/rm/m/n/10.95/60 ' \C70/rm/m/n/10.95/54 å \C70/rm/m/n/10.95/75 ( \C70/
-rm/m/n/10.95/62 7 \C70/rm/m/n/10.95/4f S \C70/rm/m/n/10.95/9a å|\C70/rm/m/n/10.
-95/ff ^^L| \C70/rm/m/n/10.95/62 ^^Q \C70/rm/m/n/10.95/4e Ï \C70/rm/m/n/10.95/57
- ˙ \C70/rm/m/n/10.95/4e é\OT1/cmr/m/n/10.95 Gradio\C70/rm/m/n/10.95/68 F
- []
-
-
-Overfull \hbox (3.86263pt too wide) in paragraph at lines 611--612
-\C70/rm/m/n/10.95/67 ^^[ \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n/10.95/62 ^^P \C70
-/rm/m/n/10.95/7e ” \C70/rm/m/n/10.95/67 ú|\C70/rm/m/n/10.95/ff 	||\C70/rm/m/n/1
-0.95/30 ^^A| \C70/rm/m/n/10.95/53 Õ \C70/rm/m/n/10.95/54 ^^Q \C70/rm/m/n/10.95/
-63 – \C70/rm/m/n/10.95/79 : \C70/rm/m/n/10.95/8b Õ |\C70/rm/m/n/10.95/ff ^^H|\C
-70/rm/m/n/10.95/4e ^^M \C70/rm/m/n/10.95/5e ^^L \C70/rm/m/n/10.95/67 ^^[ \C70/r
-m/m/n/10.95/51 ˙ \C70/rm/m/n/10.95/73 ∞ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.9
-5/51 C \C70/rm/m/n/10.95/7d  |\C70/rm/m/n/10.95/ff 	||^^L|
- []
-
-
-Overfull \hbox (33.08713pt too wide) in paragraph at lines 613--614
-\OT1/cmr/m/n/10.95 Low/High Thresh-old |\C70/rm/m/n/10.95/ff ^^H|\C70/rm/m/n/10
-.95/8f π \C70/rm/m/n/10.95/7f ^^X \C70/rm/m/n/10.95/68 ¿ \C70/rm/m/n/10.95/6d K
- \C70/rm/m/n/10.95/70 u \C70/rm/m/n/10.95/65 O \C70/rm/m/n/10.95/5e ¶|\C70/rm/m
-/n/10.95/ff 	||\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 Conditioning
- []
-
-
-Overfull \hbox (7.21448pt too wide) in paragraph at lines 615--616
-[]\OT1/cmr/bx/n/10.95 (4) AdaIN\C70/rm/bx/n/10.95/98 Œ \C70/rm/bx/n/10.95/68 < 
-\C70/rm/bx/n/10.95/87 ç \C70/rm/bx/n/10.95/54 ^^H \C70/rm/bx/n/10.95/6a ! \C70/
-rm/bx/n/10.95/57 W|\C70/rm/bx/n/10.95/ff ^^Z| \OT1/cmr/m/n/10.95 AdaIN Al-pha |
-\C70/rm/m/n/10.95/ff ^^H|\C70/rm/m/n/10.95/87 ç
- []
-
-
-Overfull \hbox (0.68094pt too wide) in paragraph at lines 617--618
-[]\OT1/cmr/bx/n/10.95 (5) \C70/rm/bx/n/10.95/75 ^^_ \C70/rm/bx/n/10.95/62 ^^P \
-C70/rm/bx/n/10.95/53 ¬ \C70/rm/bx/n/10.95/65 p \C70/rm/bx/n/10.95/63 ß \C70/rm/
-bx/n/10.95/52 6|\C70/rm/bx/n/10.95/ff ^^Z| \OT1/cmr/m/n/10.95 Steps |\C70/rm/m/
-n/10.95/ff ^^H|\OT1/cmr/m/n/10.95 DDIM\C70/rm/m/n/10.95/91 « \C70/rm/m/n/10.95/
-68 7 \C70/rm/m/n/10.95/6b e \C70/rm/m/n/10.95/65 p|\C70/rm/m/n/10.95/ff ^^L|
- []
-
-
-Overfull \hbox (1.93599pt too wide) in paragraph at lines 617--618
-\C70/rm/m/n/10.95/9e ÿ \C70/rm/m/n/10.95/8b §\OT1/cmr/m/n/10.95 50|\C70/rm/m/n/
-10.95/ff 	||\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 CFG Scale |\C70/rm/m/n
-/10.95/ff ^^H|\C70/rm/m/n/10.95/65 ‡ \C70/rm/m/n/10.95/52 ^^F \C70/rm/m/n/10.95
-/7c { \C70/rm/m/n/10.95/56 h \C70/rm/m/n/10.95/5f ^^U \C70/rm/m/n/10.95/5b ¸|\C
-70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/9e ÿ \C70/rm/m/n/10.95/8b §\OT1/cmr/m
-/n/10.95 7.5|\C70/rm/m/n/10.95/ff 	||\C70/rm/m/n/10.95/30 ^^A|
- []
-
-<figures/fig_gradio.pdf, id=575, 913.49281pt x 810.1467pt>
 File: figures/fig_gradio.pdf Graphic file (type pdf)
 <use figures/fig_gradio.pdf>
-Package pdftex.def Info: figures/fig_gradio.pdf  used on input line 627.
-(pdftex.def)             Requested size: 230.46729pt x 204.39044pt.
 
-Underfull \hbox (badness 1394) in paragraph at lines 628--628
-[]\C70/zhhei/m/n/10/56 ˛ \OT1/cmss/m/n/10 19: |In-stantStyle Con-trol Stu-dio\C
-70/zhhei/m/n/10/4e § í \C70/zhhei/m/n/10/5f ^^O \C70/zhhei/m/n/10/52 M \C70/zhh
-ei/m/n/10/7a Ô \C70/zhhei/m/n/10/75 L
+Overfull \hbox (1.35466pt too wide) in paragraph at lines 669--670
+\TU/SimSun(1)/b/n/10 È´ò ÂàÜ Ëæ® Áéá \TU/TimesNewRoman(0)/m/n/10 Canny \TU/SimSun(1)/b/
+n/10 Ëæπ Áºò Âõæ ÂèØ ËÉΩ Âºï ÂÖ• ‰∫∫ Â∑• Áóï Ëøπ„ÄÇ|  ËÆ° Âàí ‰Ωø Áî® \TU/TimesNewRoman(0)/m/n/10 Tile
+ []
+
+[9] [10]
+Overfull \hbox (1.37907pt too wide) in paragraph at lines 691--692
+[]\TU/SimSun(1)/b/n/10 ÂÆû Ë∑µ ‰ª∑ ÂÄºÔºö|  Âü∫ ‰∫é \TU/TimesNewRoman(0)/m/n/10 Gradio \TU/Si
+mSun(1)/b/n/10 ÊûÑ Âª∫ ‰∫§ ‰∫í Âºè Ââç Á´ØÔºå|  ÊîØ ÊåÅ \TU/TimesNewRoman(0)/m/n/10 Canny
  []
 
 
-Overfull \hbox (75.25066pt too wide) in paragraph at lines 638--639
-\C70/rm/m/n/10.95/67 	 \C70/rm/m/n/10.95/65 H \C70/rm/m/n/10.95/60 '|\C70/rm/m/
-n/10.95/ff ^^L| \C70/rm/m/n/10.95/5c ^^Z \C70/rm/m/n/10.95/67 * \C70/rm/m/n/10.
-95/4e ^^N\OT1/cmr/m/n/10.95 InST[12]|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.
-95 StyleDiffusion[13]|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 InstantStyle
-[17]\C70/rm/m/n/10.95/7b I
- []
-
-[11 <./figures/fig_ref_comprehensive.pdf> <./figures/fig_canny_res.pdf>]
-Overfull \hbox (1.55093pt too wide) in paragraph at lines 641--642
-\C70/rm/m/n/10.95/50 œ \C70/rm/m/n/10.95/51 Ö \C70/rm/m/n/10.95/5b π \C70/rm/m/
-n/10.95/80 ^^L \C70/rm/m/n/10.95/5f ^^B|\C70/rm/m/n/10.95/30 ^^B| \C70/rm/m/n/1
-0.95/8b ° \C70/rm/m/n/10.95/52 ^^R \C70/rm/m/n/10.95/5f ^^U \C70/rm/m/n/10.95/5
-1 e\OT1/cmr/m/n/10.95 HED|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 RINDNet\
-C70/rm/m/n/10.95/7b I \C70/rm/m/n/10.95/66 Ù \C70/rm/m/n/10.95/4f ^^X \C70/rm/m
-/n/10.95/8f π
+Underfull \hbox (badness 1910) in paragraph at lines 709--709
+[]|\TU/SimSun(1)/m/n/9 Áº∫ ‰πè Â§ñ ÈÉ® Êñπ Ê≥ï
  []
 
 
-Overfull \hbox (5.0671pt too wide) in paragraph at lines 644--645
-[]\C70/rm/m/n/10.95/5f S \C70/rm/m/n/10.95/52 M \C70/rm/m/n/10.95/63 – \C70/rm/
-m/n/10.95/79 : \C70/rm/m/n/10.95/8b Õ \C70/rm/m/n/10.95/97 ^^@ \C70/rm/m/n/10.9
-5/4e ∫ \C70/rm/m/n/10.95/5d Â \C70/rm/m/n/10.95/7f ^^V \C70/rm/m/n/10.95/51 ô \
-C70/rm/m/n/10.95/62 ^^V \C70/rm/m/n/10.95/50 ^^_ \C70/rm/m/n/10.95/52 © \C70/rm
-/m/n/10.95/59 ^^V \C70/rm/m/n/10.95/90 Ë \C70/rm/m/n/10.95/6a ! \C70/rm/m/n/10.
-95/57 ã \C70/rm/m/n/10.95/75 ^^_ \C70/rm/m/n/10.95/62 ^^P|\C70/rm/m/n/10.95/30 
-^^B|
+Underfull \hbox (badness 1910) in paragraph at lines 709--710
+[]|\TU/SimSun(1)/m/n/9 Áªü ‰∏Ä Âü∫ ÂáÜ ‰∏ã ÁöÑ
  []
 
 
-Overfull \hbox (28.1291pt too wide) in paragraph at lines 644--645
-\C70/rm/m/n/10.95/8b ° \C70/rm/m/n/10.95/52 ^^R \C70/rm/m/n/10.95/5f ^^U \C70/r
-m/m/n/10.95/51 e \C70/rm/m/n/10.95/5f ^^@ \C70/rm/m/n/10.95/6e ê \C70/rm/m/n/10
-.95/89 ∆ … \C70/rm/m/n/10.95/8b Ì \C70/rm/m/n/10.95/8a ^^@ \C70/rm/m/n/10.95/6a
- ! \C70/rm/m/n/10.95/57 ã |\C70/rm/m/n/10.95/ff ^^H|\C70/rm/m/n/10.95/59 Ç\OT1/
-cmr/m/n/10.95 Qwen-VLM|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 LLaVA|\C70/
-rm/m/n/10.95/ff 	|
+Underfull \hbox (badness 1910) in paragraph at lines 710--710
+[]|\TU/SimSun(1)/m/n/9 ÂÖ® Âùó Á∫ß Ê∂à Ëûç Áº∫
  []
 
 
-Overfull \hbox (0.51682pt too wide) in paragraph at lines 647--648
-[]\C70/rm/m/n/10.95/8b ° \C70/rm/m/n/10.95/52 ^^R \C70/rm/m/n/10.95/5c ^^F\OT1/
-cmr/m/n/10.95 KV\C70/rm/m/n/10.95/87 ç \C70/rm/m/n/10.95/54 ^^H \C70/rm/m/n/10.
-95/65 π \C70/rm/m/n/10.95/6c ’ \C70/rm/m/n/10.95/90 ^^B \C70/rm/m/n/10.95/91 M 
-\C70/rm/m/n/10.95/52 0\OT1/cmr/m/n/10.95 SDXL\C70/rm/m/n/10.95/67 ∂ Ñ|\C70/rm/m
-/n/10.95/ff ^^L| \C70/rm/m/n/10.95/91 Õ \C70/rm/m/n/10.95/65 ∞
+Underfull \hbox (badness 1910) in paragraph at lines 710--711
+[]|\TU/SimSun(1)/m/n/9 ÂÖ® Âùó Á∫ß Ë¥° ÁåÆ Â∫¶
  []
 
 
-Overfull \hbox (7.51262pt too wide) in paragraph at lines 650--651
-[]\C70/rm/m/n/10.95/9a ÿ \C70/rm/m/n/10.95/52 ^^F \C70/rm/m/n/10.95/8f ® \C70/r
-m/m/n/10.95/73 á\OT1/cmr/m/n/10.95 Canny\C70/rm/m/n/10.95/8f π \C70/rm/m/n/10.9
-5/7f ^^X \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.95/53 Ô \C70/rm/m/n/10.95/80 ˝ \
-C70/rm/m/n/10.95/5f ^^U \C70/rm/m/n/10.95/51 e \C70/rm/m/n/10.95/4e ∫ \C70/rm/m
-/n/10.95/5d Â \C70/rm/m/n/10.95/75 ’ \C70/rm/m/n/10.95/8f ˘|\C70/rm/m/n/10.95/3
-0 ^^B| \C70/rm/m/n/10.95/8b °
+Underfull \hbox (badness 1910) in paragraph at lines 712--712
+[]|\TU/SimSun(1)/m/n/9 Êèê Á§∫ ËØç ‰æù Ëµñ Â§ñ
  []
 
 
-Overfull \hbox (7.00778pt too wide) in paragraph at lines 656--657
-\C70/rm/m/n/10.95/4e *\OT1/cmr/m/n/10.95 ControlNet |\C70/rm/m/n/10.95/ff ^^H|\
-C70/rm/m/n/10.95/8f π \C70/rm/m/n/10.95/7f ^^X\OT1/cmr/m/n/10.95 +\C70/rm/m/n/1
-0.95/6d Ò \C70/rm/m/n/10.95/5e ¶\OT1/cmr/m/n/10.95 +\C70/rm/m/n/10.95/59 ˇ \C70
-/rm/m/n/10.95/60 ^^A \C70/rm/m/n/10.95/7b I|\C70/rm/m/n/10.95/ff 	| \C70/rm/m/n
-/10.95/76 Ñ \C70/rm/m/n/10.95/53 O \C70/rm/m/n/10.95/54 ^^L \C70/rm/m/n/10.95/5
-d Â \C70/rm/m/n/10.95/4f \|\C70/rm/m/n/10.95/ff ^^L|
- []
-
-[12 <./figures/fig_input_res.pdf> <./figures/fig_gradio.pdf>]
-Overfull \hbox (8.60655pt too wide) in paragraph at lines 666--667
-[]\C70/rm/m/n/10.95/67 , \C70/rm/m/n/10.95/65 á \C70/rm/m/n/10.95/63 – \C70/rm/
-m/n/10.95/51 ˙ \C70/rm/m/n/10.95/4e Ü ^^@ \C70/rm/m/n/10.95/79 Õ \C70/rm/m/n/10
-.95/65 ‡ \C70/rm/m/n/10.95/97 ^^@ \C70/rm/m/n/10.95/8b ≠ \C70/rm/m/n/10.95/7e √
- \C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 AdaIN StyleKV\C70/rm/m/n/10.95/98 Œ
+Underfull \hbox (badness 1910) in paragraph at lines 713--714
+[]|\TU/SimSun(1)/m/n/9 Ê®° Âûã ËΩª Èáè Âåñ Êé¢
  []
 
 
-Overfull \hbox (15.42105pt too wide) in paragraph at lines 670--671
-[]\C70/rm/bx/n/10.95/65 π \C70/rm/bx/n/10.95/6c ’ \C70/rm/bx/n/10.95/52 ^^[ \C7
-0/rm/bx/n/10.95/65 ∞|\C70/rm/bx/n/10.95/ff ^^Z| \C70/rm/m/n/10.95/63 – \C70/rm/
-m/n/10.95/51 ˙ \C70/rm/m/n/10.95/98 Œ \C70/rm/m/n/10.95/68 < \C70/rm/m/n/10.95/
-56 ˛ \C70/rm/m/n/10.95/50 œ\OT1/cmr/m/n/10.95 KV\C70/rm/m/n/10.95/4e ^^N \C70/r
-m/m/n/10.95/51 Ö \C70/rm/m/n/10.95/5b π \C70/rm/m/n/10.95/56 ˛ \C70/rm/m/n/10.9
-5/50 œ\OT1/cmr/m/n/10.95 KV\C70/rm/m/n/10.95/76 Ñ
+Underfull \hbox (badness 1910) in paragraph at lines 714--714
+[]|\TU/SimSun(1)/m/n/9 Êï∞ ÊçÆ ÈõÜ ËßÑ Ê®° Êúâ
  []
 
 
-Overfull \hbox (1.85512pt too wide) in paragraph at lines 670--671
-\C70/rm/m/n/10.95/78 n \C70/rm/m/n/10.95/64 Õ \C70/rm/m/n/10.95/63 ß|\C70/rm/m/
-n/10.95/ff ^^[| \C70/rm/m/n/10.95/5c ^^F\OT1/cmr/m/n/10.95 AdaIN\C70/rm/m/n/10.
-95/5f ^^U \C70/rm/m/n/10.95/51 e \C70/rm/m/n/10.95/52 ^^] \C70/rm/m/n/10.95/59 
-À \C70/rm/m/n/10.95/6f \ \C70/rm/m/n/10.95/7a z \C70/rm/m/n/10.95/95 Ù|\C70/rm/
-m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/90 ^^Z \C70/rm/m/n/10.95/8f « \C70/rm/m/n/1
-0.95/8c ^^C
+Underfull \hbox (badness 10000) in paragraph at lines 714--714
+[]|\TU/TimesNewRoman(0)/m/n/9 COCO(20
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 670--671
+Underfull \hbox (badness 1910) in paragraph at lines 714--715
+[]|\TU/SimSun(1)/m/n/9 Êõ¥ Â§ß ËßÑ Ê®° Êï∞ ÊçÆ
+ []
 
+[11]
+Underfull \hbox (badness 2635) in paragraph at lines 748--749
+\TU/TimesNewRoman(0)/m/n/10 and S. Ganguli, ‚ÄúDeep unsupervised learning us-
  []
 
 
-Overfull \hbox (2.8741pt too wide) in paragraph at lines 672--673
-[]\C70/rm/bx/n/10.95/5b û \C70/rm/bx/n/10.95/8d ı \C70/rm/bx/n/10.95/4e ˜ \C70/
-rm/bx/n/10.95/50 <|\C70/rm/bx/n/10.95/ff ^^Z| \C70/rm/m/n/10.95/57 ˙ \C70/rm/m/
-n/10.95/4e é\OT1/cmr/m/n/10.95 Gradio\C70/rm/m/n/10.95/67 Ñ \C70/rm/m/n/10.95/5
-e ˙ \C70/rm/m/n/10.95/4e § í \C70/rm/m/n/10.95/5f ^^O \C70/rm/m/n/10.95/52 M \C
-70/rm/m/n/10.95/7a Ô|\C70/rm/m/n/10.95/ff ^^L| \C70/rm/m/n/10.95/65 /
+Underfull \hbox (badness 1052) in paragraph at lines 756--757
+[]\TU/TimesNewRoman(0)/m/n/10 Y. Zhang, N. Huang, F. Tang, H. Huang, C. Ma,
  []
 
 
-Overfull \hbox (2.03769pt too wide) in paragraph at lines 673--674
-\C70/rm/m/n/10.95/53 ^^E \C70/rm/m/n/10.95/62 Ï \C70/rm/m/n/10.95/63 – \C70/rm/
-m/n/10.95/79 : \C70/rm/m/n/10.95/8b Õ \C70/rm/m/n/10.95/8d ( \C70/rm/m/n/10.95/
-91 œ \C70/rm/m/n/10.95/76 Ñ \C70/rm/m/n/10.95/91 Õ \C70/rm/m/n/10.95/89 Å \C70/
-rm/m/n/10.95/60 '|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 Canny\C70/rm/m/n
-/10.95/52 ^^F \C70/rm/m/n/10.95/8f ® \C70/rm/m/n/10.95/73 á \C70/rm/m/n/10.95/4
-e ^^N
+Underfull \hbox (badness 4144) in paragraph at lines 760--761
+\TU/TimesNewRoman(0)/m/n/10 free style transfer with diffusion models,‚Äù \TU/Tim
+esNewRoman(0)/m/it/10 arXiv
  []
 
 
-Overfull \hbox (4.62903pt too wide) in paragraph at lines 678--679
-\C70/rm/m/n/10.95/5c @ \C70/rm/m/n/10.95/96 P \C70/rm/m/n/10.95/60 '|\C70/rm/m/
-n/10.95/ff ^^L| \C70/rm/m/n/10.95/59 Ç \C70/rm/m/n/10.95/88 h []\OT1/cmr/m/n/10
-.95 11[]\C70/rm/m/n/10.95/62 @ \C70/rm/m/n/10.95/79 :|\C70/rm/m/n/10.95/30 ^^B|
- \C70/rm/m/n/10.95/8f Ÿ \C70/rm/m/n/10.95/4e õ \C70/rm/m/n/10.95/5c @ \C70/rm/m
-/n/10.95/96 P \C70/rm/m/n/10.95/60 ' \C70/rm/m/n/10.95/54 ^^L \C70/rm/m/n/10.95
-/65 ˆ \C70/rm/m/n/10.95/4e _ \C70/rm/m/n/10.95/66 / \C70/rm/m/n/10.95/7b ,\OT1/
-cmr/m/n/10.95 6\C70/rm/m/n/10.95/82 Ç
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
+\TU/TimesNewRoman(0)/m/n/10 stantStyle: Free lunch towards style-preserving
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 690--690
-\C70/rm/m/n/10/4e ^^N\OT1/cmr/m/n/10 InST\C70/rm/m/n/10/7b I \C70/rm/m/n/10/65 
-π \C70/rm/m/n/10/6c ’ \C70/rm/m/n/10/76 Ù \C70/rm/m/n/10/63 •
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
+\TU/TimesNewRoman(0)/m/n/10 in text-to-image generation,‚Äù \TU/TimesNewRoman(0)/
+m/it/10 arXiv preprint
  []
 
+[12] [13
 
-Underfull \hbox (badness 5862) in paragraph at lines 691--691
-[]|\C70/rm/m/n/10/4e ≈ \C70/rm/m/n/10/6d K \C70/rm/m/n/10/8b ’\OT1/cmr/m/n/10 1
-|\C70/rm/m/n/10/30 ^^A| \OT1/cmr/m/n/10 2|\C70/rm/m/n/10/30 ^^A| \OT1/cmr/m/n/1
-0 5\C70/rm/m/n/10/57 W|\C70/rm/m/n/10/ff ^^L|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 692--692
-[]|\OT1/cmr/m/n/10 ControlNet\C70/rm/m/n/10/53 U
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 692--693
-[]|\C70/rm/m/n/10/59 ^^Z \C70/rm/m/n/10/67 a
- []
-
-
-Overfull \hbox (6.32079pt too wide) in paragraph at lines 692--693
-\C70/rm/m/n/10/4e ˆ\OT1/cmr/m/n/10 ControlNet\C70/rm/m/n/10/87 ç
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 693--694
-[]|\OT1/cmr/m/n/10 VLM\C70/rm/m/n/10/63 – \C70/rm/m/n/10/79 : \C70/rm/m/n/10/8b
- Õ
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 694--694
-[]|\C70/rm/m/n/10/97 ^^@\OT1/cmr/m/n/10 V100\C70/rm/m/n/10/7e ß \C70/rm/m/n/10/
-52 +\OT1/cmr/m/n/10 GPU|\C70/rm/m/n/10/ff ^^L|
- []
-
-
-Overfull \hbox (38.70157pt too wide) in paragraph at lines 695--695
-[]|\OT1/cmr/m/n/10 COCO(20\C70/rm/m/n/10/5f  \OT1/cmr/m/n/10 )+WikiArt(40\C70/r
-m/m/n/10/5f  \OT1/cmr/m/n/10 )| 
- []
-
-
-Overfull \hbox (3.77336pt too wide) in paragraph at lines 686--698
- [][] 
- []
-
-
-Overfull \hbox (43.87883pt too wide) in paragraph at lines 708--709
-\C70/rm/m/n/10.95/65 / \C70/rm/m/n/10.95/63 ^^A|\C70/rm/m/n/10.95/30 ^^B| \C70/
-rm/m/n/10.95/61 ^^_ \C70/rm/m/n/10.95/8c " \C70/rm/m/n/10.95/5f ^^@ \C70/rm/m/n
-/10.95/6e ê \C70/rm/m/n/10.95/79 > \C70/rm/m/n/10.95/53 : \C70/rm/m/n/10.95/8d 
-! \C70/rm/m/n/10.95/73 . \C70/rm/m/n/10.95/76 Ñ\OT1/cmr/m/n/10.95 Stable Dif-fu
--sion|\C70/rm/m/n/10.95/30 ^^A| \OT1/cmr/m/n/10.95 ControlNet|\C70/rm/m/n/10.95
-/30 ^^A|
- []
-
-[13]
-Underfull \hbox (badness 1509) in paragraph at lines 725--726
-[]\OT1/cmr/m/n/10.95 Y. Choi, M. Choi, M. Kim, J.-W. Ha,
- []
-
-
-Underfull \hbox (badness 1308) in paragraph at lines 725--726
-\OT1/cmr/m/n/10.95 S. Kim, and J. Choo, ``Star-GAN: Uni-
- []
-
-
-Underfull \hbox (badness 2150) in paragraph at lines 725--726
-\OT1/cmr/m/n/10.95 fied gen-er-a-tive ad-ver-sar-ial net-works for
- []
-
-
-Underfull \hbox (badness 1194) in paragraph at lines 727--728
-\OT1/cmr/m/n/10.95 based gen-er-a-tor ar-chi-tec-ture for gen-er-a-
- []
-
-
-Underfull \hbox (badness 3471) in paragraph at lines 743--744
-[]\OT1/cmr/m/n/10.95 L. Zhang, A. Rao, and M. Agrawala,
- []
-
-
-Underfull \hbox (badness 2326) in paragraph at lines 743--744
-\OT1/cmr/m/n/10.95 ``Adding con-di-tional con-trol to text-to-
- []
-
-
-Underfull \hbox (badness 1237) in paragraph at lines 745--746
-\OT1/cmr/m/n/10.95 Aber-man, Y. Pritch, and D. Cohen-Or,
- []
-
-
-Underfull \hbox (badness 1688) in paragraph at lines 745--746
-\OT1/cmr/m/n/10.95 fer us-ing self-attention,'' \OT1/cmr/m/it/10.95 arXiv prepr
-int
- []
-
-
-Underfull \hbox (badness 1092) in paragraph at lines 747--748
-\OT1/cmr/m/n/10.95 A. Chen, ``In-stantStyle: Free lunch to-
- []
-
-
-Underfull \hbox (badness 1400) in paragraph at lines 755--756
-\OT1/cmr/m/n/10.95 to a lo-cal Nash equi-lib-rium,'' in \OT1/cmr/m/it/10.95 Pro
-c.
- []
-
-[14]
-Underfull \hbox (badness 1348) in paragraph at lines 771--772
-\OT1/cmr/m/n/10.95 Dual style-learning net-works for artis-tic
- []
-
-
-Underfull \hbox (badness 6300) in paragraph at lines 775--776
-[]\OT1/cmr/m/n/10.95 T. Kar-ras, M. Ait-tala, S. Laine, E.
- []
-
-
-Overfull \hbox (5.20546pt too wide) in paragraph at lines 794--807
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 816--816
-[]\C70/zhhei/m/n/10/88 h \OT1/cmss/m/n/10 13: |$\OML/cmm/m/it/10 ^^M$\C70/zhhei
-/m/n/10/6d à \C70/zhhei/m/n/10/87 ç \C70/zhhei/m/n/10/5b û \C70/zhhei/m/n/10/9a
- å \C70/zhhei/m/n/10/5b å \C70/zhhei/m/n/10/65 t p \C70/zhhei/m/n/10/63 n
- []
-
-
-Overfull \hbox (23.04988pt too wide) in paragraph at lines 841--850
- [][] 
- []
-
-[15] (build/paper_revised.aux)
+] (build/paper_revised.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/07/14>
  ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
 Package rerunfilecheck Info: File `paper_revised.out' has not changed.
 (rerunfilecheck)             Checksum: 61D47DB343E8252035448D5728BB39D2;5321.
  ) 
 Here is how much of TeX's memory you used:
- 19116 strings out of 469462
- 334295 string characters out of 5468725
- 728594 words of memory out of 5000000
- 46863 multiletter control sequences out of 15000+600000
- 741186 words of font info for 459 fonts, out of 8000000 for 9000
+ 18777 strings out of 470139
+ 410842 string characters out of 5477718
+ 852628 words of memory out of 5000000
+ 47066 multiletter control sequences out of 15000+600000
+ 638060 words of font info for 131 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 78i,15n,92p,1229b,691s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/s
-imsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows
-/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:
-/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei
-.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Font
-s/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Wind
-ows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf>
-<c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/sim
-hei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/F
-onts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/W
-indows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.t
-tc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/
-simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Window
-s/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c
-:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhe
-i.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fon
-ts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Win
-dows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc
-><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/si
-msun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/
-Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/
-Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.
-ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts
-/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windo
-ws/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><
-c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simh
-ei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fo
-nts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Wi
-ndows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.tt
-c><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/s
-imsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows
-/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:
-/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei
-.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Font
-s/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Wind
-ows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf>
-<c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/sim
-hei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/F
-onts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/W
-indows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.t
-tf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/
-simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Window
-s/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c
-:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsu
-n.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fon
-ts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Win
-dows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf
-><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/si
-mhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/
-Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/
-Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.
-ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts
-/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windo
-ws/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><
-c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simh
-ei.ttf
+ 93i,15n,111p,1195b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-pdfTeX warning: pdflatex.exe (file c:/Windows/Fonts/simhei.ttf): subfont unihei
-ff: wrong mapping: character 253 --> 0xFFFD --> .notdef
-><d:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texl
-ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2026/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2026/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2026/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2026/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi9.pfb><d:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr10.pfb><d:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
-fb><d:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texl
-ive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><d:/texlive/2026/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><d:/texlive/2026/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2026/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2026/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy9.pfb><d:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti10.pfb><d:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.
-pfb><d:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-<d:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/
-texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on build/paper_revised.pdf (15 pages, 5537621 bytes).
-PDF statistics:
- 1229 PDF objects out of 1440 (max. 8388607)
- 899 compressed objects within 9 object streams
- 139 named destinations out of 1000 (max. 500000)
- 784 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+Output written on build/paper_revised.xdv (13 pages, 329460 bytes).
