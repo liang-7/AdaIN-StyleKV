@@ -1,0 +1,195 @@
+0:4 · 
+
+             Table 1. 
+
+                                                                      Fig. 2. 
+
+GPU               NVIDIA V100 32GB × 1 
+                  x-former
+                  50 DDIM
+                  512×512
+                  5000 
+
+             Table 2. 
+
+                  
+
+             0.6  
+             5     K/V 
+adain_alpha  1.0  AdaIN  alpha
+adain_beta   1.0  AdaIN  beta
+CFG scale    7.5  
+DDIM         50   
+
+4.2                                                                         Fig. 3.  AdaIN 
+ 7 
+ AdaIN                                                                     · AdaIN V1V2V7 LPIPS  AdaIN
+ ControlNet  3                                                               
+
+   V1­V4  AdaIN                                                            · V2 vs V1V4 vs V3 FID  LPIPS
+V5  ControlNet V6  V7                                                        
+ 5  AdaIN  V7 
+                                                                      4.4 Gamma 
+4.3                                                                      5 
+ 4 7  5000                                                               5
+
+                 Fig. 1. 7                                               = 0.6   0.81.0
+                                                                       
+                                                                      0.2
+     · V7 Art-FID
+         ControlNet AdaIN                                             4.5 
+         K/V                                                            
+                                                                       AdaIN  6
+     ·  ControlNetV5 FID  LPIPS 
+                                                                         
+                                                                      5 
+                                                                      
+
+                                                                      4.6 
+                                                                      4.6.1 . 
+                                                                       7
+
+ACM Trans. Graph., Vol. 0, No. 0, Article 0. Publication date: 2026.
+                                               AdaIN Style KV KV  · 0:5
+
+                                             Table 3. 7 
+
+                                     ControlNet KV  AdaIN       
+
+               V1   adain_1blk                 1           0.6  +AdaIN
+
+               V2   adain_2blk                 2           0.6  +AdaIN
+
+               V3   noadain_1blk               1           0.6  + 
+
+               V4   noadain_2blk               2           0.6  + 
+
+               V5 adain_only_no_ctrl           1           0.6  ControlNet
+
+               V6 proc05_adainfalse            5           0.6 5  + 
+
+               V7 proc05_adaintrue             5           0.6  
+
+   Table 4. 7                                   4.6.2  Gamma .   
+                                                
+                    FID art_FID LPIPS
+                                                     ·  = 0.0
+   adain_1blk       73.34    103.17  0.5805             
+                             98.42   0.5994
+   adain_2blk       88.54    98.63   0.5965          ·  = 0.2
+                             95.02   0.6122          ·  = 0.6
+   noadain_1blk     76.57    104.12  0.7455
+                             90.76   0.5991             
+   noadain_2blk     91.56    85.43   0.6285          ·  = 0.8
+                                                     ·  = 1.0
+   adain_only_no_ctrl 70.75
+                                                        
+   proc05_adaintrue 78.48                          7 
+                                                 7  7 -
+   proc05_adainfalse 78.14                      1 7  4
+                                               Ours AdaIN  = 0.6
+   Table 5.  5                                   #1#4  #7 
+
+     FID aFID LPIPS                             Fig. 4. 7  7  7 -
+                                                1 7 
+   0.0 76.57 98.63 0.5965 
+   0.2 76.91 94.26 0.6058                       4.6.3 . 
+   0.4 77.46 89.72 0.6167                        "a man, masterpiece, best quality,
+   0.6 78.14 85.43 0.6285                       high quality"
+   0.8 79.67 83.58 0.6552                        Gemini 
+   1.0 82.36 82.91 0.6974                       
+                                                
+           Table 6. 
+                                                                        ACM Trans. Graph., Vol. 0, No. 0, Article 0. Publication date: 2026.
+                    FID      LPIPS   art_FID 
+
+1  V1 (adain_1blk)  73.34    0.5805   103.17
+2  V2 (adain_2blk)  88.54    0.5994    98.42
+5  V7 (adain_true)  78.48    0.5991    90.76
+
+   Table 7.  AdaIN 
+
+                  
+
+adain_1_tarblk  1 
+                               
+
+adain_2_tarblk  2 
+                               
+
+noadain_1_tarblk 1 
+                                AdaIN 
+
+noadain_2_tarblk 2 
+                                AdaIN 
+
+       AdaIN
+0:6 · 
+
+                                                                      5 
+
+                                                                       Gradio 
+                                                                       InstantStyle Control Studio 
+
+4.7                                                                   5.1 
+4.7.1 Canny . Canny 
+                                                                      InstantStyle Control Studio 
+ 8 9                                                                   1
+
+        Table 8. Canny                                                     · 
+                                                                           · 
+           Canny                                                           ·  Canny  Canny 
+
+1080×599   1080×599    12                                                    
+5774×1536  5774×1536   1  08 
+                                                                       2
+        Table 9.                                                           · 
+                                                                           · 
+                                                                           · 
+
+1080×1050   13                                                         3ControlNet/Canny 
+2106×2048   1  03                                                          · Canny Low/High Threshold
+                                                                           · Conditioning Scale ControlNet 
+                                                                           · Bilateral FiltersigmaColor/sigmaSpace  Canny
+                                                                             
+      ·  Canny 
+                                                                       4AdaIN 
+                                                                           · AdaIN Alpha AdaIN 
+      ·  ""----                                                            · AdaIN Beta AdaIN 
+                                                                           ·  AdaIN 
+
+      ·  1080p  4K                                                     5
+          13  1                                                            · StepsDDIM  50
+                                                                           · CFG Scale 7.5
+      ·  Canny                                                             · Seed
+                                                                           · IP-Adapter 
+         
+                                                                       6
+     Canny                                                                 · 
+ Low/High Threshold                                                        · 
+                                                                           · 
+
+ 4.7.2 . SDXL  base  80GB VAE                                         5.2 
+ 10GBControlNet 5GBIP-Adapter 3GB                                          · 
+                                                                             
+  100GB                                                                    · Canny 
+  AutoDL  V100-32GB GPU                                                      
+                                                                           ·  JSON 
+     V100                                                                    
+                                                                           · 
+      · 32GB  SDXL + ControlNet + IP-                                        
+         Adapter 
+                                                                      5.3 
+      ·  12­60 
+          5000                                                        
+                                                                      
+      ·  GPU                                                           Canny AdaIN 
+                                                                      
+                                                                      
+    
+  5                                                                   6 
+  V100 
+                                                                      
+
+ACM Trans. Graph., Vol. 0, No. 0, Article 0. Publication date: 2026.
+
