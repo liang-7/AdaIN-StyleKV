@@ -1,12 +1,12 @@
 # Fdb version 4
-["xdvipdfmx"] 1781104527.99587 "build/paper_revised.xdv" "build/paper_revised.pdf" "build/paper_revised" 1781104528.7764 0
-  "build/paper_revised.xdv" 1781104527 329460 6aded28c358e83d565d4bb89df5eb3a4 "xelatex"
+["xdvipdfmx"] 1781106340.10559 "build/paper_revised.xdv" "build/paper_revised.pdf" "build/paper_revised" 1781106340.96849 0
+  "build/paper_revised.xdv" 1781106339 334876 938555008a25446def87de664959da2b "xelatex"
   (generated)
   "build/paper_revised.pdf"
   (rewritten before read)
-["xelatex"] 1781104526.19774 "paper_revised.tex" "build/paper_revised.xdv" "paper_revised" 1781104528.76732 0
-  "build/paper_revised.aux" 1781104527 27453 9fdbd258ed9e120bbe89c82eaabc84b0 "xelatex"
-  "build/paper_revised.out" 1781104527 5321 61d47db343e8252035448d5728bb39d2 "xelatex"
+["xelatex"] 1781106338.22434 "paper_revised.tex" "build/paper_revised.xdv" "paper_revised" 1781106340.95405 0
+  "build/paper_revised.aux" 1781106339 27429 f173744fe32f29dca48be77e6bafd930 "xelatex"
+  "build/paper_revised.out" 1781106339 5321 61d47db343e8252035448d5728bb39d2 "xelatex"
   "c:/Windows/Fonts/msyh.ttc" 1755604595 19704352 1e10e74402e59d54499af795caf0b135 ""
   "d:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1780803065 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1780804868 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
@@ -19,17 +19,13 @@
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1780802343 908 2921f8a10601f252058503cc6570e581 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1780802343 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1780802343 940 228d6584342e91276bf566bcf9716b83 ""
-  "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1780802629 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
-  "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1780802629 1524 4414a8315f39513458b80dfc63bff03a ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1780802629 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1780802629 1520 eccf95517727cb11801f4f1aee3a21b4 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm" 1780802629 1524 d89e2d087a9828407a196f428428ef4a ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1780802629 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
-  "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1780802629 1288 655e228510b4c2a1abe905c368440826 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1780802629 1300 b62933e007d01cfd073f79b963c01526 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1780802629 1292 21c1c5bfeaebccffdb478fd231a0997d ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr9.tfm" 1780802629 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
-  "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1780802629 1124 6c73e740cf17375f03eec0ee63599741 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1780802629 1116 933a60c408fc0a863a92debe84b2d294 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1780802629 1120 8b7d695260f3cff42e636090a8002094 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1780802629 1116 25a7bf822c58caf309a702ef79f4afbb ""
@@ -134,7 +130,7 @@
   "figures/image2.pdf" 1781097379 653939 5cb547682b4f220938af5b9bf988ae0e ""
   "figures/image3.pdf" 1781097379 110111 afa52c3eab63d0101eaa8232a4d717d5 ""
   "figures/image4.pdf" 1781097379 82179 2c3c6ed5d60c6ef2dcb21d3e2357cb2a ""
-  "paper_revised.tex" 1781104505 56538 6a55a2cf2209e80b83026c9c99442a62 ""
+  "paper_revised.tex" 1781106300 58278 a5a35f6dde5bc588c303a08753aa33a8 ""
   (generated)
   "build/paper_revised.aux"
   "build/paper_revised.log"

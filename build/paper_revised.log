@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.7)  10 JUN 2026 23:15
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.7)  10 JUN 2026 23:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -541,29 +541,22 @@ Package xeCJK Warning: Redefining CJKfamily `\CJKrmdefault' (SimSun(0)).
 
 
 Package fontspec Info: 
-(fontspec)             Could not resolve font "SimSun/BI" (it probably doesn't
-(fontspec)             exist).
-
-
-Package fontspec Info: 
-(fontspec)             Could not resolve font "SimSun/B" (it probably doesn't
-(fontspec)             exist).
-
-
-Package fontspec Info: 
-(fontspec)             Could not resolve font "SimSun/I" (it probably doesn't
-(fontspec)             exist).
-
-
-Package fontspec Info: 
 (fontspec)             Font family 'SimSun(1)' created for font 'SimSun' with
-(fontspec)             options [Script={CJK}].
+(fontspec)             options
+(fontspec)             [Script={CJK},AutoFakeBold={2.2},AutoFakeSlant={0.15}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"SimSun/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=dflt;embolden=2.2;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=dflt;slant=0.15;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=dflt;embolden=2.2;sla
+nt=0.15;"
 
 
 Package xeCJK Warning: Redefining CJKfamily `\CJKsfdefault' (Microsoft YaHei).
@@ -901,26 +894,26 @@ Package: titling 2009/09/04 v2.1d maketitle typesetting
 (build/paper_revised.aux)
 \openout1 = `paper_revised.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -928,63 +921,63 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 70.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 70.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 70.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 70.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 70.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 70.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 70.
-LaTeX Font Info:    Redeclaring math accent \check on input line 70.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 70.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 70.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 70.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 70.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 70.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 86.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 86.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 86.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 86.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 86.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 86.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 86.
+LaTeX Font Info:    Redeclaring math accent \check on input line 86.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 86.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 86.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 86.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 86.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 86.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 70.
+(Font)              `operators' in the math version `normal' on input line 86.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 7
-0.
+(Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 8
+6.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 70.
+(Font)              `operators' in the math version `bold' on input line 86.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 
-70.
+86.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on 
-input line 70.
+input line 86.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line
- 70.
+ 86.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 
-70.
+86.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 70.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 86.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 70.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 86.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on 
-input line 70.
+input line 86.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input lin
-e 70.
+e 86.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 70.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 86.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 70.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 86.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1007,14 +1000,14 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=57.0pt
-* \marginparsep=11.0pt
+* \marginparwidth=4.0pt
+* \marginparsep=10.0pt
 * \columnsep=19.91684pt
 * \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
-* \@twocolumnfalse
+* \@twocolumntrue
 * \@twosidefalse
 * \@mparswitchfalse
 * \@reversemarginfalse
@@ -1024,19 +1017,19 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 70.
+Package hyperref Info: Link coloring OFF on input line 86.
 (build/paper_revised.out) (build/paper_revised.out)
 \@outlinefile=\write3
 \openout3 = `paper_revised.out'.
 
 
 Package fontspec Info: 
-(fontspec)             Could not resolve font "SimHei/BI" (it probably doesn't
+(fontspec)             Could not resolve font "SimHei/I" (it probably doesn't
 (fontspec)             exist).
 
 
 Package fontspec Info: 
-(fontspec)             Could not resolve font "SimHei/B" (it probably doesn't
+(fontspec)             Could not resolve font "SimHei/BI" (it probably doesn't
 (fontspec)             exist).
 
 
@@ -1047,66 +1040,79 @@ Package fontspec Info:
 
 Package fontspec Info: 
 (fontspec)             Font family 'SimHei(0)' created for font 'SimHei' with
-(fontspec)             options [Script={CJK}].
+(fontspec)             options [Script={CJK},AutoFakeBold={2.5}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"SimHei/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"SimHei/OT:script=hani;language=dflt;embolden=2.5;"
 
 
-
-LaTeX Font Warning: Font shape `TU/SimHei(0)/b/n' undefined
-(Font)              using `TU/SimHei(0)/m/n' instead on input line 78.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
-
-(d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimSun/BI" (it probably doesn't
+(fontspec)             exist).
 
 
-(d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimSun/B" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "SimSun/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'SimSun(2)' created for font 'SimSun' with
+(fontspec)             options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=dflt;"
+
 File: figures/fig_gallery.pdf Graphic file (type pdf)
 <use figures/fig_gallery.pdf>
 
 
-LaTeX Font Warning: Font shape `TU/SimSun(1)/b/n' undefined
-(Font)              using `TU/SimSun(1)/m/n' instead on input line 83.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 112.
+See the caption package documentation for explanation.
 
-File: figures/fig_variant_progress.pdf Graphic file (type pdf)
-<use figures/fig_variant_progress.pdf>
-File: figures/fig_variant_compare.pdf Graphic file (type pdf)
-<use figures/fig_variant_compare.pdf>
-[1
+LaTeX Font Info:    Trying to load font information for U+msa on input line 112
+.
+(d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 112
+.
 
-]
+(d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
-LaTeX Font Warning: Font shape `TU/SimSun(1)/m/it' undefined
-(Font)              using `TU/SimSun(1)/m/n' instead on input line 101.
-
-[2]
-Overfull \hbox (67.93996pt too wide) in paragraph at lines 123--124
-\TU/SimSun(1)/m/n/10 发，|  研 究 人 员 自 然 地 将 扩 散 模 型 扩 展 至 风 格 迁 移 任 务 \TU/TimesNe
-wRoman(0)/m/n/10 [12,13,14,15,16,17]\TU/SimSun(1)/m/n/10 。|
- []
+LaTeX Warning: Optional argument of \twocolumn too tall on page 1.
 
 
-Overfull \hbox (3.12875pt too wide) in paragraph at lines 140--141
-\TU/SimSun(1)/m/n/10 生 成 对 抗 网 络 在 不 成 对 图 像 翻 译 任 务 上 取 得 了 显 著 进 展。|
- []
+Overfull \vbox (30.0pt too high) has occurred while \output is active []
 
 
-Overfull \hbox (12.91391pt too wide) in paragraph at lines 146--147
-\TU/SimSun(1)/m/n/10 并 保 留 了 内 容 结 构，|  但 其 颜 色 迁 移 能 力 有 限。| \TU/TimesNewRoman
-(0)/m/n/10 InstantStyle[17]
- []
 
-[3
+LaTeX Warning: Text page 1 contains only floats.
+
+
+Overfull \vbox (30.0pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (16.0pt too high) has occurred while \output is active []
+
+ [1
+
 
 ]
 
@@ -1114,42 +1120,65 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 163.
 See the caption package documentation for explanation.
 
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+\TU/TimesNewRoman(0)/m/n/10 ControlNet[15] \TU/SimSun(1)/m/n/10 提 出 了 一 种 神 经 架
+ 构，|  使 用 零 卷 积
+ []
 
-Overfull \hbox (9.76027pt too wide) in paragraph at lines 171--172
-\TU/SimSun(1)/b/n/10 版 本 对 应 \TU/lmtt/m/n/10 lllyasviel/control_v11p_sd15_canny
-\TU/SimSun(1)/b/n/10 ；| \TU/TimesNewRoman(0)/m/n/10 SDXL
+
+Underfull \hbox (badness 1371) in paragraph at lines 171--172
+\TU/SimSun(1)/m/n/10 层 向 扩 散 模 型 添 加 空 间 条 件 控 制  |（边 缘、|  深 度、|  姿
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 171--172
+\TU/SimSun(1)/m/n/10 态 等） 。|  它 将 原 始 模 型 锁 定 并 创 建 一 个 可 训 练 的
+ []
+
+
+Underfull \hbox (badness 4531) in paragraph at lines 171--172
+\TU/SimSun(1)/m/n/10 副 本，|  确 保 训 练 不 会 破 坏 预 训 练 特 征。|  本 文 集 成
+ []
+
+
+Underfull \hbox (badness 1946) in paragraph at lines 171--172
+\TU/TimesNewRoman(0)/m/n/10 ControlNet \TU/SimSun(1)/m/n/10 的 \TU/TimesNewRoman
+(0)/m/n/10 Canny \TU/SimSun(1)/m/n/10 边 缘 版 本，|  以 在 执 行 风 格 迁 移 的
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 171--172
+\TU/SimSun(1)/m/n/10 同 时 保 持 内 容 图 像 的 结 构 轮 廓。|  需 要 注 意 的 是，|  本
+ []
+
+
+Underfull \hbox (badness 2253) in paragraph at lines 171--172
+\TU/TimesNewRoman(0)/m/n/10 ControlNet \TU/SimSun(1)/m/n/10 需 与 基 础 模 型 版 本 匹 配
+  |（\TU/TimesNewRoman(0)/m/n/10 SD1.5 \TU/SimSun(1)/m/n/10 版 本 对 应
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+\TU/lmtt/m/n/10 lllyasviel/control_v11p_sd15_canny\TU/SimSun(1)/m/n/10 ；| \TU/T
+imesNewRoman(0)/m/n/10 SDXL \TU/SimSun(1)/m/n/10 版 本
  []
 
 File: figures/fig_method_pipeline.pdf Graphic file (type pdf)
 <use figures/fig_method_pipeline.pdf>
 File: figures/fig_unet_arch.pdf Graphic file (type pdf)
 <use figures/fig_unet_arch.pdf>
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
+[]\TU/TimesNewRoman(0)/b/n/10 2 \TU/SimSun(1)/b/n/10 块\TU/SimSun(1)/m/n/10 ：|  
+替 换 \TU/lmtt/m/n/10 up_blocks.0.attentions.1 \TU/SimSun(1)/m/n/10 和
+ []
+
+File: figures/fig_variant_progress.pdf Graphic file (type pdf)
+<use figures/fig_variant_progress.pdf>
 [4]
-Overfull \hbox (102.68607pt too wide) in paragraph at lines 248--249
-[]\TU/TimesNewRoman(0)/b/n/10 2 \TU/SimSun(1)/b/n/10 块：|  替 换 \TU/lmtt/m/n/10 u
-p_blocks.0.attentions.1 \TU/SimSun(1)/b/n/10 和 \TU/lmtt/m/n/10 down_blocks.2.at
-tentions.1 
- []
-
-
-Overfull \hbox (3.07748pt too wide) in paragraph at lines 259--260
-[]\TU/SimSun(1)/b/n/10 为 解 决 此 问 题，|  我 们 采 用 \TU/TimesNewRoman(0)/m/n/10 AdaIN
- \TU/SimSun(1)/b/n/10 调 制 初 始 潜 变 量  |— —|
- []
-
-
-Overfull \hbox (11.68346pt too wide) in paragraph at lines 345--346
-\TU/SimSun(1)/b/n/10 为 系 统 评 估 各 组 件 的 贡 献，|  我 们 设 计 了 \TU/TimesNewRoman(0)/m/
-n/10 7 \TU/SimSun(1)/b/n/10 组 方 法 变 体  |（表 []\TU/TimesNewRoman(0)/m/n/10 4[]\TU
-/SimSun(1)/b/n/10 ） ，|
- []
-
-[5]
-Overfull \hbox (1.24074pt too wide) in paragraph at lines 397--398
-\TU/SimSun(1)/b/n/10 图 []\TU/TimesNewRoman(0)/m/n/10 10[]\TU/SimSun(1)/b/n/10 进
- 一 步 展 示 了 各 变 体 在 风 格 保 真 度 与 内 容 保 留 度 之
- []
-
+File: figures/fig_variant_compare.pdf Graphic file (type pdf)
+<use figures/fig_variant_compare.pdf>
 File: figures/image1.pdf Graphic file (type pdf)
 <use figures/image1.pdf>
 File: figures/image2.pdf Graphic file (type pdf)
@@ -1164,139 +1193,120 @@ File: figures/fig_gamma_5blk.pdf Graphic file (type pdf)
 <use figures/fig_gamma_5blk.pdf>
 File: figures/fig_gamma_10blk.pdf Graphic file (type pdf)
 <use figures/fig_gamma_10blk.pdf>
-[6]
 File: figures/fig_block_compare.pdf Graphic file (type pdf)
 <use figures/fig_block_compare.pdf>
 File: figures/fig_adain_compare.pdf Graphic file (type pdf)
 <use figures/fig_adain_compare.pdf>
+ [5] [6] [7]
 File: figures/image4.pdf Graphic file (type pdf)
 <use figures/image4.pdf>
 File: figures/fig_ref_comprehensive.pdf Graphic file (type pdf)
 <use figures/fig_ref_comprehensive.pdf>
- [7] [8]
-Overfull \hbox (0.90382pt too wide) in paragraph at lines 567--568
-\TU/TimesNewRoman(0)/m/n/10 Canny \TU/SimSun(1)/b/n/10 边 缘 图 的 精 细 程 度 直 接 影 响 
-生 成 效 果 和 推 理 效 率。|
- []
-
 File: figures/fig_canny_res.pdf Graphic file (type pdf)
 <use figures/fig_canny_res.pdf>
 File: figures/fig_input_res.pdf Graphic file (type pdf)
 <use figures/fig_input_res.pdf>
-
-Overfull \hbox (0.85907pt too wide) in paragraph at lines 617--618
-\TU/SimSun(1)/b/n/10 扩 散 模 型  |（\TU/TimesNewRoman(0)/m/n/10 Stable Diffusion \T
-U/SimSun(1)/b/n/10 基 础 模 型 约 \TU/TimesNewRoman(0)/m/n/10 7–8GB\TU/SimSun(1)/b/n
-/10 ，|  加 上 \TU/TimesNewRoman(0)/m/n/10 VAE\TU/SimSun(1)/b/n/10 、|
- []
-
 File: figures/fig_gradio.pdf Graphic file (type pdf)
 <use figures/fig_gradio.pdf>
-
-Overfull \hbox (1.35466pt too wide) in paragraph at lines 669--670
-\TU/SimSun(1)/b/n/10 高 分 辨 率 \TU/TimesNewRoman(0)/m/n/10 Canny \TU/SimSun(1)/b/
-n/10 边 缘 图 可 能 引 入 人 工 痕 迹。|  计 划 使 用 \TU/TimesNewRoman(0)/m/n/10 Tile
- []
-
-[9] [10]
-Overfull \hbox (1.37907pt too wide) in paragraph at lines 691--692
-[]\TU/SimSun(1)/b/n/10 实 践 价 值：|  基 于 \TU/TimesNewRoman(0)/m/n/10 Gradio \TU/Si
-mSun(1)/b/n/10 构 建 交 互 式 前 端，|  支 持 \TU/TimesNewRoman(0)/m/n/10 Canny
- []
-
-
-Underfull \hbox (badness 1910) in paragraph at lines 709--709
+ [8] [9]
+Underfull \hbox (badness 1910) in paragraph at lines 723--723
 []|\TU/SimSun(1)/m/n/9 缺 乏 外 部 方 法
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 709--710
+Underfull \hbox (badness 1910) in paragraph at lines 723--724
 []|\TU/SimSun(1)/m/n/9 统 一 基 准 下 的
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 710--710
+Underfull \hbox (badness 1910) in paragraph at lines 724--724
 []|\TU/SimSun(1)/m/n/9 全 块 级 消 融 缺
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 710--711
+Underfull \hbox (badness 1910) in paragraph at lines 724--725
 []|\TU/SimSun(1)/m/n/9 全 块 级 贡 献 度
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 712--712
+Underfull \hbox (badness 2662) in paragraph at lines 725--726
+[]|\TU/SimSun(1)/m/n/9 多 条 件 \TU/TimesNewRoman(0)/m/n/9 Control-
+ []
+
+
+Underfull \hbox (badness 1910) in paragraph at lines 726--726
 []|\TU/SimSun(1)/m/n/9 提 示 词 依 赖 外
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 713--714
+Underfull \hbox (badness 2158) in paragraph at lines 726--727
+[]|\TU/TimesNewRoman(0)/m/n/9 VLM \TU/SimSun(1)/m/n/9 提 示 词 自
+ []
+
+
+Underfull \hbox (badness 1910) in paragraph at lines 727--728
 []|\TU/SimSun(1)/m/n/9 模 型 轻 量 化 探
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 714--714
+Underfull \hbox (badness 1910) in paragraph at lines 728--728
 []|\TU/SimSun(1)/m/n/9 数 据 集 规 模 有
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 714--714
+Underfull \hbox (badness 10000) in paragraph at lines 728--728
 []|\TU/TimesNewRoman(0)/m/n/9 COCO(20
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 714--715
+Underfull \hbox (badness 1910) in paragraph at lines 728--729
 []|\TU/SimSun(1)/m/n/9 更 大 规 模 数 据
  []
 
-[11]
-Underfull \hbox (badness 2635) in paragraph at lines 748--749
+[10]
+Underfull \hbox (badness 2635) in paragraph at lines 762--763
 \TU/TimesNewRoman(0)/m/n/10 and S. Ganguli, “Deep unsupervised learning us-
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 756--757
+Underfull \hbox (badness 1052) in paragraph at lines 770--771
 []\TU/TimesNewRoman(0)/m/n/10 Y. Zhang, N. Huang, F. Tang, H. Huang, C. Ma,
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 760--761
+Underfull \hbox (badness 4144) in paragraph at lines 774--775
 \TU/TimesNewRoman(0)/m/n/10 free style transfer with diffusion models,” \TU/Tim
 esNewRoman(0)/m/it/10 arXiv
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 766--767
-\TU/TimesNewRoman(0)/m/n/10 stantStyle: Free lunch towards style-preserving
+Underfull \hbox (badness 1960) in paragraph at lines 780--781
+\TU/TimesNewRoman(0)/m/n/10 “InstantStyle: Free lunch towards style-preserving
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 766--767
+Underfull \hbox (badness 10000) in paragraph at lines 780--781
 \TU/TimesNewRoman(0)/m/n/10 in text-to-image generation,” \TU/TimesNewRoman(0)/
 m/it/10 arXiv preprint
  []
 
-[12] [13
+[11] [12
 
 ] (build/paper_revised.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/07/14>
  ***********
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
 Package rerunfilecheck Info: File `paper_revised.out' has not changed.
 (rerunfilecheck)             Checksum: 61D47DB343E8252035448D5728BB39D2;5321.
  ) 
 Here is how much of TeX's memory you used:
- 18777 strings out of 470139
- 410842 string characters out of 5477718
- 852628 words of memory out of 5000000
- 47066 multiletter control sequences out of 15000+600000
- 638060 words of font info for 131 fonts, out of 8000000 for 9000
+ 18784 strings out of 470139
+ 411197 string characters out of 5477718
+ 866650 words of memory out of 5000000
+ 47075 multiletter control sequences out of 15000+600000
+ 636491 words of font info for 122 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 93i,15n,111p,1195b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,15n,111p,1195b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on build/paper_revised.xdv (13 pages, 329460 bytes).
+Output written on build/paper_revised.xdv (12 pages, 334876 bytes).
