@@ -1,0 +1,595 @@
+Adding Conditional Control to Text-to-Image Diffusion Models                                                                                       
+
+                   Lvmin Zhang, Anyi Rao, and Maneesh Agrawala                                                                                              anyi· 
+                                     Stanford University
+                                                                                                                                                                        {lvmin, anyirao, maneesh}@cs.stanford.edu
+                            {lvmin, anyirao, maneesh}@cs.stanford.edu
+
+arXiv:2302.05543v3 [cs.CV] 26 Nov 2023Input Canny edgeDefault    "masterpiece of fairy tale, giant deer, golden antlers" "..., quaint city Galic"  Input Canny edge    Default                                       "masterpiece of fairy tale, giant deer, golden antlers" "..., quaint city Galic"
+                                                                                            arXiv:2302.05543v3 [cs.CV] 26 Nov 2023
+Input human pose  Default                                        "chef in kitchen"  "Lincoln statue"                                               1Inputhumanpose"Stabl"eDDeiffafuulstionControlNet"chefinCk"aitncnhyen" "Lincoln s"tatue" 
+
+Figure 1: Controlling Stable Diffusion with learned conditions. ControlNet allows users to add conditions like Canny edges
+
+(top), human pose (bottom), etc., to control the image generation of large pretrained diffusion models. The default results use
+
+the prompt "a high-quality, detailed, and professional image". Users can optionally give prompts like the "chef in kitchen".
+
+                        Abstract                                 1. Introduction                                                                                                                                     1. 
+                                                                                                                                                                                                                     [54, 62,72]
+   We present ControlNet, a neural network architecture to          Many of us have experienced flashes of visual inspiration                      <5C0koSnttar"bolleNDeCtCiofo>fnun"1tstrmroioollNnNeettControlNet
+add spatial conditioning controls to large, pretrained text-     that we wish to capture in a unique image. With the advent
+to-image diffusion models. ControlNet locks the production-      of text-to-image diffusion models [54, 62, 72], we can now
+ready large diffusion models, and reuses their deep and ro-      create visually stunning images by typing in a text prompt.
+bust encoding layers pretrained with billions of images as a     Yet, text-to-image models are limited in the control they
+strong backbone to learn a diverse set of conditional controls.  provide over the spatial composition of the image; precisely
+The neural architecture is connected with "zero convolutions"    expressing complex layouts, poses, shapes and forms can be
+(zero-initialized convolution layers) that progressively grow    difficult via text prompts alone. Generating an image that
+the parameters from zero and ensure that no harmful noise        accurately matches our mental imagery often requires nu-
+could affect the finetuning. We test various conditioning con-   merous trial-and-error cycles of editing a prompt, inspecting
+trols, e.g., edges, depth, segmentation, human pose, etc., with  the resulting images and then re-editing the prompt.
+Stable Diffusion, using single or multiple conditions, with
+or without prompts. We show that the training of Control-           Can we enable finer grained spatial control by letting
+Nets is robust with small (<50k) and large (>1m) datasets.       users provide additional images that directly specify their
+Extensive results show that ControlNet may facilitate wider      desired image composition? In computer vision and machine
+applications to control image diffusion models.                  learning, these additional images (e.g., edge maps, human
+                                                                 pose skeletons, segmentation maps, depth, normals, etc.)
+                                                                 are often treated as conditioning on the image generation
+                                                                 process. Image-to-image translation models [34, 98] learn
+the mapping from conditioning images to target images. The        results competitive with industrial models trained on large       L1[[310A440,,IKO2958N,]-351B,9[729]][10]Stab5l0e,0D[03i0f1f,u7si5o]n[82/[]6,[2210,]75]  
+research community has also taken steps to control text-          computation clusters. Finally, we conduct ablative studies to     ContrCoolNntertolNetStableDiffusion
+to-image models with spatial masks [6, 20], image editing         investigate the contribution of each component of our model,      RTX3090TiGSPtUablC1eoDCnitofrfnoCutlsorNionoeltnNtroeltNetsCanNnyVIDIA                  Sta(b2l)eD(1if)fusionC(o3n)tCroolNCntaernotnlNyet
+instructions [10], personalization via finetuning [21, 75], etc.  and compare our models to several strong conditional image
+While a few problems (e.g., generating image variations,          generation baselines with user studies.                                                                                                                   2. 
+inpainting) can be resolved with training-free techniques                                                                                                                                                                   2.1. 
+like constraining the denoising diffusion process or edit-           In summary, (1) we propose ControlNet, a neural network
+ing attention layer activations, a wider variety of problems      architecture that can add spatially localized input conditions                                                                                            
+like depth-to-image, pose-to-image, etc., require end-to-end      to a pretrained text-to-image diffusion model via efficient                                                                                               [25[2]6]GAN[43]N[4L,[P1782]]
+learning and data-driven solutions.                               finetuning, (2) we present pretrained ControlNets to control
+                                                                  Stable Diffusion, conditioned on Canny edges, Hough lines,                                                                                                [49[,253[[,03764]06],8,V48i]5T,-9AN4dL]aPp[7te0r][14]T2I-AdapteCr[L5I6P][66]
+   Learning conditional controls for large text-to-image dif-     user scribbles, human key points, segmentation maps, shape                                                                                                [51, 74][52][92][80]
+fusion models in an end-to-end way is challenging. The            normals, depths, and cartoon line drawings, and (3) we val-                                                                                               [31]LoRA[2,47]
+amount of training data for a specific condition may be sig-      idate the method with ablative experiments comparing to
+nificantly smaller than the data available for general text-to-   several alternative architectures, and conduct user studies
+image training. For instance, the largest datasets for various    focused on several previous baselines across different tasks.
+specific problems (e.g., object shape/normal, human pose
+extraction, etc.) are usually about 100K in size, which is        2. Related Work
+50,000 times smaller than the LAION-5B [79] dataset that
+was used to train Stable Diffusion [82]. The direct finetun-      2.1. Finetuning Neural Networks
+ing or continued training of a large pretrained model with
+limited data may cause overfitting and catastrophic forget-       One way to finetune a neural network is to directly continue
+ting [31, 75]. Researchers have shown that such forgetting        training it with the additional training data. But this approach
+can be alleviated by restricting the number or rank of train-     can lead to overfitting, mode collapse, and catastrophic for-
+able parameters [14, 25, 31, 92]. For our problem, designing      getting. Extensive research has focused on developing fine-
+deeper or more customized neural architectures might be           tuning strategies that avoid such issues.
+necessary for handling in-the-wild conditioning images with
+complex shapes and diverse high-level semantics.                  HyperNetwork is an approach that originated in the Natural
+                                                                  Language Processing (NLP) community [25], with the aim
+   This paper presents ControlNet, an end-to-end neural           of training a small recurrent neural network to influence the
+network architecture that learns conditional controls for large   weights of a larger one. It has been applied to image gener-
+pretrained text-to-image diffusion models (Stable Diffusion       ation with generative adversarial networks (GANs) [4, 18].
+in our implementation). ControlNet preserves the quality          Heathen et al. [26] and Kurumuz [43] implement HyperNet-
+and capabilities of the large model by locking its parameters,    works for Stable Diffusion [72] to change the artistic style
+and also making a trainable copy of its encoding layers.          of its output images.
+This architecture treats the large pretrained model as a strong
+backbone for learning diverse conditional controls. The           Adapter methods are widely used in NLP for customiz-
+trainable copy and the original, locked model are connected       ing a pretrained transformer model to other tasks by em-
+with zero convolution layers, with weights initialized to zeros   bedding new module layers into it [30, 84]. In computer
+so that they progressively grow during the training. This         vision, adapters are used for incremental learning [74] and
+architecture ensures that harmful noise is not added to the       domain adaptation [70]. This technique is often used with
+deep features of the large diffusion model at the beginning       CLIP [66] for transferring pretrained backbone models to
+of training, and protects the large-scale pretrained backbone     different tasks [23, 66, 85, 94]. More recently, adapters have
+in the trainable copy from being damaged by such noise.           yielded successful results in vision transformers [49, 50]
+                                                                  and ViT-Adapter [14]. In concurrent work with ours, T2I-
+   Our experiments show that ControlNet can control Sta-          Adapter [56] adapts Stable Diffusion to external conditions.
+ble Diffusion with various conditioning inputs, including
+Canny edges, Hough lines, user scribbles, human key points,       Additive Learning circumvents forgetting by freezing the
+segmentation maps, shape normals, depths, etc. (Figure 1).        original model weights and adding a small number of new pa-
+We test our approach using a single conditioning image,           rameters using learned weight masks [51, 74], pruning [52],
+with or without text prompts, and we demonstrate how our          or hard attention [80]. Side-Tuning [92] uses a side branch
+approach supports the composition of multiple conditions.         model to learn extra functionality by linearly blending the
+Additionally, we report that the training of ControlNet is        outputs of a frozen model and an added network, with a
+robust and scalable on datasets of different sizes, and that for  predefined blending weight schedule.
+some tasks like depth-to-image conditioning, training Con-
+trolNets on a single NVIDIA RTX 3090Ti GPU can achieve            Low-Rank Adaptation (LoRA) prevents catastrophic for-
+                                                                  getting [31] by learning the offset of parameters with low-
+                                                                  rank matrices, based on the observation that many over-
+                                                                                                 c                                                                                                                                                                                            c
+
+parameterized models reside in a low intrinsic dimension                                         zero convolution                                                                                                                                                                             zero convolution
+subspace [2, 47].
+                                                                x                x               +                              P[N8ri3oc[]Gh3o6Al,N3[73,64[]549,C4]S5oty,n4lter6Go,lA7N6Ne,t[8337,]95S]Ntoabisie"li2tyN[1o]ise["46]                          x               x               +
+Zero-Initialized Layers are used by ControlNet for con-
+necting network blocks. Research on neural networks has         neural network   neural network  trainable copy                 2.2.                                                                                                                          neural network  neural network  trainable copy
+extensively discussed the initialization and manipulation of          block      block (locked)                                                                                                                                                                     block     block (locked)
+network weights [36, 37, 44, 45, 46, 76, 83, 95]. For exam-                                                                     MGliiLCddDjLeo[IMu5PrIS8[nm6]tea6Day[b]g7[ils5e2ecn4]Do[]7iDf8fi]ufsfuiosnio[8n[12[57]-],42][1c9l]ipDA[L7L2[]-8E12][62]
+ple, Gaussian initialization of weights can be less risky than          y                         zero convolution              D3VM3ora,eyka8nem6GoA]vBLS[I5ocG3oeS]tEnpheNa[[[87T2[85e40]x]8]t[][76,]10,[26[087,,,2977,],3420,,5461]C,L5I8P,[6241,]6[71]0,                  +               zero convolution
+initializing with zeros [1]. More recently, Nichol et al. [59]                   +
+discussed how to scale the initial weight of convolution lay-      (a) Before                                                                                                                                                                                 y
+ers in a diffusion model to improve the training, and their
+implementation of "zero module" is an extreme case to scale                      yc              ControlNet                                                                                                                                                                   yc              ControlNet
+weights to zero. Stability's model cards [83] also mention
+the use of zero weights in neural layers. Manipulating the                           (b) Aer                                                                                                                                                                  (a) Before          (b) Aer
+initial convolution weights is also discussed in ProGAN [36],                                                                                                                                                                                                 2ControlNaet1× y1bcx
+StyleGAN [37], and Noise2Noise [46].                            Figure 2: A neural block takes a feature map x as input and
+                                                                outputs another feature map y, as shown in (a). To add a
+2.2. Image Diffusion                                            ControlNet to such a block we lock the original block and
+                                                                create a trainable copy and connect them together using zero
+Image Diffusion Models were first introduced by Sohl-           convolution layers, i.e., 1 × 1 convolution with both weight
+Dickstein et al. [81] and have been recently applied to         and bias initialized to zero. Here c is a conditioning vector
+image generation [17, 42]. The Latent Diffusion Models          that we wish to add to the network, as shown in (b).
+(LDM) [72] performs the diffusion steps in the latent image
+space [19], which reduces the computation cost. Text-to-        2.3. Image-to-Image Translation                                                                                                                                                               2.3. 
+image diffusion models achieve state-of-the-art image gen-
+eration results by encoding text inputs into latent vectors     Conditional GANs [15, 34, 63, 90, 93, 97, 98, 99] and trans-                                                                                                                                  [3,22P,I3T[81I,[383,991[],975,756],86]0[,1655,,3[7411,9]6]3,90,93[,7917],98,99]
+via pretrained language models like CLIP [66]. Glide [58]       formers [13, 19, 68] can learn the mapping between different
+is a text-guided diffusion model supporting image genera-       image domains, e.g., Taming Transformer [19] is a vision                                                                                                                                      3. 
+tion and editing. Disco Diffusion [5] processes text prompts    transformer approach; Palette [77] is a conditional diffu-
+with clip guidance. Stable Diffusion [82] is a large-scale      sion model trained from scratch; PITI [89] is a pretraining-                                                                                                                                  [C7o2CCn]toornnottlrrNooellNNteeCtt3o.n3trolNet3.2Stable3D.1iffusi3o.n4
+implementation of latent diffusion [72]. Imagen [78] directly   based conditional diffusion model for image-to-image trans-
+diffuses pixels using a pyramid structure without using latent  lation. Manipulating pretrained GANs can handle specific
+images. Commercial products include DALL-E2 [62] and            image-to-image tasks, e.g., StyleGANs can be controlled
+Midjourney [54].                                                by extra encoders [71], with more applications studied in
+                                                                [3, 22, 38, 39, 55, 60, 65, 71].
+Controlling Image Diffusion Models facilitate personal-
+ization, customization, or task-specific image generation.      3. Method
+The image diffusion process directly provides some control
+over color variation [53] and inpainting [67, 7]. Text-guided      ControlNet is a neural network architecture that can en-
+control methods focus on adjusting prompts, manipulating        hance large pretrained text-to-image diffusion models with
+CLIP features, and modifying cross-attention [7, 10, 20, 27,    spatially localized, task-specific image conditions. We first
+40, 41, 58, 64, 67]. MakeAScene [20] encodes segmentation       introduce the basic structure of a ControlNet in Section 3.1
+masks into tokens to control image generation. SpaText [6]      and then describe how we apply a ControlNet to the image
+maps segmentation masks into localized token embeddings.        diffusion model Stable Diffusion [72] in Section 3.2. We
+GLIGEN [48] learns new parameters in attention layers of        elaborate on our training in Section 3.3 and detail several
+diffusion models for grounded generating. Textual Inver-        extra considerations during inference such as composing
+sion [21] and DreamBooth [75] can personalize content in        multiple ControlNets in Section 3.4.
+the generated image by finetuning the image diffusion model
+using a small set of user-provided example images. Prompt-      3.1. ControlNet                                                                                                                                                                               3.1. ControlNet
+based image editing [10, 33, 86] provides practical tools to
+manipulate images with prompts. Voynov et al. [88] propose         ControlNet injects additional conditions into the blocks of                                                                                                                                Co2ntrolNex t--y F (; )
+an optimization method that fits the diffusion process with     a neural network (Figure 2). Herein, we use the term network
+sketches. Concurrent works [8, 9, 32, 56] examine a wide        block to refer to a set of neural layers that are commonly
+variety of ways to control diffusion models.                    put together to form a single unit of a neural network, e.g.,
+                                                                resnet block, conv-bn-relu block, multi-head attention block,
+                                                                transformer block, etc. Suppose F(·; ) is such a trained
+                                                                neural block, with parameters , that transforms an input
+                                                                feature map x, into another feature map y as
+
+                                                                                 y = F(x; ).                     (1)                                                                                                                                                          y = F(x; ).                     (1)
+In our setting, x and y are usually 2D feature maps, i.e., x     Prompt ct Time t                                                           x  R 2bh× wC×control2Naex t{Sht,aw byl,ecD}iffusi2oD nc  c                                                       Prompt ct Time t
+Rh×w×c with {h, w, c} as the height, width, and number of                                                                                   CZo(n;tro)lNet1× 1CZ on(tr;o)lNet z1z2
+channels in the map, respectively (Figure 2a).                   Text  Time                                       Condition cf                                                                                                                               Text  Time                                       Condition cf
+
+   To add a ControlNet to such a pre-trained neural block,       Encoder Encoder                                  zero convolution                                                                                                                           Encoder Encoder                                  zero convolution
+we lock (freeze) the parameters  of the original block and                                                                  +                                                                                                                                                                                           +
+simultaneously clone the block to a trainable copy with                Input zt                                                                                                                                                                                    Input zt
+parameters c (Figure 2b). The trainable copy takes an                                            Prompt&Time                                                                                                                                                                                 Prompt&Time
+external conditioning vector c as input. When this structure
+is applied to large models like Stable Diffusion, the locked           SD Encoder Block A            ×3   SD Encoder Block A            ×3                                                                                                                         SD Encoder Block A            ×3   SD Encoder Block A            ×3
+parameters preserve the production-ready model trained with                    64×64                     64×64 (trainable copy)                                                                                                                                            64×64                     64×64 (trainable copy)
+billions of images, while the trainable copy reuses such large-
+scale pretrained model to establish a deep, robust, and strong         SD Encoder Block B        ×3       SD Encoder Block B            ×3                                                                                                                         SD Encoder Block B        ×3       SD Encoder Block B            ×3
+backbone for handling diverse input conditions.                                32×32                     32×32 (trainable copy)                                                                                                                                            32×32                     32×32 (trainable copy)
+
+   The trainable copy is connected to the locked model with            SD Encoder Block C        ×3       SD Encoder Block C        ×3                                                                                                                             SD Encoder Block C        ×3       SD Encoder Block C        ×3
+zero convolution layers, denoted Z(·; ·). Specifically, Z(·; ·)                16×16                     16×16 (trainable copy)                                                                                                                                            16×16                     16×16 (trainable copy)
+is a 1 × 1 convolution layer with both weight and bias ini-
+tialized to zeros. To build up a ControlNet, we use two                SD Encoder          ×3            SD Encoder Block D         ×3                                                                                                                             SD Encoder          ×3            SD Encoder Block D         ×3
+instances of zero convolutions with parameters z1 and z2               Block D 8×8                       8×8 (trainable copy)                                                                                                                                      Block D 8×8                       8×8 (trainable copy)
+respectively. The complete ControlNet then computes
+                                                                       SD Middle                          SD Middle Block                                                                                                                                          SD Middle                          SD Middle Block
+                                                                       Block 8×8                         8×8 (trainable copy)                                                                                                                                      Block 8×8                         8×8 (trainable copy)
+                                                                                                         zero convolution                                                                                                                                                                            zero convolution
+                                                                       SD Decoder          ×3                                                                                                                                                                      SD Decoder          ×3
+                                                                       Block D 8×8                       zero convolution ×3                                                                                                                                       Block D 8×8                       zero convolution ×3
+
+    yc = F (x; ) + Z(F (x + Z(c; z1); c); z2), (2)                     SD Decoder Block C        ×3      zero convolution ×3                    yc = F (x; ) + Z(F (x + Z(c; z1); c); z2), (2)                                                                     SD Decoder Block C        ×3      zero convolution ×3
+                                                                               16×16                                                                                                                                                                                       16×16
+where yc is the output of the ControlNet block. In the first                                                                                (2)ycContrZol(N;et)
+training step, since both the weight and bias parameters of            SD Decoder Block B        ×3      zero convolution ×3                                                                                                                                       SD Decoder Block B        ×3      zero convolution ×3
+a zero convolution layer are initialized to zero, both of the                  32×32                                                                                                                                                                                       32×32
+Z(·; ·) terms in Equation (2) evaluate to zero, and
+                                                                       SD Decoder Block A            ×3  zero convolution               ×3                                                                                                                         SD Decoder Block A            ×3  zero convolution               ×3
+                                                                               64×64                                                                                                                                                                                       64×64
+
+yc = y.                                      (3)                       Output  (zt, t, ct, cf )                                             yc = y.  (3)                                                                                                           Output  (zt, t, ct, cf )
+
+                                                                 (a) Stable Diffusion                    (b) ControlNet                     Z (c;z1)=0x                                                                                                      (a) Stable Diffusion                    (b) ControlNet
+                                                                                                                                                                                                                                                             Di3CffuoCsnSiotortnonatblrVNole1leNtD.5eitffusiVon2.1U-netStabUle-net
+In this way, harmful noise cannot influence the hidden states    Figure 3: Stable Diffusion's U-net architecture connected
+of the neural network layers in the trainable copy when the      with a ControlNet on the encoder blocks and middle block.
+training starts. Moreover, since Z(c; z1) = 0 and the train-     The locked, gray blocks show the structure of Stable Diffu-
+able copy also receives the input image x, the trainable copy    sion V1.5 (or V2.1, as they use the same U-net architecture).
+is fully functional and retains the capabilities of the large,   The trainable blue blocks and the white zero convolution
+pretrained model allowing it to serve as a strong backbone       layers are added to build a ControlNet.
+for further learning. Zero convolutions protect this back-
+bone by eliminating random noise as gradients in the initial     CLIP text encoder [66], and diffusion timesteps are encoded                                                                                                                                 D(162i4C3fCfuo× o3snnbit6torr4ono,llNN32e1eSt2t× taC4b3Ll2eI,PD1i6ff× uUs-i1noU16en-,tn8e× t1[2C686)o]ntrUol-Nneett1Stable
+training steps. We detail the gradient calculation for zero      with a time encoder using positional encoding.                                                                                                                                              PDSCtiafIbfEules4iDo0nGif3fBu4s%CioonntrolGNPeUtControlNetCNoVn2It3rDSo%IltANabeAlteG1--0P0U--
+convolutions in supplementary materials.
+                                                                    The ControlNet structure is applied to each encoder level
+3.2. ControlNet for Text-to-Image Diffusion                      of the U-net (Figure 3b). In particular, we use ControlNet                 3.2. ControlNet
+                                                                 to create a trainable copy of the 12 encoding blocks and 1
+   We use Stable Diffusion [72] as an example to show how        middle block of Stable Diffusion. The 12 encoding blocks                   Diffu4sionRV8SesitTaNbelUte-DNiefft2u[2sV7i53oiVT3]naiT[724]"S"RDe× sE3Nne"ctodeCro2BnSltortaocbklNl2eAe115"t27
+ControlNet can add conditional control to a large pretrained     are in 4 resolutions (64 × 64, 32 × 32, 16 × 16, 8 × 8) with
+diffusion model. Stable Diffusion is essentially a U-Net [73]    each one replicated 3 times. The outputs are added to the
+with an encoder, a middle block, and a skip-connected de-        12 skip-connections and 1 middle block of the U-net. Since
+coder. Both the encoder and decoder contain 12 blocks,           Stable Diffusion is a typical U-net structure, this ControlNet
+and the full model contains 25 blocks, including the middle      architecture is likely to be applicable with other models.
+block. Of the 25 blocks, 8 blocks are down-sampling or
+up-sampling convolution layers, while the other 17 blocks           The way we connect the ControlNet is computationally
+are main blocks that each contain 4 resnet layers and 2 Vi-      efficient -- since the locked copy parameters are frozen, no
+sion Transformers (ViTs). Each ViT contains several cross-       gradient computation is required in the originally locked
+attention and self-attention mechanisms. For example, in         encoder for the finetuning. This approach speeds up train-
+Figure 3a, the "SD Encoder Block A" contains 4 resnet lay-       ing and saves GPU memory. As tested on a single NVIDIA
+ers and 2 ViTs, while the "×3" indicates that this block is      A100 PCIE 40GB, optimizing Stable Diffusion with Control-
+repeated three times. Text prompts are encoded using the         Net requires only about 23% more GPU memory and 34%
+more time in each training iteration, compared to optimizing     Test input training step 100  step 1000  step 2000                    SR51tea2LbUl× eED5(1i)f2fcuisioCVnoQ[n57-t1G2ro2]Al× NN14e6[5t1× 19S2]43t6a2b4le× 6SD4t6ai4Sfbftlu1aesb2Di2l8coe6ifn× f4Dfui× 2sffiuo6sn4ion  Test input training step 100  step 1000  step 2000
+Stable Diffusion without ControlNet.
+                                                                 step 6100  step 6133          step 8000  step 12000                                                                                                                                                                 6134s3tep6100step6133step8000 Costneptr1o20l0N0et
+   Image diffusion models learn to progressively denoise
+images and generate samples from the training domain. The        Figure 4: The sudden convergence phenomenon. Due to the
+denoising process can occur in pixel space or in a latent        zero convolutions, ControlNet always predicts high-quality
+space encoded from training data. Stable Diffusion uses          images during the entire training. At a certain step in the
+latent images as the training domain as working in this space    training process (e.g., the 6133 steps marked in bold), the
+has been shown to stabilize the training process [72]. Specif-   model suddenly learns to follow the input condition.
+ically, Stable Diffusion uses a pre-processing method similar
+to VQ-GAN [19] to convert 512 × 512 pixel-space images
+into smaller 64 × 64 latent images. To add ControlNet to
+Stable Diffusion, we first convert each input conditioning
+image (e.g., edge, pose, depth, etc.) from an input size of
+512 × 512 into a 64 × 64 feature space vector that matches
+the size of Stable Diffusion. In particular, we use a tiny
+network E(·) of four convolution layers with 4 × 4 kernels
+and 2 × 2 strides (activated by ReLU, using 16, 32, 64, 128,
+channels respectively, initialized with Gaussian weights and
+trained jointly with the full model) to encode an image-space
+condition ci into a feature space conditioning vector cf as,
+
+                cf = E(ci).  (4)                                                                                                              cf = E(ci).  (4)
+                                                                                                                                        cf   ControlNet
+The conditioning vector cf is passed into the ControlNet.                                                                               3.3.
+
+3.3. Training                                                                                                                          czf0ztztt tct
+
+                                                                 (a) Input Canny map (b) W/o CFG (c) W/o CFG-RW (d) Full (w/o prompt)                                                                                                                                                (a) Input Canny map (b) W/o CFG (c) W/o CFG-RW (d) Full (w/o prompt)
+                                                                                                                                                                                                                                                                                         5
+   Given an input image z0, image diffusion algorithms           Figure 5: Effect of Classifier-Free Guidance (CFG) and the                                                                                                                                                          CFG                                      CFG
+progressively add noise to the image and produce a noisy         proposed CFG Resolution Weighting (CFG-RW).                                                                                                                                                                           CFG-RW
+image zt, where t represents the number of times noise is
+added. Given a set of conditions including time step t, text
+prompts ct, as well as a task-specific condition cf, image
+diffusion algorithms learn a network  to predict the noise
+added to the noisy image zt with
+
+L = Ez0,t,ct,cf,N (0,1)  - (zt, t, ct, cf))22 , (5)                                                                                        L = Ez0,t,ct,cf,N (0,1)  - (zt, t, ct, cf))22 , (5)
+
+where L is the overall learning objective of the entire dif-     Multiple condition (pose&depth) "boy"    "astronaut"                  LControlNet                                                                                                                                     Multiple condition (pose&depth)"boy"   "astronaut"
+fusion model. This learning objective is directly used in
+finetuning diffusion models with ControlNet.                     Figure 6: Composition of multiple conditions. We present              50C%ontrolNetct                                                                                                                                6
+                                                                                                                                       "10K4"
+   In the training process, we randomly replace 50% text         the application to use depth and pose simultaneously.
+prompts ct with empty strings. This approach increases                                                                                  3.4.
+ControlNet's ability to directly recognize semantics in the      Classifier-free guidance resolution weighting. Stable Dif-                                                                                                                                                          prd, C5CucFFcGGc,ccfg5Cbp FrGd= [2u9c]+ ccfg(u cc- u cCucco)nctrolNet
+input conditioning images (e.g., edges, poses, depth, etc.) as                                                                         ControlNet
+a replacement for the prompt.                                    fusion depends on a technique called Classifier-Free Guid-
+
+   During the training process, since zero convolutions do       ance (CFG) [29] to generate high-quality images. CFG is
+not add noise to the network, the model should always be         formulated as prd = uc + cfg(c - uc) where prd, uc,
+able to predict high-quality images. We observe that the         c, cfg are the model's final output, unconditional output,
+model does not gradually learn the control conditions but        conditional output, and a user-specified weight respectively.
+abruptly succeeds in following the input conditioning image;
+usually in less than 10K optimization steps. As shown in Fig-    When a conditioning image is added via ControlNet, it can
+ure 4, we call this the "sudden convergence phenomenon".         be added to both uc and c, or only to the c. In challenging
+                                                                 cases, e.g., when no prompts are given, adding it to both uc
+3.4. Inference                                                   and c will completely remove CFG guidance (Figure 5b);
+                                                                 using only c will make the guidance very strong (Figure 5c).
+   We can further control how the extra conditions of Con-       Our solution is to first add the conditioning image to c and
+trolNet affect the denoising diffusion process in several ways.
+Sketch  Normal map           Depth map Canny[11] edge M-LSD[24] line HED[91] edge ADE20k[96] seg. Human pose                          Sketch             Normal map  Depth map Canny[11] edge M-LSD[24] line HED[91] edge ADE20k[96] seg. Human pose
+
+Figure 7: Controlling Stable Diffusion with various conditions without prompts. The top row is input conditions, while all            7StableDiffusion
+other rows are outputs. We use the empty string as input prompts. All models are trained with general-domain data. The model
+has to recognize semantic contents in the input condition images to generate images.
+
+Method                       Result Quality    Condition Fidelity     Map [69], Normal Map [87], M-LSD lines [24], HED soft           Method                       Result Quality  Condition Fidelity                  [[8976]]MOp-LeSnStpaDbolsCee[aD1ni2nf[]f2yu4s]ionH[1E1D]Cont[r9o[1l6N]9e]tsADE20K
+                                                                      edge [91], ADE20K segmentation [96], Openpose [12], and
+PITI [89](sketch)                 1.10 ± 0.05            1.02 ± 0.01  user sketches. See also the supplementary material for ex-      PITI [89](sketch)              1.10 ± 0.05  1.02 ± 0.01                          4.1. 
+Sketch-Guided [88] ( = 1.6)       3.21 ± 0.62            2.31 ± 0.57  amples of each conditioning along with detailed training and
+Sketch-Guided [88] ( = 3.2)       2.52 ± 0.44            3.28 ± 0.72  inference parameters.                                           Sketch-Guided [88] ( = 1.6)    3.21 ± 0.62  2.31 ± 0.57                          1Contro7lNet
+ControlNet-lite                   3.93 ± 0.59            4.09 ± 0.46
+ControlNet                        4.22 ± 0.43            4.28 ± 0.45  4.1. Qualitative Results                                        Sketch-Guided [88] ( = 3.2)    2.52 ± 0.44  3.28 ± 0.72                          4.2. 
+
+                                                                         Figure 1 shows the generated images in several prompt        ControlNet-lite                3.93 ± 0.59  4.09 ± 0.46                          ControlNet-liteControlNets((21))
+                                                                      settings. Figure 7 shows our results with various conditions                                                                                     ""(18)a(34)Contr(o2l)Net4""(4)
+                                                                      without prompts, where the ControlNet robustly interprets       ControlNet                     4.22 ± 0.43  4.28 ± 0.45
+                                                                      content semantics in diverse input conditioning images.         1AU1R5
+Table 1: Average User Ranking (AUR) of result quality and
+condition fidelity. We report the user preference ranking (1          4.2. Ablative Study
+to 5 indicates worst to best) of different methods.
+                                                                         We study alternative structures of ControlNets by (1)
+then multiply a weight wi to each connection between Stable           replacing the zero convolutions with standard convolution       iStth ableDiwffiCu= sFiGo6n4/hCioCnFtGroh lN1e= t8,h 2=16w ,... i 5d,ch13= 6h4i
+Diffusion and ControlNet according to the resolution of each          layers initialized with Gaussian weights, and (2) replacing     CStaanbnleyDiffCusoinotnrolNetCon6troSlNtaebtleDiffusion
+block wi = 64/hi, where hi is the size of ith block, e.g.,            each block's trainable copy with one single convolution layer,
+h1 = 8, h2 = 16, ..., h13 = 64. By reducing the CFG guid-             which we call ControlNet-lite. See also the supplementary       4. 
+ance strength , we can achieve the result shown in Figure 5d,         material for the full details of these ablative structures.
+and we call this CFG Resolution Weighting.
+                                                                         We present 4 prompt settings to test with possible be-
+Composing multiple ControlNets. To apply multiple con-                haviors of real-world users: (1) no prompt; (2) insufficient
+ditioning images (e.g., Canny edges, and pose) to a single            prompts that do not fully cover objects in conditioning im-
+instance of Stable Diffusion, we can directly add the outputs         ages, e.g., the default prompt of this paper "a high-quality,
+of the corresponding ControlNets to the Stable Diffusion              detailed, and professional image"; (3) conflicting prompts
+model (Figure 6). No extra weighting or linear interpolation          that change the semantics of conditioning images; (4) perfect
+is necessary for such composition.                                    prompts that describe necessary content semantics, e.g., "a
+                                                                      nice house". Figure 8a shows that ControlNet succeeds in
+4. Experiments
+
+   We implement ControlNets with Stable Diffusion to
+test various conditions, including Canny Edge [11], Depth
+(a)       condition                No prompt         Insufficient prompt               Conflicting prompt         Perfect prompt           (a)       condition                No prompt         Insufficient prompt                       Conflicting prompt         Perfect prompt
+   input  zero conv                                (w/o mentioning "house")                "delicious cake"     "a house, high-quality,       input  zero conv                                (w/o mentioning "house")                        "delicious cake"     "a house, high-quality,
+                                                                                                             extremely detailed, 4K, HQ"                                                                                                                        extremely detailed, 4K, HQ"
+              +                               "high-quality and detailed masterpiece"                                                                    +                               "high-quality and detailed masterpiece"
+
+  origin     copy                                                                                                                            origin     copy
+     +    zero conv                                                                                                                             +    zero conv
+
+  output  (proposed)                                                                                                                         output  (proposed)
+(b)       condition                                                                                                                        (b)       condition
+
+   input     conv                                                                                                                             input     conv
+               +                                                                                                                                          +
+
+  origin        copy                                                                                                                         origin        copy
+                conv                                                                                                                                       conv
+     +    (w/o zero conv)                                                                                                                       +    (w/o zero conv)
+  output                                                                                                                                     output
+(c)          condition                                                                                                                     (c)          condition
+   input                                                                                                                                      input
+
+origin             conv                                                                                                                    origin    conv
+   +
+          (initialize lightweight                                                                                                          +
+output    layers from scratch)
+                                                                                                                                           output    (initialize lightweight
+                                                                                                                                                     layers from scratch)
+                                                                                                                                           8512×512"conv"6
+Figure 8: Ablative study of different architectures on a sketch condition and different prompt settings. For each setting, we
+show a random batch of 6 samples without cherry-picking. Images are at 512 × 512 and best viewed when zoomed in. The
+green "conv" blocks on the left are standard convolution layers initialized with Gaussian weights.
+
+ADE20K (GT) VQGAN [19] LDM [72] PITI [89] ControlNet-lite ControlNet       Method            FID  CLIP-score  CLIP-aes.                     ADE20K (GT) VQGAN [19] LDM [72] PITI [89] ControlNet-lite ControlNet                  Method            FID  CLIP-score  CLIP-aes. 
+  0.58 ± 0.10 0.21 ± 0.15 0.31 ± 0.09 0.26 ± 0.16 0.32 ± 0.12 0.35 ± 0.14                                                                     0.58 ± 0.10 0.21 ± 0.15 0.31 ± 0.09 0.26 ± 0.16 0.32 ± 0.12 0.35 ± 0.14
+                                                                           Stable Diffusion  6.09            0.26  6.32                                                                                                           Stable Diffusion  6.09        0.26  6.32
+Table 2: Evaluation of semantic segmentation label recon-                                                                                  2ADE20KIoU 
+struction (ADE20K) with Intersection over Union (IoU ).                    VQGAN [19](seg.)* 26.28           0.17  5.14                                                                                                           VQGAN [19](seg.)* 26.28       0.17  5.14
+                                                                                                                                           ControlNeCt-olintetrolCNoent-tlriotelNet8c8b
+all 4 settings. The lightweight ControlNet-lite (Figure 8c) is             LDM [72](seg.)*   25.35           0.18  5.15                                                                                                           LDM [72](seg.)*   25.35       0.18  5.15
+not strong enough to interpret the conditioning images and                                                                                 4.3. 
+fails in the insufficient and no prompt conditions. When zero              PITI [89](seg.)   19.74           0.20  5.77                                                                                                           PITI [89](seg.)   19.74       0.20  5.77
+convolutions are replaced, the performance of ControlNet                                                                                   C(oAn=tHr1o3R0l.0N2)e"StGDS"GD[8[882]80]125"Co1(n t1r20= o500lNP1eI.5T6t-)Ili"[t8e91]
+drops to about the same as ControlNet-lite, indicating that                ControlNet-lite   17.92           0.26  6.30                                                                                                           ControlNet-lite   17.92       0.26  6.30
+the pretrained backbone of the trainable copy is destroyed
+during finetuning (Figure 8b).                                             ControlNet        15.27           0.26  6.31                                                                                                           -3ControlNetSCtaLbIlPe15D.2i7ffusio0.n26FID6.31CLIP"*"
+
+4.3. Quantitative Evaluation                                               Table 3: Evaluation for image generation conditioned by
+                                                                           semantic segmentation. We report FID, CLIP text-image
+User study. We sample 20 unseen hand-drawn sketches,                       score, and CLIP aesthetic scores for our method and other
+and then assign each sketch to 5 methods: PITI [89]'s sketch               baselines. We also report the performance of Stable Diffu-
+model, Sketch-Guided Diffusion (SGD) [88] with default                     sion without segmentation conditions. Methods marked with
+edge-guidance scale ( = 1.6), SGD [88] with relatively                     "*" are trained from scratch.
+high edge-guidance scale ( = 3.2), the aforementioned
+ControlNet-lite, and ControlNet. We invited 12 users to rank               scale NVIDIA A100 cluster, thousands of GPU hours, and                                                                                                 S1[30t5a10b]2l0e0D2i0fOSN0fuDnVsFeiIVIo-DDn2I1VA22AN1V0S0IDDvIC2A-oD0Rn.2Tt5rI8XAo0lAD.N3S5CD0EeD2o9t2Ev± n0022tGTKr0-0oiDPK.l1UN2[75Ie9OtI6no][eU8F3o2]r0mer
+these 20 groups of 5 results individually in terms of "the                 more than 12M training images. We train a ControlNet for
+quality of displayed images" and "the fidelity to the sketch".             the SD V2 with the same depth conditioning but only use
+In this way, we obtain 100 rankings for result quality and 100             200k training samples, one single NVIDIA RTX 3090Ti, and
+for condition fidelity. We use the Average Human Ranking                   5 days of training. We use 100 images generated by each
+(AHR) as a preference metric where users rank each result                  SDv2-D2I and ControlNet to teach 12 users to distinguish
+on a scale of 1 to 5 (lower is worse). The average rankings                the two methods. Afterwards, we generate 200 images and
+are shown in Table 1.                                                      ask the users to tell which model generated each image. The
+                                                                           average precision of the users is 0.52 ± 0.17, indicating that
+Comparison to industrial models. Stable Diffusion V2                       the two method yields almost indistinguishable results.
+Depth-to-Image (SDv2-D2I) [83] is trained with a large-
+                                                                           Condition reconstruction and FID score. We use the test
+                                                                           set of ADE20K [96] to evaluate the conditioning fidelity.
+                                                                           The state-of-the-art segmentation method OneFormer [35]
+                                                                           achieves an Intersection-over-Union (IoU) with 0.58 on the
+                                                                           ground-truth set. We use different methods to generate
+                                                                           images with ADE20K segmentations and then apply One-
+Input (sketch)   PITI          Ours (w/o prompts)                                                                                   Input (sketch)   PITI          Ours (w/o prompts)
+
+          wall                                                                                                                                wall
+
+                                                                  "Lion"   1k images  50k images  3m images                                                                                                                                            1k images  50k images
+                                                                                                                                                                                                                                                              "Lion"               3m images
+
+     dog                                                          Figure 10: The influence of different training dataset sizes.          dog                                                                                                            10
+                                                                  See also the supplementary material for extended examples.
+cup       paper                                                                                                                     cup       paper
+
+Input (seg.)     PITI          Ours (default) "golden retriever"                                                                    Input (seg.)     PITI          Ours (default) "golden retriever"
+
+                                                                  Input    "a high-quality and extremely detailed image"                                                                                                                               1I1nput"ahigh-quality and extremely detailedimage" 
+
+Input (sketch) Sketch-Guided   Ours ("electric fan")              Figure 11: Interpreting contents. If the input is ambiguous       Input (sketch) Sketch-Guided   Ours ("electric fan")
+                                                                  and the user does not mention object contents in prompts,
+                                                                  the results look like the model tries to interpret input shapes.
+
+Input (canny)    Taming Tran.  Ours (default)  "white helmet                                                                        Input (canny)    Taming Tran.  Ours (default)  "white helmet
+                                                  on table"                                                                                                                           on table"
+                                                                                                                                      9
+                                                                           SD 1.5                                                                                                                                                                      SD 1.5     Comic Diffusion  Protogen 3.4
+Figure 9: Comparison to previous methods.We present the           "house"             Comic Diffusion Protogen 3.4                                                                 PITI                                                                       "house"
+                                                                                                                                      [89] Sketch-Guided Diffusion [88] Taming
+qualitative comparisons to PITI [89], Sketch-Guided Diffu-                                                                                                                                                                                                12
+                                                                                                                                                                                                                                                        [16, 61]
+                                                                  Figure 12: Transfer pretrained ControlNets to community            Transformers [19]                                                                                                 ControlNets
+                                                                  models [16, 61] without training the neural networks again.
+sion [88], and Taming Transformers [19].
+
+Former to detect the segmentations again to compute the           the model to generate a recognizable lion. The learning is        51-2× 5C12LIPF[r6e6ch]etCInLcIePption[7F9I3]D2[28]                                                                 
+reconstructed IoUs (Table 2). Besides, we use Frechet Incep-      scalable when more data is provided.
+tion Distance (FID) [28] to measure the distribution distance                                                                       4.4.                                                                                                               Net11Control-
+over randomly generated 512×512 image sets using differ-          Capability to interpret contents. We showcase Control-             D[8i8ff]u9PsiIToTanIm+inCPgoITTnIrtra[on8lsO9Nf]operetmnSAekrIestGc[1hL9-IG]DuEid[e5d7C]DoSnifttfaruobslliNeoent  ComiScDDiffusion[61]PCroo-ntotrgoelNne3t.s4[16]12
+ent segmentation-conditioned methods, as well as text-image       Net's capability to capture the semantics from input condi-
+CLIP scores [66] and CLIP aesthetic score [79] in Table 3.        tioning images in Figure 11.                                      4.5.
+See also the supplementary material for detailed settings.
+                                                                  Transferring to community models. Since ControlNets do            ControlNet101k 
+4.4. Comparison to Previous Methods                               not change the network topology of pretrained SD models,
+                                                                  it can be directly applied to various models in the stable
+   Figure 9 presents a visual comparison of baselines and our     diffusion community, such as Comic Diffusion [61] and Pro-
+method (Stable Diffusion + ControlNet). Specifically, we          togen 3.4 [16], in Figure 12.
+show the results of PITI [89], Sketch-Guided Diffusion [88],
+and Taming Transformers [19]. (Note that the backbone of          5. Conclusion                                                                                                                                                                        5. 
+PITI is OpenAI GLIDE [57] that have different visual quality
+and performance.) We observe that ControlNet can robustly            ControlNet is a neural network structure that learns con-                                                                                                                         ControlNetS"tableD"iffusionControlNet
+handle diverse conditioning images and achieves sharp and         ditional control for large pretrained text-to-image diffusion
+clean results.                                                    models. It reuses the large-scale pretrained layers of source
+                                                                  models to build a deep and strong encoder to learn specific
+4.5. Discussion                                                   conditions. The original model and trainable copy are con-
+                                                                  nected via "zero convolution" layers that eliminate harmful
+Influence of training dataset sizes. We demonstrate the           noise during training. Extensive experiments verify that Con-
+robustness of the ControlNet training in Figure 10. The           trolNet can effectively control Stable Diffusion with single
+training does not collapse with limited 1k images, and allows     or multiple conditions, with or without prompts. Results on
+                                                                  diverse conditioning datasets show that the ControlNet struc-
+ture is likely to be applicable to a wider range of conditions,            tion using part affinity fields. IEEE Transactions on Pattern   ControlNet                                                                  tion using part affinity fields. IEEE Transactions on Pattern
+and facilitate relevant applications.                                      Analysis and Machine Intelligence, 2019. 6                                                                                                  Analysis and Machine Intelligence, 2019. 6
+                                                                                                                                           
+Acknowledgment                                                       [13] Hanting Chen, Yunhe Wang, Tianyu Guo, Chang Xu, Yiping                                                                                 [13] Hanting Chen, Yunhe Wang, Tianyu Guo, Chang Xu, Yiping
+                                                                           Deng, Zhenhua Liu, Siwei Ma, Chunjing Xu, Chao Xu, and                                                                                      Deng, Zhenhua Liu, Siwei Ma, Chunjing Xu, Chao Xu, and
+   This work was partially supported by the Stanford In-                   Wen Gao. Pre-trained image processing transformer. In Pro-                                                                                  Wen Gao. Pre-trained image processing transformer. In Pro-
+stitute for Human-Centered AI and the Brown Institute for                  ceedings of the IEEE/CVF Conference on Computer Vision          References                                                                  ceedings of the IEEE/CVF Conference on Computer Vision
+Media Innovation.                                                          and Pattern Recognition, pages 12299­12310, 2021. 3                                                                                         and Pattern Recognition, pages 12299­12310, 2021. 3
+                                                                                                                                             [1] Sadia Afrin. Weight initialization in neural network, inspired
+References                                                           [14] Zhe Chen, Yuchen Duan, Wenhai Wang, Junjun He, Tong                     by andrew ng, https://medium.com/@safrin1128/weight-           [14] Zhe Chen, Yuchen Duan, Wenhai Wang, Junjun He, Tong
+                                                                           Lu, Jifeng Dai, and Yu Qiao. Vision transformer adapter                initialization-in-neural-network-inspired-by-andrew-ng-              Lu, Jifeng Dai, and Yu Qiao. Vision transformer adapter
+ [1] Sadia Afrin. Weight initialization in neural network, inspired        for dense predictions. International Conference on Learning            e0066dc4a566, 2020. 3                                                for dense predictions. International Conference on Learning
+      by andrew ng, https://medium.com/@safrin1128/weight-                 Representations, 2023. 2                                                                                                                    Representations, 2023. 2
+      initialization-in-neural-network-inspired-by-andrew-ng-                                                                                [2] Armen Aghajanyan, Sonal Gupta, and Luke Zettlemoyer. In-
+      e0066dc4a566, 2020. 3                                          [15] Yunjey Choi, Minje Choi, Munyoung Kim, Jung-Woo Ha,                     trinsic dimensionality explains the effectiveness of language  [15] Yunjey Choi, Minje Choi, Munyoung Kim, Jung-Woo Ha,
+                                                                           Sunghun Kim, and Jaegul Choo. Stargan: Unified genera-                 model fine-tuning. In Proceedings of the 59th Annual Meeting         Sunghun Kim, and Jaegul Choo. Stargan: Unified genera-
+ [2] Armen Aghajanyan, Sonal Gupta, and Luke Zettlemoyer. In-              tive adversarial networks for multi-domain image-to-image              of the Association for Computational Linguistics and the 11th        tive adversarial networks for multi-domain image-to-image
+      trinsic dimensionality explains the effectiveness of language        translation. In Proceedings of the IEEE/CVF Conference on              International Joint Conference on Natural Language Process-          translation. In Proceedings of the IEEE/CVF Conference on
+      model fine-tuning. In Proceedings of the 59th Annual Meeting         Computer Vision and Pattern Recognition, pages 8789­8797,              ing, pages 7319­7328, Online, Aug. 2021. Association for             Computer Vision and Pattern Recognition, pages 8789­8797,
+      of the Association for Computational Linguistics and the 11th        2018. 3                                                                Computational Linguistics. 3                                         2018. 3
+      International Joint Conference on Natural Language Process-
+      ing, pages 7319­7328, Online, Aug. 2021. Association for       [16] darkstorm2150. Protogen x3.4 (photorealism) offi-                  [3] Yuval Alaluf, Or Patashnik, and Daniel Cohen-Or. Only           [16] darkstorm2150. Protogen x3.4 (photorealism) offi-
+      Computational Linguistics. 3                                         cial release, https://civitai.com/models/3666/protogen-x34-            a matter of style: Age transformation using a style-based            cial release, https://civitai.com/models/3666/protogen-x34-
+                                                                           photorealism-official-release, 2022. 8                                 regression model. ACM Transactions on Graphics (TOG),                photorealism-official-release, 2022. 8
+ [3] Yuval Alaluf, Or Patashnik, and Daniel Cohen-Or. Only                                                                                        40(4), 2021. 3
+      a matter of style: Age transformation using a style-based      [17] Prafulla Dhariwal and Alexander Nichol. Diffusion models                                                                               [17] Prafulla Dhariwal and Alexander Nichol. Diffusion models
+      regression model. ACM Transactions on Graphics (TOG),                beat gans on image synthesis. Advances in Neural Information      [4] Yuval Alaluf, Omer Tov, Ron Mokady, Rinon Gal, and Amit               beat gans on image synthesis. Advances in Neural Information
+      40(4), 2021. 3                                                       Processing Systems, 34:8780­8794, 2021. 3                              Bermano. Hyperstyle: Stylegan inversion with hypernetworks           Processing Systems, 34:8780­8794, 2021. 3
+                                                                                                                                                  for real image editing. In Proceedings of the IEEE/CVF
+ [4] Yuval Alaluf, Omer Tov, Ron Mokady, Rinon Gal, and Amit         [18] Tan M. Dinh, Anh Tuan Tran, Rang Nguyen, and Binh-Son                   Conference on Computer Vision and Pattern Recognition,         [18] Tan M. Dinh, Anh Tuan Tran, Rang Nguyen, and Binh-Son
+      Bermano. Hyperstyle: Stylegan inversion with hypernetworks           Hua. Hyperinverter: Improving stylegan inversion via hy-               pages 18511­18521, 2022. 2                                           Hua. Hyperinverter: Improving stylegan inversion via hy-
+      for real image editing. In Proceedings of the IEEE/CVF               pernetwork. In Proceedings of the IEEE/CVF Conference                                                                                       pernetwork. In Proceedings of the IEEE/CVF Conference
+      Conference on Computer Vision and Pattern Recognition,               on Computer Vision and Pattern Recognition, pages 11389­          [5] Alembics. Disco diffusion, https://github.com/alembics/disco-         on Computer Vision and Pattern Recognition, pages 11389­
+      pages 18511­18521, 2022. 2                                           11398, 2022. 2                                                         diffusion, 2022. 3                                                   11398, 2022. 2
+
+ [5] Alembics. Disco diffusion, https://github.com/alembics/disco-   [19] Patrick Esser, Robin Rombach, and Bjorn Ommer. Taming              [6] Omri Avrahami, Thomas Hayes, Oran Gafni, Sonal Gupta,           [19] Patrick Esser, Robin Rombach, and Bjorn Ommer. Taming
+      diffusion, 2022. 3                                                   transformers for high-resolution image synthesis. In Proceed-          Yaniv Taigman, Devi Parikh, Dani Lischinski, Ohad Fried,             transformers for high-resolution image synthesis. In Proceed-
+                                                                           ings of the IEEE/CVF Conference on Computer Vision and                 and Xi Yin. Spatext: Spatio-textual representation for con-          ings of the IEEE/CVF Conference on Computer Vision and
+ [6] Omri Avrahami, Thomas Hayes, Oran Gafni, Sonal Gupta,                 Pattern Recognition, pages 12873­12883, 2021. 3, 5, 7, 8               trollable image generation. arXiv preprint arXiv:2211.14305,         Pattern Recognition, pages 12873­12883, 2021. 3, 5, 7, 8
+      Yaniv Taigman, Devi Parikh, Dani Lischinski, Ohad Fried,                                                                                    2022. 2, 3
+      and Xi Yin. Spatext: Spatio-textual representation for con-    [20] Oran Gafni, Adam Polyak, Oron Ashual, Shelly Sheynin,                                                                                  [20] Oran Gafni, Adam Polyak, Oron Ashual, Shelly Sheynin,
+      trollable image generation. arXiv preprint arXiv:2211.14305,         Devi Parikh, and Yaniv Taigman. Make-a-scene: Scene-              [7] Omri Avrahami, Dani Lischinski, and Ohad Fried. Blended               Devi Parikh, and Yaniv Taigman. Make-a-scene: Scene-
+      2022. 2, 3                                                           based text-to-image generation with human priors. In Euro-             diffusion for text-driven editing of natural images. In Pro-         based text-to-image generation with human priors. In Euro-
+                                                                           pean Conference on Computer Vision (ECCV), pages 89­106.               ceedings of the IEEE/CVF Conference on Computer Vision               pean Conference on Computer Vision (ECCV), pages 89­106.
+ [7] Omri Avrahami, Dani Lischinski, and Ohad Fried. Blended               Springer, 2022. 2, 3                                                   and Pattern Recognition, pages 18208­18218, 2022. 3                  Springer, 2022. 2, 3
+      diffusion for text-driven editing of natural images. In Pro-
+      ceedings of the IEEE/CVF Conference on Computer Vision         [21] Rinon Gal, Yuval Alaluf, Yuval Atzmon, Or Patashnik,               [8] Omer Bar-Tal, Lior Yariv, Yaron Lipman, and Tali Dekel.         [21] Rinon Gal, Yuval Alaluf, Yuval Atzmon, Or Patashnik,
+      and Pattern Recognition, pages 18208­18218, 2022. 3                  Amit H Bermano, Gal Chechik, and Daniel Cohen-Or. An                   Multidiffusion: Fusing diffusion paths for controlled image          Amit H Bermano, Gal Chechik, and Daniel Cohen-Or. An
+                                                                           image is worth one word: Personalizing text-to-image genera-           generation. arXiv preprint arXiv:2302.08113, 2023. 3                 image is worth one word: Personalizing text-to-image genera-
+ [8] Omer Bar-Tal, Lior Yariv, Yaron Lipman, and Tali Dekel.               tion using textual inversion. arXiv preprint arXiv:2208.01618,                                                                              tion using textual inversion. arXiv preprint arXiv:2208.01618,
+      Multidiffusion: Fusing diffusion paths for controlled image          2022. 2, 3                                                        [9] Dina Bashkirova, Jose Lezama, Kihyuk Sohn, Kate Saenko,               2022. 2, 3
+      generation. arXiv preprint arXiv:2302.08113, 2023. 3                                                                                        and Irfan Essa. Masksketch: Unpaired structure-guided
+                                                                     [22] Rinon Gal, Or Patashnik, Haggai Maron, Amit H Bermano,                  masked image generation. arXiv preprint arXiv:2302.05496,      [22] Rinon Gal, Or Patashnik, Haggai Maron, Amit H Bermano,
+ [9] Dina Bashkirova, Jose Lezama, Kihyuk Sohn, Kate Saenko,               Gal Chechik, and Daniel Cohen-Or. Stylegan-nada: Clip-                 2023. 3                                                              Gal Chechik, and Daniel Cohen-Or. Stylegan-nada: Clip-
+      and Irfan Essa. Masksketch: Unpaired structure-guided                guided domain adaptation of image generators. ACM Trans-                                                                                    guided domain adaptation of image generators. ACM Trans-
+      masked image generation. arXiv preprint arXiv:2302.05496,            actions on Graphics (TOG), 41(4):1­13, 2022. 3                  [10] Tim Brooks, Aleksander Holynski, and Alexei A Efros. In-               actions on Graphics (TOG), 41(4):1­13, 2022. 3
+      2023. 3                                                                                                                                     structpix2pix: Learning to follow image editing instructions.
+                                                                     [23] Peng Gao, Shijie Geng, Renrui Zhang, Teli Ma, Rongyao                   arXiv preprint arXiv:2211.09800, 2022. 2, 3                    [23] Peng Gao, Shijie Geng, Renrui Zhang, Teli Ma, Rongyao
+[10] Tim Brooks, Aleksander Holynski, and Alexei A Efros. In-              Fang, Yongfeng Zhang, Hongsheng Li, and Yu Qiao. Clip-                                                                                      Fang, Yongfeng Zhang, Hongsheng Li, and Yu Qiao. Clip-
+      structpix2pix: Learning to follow image editing instructions.        adapter: Better vision-language models with feature adapters.   [11] John Canny. A computational approach to edge detection.                adapter: Better vision-language models with feature adapters.
+      arXiv preprint arXiv:2211.09800, 2022. 2, 3                          arXiv preprint arXiv:2110.04544, 2021. 2                               IEEE Transactions on Pattern Analysis and Machine Intelli-           arXiv preprint arXiv:2110.04544, 2021. 2
+                                                                                                                                                  gence, (6):679­698, 1986. 6
+[11] John Canny. A computational approach to edge detection.         [24] Geonmo Gu, Byungsoo Ko, SeoungHyun Go, Sung-Hyun                                                                                       [24] Geonmo Gu, Byungsoo Ko, SeoungHyun Go, Sung-Hyun
+      IEEE Transactions on Pattern Analysis and Machine Intelli-           Lee, Jingeun Lee, and Minchul Shin. Towards light-weight        [12] Z. Cao, G. Hidalgo Martinez, T. Simon, S. Wei, and Y. A.               Lee, Jingeun Lee, and Minchul Shin. Towards light-weight
+      gence, (6):679­698, 1986. 6                                          and real-time line segment detection. In Proceedings of the            Sheikh. Openpose: Realtime multi-person 2d pose estima-              and real-time line segment detection. In Proceedings of the
+                                                                           AAAI Conference on Artificial Intelligence, 2022. 6                                                                                         AAAI Conference on Artificial Intelligence, 2022. 6
+[12] Z. Cao, G. Hidalgo Martinez, T. Simon, S. Wei, and Y. A.
+      Sheikh. Openpose: Realtime multi-person 2d pose estima-        [25] David Ha, Andrew M. Dai, and Quoc V. Le. Hypernetworks.                                                                                [25] David Ha, Andrew M. Dai, and Quoc V. Le. Hypernetworks.
+                                                                           In International Conference on Learning Representations,                                                                                    In International Conference on Learning Representations,
+                                                                           2017. 2                                                                                                                                     2017. 2
+[26] Heathen. Hypernetwork style training, a tiny guide, stable-     [41] Gwanghyun Kim, Taesung Kwon, and Jong Chul Ye. Dif-                [26] Heathen. Hypernetwork style training, a tiny guide, stable-     [41] Gwanghyun Kim, Taesung Kwon, and Jong Chul Ye. Dif-
+      diffusion-webui, https://github.com/automatic1111/stable-            fusionclip: Text-guided diffusion models for robust image               diffusion-webui, https://github.com/automatic1111/stable-            fusionclip: Text-guided diffusion models for robust image
+      diffusion-webui/discussions/2670, 2022. 2                            manipulation. In Proceedings of the IEEE/CVF Conference                 diffusion-webui/discussions/2670, 2022. 2                            manipulation. In Proceedings of the IEEE/CVF Conference
+                                                                           on Computer Vision and Pattern Recognition, pages 2426­                                                                                      on Computer Vision and Pattern Recognition, pages 2426­
+[27] Amir Hertz, Ron Mokady, Jay Tenenbaum, Kfir Aberman,                  2435, 2022. 3                                                     [27] Amir Hertz, Ron Mokady, Jay Tenenbaum, Kfir Aberman,                  2435, 2022. 3
+      Yael Pritch, and Daniel Cohen-Or. Prompt-to-prompt im-                                                                                       Yael Pritch, and Daniel Cohen-Or. Prompt-to-prompt im-
+      age editing with cross attention control. arXiv preprint       [42] Diederik Kingma, Tim Salimans, Ben Poole, and Jonathan Ho.               age editing with cross attention control. arXiv preprint       [42] Diederik Kingma, Tim Salimans, Ben Poole, and Jonathan Ho.
+      arXiv:2208.01626, 2022. 3                                            Variational diffusion models. Advances in Neural Information            arXiv:2208.01626, 2022. 3                                            Variational diffusion models. Advances in Neural Information
+                                                                           Processing Systems, 34:21696­21707, 2021. 3                                                                                                  Processing Systems, 34:21696­21707, 2021. 3
+[28] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bern-                                                                               [28] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bern-
+      hard Nessler, and Sepp Hochreiter. Gans trained by a two       [43] Kurumuz. Novelai improvements on stable diffusion,                       hard Nessler, and Sepp Hochreiter. Gans trained by a two       [43] Kurumuz. Novelai improvements on stable diffusion,
+      time-scale update rule converge to a local nash equilibrium.         https://blog.novelai.net/novelai-improvements-on-stable-                time-scale update rule converge to a local nash equilibrium.         https://blog.novelai.net/novelai-improvements-on-stable-
+      In I. Guyon, U. Von Luxburg, S. Bengio, H. Wallach, R. Fer-          diffusion-e10d38db82ac, 2022. 2                                         In I. Guyon, U. Von Luxburg, S. Bengio, H. Wallach, R. Fer-          diffusion-e10d38db82ac, 2022. 2
+      gus, S. Vishwanathan, and R. Garnett, editors, Advances in                                                                                   gus, S. Vishwanathan, and R. Garnett, editors, Advances in
+      Neural Information Processing Systems, volume 30. Curran       [44] Yann LeCun, Yoshua Bengio, and Geoffrey Hinton. Deep                     Neural Information Processing Systems, volume 30. Curran       [44] Yann LeCun, Yoshua Bengio, and Geoffrey Hinton. Deep
+      Associates, Inc., 2017. 8                                            learning. Nature, 521(7553):436­444, May 2015. 3                        Associates, Inc., 2017. 8                                            learning. Nature, 521(7553):436­444, May 2015. 3
+
+[29] Jonathan Ho and Tim Salimans. Classifier-free diffusion         [45] Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner. Gradient-          [29] Jonathan Ho and Tim Salimans. Classifier-free diffusion         [45] Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner. Gradient-
+      guidance, 2022. 5                                                    based learning applied to document recognition. Proceedings             guidance, 2022. 5                                                    based learning applied to document recognition. Proceedings
+                                                                           of the IEEE, 86(11):2278­2324, 1998. 3                                                                                                       of the IEEE, 86(11):2278­2324, 1998. 3
+[30] Neil Houlsby, Andrei Giurgiu, Stanislaw Jastrzebski, Bruna                                                                              [30] Neil Houlsby, Andrei Giurgiu, Stanislaw Jastrzebski, Bruna
+      Morrone, Quentin De Laroussilhe, Andrea Gesmundo, Mona         [46] Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli                  Morrone, Quentin De Laroussilhe, Andrea Gesmundo, Mona         [46] Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli
+      Attariyan, and Sylvain Gelly. Parameter-efficient transfer           Laine, Tero Karras, Miika Aittala, and Timo Aila.                       Attariyan, and Sylvain Gelly. Parameter-efficient transfer           Laine, Tero Karras, Miika Aittala, and Timo Aila.
+      learning for nlp. In International Conference on Machine             Noise2noise: Learning image restoration without clean data.             learning for nlp. In International Conference on Machine             Noise2noise: Learning image restoration without clean data.
+      Learning, pages 2790­2799, 2019. 2                                   Proceedings of the 35th International Conference on Machine             Learning, pages 2790­2799, 2019. 2                                   Proceedings of the 35th International Conference on Machine
+                                                                           Learning, 2018. 3                                                                                                                            Learning, 2018. 3
+[31] Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu,                                                                             [31] Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu,
+      Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen. Lora:        [47] Chunyuan Li, Heerad Farkhoor, Rosanne Liu, and Jason                     Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen. Lora:        [47] Chunyuan Li, Heerad Farkhoor, Rosanne Liu, and Jason
+      Low-rank adaptation of large language models. arXiv preprint         Yosinski. Measuring the intrinsic dimension of objective                Low-rank adaptation of large language models. arXiv preprint         Yosinski. Measuring the intrinsic dimension of objective
+      arXiv:2106.09685, 2021. 2                                            landscapes. International Conference on Learning Represen-              arXiv:2106.09685, 2021. 2                                            landscapes. International Conference on Learning Represen-
+                                                                           tations, 2018. 3                                                                                                                             tations, 2018. 3
+[32] Lianghua Huang, Di Chen, Yu Liu, Shen Yujun, Deli Zhao,                                                                                 [32] Lianghua Huang, Di Chen, Yu Liu, Shen Yujun, Deli Zhao,
+      and Zhou Jingren. Composer: Creative and controllable          [48] Yuheng Li, Haotian Liu, Qingyang Wu, Fangzhou Mu, Jian-                  and Zhou Jingren. Composer: Creative and controllable          [48] Yuheng Li, Haotian Liu, Qingyang Wu, Fangzhou Mu, Jian-
+      image synthesis with composable conditions. 2023. 3                  wei Yang, Jianfeng Gao, Chunyuan Li, and Yong Jae Lee.                  image synthesis with composable conditions. 2023. 3                  wei Yang, Jianfeng Gao, Chunyuan Li, and Yong Jae Lee.
+                                                                           Gligen: Open-set grounded text-to-image generation. 2023.                                                                                    Gligen: Open-set grounded text-to-image generation. 2023.
+[33] Nisha Huang, Fan Tang, Weiming Dong, Tong-Yee Lee, and                3                                                                 [33] Nisha Huang, Fan Tang, Weiming Dong, Tong-Yee Lee, and                3
+      Changsheng Xu. Region-aware diffusion for zero-shot text-                                                                                    Changsheng Xu. Region-aware diffusion for zero-shot text-
+      driven image editing. arXiv preprint arXiv:2302.11797, 2023.   [49] Yanghao Li, Hanzi Mao, Ross Girshick, and Kaiming He.                    driven image editing. arXiv preprint arXiv:2302.11797, 2023.   [49] Yanghao Li, Hanzi Mao, Ross Girshick, and Kaiming He.
+      3                                                                    Exploring plain vision transformer backbones for object de-             3                                                                    Exploring plain vision transformer backbones for object de-
+                                                                           tection. arXiv preprint arXiv:2203.16527, 2022. 2                                                                                            tection. arXiv preprint arXiv:2203.16527, 2022. 2
+[34] Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei A Efros.                                                                           [34] Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei A Efros.
+      Image-to-image translation with conditional adversarial net-   [50] Yanghao Li, Saining Xie, Xinlei Chen, Piotr Dollar, Kaim-                Image-to-image translation with conditional adversarial net-   [50] Yanghao Li, Saining Xie, Xinlei Chen, Piotr Dollar, Kaim-
+      works. In Proceedings of the IEEE Conference on Computer             ing He, and Ross Girshick. Benchmarking detection                       works. In Proceedings of the IEEE Conference on Computer             ing He, and Ross Girshick. Benchmarking detection
+      Vision and Pattern Recognition, pages 1125­1134, 2017. 1, 3          transfer learning with vision transformers. arXiv preprint              Vision and Pattern Recognition, pages 1125­1134, 2017. 1, 3          transfer learning with vision transformers. arXiv preprint
+                                                                           arXiv:2111.11429, 2021. 2                                                                                                                    arXiv:2111.11429, 2021. 2
+[35] Jitesh Jain, Jiachen Li, MangTik Chiu, Ali Hassani, Nikita                                                                              [35] Jitesh Jain, Jiachen Li, MangTik Chiu, Ali Hassani, Nikita
+      Orlov, and Humphrey Shi. OneFormer: One Transformer to         [51] Arun Mallya, Dillon Davis, and Svetlana Lazebnik. Piggy-                 Orlov, and Humphrey Shi. OneFormer: One Transformer to         [51] Arun Mallya, Dillon Davis, and Svetlana Lazebnik. Piggy-
+      Rule Universal Image Segmentation. 2023. 7                           back: Adapting a single network to multiple tasks by learning           Rule Universal Image Segmentation. 2023. 7                           back: Adapting a single network to multiple tasks by learning
+                                                                           to mask weights. In European Conference on Computer Vi-                                                                                      to mask weights. In European Conference on Computer Vi-
+[36] Tero Karras, Timo Aila, Samuli Laine, and Jaakko Lehtinen.            sion (ECCV), pages 67­82, 2018. 2                                 [36] Tero Karras, Timo Aila, Samuli Laine, and Jaakko Lehtinen.            sion (ECCV), pages 67­82, 2018. 2
+      Progressive growing of gans for improved quality, stability,                                                                                 Progressive growing of gans for improved quality, stability,
+      and variation. International Conference on Learning Repre-     [52] Arun Mallya and Svetlana Lazebnik. Packnet: Adding multi-                and variation. International Conference on Learning Repre-     [52] Arun Mallya and Svetlana Lazebnik. Packnet: Adding multi-
+      sentations, 2018. 3                                                  ple tasks to a single network by iterative pruning. In Proceed-         sentations, 2018. 3                                                  ple tasks to a single network by iterative pruning. In Proceed-
+                                                                           ings of the IEEE/CVF Conference on Computer Vision and                                                                                       ings of the IEEE/CVF Conference on Computer Vision and
+[37] Tero Karras, Samuli Laine, and Timo Aila. A style-based               Pattern Recognition, pages 7765­7773, 2018. 2                     [37] Tero Karras, Samuli Laine, and Timo Aila. A style-based               Pattern Recognition, pages 7765­7773, 2018. 2
+      generator architecture for generative adversarial networks.                                                                                  generator architecture for generative adversarial networks.
+      In Proceedings of the IEEE/CVF Conference on Computer          [53] Chenlin Meng, Yutong He, Yang Song, Jiaming Song, Jiajun                 In Proceedings of the IEEE/CVF Conference on Computer          [53] Chenlin Meng, Yutong He, Yang Song, Jiaming Song, Jiajun
+      Vision and Pattern Recognition, pages 4401­4410, 2019. 3             Wu, Jun-Yan Zhu, and Stefano Ermon. Sdedit: Guided image                Vision and Pattern Recognition, pages 4401­4410, 2019. 3             Wu, Jun-Yan Zhu, and Stefano Ermon. Sdedit: Guided image
+                                                                           synthesis and editing with stochastic differential equations. In                                                                             synthesis and editing with stochastic differential equations. In
+[38] Tero Karras, Samuli Laine, and Timo Aila. A style-based               International Conference on Learning Representations, 2021.       [38] Tero Karras, Samuli Laine, and Timo Aila. A style-based               International Conference on Learning Representations, 2021.
+      generator architecture for generative adversarial networks.          3                                                                       generator architecture for generative adversarial networks.          3
+      IEEE Transactions on Pattern Analysis, 2021. 3                                                                                               IEEE Transactions on Pattern Analysis, 2021. 3
+                                                                     [54] Midjourney. https://www.midjourney.com/, 2023. 1, 3                                                                                     [54] Midjourney. https://www.midjourney.com/, 2023. 1, 3
+[39] Oren Katzir, Vicky Perepelook, Dani Lischinski, and Daniel      [55] Ron Mokady, Omer Tov, Michal Yarom, Oran Lang, Inbar               [39] Oren Katzir, Vicky Perepelook, Dani Lischinski, and Daniel      [55] Ron Mokady, Omer Tov, Michal Yarom, Oran Lang, Inbar
+      Cohen-Or. Multi-level latent space structuring for generative                                                                                Cohen-Or. Multi-level latent space structuring for generative
+      control. arXiv preprint arXiv:2202.05910, 2022. 3                    Mosseri, Tali Dekel, Daniel Cohen-Or, and Michal Irani. Self-           control. arXiv preprint arXiv:2202.05910, 2022. 3                    Mosseri, Tali Dekel, Daniel Cohen-Or, and Michal Irani. Self-
+                                                                           distilled stylegan: Towards generation from internet photos.                                                                                 distilled stylegan: Towards generation from internet photos.
+[40] Bahjat Kawar, Shiran Zada, Oran Lang, Omer Tov, Huiwen                In ACM SIGGRAPH 2022 Conference Proceedings, pages                [40] Bahjat Kawar, Shiran Zada, Oran Lang, Omer Tov, Huiwen                In ACM SIGGRAPH 2022 Conference Proceedings, pages
+      Chang, Tali Dekel, Inbar Mosseri, and Michal Irani. Imagic:          1­9, 2022. 3                                                            Chang, Tali Dekel, Inbar Mosseri, and Michal Irani. Imagic:          1­9, 2022. 3
+      Text-based real image editing with diffusion models. arXiv     [56] Chong Mou, Xintao Wang, Liangbin Xie, Jian Zhang, Zhon-                  Text-based real image editing with diffusion models. arXiv     [56] Chong Mou, Xintao Wang, Liangbin Xie, Jian Zhang, Zhon-
+      preprint arXiv:2210.09276, 2022. 3                                   gang Qi, Ying Shan, and Xiaohu Qie. T2i-adapter: Learning               preprint arXiv:2210.09276, 2022. 3                                   gang Qi, Ying Shan, and Xiaohu Qie. T2i-adapter: Learning
+

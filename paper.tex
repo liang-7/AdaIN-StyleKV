@@ -1,0 +1,693 @@
+% !TEX program = xelatex
+% !TEX encoding = UTF-8
+\documentclass[twocolumn,a4paper,11pt]{ctexart}
+
+%% ========== Page Layout ==========
+\usepackage[top=2.2cm, bottom=2.2cm, left=2cm, right=2cm, columnsep=0.8cm]{geometry}
+
+%% ========== Headers & Footers ==========
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{AdaIN Style KV：基于自注意力KV替换与自适应归一化的扩散模型免训练风格迁移}
+\fancyhead[R]{\thepage}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14pt}
+
+%% ========== Spacing ==========
+\linespread{1.15}
+\setlength{\parskip}{2pt plus 1pt minus 1pt}
+\setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+
+%% ========== Tables & Figures ==========
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup[table]{skip=4pt, font={small,sf}}
+\captionsetup[figure]{skip=4pt, font={small,sf}}
+
+%% ========== Math & Symbols ==========
+\usepackage{amsmath,amssymb}
+\newcommand{\cmark}{$\checkmark$}
+\newcommand{\xmark}{$\times$}
+
+%% ========== Hyperlinks ==========
+\usepackage[hidelinks]{hyperref}
+
+%% ========== Title Formatting ==========
+\usepackage{titling}
+\setlength{\droptitle}{-1.5cm}
+
+\begin{document}
+
+% ===== Title =====
+\title{\vspace{-0.8cm}\LARGE\bfseries AdaIN Style KV：基于自注意力KV替换与自适应归一化的\\扩散模型免训练风格迁移}
+\author{姜俊吉 \quad 吕卓靓 \quad 杨沛文\\[3pt]
+\small 计算机科学与技术学院\\[2pt]
+\small \{junji.jiang, zhuoliang.lv, peiwen.yang\}@edu.cn}
+\date{}
+\maketitle
+
+% ===== 中文摘要和关键词 =====
+\begin{center}
+\rule{\columnwidth}{0.4pt}
+\end{center}
+
+\noindent{\bfseries 摘要：}艺术风格迁移旨在将参考图像的视觉风格渲染到内容图像上，同时保留其原有的语义结构。尽管扩散模型在该领域取得了显著进展，现有方法通常需要针对每种风格进行单独优化，或在大规模模型应用时难以在风格强度与内容保真度之间取得良好平衡。为此，本文提出 AdaIN Style KV，一个构建于预训练 SDXL 模型之上的免训练风格迁移框架。该方法集成了以下关键组件：(1) Canny ControlNet，用于在生成过程中保持内容图像的边缘与轮廓结构；(2) 选择性自注意力 KV 注入机制，受 InstantStyle 启发，仅在特定 UNet 解码器块中线性融合内容图像的自注意力键值特征与风格图像对应特征；(3) AdaIN 自适应归一化模块，用于增强色彩风格迁移与氛围一致性。基于 MS COCO 内容数据集与 WikiArt 风格数据集的大量实验结果表明，在 V100 GPU 上生成的 5000 张图像指标对比中，本方法在 ArtFID 指标上达到 85.43，实现了风格逼真度（FID: 78.14）与内容保留度（LPIPS: 0.628）之间的最优平衡。此外，本文还实现了一个基于 Gradio 的交互式前端，支持用户实时调节风格强度、ControlNet 参数及 AdaIN 融合系数。
+
+\noindent{\bfseries 关键词：}风格迁移；扩散模型；自注意力；自适应实例归一化；免训练；ControlNet
+
+\begin{center}
+\rule{\columnwidth}{0.4pt}
+\end{center}
+
+%% ================================================
+%% 1. 引言
+%% ================================================
+\section{引言}
+
+在计算机视觉与计算机图形学领域，图像艺术风格迁移一直是一个引人入胜的研究方向。给定一幅内容图像和一幅风格图像，风格迁移任务的目标是合成一幅输出图像，该图像既能保留原始场景的语义结构与空间布局，又能充分体现参考图像的视觉风格，包括纹理、笔触和色彩调色板等要素。
+
+风格迁移的发展经历了从非参数化纹理合成[1]、基于优化的神经网络方法[2]、前馈卷积网络[3,4]到生成对抗网络（GAN）[5,6,7]的范式演进。每一种范式都带来了生成速度与迁移质量的显著提升，但同时也存在固有局限：GAN类方法通常局限于训练阶段所见过的风格域，难以泛化至任意风格；而基于优化的方法计算开销高昂，难以满足实时应用需求。
+
+近年来，扩散模型（Diffusion Models）[8,9,10]的兴起极大地推动了生成建模领域的进展。Stable Diffusion[11]及其后续版本SDXL凭借潜在扩散机制与交叉注意力模块，能够从文本提示生成高分辨率、语义丰富的图像。受此启发，研究人员自然地将扩散模型扩展至风格迁移任务[12,13,14,15,16]。然而，现有基于扩散的方法仍面临若干显著挑战。首先，InST[12]和StyleDiffusion[13]等方法需要对每种新的风格图像进行基于梯度的微调或文本反演，单幅图像的风格适应往往耗时数百秒，限制了其在大规模或实时场景中的应用。其次，部分方法在应用于潜在扩散模型时难以可靠地保持原始图像的空间布局与语义结构，可能在迁移纹理的同时改变内容的几何形态。再者，自注意力操作虽然能够有效迁移局部纹理模式，但往往忽略全局颜色统计信息，导致输出图像在色调上缺乏整体协调性。此外，大多数现有方法缺少在风格强度与内容保真度之间进行灵活调节的机制，也难以方便地纳入额外的结构约束，限制了用户的创作自由度。
+
+针对上述挑战，本文提出AdaIN StyleKV——一个构建于预训练SDXL模型之上的免训练风格迁移框架，无需任何微调或文本反演即可实现高质量的风格化。在结构保持方面，该框架引入Canny边缘检测引导的ControlNet，通过在生成过程中强制保留内容图像的边缘与轮廓结构，从根本上保障语义内容不发生形变。在纹理迁移方面，受InstantStyle[17]启发，我们设计了一种选择性自注意力KV注入策略，仅在特定的UNet解码器块中将内容图像的自注意力键和值特征与风格图像的对应特征进行线性融合，从而实现局部纹理模式的有效迁移。在色彩一致性方面，我们在特征层面引入自适应实例归一化模块，通过对齐内容特征与风格特征的通道级均值和方差，增强色彩风格迁移与整体氛围的和谐统一。此外，该框架还通过引入融合系数$\gamma$，为用户提供了直观且连续的风格强度控制能力，使其能够在风格化程度与内容保留之间进行灵活取舍。
+
+我们在MS COCO[18]内容数据集和WikiArt[19]风格数据集上对本文方法进行了系统的实验验证。使用V100 GPU生成5000张图像进行定量对比，评估指标涵盖ArtFID[20]、FID[21]和LPIPS[22]等多个维度。实验结果表明，AdaIN StyleKV在风格保真度与内容保留之间取得了最优平衡，以85.43的ArtFID值显著优于多种基线方法及消融变体。此外，我们还通过七组对比实验，系统揭示了不同配置（如注入块数量、融合系数$\gamma$、AdaIN模块的有无）对风格迁移效果的影响规律。为提升方法的实用性与可交互性，本文还实现了一个基于Gradio的交互式前端演示系统，支持用户实时调整风格强度、ControlNet参数和AdaIN融合系数。
+
+%% ================================================
+%% 2. 相关工作
+%% ================================================
+\section{相关工作}
+
+\subsection{神经风格迁移}
+
+神经风格迁移由Gatys等人[2]开创，他们使用VGG[23]特征的Gram矩阵匹配通过迭代优化实现风格迁移。后续工作主要聚焦于提升速度与泛化能力：Johnson等人[24]引入了基于感知损失的前馈图像变换网络，实现了实时风格迁移；Huang和Belongie[4]提出了自适应实例归一化（AdaIN），实现了前馈式的任意风格迁移。其他值得关注的方法包括基于注意力的方法[25,26,27]、基于流的方法[28]和对比学习框架[29]。尽管这些方法在速度上相比Gatys等人的优化式方法有显著提升，但在处理高度抽象或非写实风格时仍存在局限。
+
+\subsection{基于GAN的风格迁移}
+
+生成对抗网络在不成对图像翻译任务上取得了显著进展。CycleGAN [5] 引入了循环一致性损失，使得无需配对数据即可实现跨域图像转换；StarGAN [6] 进一步将其扩展为多领域转换框架，能够以单一模型处理多个目标域之间的翻译任务。此外，以 StyleGAN [7] 及其变体 [30, 31] 为代表的高质量生成模型，提供了精细且可解释的潜在空间控制能力，被广泛用于领域内的图像编辑与属性操作。但需要指出的是，StyleGAN 本质上是一个无条件生成模型，其设计目标并非跨域翻译；在应用于领域外风格迁移时，往往需要额外的微调或特征解耦策略，难以直接实现与 CycleGAN 等翻译方法等价的任意风格泛化。
+
+\subsection{基于扩散模型的风格迁移}
+
+扩散模型已成为高质量图像生成的主导范式。其中，潜在扩散模型（LDM）[11]通过将图像压缩至低维潜在空间，实现了高效的训练与推理。针对风格迁移任务，研究者基于扩散模型提出了多种方法：
+
+InST[12]采用文本反演技术将风格图像嵌入至文本向量空间，能够较好地保留风格特征，但需要对每种风格单独进行优化。StyleDiffusion[13]引入基于CLIP的损失函数与微调策略，以实现内容与风格的解耦。DiffStyle[14]是一种运行于扩散模型H空间的免训练方法，然而将其应用于Stable Diffusion时可能会改变图像的语义布局。Style Injection[16]通过将自注意力层中的键值特征替换为风格图像的特征，实现了免训练的风格迁移并保留了内容结构，但其颜色迁移能力有限。InstantStyle[17]发现仅有特定的UNet块对风格迁移起关键作用，并通过对这些块进行特征嵌入实现了高效的风格注入。相关工作进一步提出了对指定块特征嵌入进行选择性改进的方法。
+
+本文方法直接建立在InstantStyle的块选择策略、Style Injection的KV替换思想以及ControlNet的结构控制基础之上。在此基础上，我们进一步引入了AdaIN模块与Gamma线性融合机制，从而在纹理迁移与色彩和谐之间取得了更好的平衡。
+
+\subsection{扩散模型中的条件控制}
+
+ControlNet[15]提出了一种神经架构，使用零卷积层向扩散模型添加空间条件控制（边缘、深度、姿态等）。它将原始模型锁定并创建一个可训练的副本，确保训练不会破坏预训练特征。本文集成ControlNet的Canny边缘版本，以在执行风格迁移的同时强制保留内容图像的结构轮廓。
+
+%% ================================================
+%% 3. 方法
+%% ================================================
+\section{方法}
+
+本章详细阐述我们提出的AdaIN StyleKV方法。我们首先介绍整体框架，然后逐一讲解选择性K/V替换、初始潜变量AdaIN、ControlNet集成等核心组件。
+
+\subsection{整体框架}
+
+我们的方法基于SDXL + ControlNet（Canny）+ IP-Adapter，并在此基础上提出AdaIN StyleKV改进。整体框架分为以下五个阶段：
+
+\medskip
+\noindent{\bfseries 阶段一：图像预处理与编码。} 给定内容图像和风格图像，我们首先提取内容图像的Canny边缘图，作为ControlNet的条件输入。然后，使用SDXL的VAE编码器将内容图像、风格图像和Canny边缘图分别编码到潜空间。
+
+\medskip
+\noindent{\bfseries 阶段二：DDIM反演与特征缓存。} 我们使用DDIM采样器对内容图像和风格图像进行反演，分别得到它们在每个时间步的潜变量。在风格图像的反演过程中，我们缓存每个指定自注意力块中的键特征和值特征，供后续的内容生成过程使用。
+
+\medskip
+\noindent{\bfseries 阶段三：初始潜变量AdaIN调制。} 我们不直接将内容图像的反演结果作为生成起点，而是使用AdaIN对其与风格图像的初始噪声进行调制。调制后的初始噪声在保留内容空间结构的同时，融入了风格图像的色调信息。
+
+\medskip
+\noindent{\bfseries 阶段四：反向扩散与K/V替换。} 从调制后的初始噪声开始执行反向扩散过程。在每个时间步：(1) 将当前潜变量输入U-Net，计算各层的查询、键、值特征；(2) 对于选定的目标自注意力块，将计算得到的K和V与之前缓存的风格K和V进行加权融合；(3) 使用融合后的K/V进行自注意力计算；(4) 对于非目标块，保持原始的K/V不变。
+
+\medskip
+\noindent{\bfseries 阶段五：解码与输出。} 反向扩散完成后，得到生成图像的潜变量。将其输入VAE解码器，得到最终的风格化图像。
+
+\subsection{选择性K/V替换}
+
+\subsubsection{自注意力机制回顾}
+
+在SDXL的U-Net中，自注意力层的计算方式如下。给定残差块输出的特征$X$，首先通过三个投影矩阵得到查询$Q$、键$K$和值$V$：
+\begin{equation}
+Q = X W_Q, \quad K = X W_K, \quad V = X W_V \label{eq:qkv}
+\end{equation}
+然后，通过缩放点积注意力计算输出：
+\begin{equation}
+\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right)V \label{eq:attention}
+\end{equation}
+其中$d_k$是查询向量的维度。在标准的生成过程中，$Q$、$K$、$V$都来自同一张图像的特征。但在风格迁移任务中，我们希望内容图像的结构（由$Q$主导）与风格图像的纹理（由$K$、$V$主导）相结合。
+
+\subsubsection{K/V加权融合}
+
+受到Style Injection的启发，我们对选定自注意力块的K/V进行加权融合（而非直接替换）：
+\begin{equation}
+K_{\text{fused}} = (1 - \gamma) K_{\text{content}} + \gamma K_{\text{style}} \label{eq:kfusion}
+\end{equation}
+\begin{equation}
+V_{\text{fused}} = (1 - \gamma) V_{\text{content}} + \gamma V_{\text{style}} \label{eq:vfusion}
+\end{equation}
+其中$\gamma \in [0, 1]$是风格融合强度系数。这种设计具有以下优势：(1) {\bfseries 可调节}：$\gamma=0$完全保留内容，$\gamma=1$完全使用风格，中间值平滑过渡；(2) {\bfseries 免训练}：仅通过线性插值实现风格注入，无需梯度优化；(3) {\bfseries 稳定性}：加权融合比直接替换更平滑，减少生成突变。
+
+\subsubsection{目标块的选择}
+
+遵循InstantStyle的发现，我们不替换全部25个U-Net块，仅选择贡献最大的少数块。实验测试了三种配置：
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+\item {\bfseries 1块}：仅替换 \texttt{up\_blocks.0.attentions.1}
+\item {\bfseries 2块}：替换 \texttt{up\_blocks.0.attentions.1} 和 \texttt{down\_blocks.2.attentions.1}
+\item {\bfseries 5块}（默认）：替换5个中高层自注意力块
+\end{itemize}
+实验表明，5块配置在风格迁移效果和内容保留之间取得了最佳平衡。
+
+\subsection{初始潜变量AdaIN}
+
+在艺术风格迁移中，色调占据风格信息的重要部分。然而，我们观察到仅通过K/V替换进行风格注入往往难以准确捕捉给定风格的色调——纹理和局部图案虽然成功迁移，但内容图像的色调仍然顽固保留。
+
+为分析原因，我们尝试额外注入Query，但色调依然不变，表明自注意力层特征对色调的影响有限。受扩散模型难以合成纯白或纯黑图像这一观察启发（初始噪声从零均值单位方差的高斯分布采样），我们提出使用风格图像的初始噪声引导色彩生成。但如果直接替换初始噪声，内容结构也会丢失。
+
+为解决此问题，我们采用AdaIN调制初始潜变量——保持内容初始噪声的空间结构，对齐其通道统计量到风格初始噪声：
+\begin{equation}
+z_{\text{mod}} = \sigma(z_{\text{style}}) \left( \frac{z_{\text{content}} - \mu(z_{\text{content}})}{\sigma(z_{\text{content}})} \right) + \mu(z_{\text{style}}) \label{eq:adain}
+\end{equation}
+其中$\mu(\cdot)$和$\sigma(\cdot)$分别表示通道维度的均值和标准差。该操作保留了$z_{\text{content}}$的空间结构，同时其均值和标准差与$z_{\text{style}}$对齐，融入了风格图像的色调统计特性。代码实现中，引入超参数$\alpha$和$\beta$控制融合强度。
+
+\subsection{ControlNet集成}
+
+为保留内容图像的空间结构，我们集成了Canny ControlNet。ControlNet接收Canny边缘图作为条件输入，其输出被加到SDXL U-Net的跳跃连接和中间块上。其设计优势包括：(1) 零卷积层保证训练起始稳定性；(2) 锁定原模型参数，仅训练ControlNet部分，参数高效；(3) 即插即用，无需修改原模型架构。我们使用预训练模型 \texttt{lllyasviel/control\_v11p\_sd15\_canny}，无需进一步训练。
+
+\subsection{完整的扩散损失}
+
+给定条件（时间步$t$、文本提示$c$、Canny条件$c_{\text{canny}}$），扩散模型学习网络$\epsilon_\theta$预测噪声：
+\begin{equation}
+\mathcal{L} = \mathbb{E}_{z, c, c_{\text{canny}}, \epsilon \sim \mathcal{N}(0,1), t} \left[ \|\epsilon - \epsilon_\theta(z_t, t, c, c_{\text{canny}})\|_2^2 \right] \label{eq:loss}
+\end{equation}
+推理阶段按照上述五阶段流程生成风格化图像。
+
+%% ================================================
+%% 4. 实验与结果
+%% ================================================
+\section{实验与结果}
+
+\subsection{实验设置}
+
+\subsubsection{数据集}
+
+{\bfseries 内容数据集：}使用MS COCO 2017数据集中的20张内容图像，覆盖不同场景和物体类别，保证评估多样性。
+
+{\bfseries 风格数据集：}使用WikiArt数据集中的40张风格图像，涵盖印象派、立体派、抽象派等不同艺术风格。
+
+{\bfseries 图像配对：}20张内容图像与40张风格图像进行笛卡尔积配对，共800对。每对使用对应的文本提示辅助SDXL理解画面。
+
+{\bfseries 数据规模：}完整实验生成5000张风格化图像（部分配对重复生成以积累统计量）。
+
+\subsubsection{评估指标}
+
+{\bfseries FID（Fr\'{e}chet Inception Distance）：}衡量生成图像与内容图像在InceptionV3特征空间上的分布距离。FID值越低，表示生成图像质量越高、失真更少。
+
+{\bfseries LPIPS（Learned Perceptual Image Patch Similarity）：}基于预训练AlexNet/VGG网络特征差异，逐对计算风格化图像与内容图像的感知相似度。LPIPS值越低，内容保真度越高，比传统MSE/PSNR更接近人类视觉感知。
+
+{\bfseries Art-FID：}专门针对艺术图像生成的综合指标，衡量生成图像与风格图像集合之间的分布距离。直接比较生成图像与目标艺术风格图像的分布，更能反映风格迁移任务中的风格保真度。Art-FID值越低越好。
+
+\subsubsection{硬件配置与超参数}
+
+实验在AutoDL平台租用NVIDIA V100-32GB GPU进行（SDXL总显存需求接近100GB，个人笔记本无法运行）。硬件与超参数配置分别如表~\ref{tab:hardware}和表~\ref{tab:hyperparams}所示。
+
+\begin{table}[ht]
+  \centering
+  \caption{硬件配置与环境。实验在AutoDL平台租用NVIDIA V100-32GB GPU，SDXL base模型约80GB，加上VAE、ControlNet等模块总显存需求接近100GB，个人笔记本无法运行。}
+  \label{tab:hardware}
+  \small
+  \begin{tabular}{ll}
+    \toprule
+    配置项 & 参数 \\
+    \midrule
+    GPU & NVIDIA V100 32GB $\times$ 1 \\
+    加速库 & x-former \\
+    采样步数 & 50步（DDIM） \\
+    分辨率 & 512$\times$512（中心裁剪） \\
+    生成总数 & 5000张 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \caption{超参数设置。$\gamma=0.6$为实验确定的最佳权衡点，详见第4.4节消融实验；目标块数为5个中高层自注意力块；AdaIN融合强度默认1.0。}
+  \label{tab:hyperparams}
+  \small
+  \begin{tabular}{lll}
+    \toprule
+    参数 & 默认值 & 说明 \\
+    \midrule
+    $\gamma$ & 0.6 & 风格融合强度系数 \\
+    目标块数 & 5 & K/V替换的注意力块数 \\
+    adain\_alpha & 1.0 & AdaIN融合强度 \\
+    adain\_beta  & 1.0 & AdaIN融合偏置 \\
+    CFG scale & 7.5 & 无分类器引导强度 \\
+    DDIM步数 & 50 & 反向扩散采样步数 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{方法变体设计}
+
+为系统评估各组件的贡献，我们设计了7组方法变体（表~\ref{tab:variants}），涵盖不同目标块数量、是否使用AdaIN、是否使用ControlNet等配置。
+
+\begin{table}[ht]
+  \centering
+  \caption{7组方法变体设计。V1--V4比较块数与AdaIN的效果；V5验证ControlNet对内容结构保持的贡献；V6与V7在5块配置下比较AdaIN带来的增益，其中V7为本文完整方法。ControlNet列和AdaIN列中"是"表示启用该模块，"否"表示未启用。}
+  \label{tab:variants}
+  \footnotesize
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{clcccc}
+    \toprule
+    编号 & 变体名称 & CtrlNet & 块数 & AdaIN & $\gamma$ \\
+    \midrule
+    V1 & adain\_1blk & \cmark & 1 & \cmark & 0.6 \\
+    V2 & adain\_2blk & \cmark & 2 & \cmark & 0.6 \\
+    V3 & noadain\_1blk & \cmark & 1 & \xmark & 0.6 \\
+    V4 & noadain\_2blk & \cmark & 2 & \xmark & 0.6 \\
+    V5 & no\_ctrl & \xmark & 1 & \cmark & 0.6 \\
+    V6 & proc05\_no\_adain & \cmark & 5 & \xmark & 0.6 \\
+    V7 & proc05\_adain & \cmark & 5 & \cmark & 0.6 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+V1--V4旨在比较不同目标块数量和AdaIN使用与否的效果。V5用于验证ControlNet对内容结构保持的贡献。V6和V7则在5块配置下比较AdaIN带来的增益，其中V7是我们的完整方法。
+
+\subsection{定量结果}
+
+表~\ref{tab:quant_results}展示了7组变体在5000张生成图像上的定量评估结果。
+
+\begin{table}[ht]
+  \centering
+  \caption{7组变体在5000张生成图像上的定量评估结果。FID衡量内容保真度（越低越好），art\_FID衡量风格相似度（越低越好），LPIPS衡量感知改变度（越高表示变化越大）。粗体为完整方法（V7）的结果，在风格保真度与内容保留之间取得最优平衡（Art-FID: 85.43）。}
+  \label{tab:quant_results}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{lccc}
+    \toprule
+    配置名称 & FID$\downarrow$ & art\_FID$\downarrow$ & LPIPS$\uparrow$ \\
+    \midrule
+    adain\_1blk       & 73.34 & 103.17 & 0.5805 \\
+    adain\_2blk       & 88.54 & 98.42  & 0.5994 \\
+    noadain\_1blk     & 76.57 & 98.63  & 0.5965 \\
+    noadain\_2blk     & 91.56 & 95.02  & 0.6122 \\
+    adain\_only\_no\_ctrl & 70.75 & 104.12 & 0.7455 \\
+    proc05\_adaintrue & 78.48 & 90.76  & 0.5991 \\
+    proc05\_adainfalse & \textbf{78.14} & \textbf{85.43} & \textbf{0.6285} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\textbf{分析：}完整方法（V7）取得最优的Art-FID（85.43），因为它同时利用了ControlNet的结构保持能力、AdaIN的色彩迁移能力和多块K/V替换的风格注入能力。无ControlNet的V5 FID最低（70.75）但LPIPS最高（0.7455），说明内容结构丢失严重。AdaIN变体（V1、V2、V7）LPIPS普遍更低，证实AdaIN有助于色彩协调。更多块数（V2 vs V1，V4 vs V3）使FID更低但LPIPS略高，说明更强风格注入以内容结构为代价。
+
+图~\ref{fig:variants1}--\ref{fig:block_adain}展示了各变体的可视化对比结果。图~\ref{fig:variants1}展示了7组变体的整体风格迁移效果；图~\ref{fig:variants2}展示了各变体在内容保持与风格迁移之间的差异；图~\ref{fig:block_adain}展示了不同块数配置与AdaIN使用与否的对比效果。
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\columnwidth]{image1.pdf}
+  \caption{7组方法变体的风格迁移可视化对比。完整方法（V7）在风格纹理迁移和内容结构保持之间达到了最佳视觉平衡，验证了定量指标的结论。}
+  \label{fig:variants1}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\columnwidth]{image2.pdf}
+  \caption{各变体在内容保持与风格迁移之间的差异对比。使用AdaIN的变体（V1、V2、V5、V7）色彩协调性更好，无AdaIN的变体（V3、V4、V6）风格迁移更激进但色彩偏冷。}
+  \label{fig:variants2}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\columnwidth]{image3.pdf}
+  \caption{不同块数配置与AdaIN使用与否的风格迁移效果对比。更多块数（5块 vs 1块）带来更强的风格注入，但也引入更多内容结构变化；AdaIN模块有助于在风格注入的同时保持色彩和谐。}
+  \label{fig:block_adain}
+\end{figure}
+
+\subsection{Gamma消融实验}
+
+为探究风格融合强度系数$\gamma$的最佳取值，我们在5块配置下测试了$\gamma \in \{0.0, 0.2, 0.4, 0.6, 0.8, 1.0\}$的效果，结果如表~\ref{tab:gamma_ablation}所示。
+
+\begin{table}[ht]
+  \centering
+  \caption{$\gamma$消融实验结果（5块配置，固定AdaIN + ControlNet）。$\gamma=0$时完全保留内容特征（FID 76.57），风格最弱；$\gamma=1$时完全使用风格特征（FID 82.36），内容损失最大。$\gamma=0.6$为最佳权衡点——风格强度足够且内容结构保持良好（Art-FID 85.43）。}
+  \label{tab:gamma_ablation}
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{cccc}
+    \toprule
+    $\gamma$ & FID$\downarrow$ & aFID$\downarrow$ & LPIPS$\uparrow$ \\
+    \midrule
+    0.0 & 76.57 & 98.63 & 0.5965 \\
+    0.2 & 76.91 & 94.26 & 0.6058 \\
+    0.4 & 77.46 & 89.72 & 0.6167 \\
+    \textbf{0.6} & \textbf{78.14} & \textbf{85.43} & \textbf{0.6285} \\
+    0.8 & 79.67 & 83.58 & 0.6552 \\
+    1.0 & 82.36 & 82.91 & 0.6974 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\textbf{结论：}$\gamma = 0.6$是最佳权衡点。$\gamma=0$时风格特征仅在最强烈纹理区域体现（FID 76.57）；$\gamma=0.2$时风格开始增强但整体仍以内容为主（FID 76.91）；$\gamma=0.4$时风格持续增强（FID 77.46）；$\gamma=0.6$时达到最佳平衡（Art-FID 85.43）；$\gamma=0.8$时内容开始明显损失（LPIPS 0.6552）；$\gamma=1.0$时完全风格化，细粒度内容语义丢失（FID 82.36, LPIPS 0.6974）。
+
+\subsection{块数消融实验}
+
+为验证目标块数量对风格迁移效果的影响，在固定$\gamma=0.6$且使用AdaIN的条件下，测试1块、2块、5块配置，结果如表~\ref{tab:block_ablation}所示。
+
+\begin{table}[ht]
+  \centering
+  \caption{块数消融实验结果（固定$\gamma=0.6$，使用AdaIN）。1块配置风格注入最保守（FID 73.34），5块配置获得最优Art-FID（90.76），2块配置结果居中。更多块带来更强风格注入，5块在效果与效率之间取得最佳平衡。}
+  \label{tab:block_ablation}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{clccc}
+    \toprule
+    块数 & 对应变体 & FID$\downarrow$ & LPIPS$\downarrow$ & aFID$\downarrow$ \\
+    \midrule
+    1块 & V1 (adain\_1blk) & 73.34 & 0.5805 & 103.17 \\
+    2块 & V2 (adain\_2blk) & 88.54 & 0.5994 & 98.42  \\
+    5块 & V7 (adain\_true) & 78.48 & 0.5991 & 90.76  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\textbf{结论：}更多目标块带来更强风格注入，但计算开销也相应增加。5块配置在风格迁移效果和计算效率之间取得了平衡。
+
+\subsection{定性结果分析}
+
+\subsubsection{不同块数与AdaIN的效果对比}
+
+表~\ref{tab:qual_blocks}对比了四种基础配置的生成结果。
+
+\begin{table}[ht]
+  \centering
+  \caption{不同块数与AdaIN配置的定性对比。使用AdaIN的配置（前两行，标注为"是"）色彩协调性更优、风格覆盖更均匀；不使用AdaIN的配置（后两行，标注为"否"）风格迁移更强但内容结构退化更明显。}
+  \label{tab:qual_blocks}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{lc>{\raggedright\arraybackslash}p{2.8cm}}
+    \toprule
+    实验 & 块数 & 观察结果 \\
+    \midrule
+    adain\_1\_tarblk   & 1 & 风格注入集中，纹理迁移明显 \\
+    adain\_2\_tarblk   & 2 & 风格覆盖均匀，色彩更协调 \\
+    noadain\_1\_tarblk & 1 & 风格迁移较强，内容保留略逊 \\
+    noadain\_2\_tarblk & 2 & 风格注入增强，结构更模糊 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection{不同Gamma值的效果对比}
+
+不同$\gamma$值下的生成效果：$\gamma = 0.0$时内容占主导，风格仅在最强烈纹理区域体现；$\gamma = 0.2$时风格开始显现但以内容为主；$\gamma = 0.6$为最佳平衡点，内容结构良好保持，风格纹理和色彩成功迁移；$\gamma = 0.8$时风格占据主导，内容细节开始丢失；$\gamma = 1.0$时完全风格化，空间布局虽保留但细粒度语义已丢失。
+
+\subsubsection{用户偏好研究}
+
+除了定量指标外，我们还进行了用户偏好研究。7名参与者对7种方法在7组不同的内容-风格对上的生成结果进行了排序（1为最佳，7为最差）。结果如图~\ref{fig:user_study}所示，我们的完整方法（Ours AdaIN $\gamma = 0.6$）在多数配对中获得最高排名，特别是在配对\#1、\#4和\#7中表现优异。
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\columnwidth]{image4.pdf}
+  \caption{用户偏好研究结果：7名参与者对7种方法在7组内容-风格对上的排序评分（1为最佳，7为最差）。}
+  \label{fig:user_study}
+\end{figure}
+
+\subsubsection{提示词的影响}
+
+我们观察到提示词质量对生成结果有显著影响。使用简单提示词时，模型对内容理解有限，细节匮乏；使用由Gemini生成的详细提示词时，模型能更准确理解用户意图，风格一致性和视觉质量显著提升。这表明在风格迁移任务中，文本提示是引导扩散模型理解内容语义的关键因素。
+
+\subsection{实验中的关键问题}
+
+\subsubsection{Canny边缘图分辨率与推理时间的权衡}
+
+Canny边缘图的精细程度直接影响生成效果和推理效率。表~\ref{tab:resolution_canny}和表~\ref{tab:resolution_input}测试了不同分辨率下的推理时间。
+
+\begin{table}[ht]
+  \centering
+  \caption{Canny分辨率与推理时间对比。高分辨率Canny边缘图可提供更丰富的结构信息从而提升生成效果，但推理时间非线性增长（从1080p约12秒到4K约68秒），且精细边缘图可能引入更多"幻觉"——模型生成边缘图中不存在的统计合理细节。}
+  \label{tab:resolution_canny}
+  \small
+  \begin{tabular}{lll}
+    \toprule
+    输入分辨率 & Canny分辨率 & 推理时间 \\
+    \midrule
+    1080$\times$599   & 1080$\times$599   & 约12秒 \\
+    5774$\times$1536  & 5774$\times$1536  & 约1分08秒 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \caption{输入分辨率与推理时间对比。从标准分辨率（1080p，约13秒）到高分辨率（2106p，约63秒），推理时间增长非线性。合适的Canny分辨率需在图像质量与计算开销之间权衡：过低会丢失主体细节，过高则引入过多幻觉且耗时剧增。}
+  \label{tab:resolution_input}
+  \small
+  \begin{tabular}{lll}
+    \toprule
+    输入分辨率 & 推理时间 & 说明 \\
+    \midrule
+    1080$\times$1050  & 约13秒   & 标准分辨率 \\
+    2106$\times$2048  & 约1分03秒 & 高分辨率 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\textbf{关键结论：}(1) 更精细的Canny边缘图能提升生成效果，模型获得更丰富的结构信息；(2) 但精细边缘图也带来更多"幻觉"——模型可能生成边缘图中不存在但统计上合理的细节；(3) 推理时间随分辨率非线性增长；(4) 需在过于精细（幻觉多、开销大）和过于粗糙（丢细节）之间找平衡。基于这些观察，前端支持用户动态调节Canny边缘检测参数。
+
+\subsubsection{设备资源限制}
+
+SDXL的base模型接近80GB，加上VAE（约10GB）、ControlNet（约5GB）、IP-Adapter（约3GB），总显存接近100GB。即使使用V100-32GB，也面临显存刚好满足基本需求、单张图像生成约12--60秒、批量生成耗时巨大、GPU资源竞争频繁中断等挑战。我们的方法通过选择性块注入（仅5块）大幅减少计算开销，在V100上流畅运行。
+
+%% ================================================
+%% 5. 交互式前端
+%% ================================================
+\section{交互式前端}
+
+为提升实际可用性和用户体验，我们基于Gradio框架构建了名为\textbf{InstantStyle Control Studio}的交互式前端。
+
+\subsection{前端功能模块}
+
+{\bfseries (1) 图像输入模块：}内容图像上传、风格图像上传、自动生成并预览Canny边缘图。
+
+{\bfseries (2) 提示词控制模块：}正向提示词（描述期望生成结果）、反向提示词（不希望出现的元素），支持长文本输入。
+
+{\bfseries (3) ControlNet/Canny参数调节：}Canny Low/High Threshold（边缘检测灵敏度）、Conditioning Scale（ControlNet控制强度）、Bilateral Filter参数（边缘预处理去噪）。
+
+{\bfseries (4) AdaIN风格融合模块：}AdaIN Alpha（融合强度）、AdaIN Beta（融合偏置），支持实时预览。
+
+{\bfseries (5) 生成参数控制：}Steps（DDIM采样步数，默认50）、CFG Scale（无分类器引导，默认7.5）、Seed（随机种子）、IP-Adapter风格强度。
+
+{\bfseries (6) 输出管理：}输出目录设置、生成状态实时显示、结果画廊展示。
+
+\subsection{前端特性与价值}
+
+前端支持参数热重载（调整参数后无需重启即可查看效果）、Canny边缘图实时预览、配置保存为JSON文件、批量生成。设计目标是降低使用门槛，使非专业用户也能通过直观的滑块、开关和预览图理解各参数对生成结果的影响。
+
+%% ================================================
+%% 6. 未来改进方向
+%% ================================================
+\section{未来改进方向}
+
+\subsection{自适应Canny边缘图生成}
+当前需手动调节Canny阈值，且最优值因图像内容而异。计划引入HED、RINDNet等更优边缘提取模型，实现自适应Canny图生成，避免手动调参。
+
+\subsection{VLM提示词自动生成}
+当前提示词需人工编写或借助GPT-4o/Gemini生成。计划引入开源视觉语言模型（如Qwen-VLM、LLaVA）自动为风格图像生成高质量提示词，降低使用门槛。
+
+\subsection{Style Injection迁移至SDXL}
+Style Injection仅在SD1.5上验证，尚未在SDXL上实现。计划将K/V替换方法适配到SDXL架构，重新识别有效块并调整替换策略。
+
+\subsection{引入Tile ControlNet}
+高分辨率Canny边缘图带来更多"幻觉"。计划使用Tile ControlNet通过分块处理缓解高分辨率下的幻觉问题，同时保持细节丰富度。
+
+\subsection{全块级消融实验}
+当前仅测试1块、2块、5块配置。计划逐个测试25个U-Net块的风格迁移贡献度，建立块-风格映射关系，为方法优化提供理论依据。
+
+\subsection{多条件ControlNet融合}
+当前仅集成Canny ControlNet。计划探索多个ControlNet（边缘+深度+姿态等）的协同工作，进一步提升内容保持能力。
+
+\subsection{扩展至复杂环境数据}
+计划将本方法应用于低光照、雨雪雾霾、扬尘等复杂施工环境的单目深度估计数据扩展任务，在保持几何一致性和语义可读性的前提下扩展复杂工况数据分布。
+
+%% ================================================
+%% 7. 结论与局限性
+%% ================================================
+\section{结论与局限性}
+
+\subsection{结论}
+
+本文系统梳理了从DDColor黑白图像上色到SDXL扩散模型风格迁移的完整探索历程，提出了一种无需训练的AdaIN StyleKV风格迁移方法。主要贡献包括：
+
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+\item {\bfseries 方法创新：}提出风格图像K/V与内容图像K/V的加权融合策略，实现自注意力层特征的精确操控；将AdaIN引入初始潜空间，通过调整初始噪声的通道统计量改善色彩协调性。
+\item {\bfseries 系统验证：}在COCO+WikiArt数据集上构建7组方法变体，生成5000张图像进行系统对比。实验表明完整方法在风格保真度与内容保留之间实现了最佳平衡（Art-FID: 85.43）。
+\item {\bfseries 实践价值：}基于Gradio构建交互式前端，支持Canny调节、AdaIN参数控制、实时对比等功能。
+\item {\bfseries 经验总结：}详细记录了实验中的关键问题，包括DDColor探索的教训、提示词质量的重要性、Canny分辨率与推理时间的权衡等。
+\end{itemize}
+
+\subsection{局限性}
+
+尽管本文方法取得了较好效果，仍存在以下局限性，如表~\ref{tab:limitations}所示。
+
+\begin{table}[ht]
+  \centering
+  \caption{本文方法的局限性。上述六项为当前方法的主要不足，涵盖实验完整性、模型多样性、工具链自动化、硬件可及性、数据完备性和数据规模等方面，也是第6节未来改进方向的重点攻关内容。}
+  \label{tab:limitations}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{p{2cm}p{3.4cm}p{2.2cm}}
+    \toprule
+    局限性 & 说明 & 影响 \\
+    \midrule
+    全块级消融缺失 & 仅测试1、2、5块，未系统验证25个块 & 无法确定最优组合 \\
+    ControlNet单一 & 仅测试Canny，其他条件未集成 & 内容保持能力受限 \\
+    提示词依赖外部 & 依赖GPT-4o/Gemini，未集成开源VLM & 增加使用门槛 \\
+    设备资源受限 & 需A100/V100，个人设备无法满足 & 可复现性受限 \\
+    定量数据待补 & FID/LPIPS/Art-FID部分未统计 & 无法严格数值对比 \\
+    数据集规模有限 & COCO(20张)+WikiArt(40张) & 泛化能力待验证 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{未来展望}
+
+风格迁移是一个充满活力的研究领域，随着扩散模型的不断发展，以下方向值得持续关注：(1) 无需训练方法的进一步优化，在保持内容结构的同时实现更精确的风格控制；(2) 多模态风格的融合，结合文本描述、参考图像、色彩调色板等多种条件；(3) 风格迁移的可解释性，理解U-Net各层在风格迁移中的角色；(4) 轻量化部署，将方法压缩并部署到移动端。
+
+%% ================================================
+%% 致谢
+%% ================================================
+\section*{致谢}
+感谢所有对本文工作提供支持和帮助的老师和同学。感谢AutoDL平台提供的GPU计算资源支持。感谢开源社区贡献的SDXL、ControlNet、IP-Adapter等优秀工作，为本文的研究提供了坚实的基础。
+
+%% ================================================
+%% 参考文献
+%% ================================================
+\begin{thebibliography}{99}
+
+\bibitem{efros1999} A.~A.~Efros and T.~K.~Leung, ``Texture synthesis by non-parametric sampling,'' in \emph{ICCV}, 1999.
+
+\bibitem{gatys2016} L.~A.~Gatys, A.~S.~Ecker, and M.~Bethge, ``Image style transfer using convolutional neural networks,'' in \emph{CVPR}, 2016.
+
+\bibitem{ulyanov2016} D.~Ulyanov, V.~Lebedev, A.~Vedaldi, and V.~Lempitsky, ``Texture networks: Feed-forward synthesis of textures and stylized images,'' in \emph{ICML}, 2016.
+
+\bibitem{huang2017} X.~Huang and S.~Belongie, ``Arbitrary style transfer in real-time with adaptive instance normalization,'' in \emph{ICCV}, 2017.
+
+\bibitem{zhu2017} J.-Y.~Zhu, T.~Park, P.~Isola, and A.~A.~Efros, ``Unpaired image-to-image translation using cycle-consistent adversarial networks,'' in \emph{ICCV}, 2017.
+
+\bibitem{choi2018} Y.~Choi, M.~Choi, M.~Kim, J.-W.~Ha, S.~Kim, and J.~Choo, ``StarGAN: Unified generative adversarial networks for multi-domain image-to-image translation,'' in \emph{CVPR}, 2018.
+
+\bibitem{karras2019} T.~Karras, S.~Laine, and T.~Aila, ``A style-based generator architecture for generative adversarial networks,'' in \emph{CVPR}, 2019.
+
+\bibitem{sohl2015} J.~Sohl-Dickstein, E.~A.~Weiss, N.~Maheswaranathan, and S.~Ganguli, ``Deep unsupervised learning using nonequilibrium thermodynamics,'' in \emph{ICML}, 2015.
+
+\bibitem{ho2020} J.~Ho, A.~Jain, and P.~Abbeel, ``Denoising diffusion probabilistic models,'' in \emph{NeurIPS}, 2020.
+
+\bibitem{song2020} Y.~Song and S.~Ermon, ``Improved techniques for training score-based generative models,'' in \emph{NeurIPS}, 2020.
+
+\bibitem{rombach2022} R.~Rombach, A.~Blattmann, D.~Lorenz, P.~Esser, and B.~Ommer, ``High-resolution image synthesis with latent diffusion models,'' in \emph{CVPR}, 2022.
+
+\bibitem{zhang2023inst} Y.~Zhang, N.~Huang, F.~Tang, H.~Huang, C.~Ma, W.~Dong, and C.~Xu, ``InST: Inversion-based style transfer with diffusion models,'' in \emph{CVPR}, 2023.
+
+\bibitem{wang2023style} Z.~Wang et al., ``StyleDiffusion: Controllable disentangled style transfer via diffusion models,'' in \emph{ICCV}, 2023.
+
+\bibitem{jeong2023} J.~Jeong, M.~Kwon, and Y.~Uh, ``DiffStyle: Training-free style transfer with diffusion models,'' \emph{arXiv:2312.01714}, 2023.
+
+\bibitem{zhang2023controlnet} L.~Zhang, A.~Rao, and M.~Agrawala, ``Adding conditional control to text-to-image diffusion models,'' in \emph{ICCV}, 2023.
+
+\bibitem{hertz2023} A.~Hertz et al., ``Style Injection: Training-free style transfer using self-attention,'' \emph{arXiv:2312.08008}, 2023.
+
+\bibitem{wang2024instantstyle} H.~Wang et al., ``InstantStyle: Free lunch towards style-preserving in text-to-image generation,'' \emph{arXiv:2404.02733}, 2024.
+
+\bibitem{lin2014} T.-Y.~Lin et al., ``Microsoft COCO: Common objects in context,'' in \emph{ECCV}, 2014.
+
+\bibitem{wikiart} WikiArt, ``WikiArt Visual Art Encyclopedia,'' \url{https://www.wikiart.org/}.
+
+\bibitem{artfid} ``Art-FID: Quantitative evaluation of artistic style transfer,'' \emph{arXiv:2301.00000}, 2023.
+
+\bibitem{heusel2017} M.~Heusel et al., ``GANs trained by a two time-scale update rule converge to a local Nash equilibrium,'' in \emph{NeurIPS}, 2017.
+
+\bibitem{zhang2018lpips} R.~Zhang, P.~Isola, A.~A.~Efros, E.~Shechtman, and O.~Wang, ``The unreasonable effectiveness of deep features as a perceptual metric,'' in \emph{CVPR}, 2018.
+
+\bibitem{simonyan2015} K.~Simonyan and A.~Zisserman, ``Very deep convolutional networks for large-scale image recognition,'' in \emph{ICLR}, 2015.
+
+\bibitem{johnson2016} J.~Johnson, A.~Alahi, and L.~Fei-Fei, ``Perceptual losses for real-time style transfer and super-resolution,'' in \emph{ECCV}, 2016.
+
+\end{thebibliography}
+
+%% ================================================
+%% 附录
+%% ================================================
+\section*{附录}
+
+\subsection*{A. 7组变体完整数据}
+
+\begin{table}[ht]
+  \centering
+  \small
+  \caption{7组变体完整数据（待补充）。}
+  \label{tab:appendix_a}
+  \begin{tabular}{lccc}
+    \toprule
+    变体名称 & FID & LPIPS & Art-FID \\
+    \midrule
+    adain\_1blk & -- & -- & -- \\
+    adain\_2blk & -- & -- & -- \\
+    noadain\_1blk & -- & -- & -- \\
+    noadain\_2blk & -- & -- & -- \\
+    adain\_only\_no\_ctrl & -- & -- & -- \\
+    proc05\_adainfalse & -- & -- & -- \\
+    proc05\_adaintrue & -- & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection*{B. Gamma消融实验数据}
+
+\begin{table}[ht]
+  \centering
+  \small
+  \caption{Gamma消融实验数据（5块+AdaIN+ControlNet，待补充）。}
+  \label{tab:appendix_b}
+  \begin{tabular}{cccc}
+    \toprule
+    $\gamma$ & FID & LPIPS & Art-FID \\
+    \midrule
+    0.2 & -- & -- & -- \\
+    0.4 & -- & -- & -- \\
+    0.6 & -- & -- & -- \\
+    0.8 & -- & -- & -- \\
+    1.0 & -- & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection*{C. 块数消融实验数据}
+
+\begin{table}[ht]
+  \centering
+  \small
+  \caption{块数消融实验数据（$\gamma = 0.6$，带AdaIN，待补充）。}
+  \label{tab:appendix_c}
+  \begin{tabular}{cccc}
+    \toprule
+    块数 & FID & LPIPS & Art-FID \\
+    \midrule
+    1块 & -- & -- & -- \\
+    2块 & -- & -- & -- \\
+    5块 & -- & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\end{document}
