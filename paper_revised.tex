@@ -1,18 +1,17 @@
 % !TEX program = xelatex
 % !TEX encoding = UTF-8
-\documentclass[a4paper,10pt,twocolumn]{ctexart}
+\documentclass[10pt,twocolumn]{article}
 
 %% ========== Page Layout ==========
 \usepackage[top=1.7cm, bottom=1.8cm, left=1.7cm, right=1.7cm, columnsep=0.7cm]{geometry}
 
-%% ========== Fonts (CVPR-style: Times + 宋体/黑体) ==========
+%% ========== Fonts ==========
 \usepackage{fontspec}
-\setmainfont{Times New Roman}
 \usepackage{xeCJK}
-\setCJKmainfont[AutoFakeBold=2.2, AutoFakeSlant=0.15]{SimSun}            % 中文正文：宋体
-\setCJKsansfont[AutoFakeBold=2.5]{SimHei}            % 无衬线（标题等）：黑体
-\setCJKmonofont{SimSun}
-\setCJKfamilyfont{hei}[AutoFakeBold=2.5]{SimHei}
+\setCJKmainfont{SimSun}       % 中文正文：宋体
+\setCJKsansfont{SimHei}       % 中文无衬线：黑体
+\setCJKmonofont{FangSong}     % 中文等宽：仿宋
+\setCJKfamilyfont{hei}{SimHei}
 \newcommand{\hei}{\CJKfamily{hei}}
 % 中西文边界间距固定为很小的可压缩值，避免两栏窄列里被过度拉伸出大空隙
 \xeCJKsetup{CJKecglue={\hskip 0.08em plus 0.02em minus 0.04em}}
@@ -28,9 +27,8 @@
 \setlength{\headheight}{14pt}
 
 %% ========== Spacing ==========
-\linespread{1.05}
-\setlength{\parindent}{1.8em}
-\setlength{\parskip}{1pt plus 1pt minus 1pt}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
 \setlength{\abovedisplayskip}{5pt plus 2pt minus 2pt}
 \setlength{\belowdisplayskip}{5pt plus 2pt minus 2pt}
 % 两栏窄列断行更宽容，减少行内被拉开的大空隙
@@ -59,6 +57,8 @@
 \captionsetup{labelsep=period, labelfont={small,bf}, textfont={small}}
 \captionsetup[table]{skip=4pt}
 \captionsetup[figure]{skip=4pt}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
 
 %% ========== Math & Symbols ==========
 \usepackage{amsmath,amssymb}
@@ -69,10 +69,10 @@
 \usepackage{titlesec}
 \titleformat{\section}{\normalfont\large\sffamily\bfseries}{\thesection.}{0.6em}{}
 \titleformat{\subsection}{\normalfont\normalsize\sffamily\bfseries}{\thesubsection.}{0.6em}{}
-\titleformat{\subsubsection}{\normalfont\normalsize\sffamily\bfseries}{\thesubsubsection.}{0.6em}{}
-\titlespacing*{\section}{0pt}{2.0ex plus 0.5ex minus 0.2ex}{1.0ex plus 0.2ex}
-\titlespacing*{\subsection}{0pt}{1.6ex plus 0.4ex minus 0.2ex}{0.8ex plus 0.2ex}
-\titlespacing*{\subsubsection}{0pt}{1.4ex plus 0.3ex minus 0.2ex}{0.6ex plus 0.2ex}
+\titleformat{\subsubsection}{\normalfont\normalsize\itshape}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.45em}
+\titlespacing*{\subsection}{0pt}{0.85em}{0.35em}
+\titlespacing*{\subsubsection}{0pt}{0.65em}{0.25em}
 
 %% ========== Hyperlinks ==========
 \usepackage[hidelinks]{hyperref}
@@ -89,10 +89,10 @@
 \twocolumn[{%
 \enlargethispage{3\baselineskip}
 \begin{center}
-  {\sffamily\bfseries\huge AdaIN StyleKV：基于自注意力KV融合与自适应归一化的\\[1pt]扩散模型免训练风格迁移}\\[4pt]
-  {\normalsize 姜俊吉 \quad 吕卓靓 \quad 杨沛文}\\[1pt]
-  {\normalsize 电子科技大学计算机（网安）学院}\\[1pt]
-  {\normalsize \texttt{\{junji.jiang, zhuoliang.lv, peiwen.yang\}@uestc.edu.cn}}\\[4pt]
+  {\sffamily\bfseries\LARGE AdaIN StyleKV：基于自注意力KV融合与自适应归一化的\\[1pt]扩散模型免训练风格迁移}\\[4pt]
+  {\large 姜俊吉 \quad 吕卓靓 \quad 杨沛文}\\[1pt]
+  {\large 电子科技大学计算机（网安）学院}\\[1pt]
+  {\ttfamily \{junji.jiang, zhuoliang.lv, peiwen.yang\}@uestc.edu.cn}\\[4pt]
 \end{center}
 
 \begin{center}
@@ -103,11 +103,11 @@
 
 \vspace{2pt}
 \begin{minipage}{\textwidth}
-\begin{center}{\sffamily\bfseries\normalsize 摘\quad 要}\end{center}
-{\small\noindent 艺术风格迁移旨在将参考图像的视觉风格渲染到内容图像上，同时保留其语义结构。尽管扩散模型在该领域取得了显著进展，现有方法通常需要针对每种风格进行单独优化，或在大规模模型应用中难以在风格强度与内容保真度之间取得良好平衡。为此，本文提出 AdaIN StyleKV，一个构建于预训练扩散模型之上的免训练风格迁移框架。该方法集成了以下关键组件：(1) Canny ControlNet，用于在生成过程中保持内容图像的边缘与轮廓结构；(2) 选择性自注意力KV融合机制，受InstantStyle启发，仅在特定UNet解码器块中线性融合内容图像与风格图像的自注意力键值特征；(3) AdaIN自适应归一化模块，用于增强色彩风格迁移与氛围一致性。基于MS COCO内容数据集与WikiArt风格数据集的实验结果表明，本方法在ArtFID指标上达到85.43，在风格逼真度与内容保留度之间实现了较优平衡。此外，本文还实现了一个基于Gradio的交互式前端，支持用户实时调节风格强度、ControlNet参数及AdaIN融合系数。
+\begin{center}{\sffamily\bfseries\large 摘\quad 要}\end{center}
+{\itshape\noindent 艺术风格迁移旨在将参考图像的视觉风格渲染到内容图像上，同时保留其语义结构。尽管扩散模型在该领域取得了显著进展，现有方法通常需要针对每种风格进行单独优化，或在大规模模型应用中难以在风格强度与内容保真度之间取得良好平衡。为此，本文提出 AdaIN StyleKV，一个构建于预训练扩散模型之上的免训练风格迁移框架。该方法集成了以下关键组件：(1) Canny ControlNet，用于在生成过程中保持内容图像的边缘与轮廓结构；(2) 选择性自注意力KV融合机制，受InstantStyle启发，仅在特定UNet解码器块中线性融合内容图像与风格图像的自注意力键值特征；(3) AdaIN自适应归一化模块，用于增强色彩风格迁移与氛围一致性。基于MS COCO内容数据集与WikiArt风格数据集的实验结果表明，本方法在ArtFID指标上达到85.43，在风格逼真度与内容保留度之间实现了较优平衡。此外，本文还实现了一个基于Gradio的交互式前端，支持用户实时调节风格强度、ControlNet参数及AdaIN融合系数。}
 
 \smallskip
-\noindent{\sffamily\bfseries 关键词：}风格迁移；扩散模型；自注意力；自适应实例归一化；免训练；ControlNet}
+\noindent{\textbf{关键词：}}风格迁移；扩散模型；自注意力；自适应实例归一化；免训练；ControlNet
 \end{minipage}
 \vspace{24pt}
 }]
@@ -366,12 +366,12 @@ z_{\text{mod}} = \sigma(z_{\text{style}}) \left( \frac{z_{\text{content}} - \mu(
   \end{tabular}
 \end{table}
 
-V1--V4旨在比较不同目标块数量和AdaIN使用与否的效果（1块与2块配置）。V5用于验证ControlNet对内容结构保持的贡献。V6和V7则在5块配置下比较AdaIN带来的增益，其中V7（\texttt{proc05\_adain}）是本文提出的完整方法。图~\ref{fig:variant_progress}展示了V1至V6各变体随组件逐步引入的递进效果，图~\ref{fig:variant_compare}则给出了两组不同内容-风格配对下的变体对比。
+V1--V4旨在比较不同目标块数量和AdaIN使用与否的效果（1块与2块配置）。V5用于验证ControlNet对内容结构保持的贡献。V6和V7则在5块配置下比较AdaIN带来的增益，其中V7（\texttt{proc05\_adain}）是本文提出的完整方法。图~\ref{fig:variant_progress}展示了“大叔”内容图与参考风格图下各方法输出的横向对比，参考风格图以缩略图形式嵌入每个子图左下角；图~\ref{fig:variant_compare}则给出了两组不同内容-风格配对下的变体对比。
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=0.92\textwidth]{fig_variant_progress.pdf}
-  \caption{方法变体递进效果展示。从左至右依次为V1至V6各变体的风格化输出，随变体编号增大，更多组件（ControlNet、AdaIN、更多融合块）被逐步引入，风格注入强度与内容保持能力呈现递进变化。}
+  \includegraphics[width=\textwidth]{fig_variant_progress.pdf}
+  \caption{“大叔”内容图上的不同方法输出横向对比。图中上方标签标明对应方法配置，用于直观比较各配置对风格注入强度与内容保持效果的影响。}
   \label{fig:variant_progress}
 \end{figure*}
 

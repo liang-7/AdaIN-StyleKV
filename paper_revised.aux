@@ -16,10 +16,10 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}整体框架}{3}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}选择性KV融合}{3}{subsection.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}自注意力机制回顾}{3}{subsubsection.3.2.1}\protected@file@percent }
+\newlabel{eq:qkv}{{1}{3}{自注意力机制回顾}{equation.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces AdaIN StyleKV整体方法流程框架图。给定内容图像与风格图像，首先通过Canny边缘检测提取内容结构信息，经VAE编码后进入潜空间；在DDIM反演阶段缓存风格图像特定UNet块的自注意力K/V特征；初始潜变量经AdaIN调制后作为反向扩散的起点；反向扩散过程中在选定块进行KV加权融合，最终经VAE解码器生成风格化图像。}}{3}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:pipeline}{{2}{3}{AdaIN StyleKV整体方法流程框架图。给定内容图像与风格图像，首先通过Canny边缘检测提取内容结构信息，经VAE编码后进入潜空间；在DDIM反演阶段缓存风格图像特定UNet块的自注意力K/V特征；初始潜变量经AdaIN调制后作为反向扩散的起点；反向扩散过程中在选定块进行KV加权融合，最终经VAE解码器生成风格化图像。}{figure.caption.1}{}}
-\newlabel{eq:qkv}{{1}{3}{自注意力机制回顾}{equation.1}{}}
 \newlabel{eq:attention}{{2}{3}{自注意力机制回顾}{equation.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Stable Diffusion中U-Net架构示意图。U-Net由下采样编码器、中间块和上采样解码器三部分组成，每个部分包含多个ResNet残差块和自注意力层。本文方法仅在特定解码器块的自注意力层中进行KV融合（红色标记），其余块保持原有计算不变。}}{3}{figure.caption.2}\protected@file@percent }
 \newlabel{fig:unet_arch}{{3}{3}{Stable Diffusion中U-Net架构示意图。U-Net由下采样编码器、中间块和上采样解码器三部分组成，每个部分包含多个ResNet残差块和自注意力层。本文方法仅在特定解码器块的自注意力层中进行KV融合（红色标记），其余块保持原有计算不变。}{figure.caption.2}{}}
@@ -39,9 +39,9 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}硬件配置与超参数}{4}{subsubsection.4.1.3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces 硬件配置与环境。}}{4}{table.caption.3}\protected@file@percent }
 \newlabel{tab:hardware}{{2}{4}{硬件配置与环境。}{table.caption.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces 超参数设置。$\gamma =0.6$为实验确定的最佳权衡点，详见第4.4节消融实验；目标块数为5个中高层自注意力块；AdaIN融合强度默认1.0。}}{4}{table.caption.4}\protected@file@percent }
-\newlabel{tab:hyperparams}{{3}{4}{超参数设置。$\gamma =0.6$为实验确定的最佳权衡点，详见第4.4节消融实验；目标块数为5个中高层自注意力块；AdaIN融合强度默认1.0。}{table.caption.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}方法变体设计}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces 超参数设置。$\gamma =0.6$为实验确定的最佳权衡点，详见第4.4节消融实验；目标块数为5个中高层自注意力块；AdaIN融合强度默认1.0。}}{5}{table.caption.4}\protected@file@percent }
+\newlabel{tab:hyperparams}{{3}{5}{超参数设置。$\gamma =0.6$为实验确定的最佳权衡点，详见第4.4节消融实验；目标块数为5个中高层自注意力块；AdaIN融合强度默认1.0。}{table.caption.4}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces 7组方法变体设计。V1--V4比较块数与AdaIN的效果；V5验证ControlNet对内容结构保持的贡献；V6与V7在5块配置下比较AdaIN带来的增益，其中V7为本文完整方法。}}{5}{table.caption.5}\protected@file@percent }
 \newlabel{tab:variants}{{4}{5}{7组方法变体设计。V1--V4比较块数与AdaIN的效果；V5验证ControlNet对内容结构保持的贡献；V6与V7在5块配置下比较AdaIN带来的增益，其中V7为本文完整方法。}{table.caption.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}定量结果}{5}{subsection.4.3}\protected@file@percent }
@@ -55,10 +55,8 @@
 \newlabel{tab:block_ablation}{{7}{5}{块数消融实验结果（固定$\gamma =0.6$，使用AdaIN）。1块配置风格注入最保守，5块配置获得最优Art-FID，2块配置结果居中。更多块带来更强风格注入，5块在效果与效率之间取得最佳平衡。}{table.caption.17}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6}定性结果分析}{5}{subsection.4.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.1}不同块数与AdaIN的效果对比}{5}{subsubsection.4.6.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces 不同块数与AdaIN配置的定性对比。使用AdaIN的配置色彩协调性更优、风格覆盖更均匀；不使用AdaIN的配置风格迁移更强但内容结构退化更明显。}}{5}{table.caption.19}\protected@file@percent }
-\newlabel{tab:qual_blocks}{{8}{5}{不同块数与AdaIN配置的定性对比。使用AdaIN的配置色彩协调性更优、风格覆盖更均匀；不使用AdaIN的配置风格迁移更强但内容结构退化更明显。}{table.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 方法变体递进效果展示。从左至右依次为V1至V6各变体的风格化输出，随变体编号增大，更多组件（ControlNet、AdaIN、更多融合块）被逐步引入，风格注入强度与内容保持能力呈现递进变化。}}{6}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:variant_progress}{{4}{6}{方法变体递进效果展示。从左至右依次为V1至V6各变体的风格化输出，随变体编号增大，更多组件（ControlNet、AdaIN、更多融合块）被逐步引入，风格注入强度与内容保持能力呈现递进变化。}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces “大叔”内容图上的不同方法输出横向对比。所有子图均来自\texttt  {figures/大叔/}文件夹，参考风格图\texttt  {style.png}以缩略图形式嵌入每个子图左下角。横向从左至右依次为\texttt  {org.png}、\texttt  {noadain\_1blk.png}、\texttt  {adain\_1blk.png}、\texttt  {noadain\_2blk.png}、\texttt  {adain\_2blk.png}、\texttt  {proc05\_adainfalse\_gamma0.6.png}和\texttt  {proc05\_adaintrue\_gamma0.6.png}，用于直观比较各配置对风格注入强度与内容保持效果的影响。}}{6}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:variant_progress}{{4}{6}{“大叔”内容图上的不同方法输出横向对比。所有子图均来自\texttt {figures/大叔/}文件夹，参考风格图\texttt {style.png}以缩略图形式嵌入每个子图左下角。横向从左至右依次为\texttt {org.png}、\texttt {noadain\_1blk.png}、\texttt {adain\_1blk.png}、\texttt {noadain\_2blk.png}、\texttt {adain\_2blk.png}、\texttt {proc05\_adainfalse\_gamma0.6.png}和\texttt {proc05\_adaintrue\_gamma0.6.png}，用于直观比较各配置对风格注入强度与内容保持效果的影响。}{figure.caption.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 两组不同内容-风格配对下的方法变体对比。上行与下行分别对应不同的内容图像与风格图像组合，从左至右为V1至V6各变体输出，展示了方法在不同场景下的泛化表现。}}{6}{figure.caption.7}\protected@file@percent }
 \newlabel{fig:variant_compare}{{5}{6}{两组不同内容-风格配对下的方法变体对比。上行与下行分别对应不同的内容图像与风格图像组合，从左至右为V1至V6各变体输出，展示了方法在不同场景下的泛化表现。}{figure.caption.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces 7组方法变体的风格迁移可视化对比。完整方法（V7）在风格纹理迁移和内容结构保持之间达到了最佳视觉平衡，验证了定量指标的结论。}}{6}{figure.caption.9}\protected@file@percent }
@@ -77,10 +75,12 @@
 \newlabel{fig:gamma_10blk}{{12}{7}{10块配置下不同$\gamma $值的风格迁移效果。与5块配置相比，10块在相同$\gamma $下风格注入更强，但内容细节的保持略逊于5块配置。}{figure.caption.16}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces 1块与5块配置在不同$\gamma $值下的风格迁移效果对比。上行为1块配置，下行为5块配置（本文方法）。更多块数带来更强的风格注入（下行风格纹理更明显），同时内容结构保持依然良好。}}{7}{figure.caption.18}\protected@file@percent }
 \newlabel{fig:block_compare}{{13}{7}{1块与5块配置在不同$\gamma $值下的风格迁移效果对比。上行为1块配置，下行为5块配置（本文方法）。更多块数带来更强的风格注入（下行风格纹理更明显），同时内容结构保持依然良好。}{figure.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces AdaIN模块对风格迁移效果的影响（1块配置）。上行为使用AdaIN的生成结果，下行为不使用AdaIN的结果。AdaIN模块显著提升了色彩协调性与整体氛围一致性，尤其在高$\gamma $值时差异更为明显。}}{7}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:adain_compare}{{14}{7}{AdaIN模块对风格迁移效果的影响（1块配置）。上行为使用AdaIN的生成结果，下行为不使用AdaIN的结果。AdaIN模块显著提升了色彩协调性与整体氛围一致性，尤其在高$\gamma $值时差异更为明显。}{figure.caption.20}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces 不同块数与AdaIN配置的定性对比。使用AdaIN的配置色彩协调性更优、风格覆盖更均匀；不使用AdaIN的配置风格迁移更强但内容结构退化更明显。}}{7}{table.caption.19}\protected@file@percent }
+\newlabel{tab:qual_blocks}{{8}{7}{不同块数与AdaIN配置的定性对比。使用AdaIN的配置色彩协调性更优、风格覆盖更均匀；不使用AdaIN的配置风格迁移更强但内容结构退化更明显。}{table.caption.19}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.2}不同Gamma值的效果对比}{7}{subsubsection.4.6.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.3}用户偏好研究}{7}{subsubsection.4.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces AdaIN模块对风格迁移效果的影响（1块配置）。上行为使用AdaIN的生成结果，下行为不使用AdaIN的结果。AdaIN模块显著提升了色彩协调性与整体氛围一致性，尤其在高$\gamma $值时差异更为明显。}}{8}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:adain_compare}{{14}{8}{AdaIN模块对风格迁移效果的影响（1块配置）。上行为使用AdaIN的生成结果，下行为不使用AdaIN的结果。AdaIN模块显著提升了色彩协调性与整体氛围一致性，尤其在高$\gamma $值时差异更为明显。}{figure.caption.20}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces 用户偏好研究结果：7名参与者对7种方法在7组内容-风格对上的排序评分（1为最佳，7为最差）。}}{8}{figure.caption.21}\protected@file@percent }
 \newlabel{fig:user_study}{{15}{8}{用户偏好研究结果：7名参与者对7种方法在7组内容-风格对上的排序评分（1为最佳，7为最差）。}{figure.caption.21}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.4}提示词的影响}{8}{subsubsection.4.6.4}\protected@file@percent }
@@ -93,21 +93,19 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.2}设备资源限制}{8}{subsubsection.4.7.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}交互式前端}{8}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}前端功能模块}{8}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}前端特性与价值}{8}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}未来工作}{8}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}与现有方法的定量比较}{8}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}自适应Canny边缘图生成}{8}{subsection.6.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces 不同配置下的风格迁移效果综合对比。涵盖不同块数（1块、2块、5块）、不同$\gamma $值（0.2--1.0）以及AdaIN开关条件下的生成效果，系统展示了各参数对风格迁移结果的影响规律。}}{9}{figure.caption.22}\protected@file@percent }
 \newlabel{fig:comprehensive}{{16}{9}{不同配置下的风格迁移效果综合对比。涵盖不同块数（1块、2块、5块）、不同$\gamma $值（0.2--1.0）以及AdaIN开关条件下的生成效果，系统展示了各参数对风格迁移结果的影响规律。}{figure.caption.22}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces 不同分辨率下的Canny边缘检测效果对比。高分辨率（下）能够保留更精细的边缘细节，但推理时间显著增加（约68秒 vs 约12秒），且可能引入额外的人工痕迹。}}{9}{figure.caption.25}\protected@file@percent }
 \newlabel{fig:canny_res}{{17}{9}{不同分辨率下的Canny边缘检测效果对比。高分辨率（下）能够保留更精细的边缘细节，但推理时间显著增加（约68秒 vs 约12秒），且可能引入额外的人工痕迹。}{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}前端特性与价值}{9}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}未来工作}{9}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}与现有方法的定量比较}{9}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}自适应Canny边缘图生成}{9}{subsection.6.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.3}VLM提示词自动生成}{9}{subsection.6.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}扩展至SDXL架构}{9}{subsection.6.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.5}引入Tile ControlNet}{9}{subsection.6.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.6}全块级贡献度分析}{9}{subsection.6.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.7}多条件ControlNet融合}{9}{subsection.6.7}\protected@file@percent }
-\bibcite{efros1999}{1}
-\bibcite{gatys2016}{2}
 \@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces 不同输入分辨率下的风格迁移效果对比。高分辨率输入可提供更多细节信息，但推理时间随分辨率呈非线性增长，需在实际应用中权衡。}}{10}{figure.caption.26}\protected@file@percent }
 \newlabel{fig:input_res}{{18}{10}{不同输入分辨率下的风格迁移效果对比。高分辨率输入可提供更多细节信息，但推理时间随分辨率呈非线性增长，需在实际应用中权衡。}{figure.caption.26}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces InstantStyle Control Studio交互式前端界面。用户可通过左侧面板上传内容与风格图像、调节ControlNet/Canny参数、设置AdaIN融合系数及生成参数；右侧区域实时展示Canny边缘图预览与风格化输出结果。}}{10}{figure.caption.27}\protected@file@percent }
@@ -118,6 +116,8 @@
 \@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces 本文方法的主要局限性及对应改进方向。}}{10}{table.caption.28}\protected@file@percent }
 \newlabel{tab:limitations}{{11}{10}{本文方法的主要局限性及对应改进方向。}{table.caption.28}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.3}未来展望}{10}{subsection.7.3}\protected@file@percent }
+\bibcite{efros1999}{1}
+\bibcite{gatys2016}{2}
 \bibcite{ulyanov2016}{3}
 \bibcite{huang2017}{4}
 \bibcite{zhu2017}{5}
