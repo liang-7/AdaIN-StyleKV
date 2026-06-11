@@ -104,7 +104,7 @@
 \vspace{2pt}
 \begin{minipage}{\textwidth}
 \begin{center}{\sffamily\bfseries\large 摘\quad 要}\end{center}
-{\itshape\noindent 艺术风格迁移旨在将参考图像的视觉风格渲染到内容图像上，同时保留其语义结构。尽管扩散模型在该领域取得了显著进展，现有方法通常需要针对每种风格进行单独优化，或在大规模模型应用中难以在风格强度与内容保真度之间取得良好平衡。为此，本文提出 AdaIN StyleKV，一个构建于预训练扩散模型之上的免训练风格迁移框架。该方法集成了以下关键组件：(1) Canny ControlNet，用于在生成过程中保持内容图像的边缘与轮廓结构；(2) 选择性自注意力KV融合机制，受InstantStyle启发，仅在特定UNet解码器块中线性融合内容图像与风格图像的自注意力键值特征；(3) AdaIN自适应归一化模块，用于增强色彩风格迁移与氛围一致性。基于MS COCO内容数据集与WikiArt风格数据集的实验结果表明，本方法在ArtFID指标上达到85.43，在风格逼真度与内容保留度之间实现了较优平衡。此外，本文还实现了一个基于Gradio的交互式前端，支持用户实时调节风格强度、ControlNet参数及AdaIN融合系数。}
+{\itshape\noindent 艺术风格迁移旨在将参考图像的视觉风格渲染到内容图像上，同时保留其语义结构。尽管扩散模型在该领域取得了显著进展，现有方法通常需要针对每种风格进行单独优化，或在大规模模型应用中难以在风格强度与内容保真度之间取得良好平衡。为此，本文提出 AdaIN StyleKV，一个构建于预训练扩散模型之上的免训练风格迁移框架。该方法集成了以下关键组件：(1) Canny ControlNet，用于在生成过程中保持内容图像的边缘与轮廓结构；(2) 选择性自注意力KV融合机制，受InstantStyle启发，仅在特定UNet解码器块的自注意力层中线性融合内容图像与风格图像的自注意力键值特征；(3) AdaIN自适应归一化模块，用于增强色彩风格迁移与氛围一致性。基于MS COCO内容数据集与WikiArt风格数据集的实验结果表明，本方法在ArtFID指标上达到85.43，在风格逼真度与内容保留度之间实现了较优平衡。此外，本文还实现了一个基于Gradio的交互式前端，支持用户实时调节风格强度、ControlNet参数及AdaIN融合系数。}
 
 \smallskip
 \noindent{\textbf{关键词：}}风格迁移；扩散模型；自注意力；自适应实例归一化；免训练；ControlNet
@@ -218,7 +218,7 @@ Q = X W_Q, \quad K = X W_K, \quad V = X W_V \label{eq:qkv}
 \begin{equation}
 \text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right)V \label{eq:attention}
 \end{equation}
-其中$d_k$是查询向量的维度。在标准的生成过程中，$Q$、$K$、$V$都来自同一张图像的特征。但在风格迁移任务中，我们希望内容图像的结构（由$Q$主导）与风格图像的纹理（由$K$、$V$主导）相结合。
+其中$d_k$是查询向量的维度。在标准的生成过程中，$Q$、$K$、$V$都来自同一张图像的特征。但在风格迁移任务中，我们通过加权融合的方式将内容图像的$K$、$V$与风格图像的$K$、$V$相结合，使得内容图像的结构（由$Q$主导）与风格图像的纹理（由融合后的$K$、$V$主导）相结合。
 
 \begin{figure}[htbp]
   \centering
@@ -242,12 +242,13 @@ V_{\text{fused}} = (1 - \gamma) V_{\text{content}} + \gamma V_{\text{style}} \la
 
 \subsubsection{目标块的选择}
 
-遵循InstantStyle[17]的发现，我们不替换全部U-Net块，仅选择贡献最大的少数块。实验测试了三种配置：
+遵循InstantStyle[17]的发现，我们不替换全部U-Net块，仅选择贡献最大的少数块。实验测试了四种配置：
 \begin{itemize}
   \setlength{\itemsep}{0pt}
 \item {\bfseries 1块}：仅替换 \texttt{up\_blocks.0.attentions.1}
 \item {\bfseries 2块}：替换 \texttt{up\_blocks.0.attentions.1} 和 \texttt{down\_blocks.2.attentions.1}
 \item {\bfseries 5块}（默认）：替换5个中高层自注意力块
+\item {\bfseries 10块}：替换10个自注意力块（覆盖更多层）
 \end{itemize}
 实验表明，5块配置在风格迁移效果和内容保留之间取得了最佳平衡。
 
@@ -284,13 +285,13 @@ z_{\text{mod}} = \sigma(z_{\text{style}}) \left( \frac{z_{\text{content}} - \mu(
 
 \subsubsection{数据集}
 
-{\bfseries 内容数据集：}使用MS COCO 2017数据集[18]中的20张内容图像，覆盖不同场景和物体类别，保证评估多样性。
+{\bfseries 内容数据集：}使用MS COCO 2017数据集[18]中的5000张内容图像，每张图像配有对应的文本提示词，用于辅助扩散模型理解画面内容。
 
-{\bfseries 风格数据集：}使用WikiArt数据集[19]中的40张风格图像，涵盖印象派、立体派、抽象派等不同艺术风格。
+{\bfseries 风格数据集：}使用WikiArt数据集[19]中的5000张风格图像，涵盖印象派、立体派、抽象派等不同艺术风格。
 
-{\bfseries 图像配对：}20张内容图像与40张风格图像进行笛卡尔积配对，共800对。每对使用对应的文本提示辅助扩散模型理解画面内容。
+{\bfseries 图像配对：}5000张内容图像与5000张风格图像按顺序一一对应配对，共5000对。
 
-{\bfseries 数据规模：}部分配对重复生成以积累统计量，共计生成5000张风格化图像用于定量评估。
+{\bfseries 数据规模：}共计生成5000张风格化图像用于定量评估。
 
 \subsubsection{评估指标}
 
@@ -721,12 +722,12 @@ Canny边缘图的精细程度直接影响生成效果和推理效率。表~\ref{
     \toprule
     局限性 & 说明 & 对应改进方向 \\
     \midrule
-    缺乏外部方法对比 & 仅进行消融实验，未与InST等方法直接比较 & 统一基准下的系统对比 \\
+    缺乏与外部SOTA方法的对比 & 仅进行自身变体消融，未与InST、StyleAligned等方法在统一基准下直接比较 & 补充主流风格迁移方法的复现与定量对比 \\
     全块级消融缺失 & 仅测试1、2、5块，未系统验证所有块 & 全块级贡献度分析 \\
     ControlNet单一 & 仅测试Canny，其他条件未集成 & 多条件ControlNet融合 \\
     提示词依赖外部 & 依赖外部模型生成，未集成开源VLM & VLM提示词自动生成 \\
     设备资源受限 & 需V100级别GPU，消费级设备难以运行 & 模型轻量化探索 \\
-    数据集规模有限 & COCO(20张)+WikiArt(40张) & 更大规模数据集验证 \\
+    
     \bottomrule
   \end{tabular}
 \end{table}
@@ -798,12 +799,14 @@ Canny边缘图的精细程度直接影响生成效果和推理效率。表~\ref{
 
 \bibitem{deng2022} Y.~Deng, F.~Tang, W.~Dong, C.~Ma, X.~Pan, L.~Wang, and C.~Xu, ``StyTr$^2$: Image style transfer with transformers,'' in \emph{Proc. CVPR}, 2022.
 
-\bibitem{an2021} J.~An, S.~Huang, Y.~Song, D.~Dou, W.~Liu, and J.~Luo, ``ArtFlow: Unbiased image style transfer via reversible neural flows,'' in \emph{Proc. CVPR}, 2021.
-
 \bibitem{liu2021} S.~Liu, T.~Lin, D.~He, F.~Li, M.~Wang, X.~Li, Z.~Sun, Q.~Li, and E.~Ding, ``AdaAttN: Revisit attention mechanism in arbitrary neural style transfer,'' in \emph{Proc. ICCV}, 2021.
 
-\bibitem{chen2021} H.~Chen, L.~Zhao, Z.~Wang, H.~Zhang, Z.~Zuo, A.~Li, W.~Xing, and D.~Lu, ``DualAST: Dual style-learning networks for artistic style transfer,'' in \emph{Proc. CVPR}, 2021.
+\bibitem{an2021} J.~An, S.~Huang, Y.~Song, D.~Dou, W.~Liu, and J.~Luo, ``ArtFlow: Unbiased image style transfer via reversible neural flows,'' in \emph{Proc. CVPR}, 2021.
 
+\bibitem{chen2021contrastive}
+H.~Chen, L.~Zhao, Z.~Wang, H.~Zhang, Z.~Zuo, A.~Li, W.~Xing, and D.~Lu,
+``Artistic style transfer with internal-external learning and contrastive learning,''
+in \emph{Proc. NeurIPS}, 2021.
 \bibitem{karras2020} T.~Karras, S.~Laine, M.~Aittala, J.~Hellsten, J.~Lehtinen, and T.~Aila, ``Analyzing and improving the image quality of StyleGAN,'' in \emph{Proc. CVPR}, 2020.
 
 \bibitem{karras2021} T.~Karras, M.~Aittala, S.~Laine, E.~H\"{a}rk\"{o}nen, J.~Hellsten, J.~Lehtinen, and T.~Aila, ``Alias-free generative adversarial networks,'' in \emph{Proc. NeurIPS}, 2021.
@@ -818,12 +821,12 @@ Canny边缘图的精细程度直接影响生成效果和推理效率。表~\ref{
 
 \subsection*{A. 7组变体完整数据}
 
-表~\ref{tab:appendix_a}列出了7组变体的完整实验数据，与正文表3一致。
+表~\ref{tab:appendix_a}列出了7组变体的完整实验数据，与正文表5一致。
 
 \begin{table}[htbp]
   \centering
   \small
-  \caption{7组变体完整定量数据（与正文表3一致）。}
+  \caption{7组变体完整定量数据（与正文表5一致）。}
   \label{tab:appendix_a}
   \begin{tabular}{lccc}
     \toprule
@@ -847,7 +850,7 @@ Canny边缘图的精细程度直接影响生成效果和推理效率。表~\ref{
 \begin{table}[htbp]
   \centering
   \small
-  \caption{$\gamma$消融实验完整数据（5块+AdaIN+ControlNet，与正文表4一致）。}
+  \caption{$\gamma$消融实验完整数据（5块+AdaIN+ControlNet，与正文表6一致）。}
   \label{tab:appendix_b}
   \begin{tabular}{cccc}
     \toprule
@@ -870,7 +873,7 @@ Canny边缘图的精细程度直接影响生成效果和推理效率。表~\ref{
 \begin{table}[htbp]
   \centering
   \small
-  \caption{块数消融实验完整数据（$\gamma = 0.6$，使用AdaIN，与正文表5一致）。}
+  \caption{块数消融实验完整数据（$\gamma = 0.6$，使用AdaIN，与正文表7一致）。}
   \label{tab:appendix_c}
   \begin{tabular}{clccc}
     \toprule
