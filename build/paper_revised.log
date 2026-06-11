@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.7)  10 JUN 2026 23:45
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.7)  11 JUN 2026 14:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -988,14 +988,14 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(48.36958pt, 500.7687pt, 48.36958pt)
-* v-part:(T,H,B)=(56.9055pt, 736.9263pt, 51.21504pt)
+* v-part:(T,H,B)=(48.36958pt, 745.46222pt, 51.21504pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=500.7687pt
-* \textheight=736.9263pt
+* \textheight=745.46222pt
 * \oddsidemargin=-23.9004pt
 * \evensidemargin=-23.9004pt
-* \topmargin=-52.36449pt
+* \topmargin=-60.9004pt
 * \headheight=14.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -1081,15 +1081,15 @@ File: figures/fig_gallery.pdf Graphic file (type pdf)
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 112.
+(caption)                particular \caption on input line 113.
 See the caption package documentation for explanation.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 112
+LaTeX Font Info:    Trying to load font information for U+msa on input line 113
 .
 (d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 112
+LaTeX Font Info:    Trying to load font information for U+msb on input line 113
 .
 
 (d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1099,17 +1099,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: Optional argument of \twocolumn too tall on page 1.
 
 
-Overfull \vbox (30.0pt too high) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 LaTeX Warning: Text page 1 contains only floats.
 
 
-Overfull \vbox (30.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (16.0pt too high) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1
 
@@ -1117,49 +1114,49 @@ Overfull \vbox (16.0pt too high) has occurred while \output is active []
 ]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 163.
+(caption)                particular \caption on input line 164.
 See the caption package documentation for explanation.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
 \TU/TimesNewRoman(0)/m/n/10 ControlNet[15] \TU/SimSun(1)/m/n/10 提 出 了 一 种 神 经 架
  构，|  使 用 零 卷 积
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 171--172
+Underfull \hbox (badness 1371) in paragraph at lines 172--173
 \TU/SimSun(1)/m/n/10 层 向 扩 散 模 型 添 加 空 间 条 件 控 制  |（边 缘、|  深 度、|  姿
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 171--172
+Underfull \hbox (badness 1789) in paragraph at lines 172--173
 \TU/SimSun(1)/m/n/10 态 等） 。|  它 将 原 始 模 型 锁 定 并 创 建 一 个 可 训 练 的
  []
 
 
-Underfull \hbox (badness 4531) in paragraph at lines 171--172
+Underfull \hbox (badness 4531) in paragraph at lines 172--173
 \TU/SimSun(1)/m/n/10 副 本，|  确 保 训 练 不 会 破 坏 预 训 练 特 征。|  本 文 集 成
  []
 
 
-Underfull \hbox (badness 1946) in paragraph at lines 171--172
+Underfull \hbox (badness 1946) in paragraph at lines 172--173
 \TU/TimesNewRoman(0)/m/n/10 ControlNet \TU/SimSun(1)/m/n/10 的 \TU/TimesNewRoman
 (0)/m/n/10 Canny \TU/SimSun(1)/m/n/10 边 缘 版 本，|  以 在 执 行 风 格 迁 移 的
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 171--172
+Underfull \hbox (badness 1163) in paragraph at lines 172--173
 \TU/SimSun(1)/m/n/10 同 时 保 持 内 容 图 像 的 结 构 轮 廓。|  需 要 注 意 的 是，|  本
  []
 
 
-Underfull \hbox (badness 2253) in paragraph at lines 171--172
+Underfull \hbox (badness 2253) in paragraph at lines 172--173
 \TU/TimesNewRoman(0)/m/n/10 ControlNet \TU/SimSun(1)/m/n/10 需 与 基 础 模 型 版 本 匹 配
   |（\TU/TimesNewRoman(0)/m/n/10 SD1.5 \TU/SimSun(1)/m/n/10 版 本 对 应
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
 \TU/lmtt/m/n/10 lllyasviel/control_v11p_sd15_canny\TU/SimSun(1)/m/n/10 ；| \TU/T
 imesNewRoman(0)/m/n/10 SDXL \TU/SimSun(1)/m/n/10 版 本
  []
@@ -1168,15 +1165,18 @@ File: figures/fig_method_pipeline.pdf Graphic file (type pdf)
 <use figures/fig_method_pipeline.pdf>
 File: figures/fig_unet_arch.pdf Graphic file (type pdf)
 <use figures/fig_unet_arch.pdf>
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 248--249
+
+Underfull \vbox (badness 1715) has occurred while \output is active []
+
+ [3]
+Underfull \hbox (badness 10000) in paragraph at lines 249--250
 []\TU/TimesNewRoman(0)/b/n/10 2 \TU/SimSun(1)/b/n/10 块\TU/SimSun(1)/m/n/10 ：|  
 替 换 \TU/lmtt/m/n/10 up_blocks.0.attentions.1 \TU/SimSun(1)/m/n/10 和
  []
 
+[4]
 File: figures/fig_variant_progress.pdf Graphic file (type pdf)
 <use figures/fig_variant_progress.pdf>
-[4]
 File: figures/fig_variant_compare.pdf Graphic file (type pdf)
 <use figures/fig_variant_compare.pdf>
 File: figures/image1.pdf Graphic file (type pdf)
@@ -1209,83 +1209,83 @@ File: figures/fig_input_res.pdf Graphic file (type pdf)
 File: figures/fig_gradio.pdf Graphic file (type pdf)
 <use figures/fig_gradio.pdf>
  [8] [9]
-Underfull \hbox (badness 1910) in paragraph at lines 723--723
+Underfull \hbox (badness 1910) in paragraph at lines 724--724
 []|\TU/SimSun(1)/m/n/9 缺 乏 外 部 方 法
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 723--724
+Underfull \hbox (badness 1910) in paragraph at lines 724--725
 []|\TU/SimSun(1)/m/n/9 统 一 基 准 下 的
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 724--724
+Underfull \hbox (badness 1910) in paragraph at lines 725--725
 []|\TU/SimSun(1)/m/n/9 全 块 级 消 融 缺
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 724--725
+Underfull \hbox (badness 1910) in paragraph at lines 725--726
 []|\TU/SimSun(1)/m/n/9 全 块 级 贡 献 度
  []
 
 
-Underfull \hbox (badness 2662) in paragraph at lines 725--726
+Underfull \hbox (badness 2662) in paragraph at lines 726--727
 []|\TU/SimSun(1)/m/n/9 多 条 件 \TU/TimesNewRoman(0)/m/n/9 Control-
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 726--726
+Underfull \hbox (badness 1910) in paragraph at lines 727--727
 []|\TU/SimSun(1)/m/n/9 提 示 词 依 赖 外
  []
 
 
-Underfull \hbox (badness 2158) in paragraph at lines 726--727
+Underfull \hbox (badness 2158) in paragraph at lines 727--728
 []|\TU/TimesNewRoman(0)/m/n/9 VLM \TU/SimSun(1)/m/n/9 提 示 词 自
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 727--728
+Underfull \hbox (badness 1910) in paragraph at lines 728--729
 []|\TU/SimSun(1)/m/n/9 模 型 轻 量 化 探
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 728--728
+Underfull \hbox (badness 1910) in paragraph at lines 729--729
 []|\TU/SimSun(1)/m/n/9 数 据 集 规 模 有
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 728--728
+Underfull \hbox (badness 10000) in paragraph at lines 729--729
 []|\TU/TimesNewRoman(0)/m/n/9 COCO(20
  []
 
 
-Underfull \hbox (badness 1910) in paragraph at lines 728--729
+Underfull \hbox (badness 1910) in paragraph at lines 729--730
 []|\TU/SimSun(1)/m/n/9 更 大 规 模 数 据
  []
 
 [10]
-Underfull \hbox (badness 2635) in paragraph at lines 762--763
+Underfull \hbox (badness 2635) in paragraph at lines 763--764
 \TU/TimesNewRoman(0)/m/n/10 and S. Ganguli, “Deep unsupervised learning us-
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 770--771
+Underfull \hbox (badness 1052) in paragraph at lines 771--772
 []\TU/TimesNewRoman(0)/m/n/10 Y. Zhang, N. Huang, F. Tang, H. Huang, C. Ma,
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 774--775
+Underfull \hbox (badness 4144) in paragraph at lines 775--776
 \TU/TimesNewRoman(0)/m/n/10 free style transfer with diffusion models,” \TU/Tim
 esNewRoman(0)/m/it/10 arXiv
  []
 
 
-Underfull \hbox (badness 1960) in paragraph at lines 780--781
+Underfull \hbox (badness 1960) in paragraph at lines 781--782
 \TU/TimesNewRoman(0)/m/n/10 “InstantStyle: Free lunch towards style-preserving
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 780--781
+Underfull \hbox (badness 10000) in paragraph at lines 781--782
 \TU/TimesNewRoman(0)/m/n/10 in text-to-image generation,” \TU/TimesNewRoman(0)/
 m/it/10 arXiv preprint
  []
@@ -1301,12 +1301,12 @@ Package rerunfilecheck Info: File `paper_revised.out' has not changed.
 (rerunfilecheck)             Checksum: 61D47DB343E8252035448D5728BB39D2;5321.
  ) 
 Here is how much of TeX's memory you used:
- 18784 strings out of 470139
- 411197 string characters out of 5477718
- 866650 words of memory out of 5000000
- 47075 multiletter control sequences out of 15000+600000
+ 18783 strings out of 470139
+ 411168 string characters out of 5477718
+ 865648 words of memory out of 5000000
+ 47074 multiletter control sequences out of 15000+600000
  636491 words of font info for 122 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 93i,15n,111p,1195b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,15n,111p,1195b,559s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on build/paper_revised.xdv (12 pages, 334876 bytes).
+Output written on build/paper_revised.xdv (12 pages, 334840 bytes).

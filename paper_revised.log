@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.7)  11 JUN 2026 00:25
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.7)  11 JUN 2026 13:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1067,20 +1067,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 781--782
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/07/14>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `paper_revised.out' has not changed.
 (rerunfilecheck)             Checksum: 61D47DB343E8252035448D5728BB39D2;5321.
  ) 
 Here is how much of TeX's memory you used:
- 18784 strings out of 470139
- 411233 string characters out of 5477718
- 864652 words of memory out of 5000000
- 47075 multiletter control sequences out of 15000+600000
+ 18783 strings out of 470139
+ 411204 string characters out of 5477718
+ 865648 words of memory out of 5000000
+ 47074 multiletter control sequences out of 15000+600000
  636491 words of font info for 122 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 93i,15n,111p,1223b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,15n,111p,1223b,559s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on paper_revised.pdf (12 pages).

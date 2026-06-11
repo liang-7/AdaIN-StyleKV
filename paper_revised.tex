@@ -87,7 +87,7 @@
 
 % ===== Title block + teaser + abstract (CVPR-style, spanning full width) =====
 \twocolumn[{%
-\enlargethispage{4\baselineskip}
+\enlargethispage{3\baselineskip}
 \begin{center}
   {\sffamily\bfseries\huge AdaIN StyleKV：基于自注意力KV融合与自适应归一化的\\[1pt]扩散模型免训练风格迁移}\\[4pt]
   {\normalsize 姜俊吉 \quad 吕卓靓 \quad 杨沛文}\\[1pt]
@@ -96,8 +96,8 @@
 \end{center}
 
 \begin{center}
-  \includegraphics[width=0.82\textwidth]{fig_gallery.pdf}
-  \captionof{figure}{AdaIN StyleKV风格迁移效果展示。图中展示了不同块数配置（1-block、5-block、10-block）和不同风格融合强度$\gamma$（0.2--1.0）下的生成结果。横向从左至右$\gamma$逐步增大，可清晰观察到风格纹理从弱到强的渐变过程；纵向从上至下分别为不同块数与AdaIN配置的组合。5-block +AdaIN 行（第二行）为本文完整方法，在$\gamma=0.6$附近达到风格强度与内容保真度的最佳平衡。}
+  \includegraphics[width=0.585\textwidth]{fig_gallery.pdf}
+  \captionof{figure}{AdaIN StyleKV风格迁移效果展示。横向从左至右：$\gamma$值（0.2、0.4、0.8、1.0）逐步增大，清晰展示风格纹理从弱到强的渐变过程。纵向从上至下：六种方法配置（1-block、5-block、10-block分别搭配无AdaIN与有AdaIN）。其中第4行（5-block + AdaIN）为本文完整方法，在$\gamma=0.6$附近达到风格强度与内容保真度的最佳平衡（见第4.4节消融实验）。}
   \label{fig:gallery}
 \end{center}
 
