@@ -57,6 +57,52 @@ def save_grid(output: Path, rows: list[list[Path]], col_labels=None, row_labels=
     print(f"Saved: {output}")
 
 
+def save_variant_compare(output: Path) -> None:
+    tile = 520
+    header = 58
+    inset_size = int(tile * 0.24)
+    cases = ["大象", "小孩玩电脑"]
+    names = [
+        "org.png",
+        "noadain_1blk.png",
+        "adain_1blk.png",
+        "noadain_2blk.png",
+        "adain_2blk.png",
+        "proc05_adainfalse_gamma0.6.png",
+        "proc05_adaintrue_gamma0.6.png",
+    ]
+    labels = [
+        "cnt",
+        "V3 no_adain_1blk",
+        "V1 adain_1blk",
+        "V4 no_adain_2blk",
+        "V2 adain_2blk",
+        "V6 proc05_no_adain",
+        "V7 proc05_adain",
+    ]
+
+    canvas = Image.new("RGB", (tile * len(names), header + tile * len(cases)), "white")
+    draw = ImageDraw.Draw(canvas)
+    label_font = font(32)
+
+    for col, label in enumerate(labels):
+        box = draw.textbbox((0, 0), label, font=label_font)
+        x = col * tile + (tile - (box[2] - box[0])) / 2
+        draw.text((x, 12), label, fill="black", font=label_font)
+
+    for row, case in enumerate(cases):
+        folder = FIGURES / case
+        style = square(folder / "style.png", inset_size)
+        for col, name in enumerate(names):
+            tile_img = square(folder / name, tile)
+            if col > 0:
+                tile_img.paste(style, (0, tile - inset_size))
+            canvas.paste(tile_img, (col * tile, header + row * tile))
+
+    canvas.save(output, "PDF", resolution=300.0)
+    print(f"Saved: {output}")
+
+
 def proc(prefix: str, gamma: str) -> Path:
     return PROC / f"{prefix}_gamma{gamma}.png"
 
@@ -96,7 +142,7 @@ def main() -> None:
             [proc("proc05_adaintrue", gamma) for gamma in gammas],
         ],
         col_labels=[r"gamma=0.2", r"gamma=0.4", r"gamma=0.8", r"gamma=1.0"],
-        row_labels=["1-block", "5-block"],
+        row_labels=["1-proc", "5-proc"],
     )
 
     save_grid(
@@ -109,15 +155,7 @@ def main() -> None:
         row_labels=["AdaIN", "No AdaIN"],
     )
 
-    save_grid(
-        FIGURES / "fig_variant_compare.pdf",
-        [
-            collect_case("大象"),
-            collect_case("小孩玩电脑"),
-        ],
-        col_labels=["noadain_1blk", "adain_1blk", "noadain_2blk", "adain_2blk", "proc05_noadain", "proc05_adain"],
-        row_labels=["case 1", "case 2"],
-    )
+    save_variant_compare(FIGURES / "fig_variant_compare.pdf")
 
 
 if __name__ == "__main__":

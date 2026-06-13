@@ -19,13 +19,13 @@ ORDER = [
 ]
 
 LABELS = [
-    "org",
-    "noadain_1blk",
-    "adain_1blk",
-    "noadain_2blk",
-    "adain_2blk",
-    "proc05_noadain",
-    "proc05_adain",
+    "cnt",
+    "V3 no_adain_1blk",
+    "V1 adain_1blk",
+    "V4 no_adain_2blk",
+    "V2 adain_2blk",
+    "V6 proc05_no_adain",
+    "V7 proc05_adain",
 ]
 
 
@@ -59,7 +59,8 @@ def main() -> None:
         tile = center_crop_square(Image.open(path).convert("RGB")).resize(
             (tile_size, tile_size), Image.Resampling.LANCZOS
         )
-        tile.paste(style, (0, tile_size - inset_size))
+        if idx > 0:
+            tile.paste(style, (0, tile_size - inset_size))
 
         text_box = draw.textbbox((0, 0), label, font=label_font)
         text_width = text_box[2] - text_box[0]

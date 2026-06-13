@@ -1,45 +1,35 @@
 % Standalone document to compose gallery figure from 10processor images
 \documentclass[multi=tabular, border=4pt]{standalone}
 \usepackage{graphicx}
-\usepackage{array}
-\usepackage{makecell}
 \graphicspath{{10processor/}{figures/10processor/}}
 
-\newcommand{\rowlab}[2]{\smash{\makecell[r]{\fontsize{5}{5.2}\selectfont\sffamily #1\\[-0.6pt]\fontsize{4}{4.2}\selectfont\sffamily #2}}}
+\newlength{\cellsize}
+\newlength{\gallerylabelwidth}
+\setlength{\cellsize}{2.0cm}
+\setlength{\gallerylabelwidth}{1.1cm}
+\newcommand{\panel}[1]{\includegraphics[width=\cellsize,height=\cellsize]{#1}}
+\newcommand{\rowlab}[2]{%
+  \vbox to \cellsize{%
+    \vfil
+    \hbox to \gallerylabelwidth{\hfil{\fontsize{5}{5}\selectfont\sffamily #1}}%
+    \vskip -0.5pt
+    \hbox to \gallerylabelwidth{\hfil{\fontsize{4}{4}\selectfont\sffamily #2}}%
+    \vfil
+  }%
+}
 \newcommand{\collab}[1]{{\tiny\sffamily\bfseries #1}}
+\newcommand{\headcell}[1]{\hbox to \cellsize{\hfil\collab{#1}\hfil}}
 
 \begin{document}
-\begin{tabular}{r@{\hspace{4pt}}c@{\hspace{3pt}}c@{\hspace{3pt}}c@{\hspace{3pt}}c}
-& \collab{$\gamma = 0.2$} & \collab{$\gamma = 0.4$} & \collab{$\gamma = 0.8$} & \collab{$\gamma = 1.0$} \\[2pt]
-\rowlab{1-block}{No AdaIN} &
-\includegraphics[width=2.0cm]{proc01_adainfalse_gamma0.2.png} &
-\includegraphics[width=2.0cm]{proc01_adainfalse_gamma0.4.png} &
-\includegraphics[width=2.0cm]{proc01_adainfalse_gamma0.8.png} &
-\includegraphics[width=2.0cm]{proc01_adainfalse_gamma1.png} \\[1pt]
-\rowlab{1-block}{AdaIN} &
-\includegraphics[width=2.0cm]{proc01_adaintrue_gamma0.2.png} &
-\includegraphics[width=2.0cm]{proc01_adaintrue_gamma0.4.png} &
-\includegraphics[width=2.0cm]{proc01_adaintrue_gamma0.8.png} &
-\includegraphics[width=2.0cm]{proc01_adaintrue_gamma1.png} \\[1pt]
-\rowlab{5-block}{No AdaIN} &
-\includegraphics[width=2.0cm]{proc05_adainfalse_gamma0.2.png} &
-\includegraphics[width=2.0cm]{proc05_adainfalse_gamma0.4.png} &
-\includegraphics[width=2.0cm]{proc05_adainfalse_gamma0.8.png} &
-\includegraphics[width=2.0cm]{proc05_adainfalse_gamma1.png} \\[1pt]
-\rowlab{5-block}{AdaIN} &
-\includegraphics[width=2.0cm]{proc05_adaintrue_gamma0.2.png} &
-\includegraphics[width=2.0cm]{proc05_adaintrue_gamma0.4.png} &
-\includegraphics[width=2.0cm]{proc05_adaintrue_gamma0.8.png} &
-\includegraphics[width=2.0cm]{proc05_adaintrue_gamma1.png} \\[1pt]
-\rowlab{10-block}{No AdaIN} &
-\includegraphics[width=2.0cm]{proc10_adainfalse_gamma0.2.png} &
-\includegraphics[width=2.0cm]{proc10_adainfalse_gamma0.4.png} &
-\includegraphics[width=2.0cm]{proc10_adainfalse_gamma0.8.png} &
-\includegraphics[width=2.0cm]{proc10_adainfalse_gamma1.png} \\[1pt]
-\rowlab{10-block}{AdaIN} &
-\includegraphics[width=2.0cm]{proc10_adaintrue_gamma0.2.png} &
-\includegraphics[width=2.0cm]{proc10_adaintrue_gamma0.4.png} &
-\includegraphics[width=2.0cm]{proc10_adaintrue_gamma0.8.png} &
-\includegraphics[width=2.0cm]{proc10_adaintrue_gamma1.png} \\
-\end{tabular}
+\noindent\vbox{%
+  \offinterlineskip
+  \hbox{\hbox to \gallerylabelwidth{}\headcell{$\gamma = 0.2$}\headcell{$\gamma = 0.4$}\headcell{$\gamma = 0.8$}\headcell{$\gamma = 1.0$}}%
+  \vskip 2pt
+  \hbox{\rowlab{1-proc}{No AdaIN}\panel{proc01_adainfalse_gamma0.2.png}\panel{proc01_adainfalse_gamma0.4.png}\panel{proc01_adainfalse_gamma0.8.png}\panel{proc01_adainfalse_gamma1.png}}%
+  \hbox{\rowlab{1-proc}{AdaIN}\panel{proc01_adaintrue_gamma0.2.png}\panel{proc01_adaintrue_gamma0.4.png}\panel{proc01_adaintrue_gamma0.8.png}\panel{proc01_adaintrue_gamma1.png}}%
+  \hbox{\rowlab{5-proc}{No AdaIN}\panel{proc05_adainfalse_gamma0.2.png}\panel{proc05_adainfalse_gamma0.4.png}\panel{proc05_adainfalse_gamma0.8.png}\panel{proc05_adainfalse_gamma1.png}}%
+  \hbox{\rowlab{5-proc}{AdaIN}\panel{proc05_adaintrue_gamma0.2.png}\panel{proc05_adaintrue_gamma0.4.png}\panel{proc05_adaintrue_gamma0.8.png}\panel{proc05_adaintrue_gamma1.png}}%
+  \hbox{\rowlab{10-proc}{No AdaIN}\panel{proc10_adainfalse_gamma0.2.png}\panel{proc10_adainfalse_gamma0.4.png}\panel{proc10_adainfalse_gamma0.8.png}\panel{proc10_adainfalse_gamma1.png}}%
+  \hbox{\rowlab{10-proc}{AdaIN}\panel{proc10_adaintrue_gamma0.2.png}\panel{proc10_adaintrue_gamma0.4.png}\panel{proc10_adaintrue_gamma0.8.png}\panel{proc10_adaintrue_gamma1.png}}%
+}
 \end{document}

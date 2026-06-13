@@ -1,0 +1,87 @@
+我已经能整理出一批比较实在的点了。整体看，文章不是“大面积有误”，而是有几处术语和结论口径需要收紧，不然读者会以为你在做比实验实际更强的声明。我逐句看了一遍，下面这些是我认为容易让读者误解、或者审稿时会被追问的地方。先不改文件，给你逐条判断。
+最建议改
+[paper_revised.tex (line 113)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:113) 摘要里说“现有方法通常需要针对每种风格单独优化”
+可能误解：扩散风格迁移里已经有一些免训练方法，你这里说“通常”会显得一棍子打太宽。
+建议改成：“部分现有方法需要针对新的风格图像进行优化或反演，另一些免训练方法则仍面临结构保持、色彩一致性或强度控制不足的问题。”
+
+[paper_revised.tex (line 113)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:113) “完整方法在加入AdaIN后获得更低LPIPS（0.599）”
+可能误解：读者可能理解成 V7 是所有方法里 LPIPS 最低，但表里 V1 的 LPIPS 是 0.581，比 0.599 更低。
+建议改成：“相较于无AdaIN的StyleKV配置，完整方法在加入AdaIN后将LPIPS由0.629降至0.599。”
+
+[paper_revised.tex (line 132)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:132) “无需任何微调或文本反演即可实现高质量的风格化”
+可能误解：这个结论太绝对，尤其你后面也承认还没和外部 SOTA 做统一对比。
+建议改成：“无需额外微调或文本反演，并在本文实验设置下实现较好的风格化效果。”
+
+[paper_revised.tex (line 192)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:192) “使用VAE编码器将内容图像、风格图像和Canny边缘图分别编码到潜空间”
+这个非常建议改。ControlNet 的 Canny 图通常不是通过 VAE 编码进潜空间，而是作为条件图输入 ControlNet 分支。现在这句话容易被认为方法机制写错了。
+建议改成：“使用VAE编码器将内容图像和风格图像编码到潜空间，同时将内容图像的Canny边缘图作为ControlNet的空间条件输入。”
+
+[paper_revised.tex (line 201)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:201) “只计算 selected self-attention processor 的 Q、K、V”
+可能误解：U-Net 前向传播一般不能真的只计算这个 block 的 QKV，通常是完整前向时通过 hook/cache 记录目标 processor 的 K/V。
+建议改成：“在风格图像对应潜变量的U-Net前向过程中，记录目标block内选定self-attention processor产生的K/V特征。”
+
+[paper_revised.tex (line 201)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:201) “在内容图反演时”
+可能误解：这里看起来像 DDIM inversion 阶段，但你实际应该是在反向扩散/去噪生成阶段融合 K/V。若不是反演阶段，会被认为流程不一致。
+建议改成：“在内容图像的反向扩散生成过程中”或“在内容潜变量去噪过程中”。
+
+[paper_revised.tex (line 289)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:289) “图像条件的统计量调制文本条件特征”
+可能误解：这里的“图像条件”来源不清楚。是风格图像经过 CLIP image encoder？还是某个图像嵌入？还是 U-Net 中的图像特征？读者会追问。
+建议补一句：“其中风格图像嵌入由……获得。”如果代码里是 CLIP/IP-Adapter/自定义 encoder，就要明确写出来。
+
+
+
+[paper_revised.tex (line 295)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:295) 公式里只定义了标准 AdaIN，但后面说代码有 $\alpha$ 和 $\beta$
+可能误解：公式和实现不一致。尤其 $\beta$ 是“偏置”还是 blend weight，读者不知道。
+建议把实际实现写成：
+f = (1-\alpha) f_text + \alpha f_adain，如果 beta 确实加偏置，也要写清楚 beta 怎么作用。
+
+[paper_revised.tex (line 393)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:393) 到 [paper_revised.tex (line 399)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:399) 表中 V1-V5 没有 KV 融合，但 $\gamma$ 仍写 0.6
+可能误解：前文定义 $\gamma$ 是 KV 融合强度，V1-V5 没有 KV 融合却有 $\gamma$，读者会困惑。
+建议 V1-V5 的 $\gamma$ 写 “--” 或 “N/A”。除非你的 $\gamma$ 也控制 AdaIN，那前文定义就要改。
+
+[paper_revised.tex (line 486)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:486) 表里把 $\gamma=0.6$ 全部加粗
+   可能误解：读者默认加粗代表该列最优。但 Art-FID 最优是 1.0 的 82.91，FID 最优是 0.0 的 76.57，LPIPS 最优也是 0.0 的 0.597，0.6 不是单项最优。
+   建议caption 明确“加粗表示本文默认配置，而非单项最优”。
+[paper_revised.tex (line 507)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:507) “综合FID、Art-FID、LPIPS……$\gamma=0.6$取得较稳定折中”
+   可能误解：从数字看，0.4 的 Art-FID 比 0.6 更低，FID 也更低，只是 LPIPS 稍高；0.8/1.0 的 Art-FID 更低但 LPIPS 更高。说“综合三项指标”选 0.6 依据不够硬。
+   建议改成：“结合定量指标与视觉结果，本文选择$\gamma=0.6$作为更偏向内容稳定性的默认折中点。”这样更稳。
+建议收紧表述
+13. [paper_revised.tex (line 153)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:153) “Style Injection……保留了内容结构”
+   可能误解：后面表格又把 Style Injection 的“结构保持”标成叉。可以解释为“没有显式结构约束”，否则前后像矛盾。
+   建议改成：“在一定程度上保留内容结构，但缺少类似ControlNet的显式结构约束。”
+[paper_revised.tex (line 159)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:159) 方法对比表
+   可能误解：很多叉号会显得对其他方法不公平，比如 InstantStyle 是否完全不具备强度控制、结构保持，要看定义。
+   建议在 caption 里加：“表中结构保持指是否显式引入边缘/深度等空间条件约束，强度可控指是否提供显式连续控制参数。”
+[paper_revised.tex (line 227)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:227) “内容结构由Q主导，风格纹理由融合后的K/V主导”
+   可能误解：注意力里的 Q/K/V 作用没有这么绝对，容易被挑理论严谨性。
+   建议改成：“通常可近似理解为，内容侧Q有助于保持当前潜变量的空间组织，而融合后的K/V会影响注意力检索到的纹理与外观模式。”
+[paper_revised.tex (line 299)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:299) ControlNet 优势里写“仅训练ControlNet部分”
+   可能误解：读者可能以为本文训练了 ControlNet。你其实用的是预训练权重。
+   建议改成：“在ControlNet原始训练范式中，仅训练ControlNet分支；本文直接使用预训练ControlNet权重，无需进一步训练。”
+[paper_revised.tex (line 330)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:330) Art-FID 解释
+   建议核对引用 [20] 的 Art-FID 定义。你现在写成“生成图像与风格图像集合的分布距离”，如果你的实现确实这么算可以保留；如果 Art-FID 是复合指标或有特定实现，最好写清“本文实现中”。
+[paper_revised.tex (line 332)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:332) FID “间接反映内容结构保留程度”
+   可能误解：FID 是分布指标，不看逐图结构对应，不能强证明结构保持。
+   建议改成：“仅间接反映生成结果与内容域的整体分布接近程度，不能单独作为结构保持指标。”
+[paper_revised.tex (line 334)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:334) “LPIPS值越低表示内容保真度越高”
+   这句话大体可以，但风格迁移里 LPIPS 低也可能只是风格迁移弱。你后面有解释，但建议再收紧。
+   建议改成：“在相同任务设置下，较低LPIPS通常表示相对内容图的感知变化较小。”
+[paper_revised.tex (line 448)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:448) “AdaIN有助于降低感知变化并提升整体色彩协调性”
+   数据能支持降低 LPIPS，但“提升色彩协调性”主要来自定性观察，不是表中直接指标。
+   建议改成：“结合定性结果，说明AdaIN有助于降低感知变化，并可能改善整体色彩协调性。”
+[paper_revised.tex (line 516)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:516) “内容结构保持依然良好”
+   可能误解：这是定性图上的观察，不是全面结论。
+   建议改成：“在展示样例中仍能保持较好的内容结构。”
+[paper_revised.tex (line 564)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:564) 提示词质量“显著影响”
+   如果没有系统实验，只是观察，建议降调。
+   建议改成：“在定性实验中，我们观察到提示词质量会明显影响生成结果。”
+[paper_revised.tex (line 581)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:581) “推理时间呈非线性增长”
+   这里只给了两个分辨率点，严格说不足以证明非线性。
+   建议改成：“推理时间明显增加”或“可能呈非线性增长，仍需更多分辨率点验证。”
+[paper_revised.tex (line 595)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:595) “模型可能生成边缘图中不存在但统计上合理的细节”
+   这句有点怪。人工痕迹通常更像边缘过强导致过度描边、纹理碎片化或结构被硬约束。
+   建议改成：“精细边缘图可能导致模型过度响应局部边缘，产生描边感、碎片化纹理或不自然的局部细节。”
+[paper_revised.tex (line 599)](D:/PythonProject2/AdaIN-StyleKV/paper_revised.tex:599) “有效减少了计算开销”
+   可能误解：相比原始 SDXL + ControlNet，你的方法还多了缓存和融合，不一定更省。你想表达的应该是相比“更多processor或跨block注入”更省。
+   建议改成：“相比在更多block或更多processor中进行注入，选择性processor注入控制了额外计算和缓存开销。”
+我建议优先处理第 4、5、6、8、9、10、11、12 点，这些是最容易被认为“方法描述或实验口径不一致”的地方。第 1、2、3 点是摘要和贡献口径，改了会让整篇更稳。
