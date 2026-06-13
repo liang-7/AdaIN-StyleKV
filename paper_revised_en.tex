@@ -11,6 +11,14 @@
 \setsansfont{Arial}
 \setmonofont{Courier New}
 
+%% ========== Microtype & Justification (critical for English two-column) ==========
+\usepackage{microtype}
+\usepackage{ragged2e}
+\RaggedRight
+\setlength{\emergencystretch}{4em}
+\hyphenpenalty=50
+\sloppy
+
 %% ========== Headers & Footers ==========
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -145,24 +153,25 @@ Diffusion models have become the dominant paradigm for high-quality image genera
 
 InST [12] employs textual inversion to embed style images into the text vector space, effectively preserving style features, but requires per-style optimization. StyleDiffusion [13] introduces CLIP-based loss functions and fine-tuning strategies to disentangle content and style. DiffStyle [14] is a training-free method operating in the H-space of diffusion models; however, applying it to Stable Diffusion may alter the semantic layout of images. Style Injection [16] achieves training-free style transfer by replacing key--value features in self-attention layers with style image features, preserving content structure to some extent but lacking explicit structural constraints akin to ControlNet and having limited color transfer capability. InstantStyle [17] discovers that only specific UNet blocks play a critical role in style transfer and achieves efficient style injection through feature embedding at these blocks. StyleStudio [31] further explores selective control of style elements in text-driven style transfer.
 
-\begin{center}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lcccc}
-  \toprule
-  Method & Training-Free & Structure Preservation & Color Transfer & Controllable Intensity \\
-  \midrule
-  InST [12] & \xmark & \xmark & \cmark & \xmark \\
-  StyleDiffusion [13] & \xmark & \xmark & \cmark & \cmark \\
-  DiffStyle [14] & \cmark & \xmark & \xmark & \xmark \\
-  Style Injection [16] & \cmark & \xmark & \xmark & \xmark \\
-  InstantStyle [17] & \cmark & \xmark & \xmark & \xmark \\
-  \textbf{AdaIN StyleKV (Ours)} & \cmark & \cmark & \cmark & \cmark \\
-  \bottomrule
-\end{tabular}%
-}
-\captionof{table}{Comparison of our method with representative style transfer methods. Training-Free: no gradient optimization required; Structure Preservation: whether spatial conditional constraints such as edges or depth are explicitly introduced; Color Transfer: whether global color information is explicitly handled; Controllable Intensity: whether an explicit continuous control parameter is provided.}
-\label{tab:method_comparison}
-\end{center}
+\begin{table}[htbp]
+  \centering
+  \caption{Comparison of our method with representative style transfer methods. TF: Training-Free (no fine-tuning); SP: Structure Preservation (explicit spatial constraints); CT: Color Transfer (global color handling); CI: Controllable Intensity (explicit continuous control).}
+  \label{tab:method_comparison}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{lcccc}
+    \toprule
+    Method & TF & SP & CT & CI \\
+    \midrule
+    InST [12] & \xmark & \xmark & \cmark & \xmark \\
+    StyleDiffusion [13] & \xmark & \xmark & \cmark & \cmark \\
+    DiffStyle [14] & \cmark & \xmark & \xmark & \xmark \\
+    Style Injection [16] & \cmark & \xmark & \xmark & \xmark \\
+    InstantStyle [17] & \cmark & \xmark & \xmark & \xmark \\
+    \textbf{AdaIN StyleKV (Ours)} & \cmark & \cmark & \cmark & \cmark \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 Table~\ref{tab:method_comparison} summarizes the similarities and differences between our method and representative approaches. Our method starts with AdaIN feature modulation as its basis, absorbs the KV replacement idea from Style Injection and the effective block selection insight from InstantStyle, and simultaneously incorporates the structural control capability of ControlNet. On this foundation, we replace direct substitution with controllable weighted KV fusion within the self-attention processors of the target block \texttt{up\_blocks.0.attentions.1}, thereby achieving a better balance between texture transfer and color harmony.
 
@@ -255,13 +264,13 @@ Experiments show that the configuration with 5 self-attention processors in \tex
   \caption{Target block configurations in the early naive AdaIN prototype. \texttt{1blk}/\texttt{2blk} indicate the number of UNet target blocks where AdaIN is applied; in contrast, StyleKV experiments are fixed at \texttt{up\_blocks.0.attentions.1} and vary the number of self-attention processors.}
   \label{tab:adain_target_blocks}
   \footnotesize
-  \setlength{\tabcolsep}{2pt}
-  \begin{tabular}{p{0.9cm}p{4.1cm}p{2.0cm}}
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{p{1.5cm}p{3.6cm}p{2.5cm}}
     \toprule
-    Configuration & UNet Target Block(s) for AdaIN & Corresponding AdaIN Variant \\
+    Config & AdaIN Target UNet Block(s) & Variant \\
     \midrule
-    1blk & \texttt{up\_blocks.0.attentions.1} & V1: \texttt{adain\_1blk} \\
-    2blk & \texttt{up\_blocks.0.attentions.1}; \texttt{down\_blocks.2.attentions.1} & V2: \texttt{adain\_2blk} \\
+    1blk & \texttt{up0.attn1} & V1: \texttt{adain\_1blk} \\
+    2blk & \texttt{up0.attn1}; \texttt{down2.attn1} & V2: \texttt{adain\_2blk} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -362,14 +371,14 @@ Experiments were conducted on the AutoDL platform using a rented NVIDIA V100-32G
   \small
   \begin{tabular}{lll}
     \toprule
-    Parameter & Default Value & Description \\
+    Parameter & Value & Description \\
     \midrule
-    $\gamma$ & 0.6 & Style fusion intensity coefficient \\
-    \texttt{up0.attn1} procs & 5 & Number of KV fusion processors \\
+    $\gamma$ & 0.6 & Style fusion intensity \\
+    \texttt{up0.attn1} procs & 5 & KV fusion processor count \\
     adain\_alpha & 1.0 & AdaIN fusion intensity \\
     adain\_beta  & 1.0 & AdaIN fusion bias \\
-    CFG scale & 7.5 & Classifier-free guidance strength \\
-    DDIM steps & 50 & Reverse diffusion sampling steps \\
+    CFG scale & 7.5 & Classifier-free guidance \\
+    DDIM steps & 50 & Diffusion sampling steps \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -382,21 +391,21 @@ It is worth clarifying that in this paper, only comparisons where a single facto
 
 \begin{table}[htbp]
   \centering
-  \caption{Design of 7 method variants.}
+  \caption{Design of 7 method variants. CtrlN = ControlNet; Scope = target blocks (blk) or processors (p); KV = KV fusion enabled.}
   \label{tab:variants}
   \footnotesize
-  \setlength{\tabcolsep}{1.5pt}
+  \setlength{\tabcolsep}{2pt}
   \begin{tabular}{clccccc}
     \toprule
-    No. & Variant Name & ControlNet & Scope & AdaIN & $\gamma$ & KV Fusion \\
+    \# & Variant & CtrlN & Scope & AdaIN & $\gamma$ & KV \\
     \midrule
-    V1 & adain\_1blk       & \cmark & 1 block & \cmark & -- & \xmark \\
-    V2 & adain\_2blk       & \cmark & 2 blocks & \cmark & -- & \xmark \\
-    V3 & noadain\_1blk     & \cmark & 1 block & \xmark & -- & \xmark \\
-    V4 & noadain\_2blk     & \cmark & 2 blocks & \xmark & -- & \xmark \\
-    V5 & adain\_no\_ctrl    & \xmark & 1 block & \cmark & -- & \xmark \\
-    V6 & proc05\_no\_adain  & \cmark & 5 proc & \xmark & 0.6 & \cmark \\
-    V7 & proc05\_adain      & \cmark & 5 proc & \cmark & 0.6 & \cmark \\
+    V1 & adain\_1blk       & \cmark & 1blk & \cmark & -- & \xmark \\
+    V2 & adain\_2blk       & \cmark & 2blk & \cmark & -- & \xmark \\
+    V3 & noadain\_1blk     & \cmark & 1blk & \xmark & -- & \xmark \\
+    V4 & noadain\_2blk     & \cmark & 2blk & \xmark & -- & \xmark \\
+    V5 & adain\_no\_ctrl    & \xmark & 1blk & \cmark & -- & \xmark \\
+    V6 & proc05\_no\_adain  & \cmark & 5p & \xmark & 0.6 & \cmark \\
+    V7 & proc05\_adain      & \cmark & 5p & \cmark & 0.6 & \cmark \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -537,7 +546,7 @@ Table~\ref{tab:qual_blocks} compares the generation results of four naive AdaIN 
   \label{tab:qual_blocks}
   \small
   \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{lc>{\raggedright\arraybackslash}p{2.8cm}}
+  \begin{tabular}{lc>{\raggedright\arraybackslash}p{3.5cm}}
     \toprule
     Variant & \#Blocks & Observation \\
     \midrule
@@ -577,15 +586,15 @@ The granularity of the Canny edge map directly affects generation quality and in
 
 \begin{table}[htbp]
   \centering
-  \caption{Canny resolution vs.\ inference time. Higher-resolution Canny edge maps provide richer structural information and thus improve generation quality, but inference time increases noticeably, and excessively fine edge maps may introduce additional artifacts.}
+  \caption{Canny resolution vs.\ inference time. Higher resolution provides richer structure but increases latency and may introduce artifacts.}
   \label{tab:resolution_canny}
   \small
-  \begin{tabular}{llll}
+  \begin{tabular}{lll}
     \toprule
-    Input Resolution & Canny Resolution & Inference Time & Note \\
+    Resolution & Canny Size & Time \\
     \midrule
-    1080$\times$599   & 1080$\times$599   & $\sim$12 s & Standard resolution \\
-    5774$\times$1536  & 5774$\times$1536  & $\sim$68 s & High resolution \\
+    1080$\times$599   & same as input & $\sim$12\,s \\
+    5774$\times$1536  & same as input & $\sim$68\,s \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -682,16 +691,16 @@ Although our method achieves favorable results, the following limitations remain
   \label{tab:limitations}
   \small
   \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{p{2.2cm}p{3.2cm}p{2.2cm}}
+  \begin{tabular}{>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{2.6cm}}
     \toprule
-    Limitation & Description & Improvement Direction \\
+    Limitation & Description & Improvement \\
     \midrule
-    Lack of comparison with external SOTA methods & Only self-variant ablation performed; not directly compared with InST, StyleDiffusion, InstantStyle, etc.\ under a unified benchmark & Reproduce and quantitatively compare mainstream methods under a unified dataset and evaluation protocol \\
-    Insufficient processor-level ablation & Only tested a small number of self-attention processor configurations in \texttt{up0.attn1}; did not systematically verify all self-attention processors & Processor-level contribution analysis \\
-    Single ControlNet & Only tested Canny; other conditions not integrated & Multi-condition ControlNet fusion \\
-    External prompt dependency & Relies on external models for prompt generation; no integrated open-source VLM & VLM-based automatic prompt generation \\
-    Limited evaluation dimensions & Mainly relies on FID, Art-FID, and LPIPS; does not yet cover more perceptual and semantic metrics & Introduce more evaluation metrics and supplement with human subjective validation \\
-    Device resource constraints & Requires V100-class GPU; difficult to run on consumer-grade devices & Model lightweighting exploration \\
+    No external SOTA comparison & Only self-variant ablation; not compared with InST, StyleDiffusion, InstantStyle, etc. & Reproduce and compare under unified protocol \\
+    Insufficient processor ablation & Only tested few processor configs in \texttt{up0.attn1} & Full processor-level contribution analysis \\
+    Single ControlNet & Only Canny tested; other modalities not explored & Multi-condition ControlNet fusion \\
+    External prompt dependency & Prompts from external models; no integrated VLM & Integrate Qwen-VLM / LLaVA \\
+    Limited evaluation metrics & FID, Art-FID, LPIPS only; no perceptual/semantic coverage & Add metrics + human subjective study \\
+    High device requirements & Needs V100-class GPU; not consumer-friendly & Distillation \& quantization \\
     \bottomrule
   \end{tabular}
 \end{table}
