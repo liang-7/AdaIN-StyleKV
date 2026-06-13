@@ -109,7 +109,7 @@
 \vspace{0pt}
 \begin{minipage}{\textwidth}
 \begin{center}{\sffamily\bfseries\large Abstract}\end{center}
-{\noindent Artistic style transfer renders the visual appearance of a reference image onto a content image while preserving the underlying scene structure. Diffusion models have advanced this task considerably, but existing solutions remain polarized: methods such as InST and StyleDiffusion achieve strong stylization at the cost of per-image fine-tuning or inversion, while training-free alternatives often sacrifice structure preservation, color coherence, or controllable intensity. We propose AdaIN StyleKV, a training-free framework that operates on a frozen SDXL backbone and integrates three complementary mechanisms. First, Canny ControlNet provides explicit spatial conditioning via edge maps, anchoring content structure during denoising. Second, a selective KV fusion module---inspired by Style Injection---caches key--value features from the style image within a small subset of self-attention processors inside UNet block \texttt{up\_blocks.0.attentions.1} and blends them with content KV through a single scalar $\gamma$, requiring no gradient optimization. Third, a cross-modal AdaIN module, adapted from StyleStudio [31], re-normalizes text-condition features at the same target block using channel-wise statistics of a pretrained style-image embedding, improving color consistency and atmospheric alignment. On 5000 MS COCO (content) $\times$ WikiArt (style) pairs, a systematic sweep across seven variant configurations reveals that the 5-processor StyleKV setup without AdaIN achieves the lowest Art-FID (85.43), while enabling AdaIN reduces LPIPS from 0.629 to 0.599 at a modest Art-FID cost (90.76). We also release StyleKV Control Studio, a Gradio-based interface supporting real-time adjustment of $\gamma$, Canny thresholds, and AdaIN fusion coefficients.}
+{\noindent Artistic style transfer seeks to impose the visual appearance of a reference image onto a content image without corrupting the latter's semantic structure. Diffusion models have pushed this task forward, but the solution landscape is split. Methods like InST and StyleDiffusion deliver convincing stylization through per-image optimization or inversion; training-free alternatives dispense with tuning, yet often stumble on structure preservation, color fidelity, or the absence of a straightforward intensity control. We introduce AdaIN StyleKV, a framework that keeps the SDXL backbone frozen and layers on three training-free mechanisms. A Canny ControlNet supplies explicit edge-map conditioning to anchor spatial layout. Inside UNet block \texttt{up\_blocks.0.attentions.1}, a selective KV fusion module---inspired by Style Injection---caches key--value features from the style image at a small subset of self-attention processors and mixes them with content KV through a single scalar $\gamma$, with no gradient steps involved. At the same target block, a cross-modal AdaIN module, adapted from StyleStudio [31], uses channel-wise statistics of a pretrained image embedding to pull text-condition features toward the style reference's color distribution. Across 5000 MS COCO $\times$ WikiArt pairs and seven variant configurations, the 5-processor StyleKV setup without AdaIN reaches the lowest Art-FID (85.43), while enabling AdaIN brings LPIPS from 0.629 down to 0.599 at a modest Art-FID trade-off (90.76). We also release StyleKV Control Studio, a Gradio frontend for real-time manipulation of $\gamma$, Canny thresholds, and AdaIN coefficients.}
 
 \end{minipage}
 \vspace{6pt}
@@ -128,7 +128,7 @@ Artistic style transfer has been an active research area in computer vision for 
 
 Early approaches tackled the problem through non-parametric texture synthesis [1] and optimization over VGG Gram matrices [2]. Feedforward networks [3,4] and Adaptive Instance Normalization (AdaIN) [4] subsequently brought real-time performance. Generative adversarial networks further improved output fidelity [5,6,7]. Despite this steady progress, each paradigm left unresolved tensions. GAN-based methods generalize poorly beyond style domains observed during training. Optimization-based formulations remain computationally expensive. And across these early families, no mechanism emerged for continuously trading off style intensity against content preservation.
 
-Diffusion models reshaped the generative landscape [8,9,10]. Stable Diffusion [11], with its latent-space denoising and cross-attention conditioning, enabled text-driven synthesis at high resolution. This machinery was quickly adapted for style transfer [12,13,14,15,16,17], but several challenges persist. InST [12] and StyleDiffusion [13] deliver strong stylization yet require per-image gradient steps or textual inversion---acceptable for small-scale demonstrations but impractical for large-scale deployment. Training-free alternatives such as DiffStyle [14] and Style Injection [16] eliminate optimization but risk distorting content geometry or failing to capture global color statistics. Self-attention mechanisms transfer local texture effectively; however, they operate without awareness of the overall palette, often producing chromatically inconsistent outputs. Moreover, most existing methods offer only coarse control over style intensity, lacking a single continuous parameter analogous to a mixing slider.
+Diffusion models reshaped the generative landscape [8,9,10]. Stable Diffusion [11] in particular, by working in a compressed latent space and conditioning on text via cross-attention, made high-resolution synthesis practical. Researchers adapted this machinery to style transfer almost immediately [12,13,14,15,16,17]. Yet a cluster of difficulties has proven stubborn. InST [12] and StyleDiffusion [13] produce strong results, but every new style image triggers its own round of gradient updates or textual inversion; the per-style cost adds up quickly outside small-scale settings. Training-free methods such as DiffStyle [14] and Style Injection [16] avoid optimization altogether, only to run into a different set of problems—content layout can drift, and global color often gets lost because self-attention, for all its sensitivity to local texture, carries no notion of an overall palette. Equally limiting, hardly any of these methods expose a clean, continuous parameter for dialing style intensity up and down.
 
 These observations motivate AdaIN StyleKV, a framework that combines three lightweight, training-free interventions within a frozen SDXL model. The design emerged incrementally. An initial prototype applied AdaIN on one or two UNet target blocks---selected following InstantStyle's [17] guidance on block importance---to align text and image conditions. Color coordination improved, but brushstroke and texture patterns remained largely unchanged. This finding led to the incorporation of a KV fusion mechanism inspired by Style Injection [16]: rather than a wholesale replacement of key--value features, the framework caches style-image K/V from a small set of self-attention processors within \texttt{up\_blocks.0.attentions.1} and blends them with content K/V via a single coefficient $\gamma \in [0,1]$. The fusion is confined to this single block rather than broadcast across the UNet, limiting computational overhead.
 
@@ -143,17 +143,17 @@ Experiments span 5000 COCO [18] $\times$ WikiArt [19] pairs evaluated across sev
 
 \subsection{Neural Style Transfer}
 
-Gatys et al. [2] kicked off neural style transfer by matching Gram matrices of VGG [23] features inside an optimization loop. What followed was a sprint toward real-time speeds. Johnson et al. [24] trained feedforward transformers with perceptual losses. Huang \& Belongie [4] gave the community AdaIN---a clean, channel-wise statistics trick that enabled arbitrary style transfer in a single forward pass. Attention-based methods [25], Transformers [26], reversible flows [27], and dual-branch learning schemes [28] each added their own spin. The common thread: speed and generalization improved dramatically relative to Gatys' original optimizer. The common limitation: when the target style is heavily abstract or non-photorealistic, these VGG-centric pipelines start to smear fine details and flatten textures.
+Gatys et al. [2] established the neural style transfer paradigm by matching Gram matrices of VGG [23] features within an iterative optimization. The push toward real-time performance that followed produced several influential designs. Johnson et al. [24] trained feedforward transformation networks with perceptual losses. Huang \& Belongie [4] introduced AdaIN, aligning channel-wise statistics to enable arbitrary style transfer in a single forward pass. Attention-based mechanisms [25], Transformer architectures [26], reversible flows [27], and dual-branch learning frameworks [28] each contributed further refinements. Relative to Gatys' original optimizer, speed and generalization improved markedly; the remaining difficulty is that heavily abstract or non-photorealistic styles tend to expose the limits of VGG-centric feature matching, which can smear fine detail and flatten subtle texture variations.
 
 \subsection{GAN-Based Style Transfer}
 
-CycleGAN [5] showed that cycle-consistency losses could drive unpaired image translation, and StarGAN [6] scaled the idea to multiple domains inside one model. StyleGAN [7] and its descendants [29,30] offered fine-grained, interpretable control over the latent space. However, StyleGAN was designed as an unconditional generator rather than a cross-domain translator. Adapting it for arbitrary style transfer requires additional fine-tuning or feature disentanglement, and the resulting generalization can be fragile outside the training distribution.
+In the GAN era, CycleGAN [5] demonstrated that cycle-consistency losses could steer unpaired image translation; StarGAN [6] extended the principle to multi-domain translation within a single model. StyleGAN [7] and its successors [29,30] brought remarkably fine-grained latent-space control. It is worth noting, however, that StyleGAN functions as an unconditional generator, not a cross-domain translator. Repurposing it for arbitrary style transfer demands additional fine-tuning or disentanglement procedures, and generalization beyond the training distribution remains fragile.
 
 \subsection{Diffusion-Based Style Transfer}
 
 Diffusion models have become the dominant paradigm for high-quality image generation. Among them, latent diffusion models (LDM) [11] achieve efficient training and inference by compressing images into a low-dimensional latent space. For style transfer tasks, researchers have proposed various diffusion-based methods:
 
-InST [12] uses textual inversion to embed a style image into the text token space. Fidelity is impressive, but every new style triggers its own inversion run. StyleDiffusion [13] adds CLIP-based losses and a fine-tuning stage to push content and style apart in feature space---again, per-style optimization. DiffStyle [14] operates in the diffusion H-space and needs no training, but applying it naively to Stable Diffusion can shift semantic layout in ways that break the content. Style Injection [16] noticed that you can directly overwrite the K and V in self-attention with style-image features. That's training-free, fast, and preserves a fair amount of structure, but without an explicit spatial anchor the content can still wander. InstantStyle [17] made the key observation that not all UNet blocks contribute equally; injecting style into a small subset is cheaper and more effective than broadcasting everywhere. StyleStudio [31] showed you can selectively gate which style elements get transferred when a text prompt is in the loop.
+InST [12] embeds style images into the text token space via inversion. The stylization quality is strong, but each new reference demands its own optimization run. StyleDiffusion [13] introduces CLIP-based losses alongside fine-tuning to disentangle content and style in feature space---again, a per-image procedure. DiffStyle [14] sidesteps training by operating in the diffusion H-space, though applying it directly to Stable Diffusion can perturb semantic layout. Style Injection [16] overwrites the K and V within self-attention layers using style-image features. The approach is training-free and preserves a reasonable degree of structure, but absent an explicit spatial constraint, content geometry can still drift. InstantStyle [17] contributed the important empirical finding that not all UNet blocks are equally style-sensitive; concentrating injection on a carefully chosen subset is both cheaper and more effective than broadcasting uniformly. StyleStudio [31] further explored selective gating of style elements under text-prompt guidance.
 
 \begin{table}[htbp]
   \centering
@@ -175,7 +175,7 @@ InST [12] uses textual inversion to embed a style image into the text token spac
   \end{tabular}
 \end{table}
 
-Table~\ref{tab:method_comparison} places our work against these baselines. What sets AdaIN StyleKV apart is the combination: entirely training-free, a Canny edge condition to pin structure down, a cross-modal AdaIN path dedicated to global color, and one scalar $\gamma$ for continuous intensity control.
+Table~\ref{tab:method_comparison} situates AdaIN StyleKV relative to these baselines. The distinguishing combination is training-free operation paired with explicit Canny edge conditioning for structure, a dedicated cross-modal AdaIN path for global color, and a single scalar $\gamma$ that provides continuous intensity control.
 
 \subsection{Conditional Control in Diffusion Models}
 
@@ -186,18 +186,18 @@ ControlNet [15] introduced zero-convolution layers to attach spatial conditions 
 %% ================================================
 \section{Method}
 
-AdaIN StyleKV sits on a frozen SDXL backbone with a Canny ControlNet attached. At inference time, three lightweight mechanisms work in concert: a cross-modal AdaIN that aligns text-condition features with the style image's color statistics, a selective KV fusion that blends style key--value pairs into a handful of self-attention processors, and the Canny edge condition that keeps the scene geometry anchored. We walk through the pipeline in five stages.
+AdaIN StyleKV operates on a frozen SDXL backbone with a Canny ControlNet attached. Inference proceeds through five stages, within which three lightweight mechanisms are interleaved: cross-modal AdaIN for color alignment, selective KV fusion for texture transfer, and Canny edge conditioning for spatial anchoring.
 
 \subsection{Overall Framework}
 
 \medskip
-\noindent{\bfseries Stage 1: Preprocessing.} Content and style images go into the VAE encoder, producing latents $z_{\text{content}}$ and $z_{\text{style}}$. A Canny edge detector (thresholds adjustable in our frontend) extracts a contour map from the content image as the ControlNet spatial condition $c_{\text{canny}}$.
+\noindent{\bfseries Stage 1: Preprocessing.} The VAE encoder maps content and style images to latents $z_{\text{content}}$ and $z_{\text{style}}$. A Canny edge detector (with adjustable thresholds, exposed in the frontend) extracts a contour map from the content image, producing the spatial condition $c_{\text{canny}}$ for ControlNet.
 
 \medskip
-\noindent{\bfseries Stage 2: DDIM Inversion.} We run DDIM inversion on both latents separately to obtain complete noise trajectories $\{z_t^{\text{content}}\}$ and $\{z_t^{\text{style}}\}$ across all $T$ timesteps. These trajectories give us something to anchor both the AdaIN modulation and the KV caching to---each timestep has a corresponding style-latent to pull K/V from, and a content-latent where the actual denoising happens.
+\noindent{\bfseries Stage 2: DDIM Inversion.} DDIM inversion is applied to both latents independently, yielding noise trajectories $\{z_t^{\text{content}}\}$ and $\{z_t^{\text{style}}\}$ spanning all $T$ timesteps. These trajectories serve as the temporal backbone for both AdaIN modulation and KV caching: at each $t$, the style latent supplies K/V features while the content latent undergoes the actual denoising.
 
 \medskip
-\noindent{\bfseries Stage 3: Cross-Modal AdaIN.} At each denoising timestep, before the UNet forward pass, we intercept the text-condition embeddings at the target block(s) and apply AdaIN using channel statistics extracted from a pretrained image embedding of the style image (IP-Adapter's encoder, in our setup). No new adapters are trained; we just shift mean and scale of the already-computed text features toward the style embedding's distribution.
+\noindent{\bfseries Stage 3: Cross-Modal AdaIN.} At each denoising timestep, before the UNet forward pass, text-condition embeddings at the target block(s) are intercepted and re-normalized via AdaIN using channel statistics from a pretrained image embedding of the style image (IP-Adapter's encoder, in our setup). The mean and variance of the already-computed text features are shifted toward the style embedding's distribution; no additional adapters are trained.
 
 \medskip
 \noindent{\bfseries Stage 4: KV Fusion.} We fix the injection site at UNet block \texttt{up\_blocks.0.attentions.1}. At each timestep $t$, during the style latent's forward pass we cache $\{K_{\text{style}}, V_{\text{style}}\}$ from a selected subset of self-attention processors within this block. During the content latent's denoising step at the same $t$, the cached features are blended with content K/V via:
@@ -211,7 +211,7 @@ V_{\text{fused}} &= (1-\gamma)V_{\text{content}} + \gamma V_{\text{style}},
 Non-target processors run standard self-attention; the content query $Q_{\text{content}}$ is never modified.
 
 \medskip
-\noindent{\bfseries Stage 5: Decoding.} After $T$ denoising steps, $z_0$ goes through the VAE decoder to produce the stylized output.
+\noindent{\bfseries Stage 5: Decoding.} After $T$ denoising steps, the final latent $z_0$ is passed through the VAE decoder to produce the stylized output.
 
 \begin{figure}[htbp]
   \centering
@@ -234,7 +234,7 @@ then computes:
 \begin{equation}
 \text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right)V \label{eq:attention}
 \end{equation}
-In normal generation $Q$, $K$, $V$ all come from the same image. For style transfer the trick is to keep $Q$ from the content image (it encodes where things are) while blending the content $K,V$ with those from the style image (they encode what things look like---texture, brushwork, palette). The attention map computed from a content query against a style-biased key effectively ``looks up'' style patterns to place at content locations.
+In standard generation, $Q$, $K$, and $V$ are all projected from the same feature map. For style transfer, the key insight is to retain $Q$ from the content image---it encodes spatial organization---while blending content $K,V$ with those from the style image, which carry texture, brushstroke, and palette information. The resulting attention map retrieves style patterns and places them at the appropriate content locations.
 
 \begin{figure}[htbp]
   \centering
@@ -247,18 +247,18 @@ Fig.~\ref{fig:unet_arch} shows the UNet layout and highlights \texttt{up\_blocks
 
 \subsubsection{Weighted KV Fusion}
 
-Following Style Injection [16], we target the self-attention processors inside \texttt{up\_blocks.0.attentions.1}. But instead of a hard replacement we use a simple linear blend:
+Following Style Injection [16], the self-attention processors inside \texttt{up\_blocks.0.attentions.1} are targeted for KV fusion. Rather than overwriting features, the method blends content and style representations linearly:
 \begin{equation}
 K_{\text{fused}} = (1 - \gamma) K_{\text{content}} + \gamma K_{\text{style}} \label{eq:kfusion}
 \end{equation}
 \begin{equation}
 V_{\text{fused}} = (1 - \gamma) V_{\text{content}} + \gamma V_{\text{style}} \label{eq:vfusion}
 \end{equation}
-with $\gamma \in [0, 1]$. This formulation has three desirable properties. First, the coefficient acts as a continuous control: $\gamma=0$ retains pure content K/V, $\gamma=1$ uses pure style K/V, and intermediate values produce smooth interpolation. Second, the operation requires no gradient computation---only two vector additions and one scalar multiplication per processor. Third, linear blending proved less prone to abrupt artifacts than hard KV replacement in early experiments.
+with $\gamma \in [0, 1]$. The coefficient functions as a continuous control: $\gamma{=}0$ leaves content K/V intact, $\gamma{=}1$ uses pure style K/V, and intermediate values interpolate smoothly. The operation incurs no gradient overhead---two vector additions and one scalar multiplication per processor---and in early experiments, linear blending produced fewer abrupt artifacts than hard KV replacement.
 
 \subsubsection{Which Block, Which Processors?}
 
-InstantStyle [17] taught us that not every UNet block pulls its weight for style. Following their lead, we fix a single decoder block as our injection site: \texttt{up\_blocks.0.attentions.1}. All the ``StyleKV'' experiments in this paper operate exclusively there. Within that block we vary how many of its self-attention processors participate in KV fusion:
+InstantStyle [17] demonstrated empirically that not all UNet blocks contribute equally to style transfer. Building on this finding, we confine injection to a single decoder block, \texttt{up\_blocks.0.attentions.1}. All experiments labeled ``StyleKV'' in this paper operate exclusively at this site. Within the block, the number of self-attention processors participating in KV fusion is varied:
 
 \begin{itemize}
   \setlength{\itemsep}{0pt}
