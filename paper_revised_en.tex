@@ -359,7 +359,7 @@ Experiments were conducted on the AutoDL platform using a rented NVIDIA V100-32G
     \midrule
     GPU & NVIDIA V100 32GB $\times$ 1 \\
     Acceleration Library & xformers \\
-    Sampling Steps & 30 steps (DDIM) \\
+    Sampling Steps & 50 steps (DDIM) \\
     Resolution & 512$\times$512 (center crop) \\
     Total Generated Images & 5000 \\
     \bottomrule
@@ -379,8 +379,8 @@ Experiments were conducted on the AutoDL platform using a rented NVIDIA V100-32G
     \texttt{up0.attn1} procs & 5 & KV fusion processor count \\
     adain\_alpha & 1.0 & AdaIN fusion intensity \\
     adain\_beta  & 1.0 & AdaIN fusion bias \\
-    CFG scale & 6.0 & Classifier-free guidance \\
-    DDIM steps & 30 & Diffusion sampling steps \\
+    CFG scale & 7.5 & Classifier-free guidance \\
+    DDIM steps & 50 & Diffusion sampling steps \\
     \bottomrule
   \end{tabular}
 \end{table}
