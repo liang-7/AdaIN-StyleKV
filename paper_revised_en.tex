@@ -113,11 +113,13 @@
 \begin{center}{\sffamily\bfseries\large Abstract}\end{center}
 {\noindent Artistic style transfer aims to render the visual style of a reference image onto a content image while preserving its semantic structure. Although diffusion models have significantly advanced this field, some existing methods require per-style optimization or inversion, while other training-free approaches still face challenges in structure preservation, color consistency, or intensity control. To address these issues, we propose AdaIN StyleKV, a training-free style transfer framework built upon pretrained diffusion models. The framework integrates the following key components: (1) Canny ControlNet, which preserves edge and contour structures of the content image during generation; (2) a selective self-attention KV fusion mechanism, inspired by Style Injection, which operates within the target UNet block \texttt{up\_blocks.0.attentions.1} by selecting a subset of self-attention processors, caching the key--value features of the style image, and performing weighted fusion with the corresponding key--value features of the content image; and (3) a cross-modal AdaIN module that fuses embedded text features with image features at the target UNet block, enhancing color style transfer and atmospheric consistency. Component ablation, variant comparison, and parameter sensitivity analysis on MS COCO (content) and WikiArt (style) datasets demonstrate that the StyleKV configuration with 5 self-attention processors in the target block \texttt{up\_blocks.0.attentions.1} achieves the lowest Art-FID (85.43) without AdaIN. Compared with the AdaIN-free StyleKV configuration, the full method reduces LPIPS from 0.629 to 0.599 after incorporating AdaIN, establishing a more stable trade-off between style injection and perceptual change. Additionally, we implement an interactive Gradio-based frontend that supports real-time adjustment of style intensity, ControlNet parameters, and AdaIN fusion coefficients.}
 
-\smallskip
-\noindent{\textbf{Keywords:}} style transfer; diffusion models; self-attention; adaptive instance normalization; training-free; ControlNet
 \end{minipage}
 \vspace{6pt}
 }]
+
+\vspace{-4pt}
+\noindent{\small\textbf{Keywords:} style transfer; diffusion models; self-attention; adaptive instance normalization; training-free; ControlNet}
+\vspace{6pt}
 
 %% ================================================
 %% 1. Introduction
