@@ -1,12 +1,12 @@
 # Fdb version 4
-["xdvipdfmx"] 1781314903.91129 "build/paper_revised.xdv" "build/paper_revised.pdf" "build/paper_revised" 1781314904.95913 0
-  "build/paper_revised.xdv" 1781314903 335340 2459289233b546fe14e5669209bf6e71 "xelatex"
+["xdvipdfmx"] 1781361040.1795 "build/paper_revised.xdv" "build/paper_revised.pdf" "build/paper_revised" 1781361041.54182 0
+  "build/paper_revised.xdv" 1781361040 368768 d7cef3dda22669a011106c226259b5ce "xelatex"
   (generated)
   "build/paper_revised.pdf"
   (rewritten before read)
-["xelatex"] 1781314900.07789 "paper_revised.tex" "build/paper_revised.xdv" "paper_revised" 1781314904.95118 0
-  "build/paper_revised.aux" 1781314903 24076 b2e6525d0bd15a42826a025ac19f7574 "xelatex"
-  "build/paper_revised.out" 1781314903 5296 0a09991de3b69b71be85b092595f9c92 "xelatex"
+["xelatex"] 1781361036.50639 "paper_revised.tex" "build/paper_revised.xdv" "paper_revised" 1781361041.53447 0
+  "build/paper_revised.aux" 1781361040 24110 9b6cb9e8c1c34620fefe343a219d147a "xelatex"
+  "build/paper_revised.out" 1781361040 5416 341613ea18f7e3e049d2f49948ba2606 "xelatex"
   "d:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1780803065 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1780804868 1528 7e12f4c0fcf5a072cebdcfbfc610f54c ""
   "d:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1780802343 1004 54797486969f23fa377b128694d548df ""
@@ -87,6 +87,7 @@
   "d:/texlive/2026/texmf-dist/tex/latex/placeins/placeins.sty" 1780803959 4087 636308456f60d2b31cbf97867db5708d ""
   "d:/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty" 1780804153 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "d:/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1780804165 9684 a33a14b82ce60d6e77cb9be689d79ee6 ""
+  "d:/texlive/2026/texmf-dist/tex/latex/sttools/stfloats.sty" 1780804378 19135 2044f4970d2ece01df5d5dfacaaaec0f ""
   "d:/texlive/2026/texmf-dist/tex/latex/titlesec/titlesec.sty" 1780804578 48766 87a17a4ef312a39cd43896e34a679a56 ""
   "d:/texlive/2026/texmf-dist/tex/latex/titling/titling.sty" 1780804579 7358 95ac619994bd30d405a74f3eca431c84 ""
   "d:/texlive/2026/texmf-dist/tex/latex/tools/array.sty" 1780804606 15651 9d7c62df82cb29a555c00550babfe364 ""
@@ -99,22 +100,20 @@
   "d:/texlive/2026/texmf.cnf" 1780804887 713 e69b156964470283e0530f5060668171 ""
   "fig_unet_arch.pdf" 1781185566 108747 ad596cdcc2ed925bd886c44a977a988d ""
   "figures/Snipaste_2026-06-12_21-47-51.png" 1781272090 692274 7d87f8bea898e874d42e0cf0e0e1d7ee ""
-  "figures/fig_adain_compare.pdf" 1781190076 176080 c56acc2a4c3f53f009ef966597b723ad ""
-  "figures/fig_block_compare.pdf" 1781190076 199010 511d7e7e220586148c2c99e30a945fa5 ""
+  "figures/fig_adain_compare.pdf" 1781336501 176080 d181d631d7a2b06d4f274be7ad8af8df ""
+  "figures/fig_block_compare.pdf" 1781336501 198860 65bf4088909f36c3c00ea28812389cd1 ""
   "figures/fig_canny_res.pdf" 1781238499 67032 dacde1c61a67c17a69bb764c3dabf849 ""
-  "figures/fig_gallery.pdf" 1781186678 387823 a35fd8a8595f14f026de4155391834d9 ""
-  "figures/fig_gamma_10blk.pdf" 1781190075 97850 2c76746ee7ef2db9c1105540e45eccdd ""
-  "figures/fig_gamma_5blk.pdf" 1781190075 109232 174d3ecf3384f46ad76bd9d4110e7cdc ""
+  "figures/fig_gallery.pdf" 1781316976 386577 3834705a83be8bcfb060cea74acae0dc ""
+  "figures/fig_gamma_10blk.pdf" 1781336500 97850 2e8bb15e22a7ab6d11cc511b63aba074 ""
+  "figures/fig_gamma_5blk.pdf" 1781336500 109232 915d946fa254b7daace79c165bc6803b ""
   "figures/fig_gradio.pdf" 1781238873 49791 2491c94e80f9896cd0f8fd2eb688a0f0 ""
-  "figures/fig_ref_comprehensive.pdf" 1781273339 27303 2af74e44d8b1dce5241b80452bd35581 ""
-  "figures/fig_userstudy_docx.pdf" 1781273339 30085 797d886e085b2a68bd81705d57b0c3e4 ""
-  "figures/fig_variant_compare.pdf" 1781190076 568285 d34d5b44ac0530d6b9513bb437a5a44b ""
+  "figures/fig_ref_comprehensive.pdf" 1780889182 25548 a9ca11e98c32a4318118d874c3b94e8f ""
+  "figures/fig_variant_compare.pdf" 1781336501 568285 7d83575291953aaecb3967f0ce9ae5c0 ""
   "figures/fig_variant_progress.pdf" 1781190075 443379 4c8db41a896b0d8190d9cb1e6b4afbcf ""
-  "figures/image1.pdf" 1781097379 345932 b3383448f3382acc52a803db3e43d53f ""
   "figures/image2.pdf" 1781273338 29702 66c5c78ba7d78be01b48d60b04953a32 ""
   "figures/image3.pdf" 1781271034 22634 d2c21ebbe770668ef1a383fb2385f964 ""
   "figures/image4.pdf" 1781273339 30085 91edd0b0dac64c777a959a9dc8850854 ""
-  "paper_revised.tex" 1781314871 58171 8b2c9570f07c6d711fe59ace7eaa91b3 ""
+  "paper_revised.tex" 1781361007 61828 ffe28ea44001e8b49027780993a3845b ""
   (generated)
   "build/paper_revised.aux"
   "build/paper_revised.log"

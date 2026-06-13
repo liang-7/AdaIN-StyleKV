@@ -70,6 +70,8 @@ INPUT d:/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty
 INPUT d:/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty
 INPUT d:/texlive/2026/texmf-dist/tex/latex/placeins/placeins.sty
 INPUT d:/texlive/2026/texmf-dist/tex/latex/placeins/placeins.sty
+INPUT d:/texlive/2026/texmf-dist/tex/latex/sttools/stfloats.sty
+INPUT d:/texlive/2026/texmf-dist/tex/latex/sttools/stfloats.sty
 INPUT d:/texlive/2026/texmf-dist/tex/latex/float/float.sty
 INPUT d:/texlive/2026/texmf-dist/tex/latex/float/float.sty
 INPUT d:/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -191,16 +193,14 @@ INPUT d:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT d:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT d:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT d:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
+INPUT ./figures/image2.pdf
+INPUT ./figures/image2.pdf
 INPUT ./figures/fig_variant_progress.pdf
 INPUT ./figures/fig_variant_progress.pdf
 INPUT ./figures/fig_variant_compare.pdf
 INPUT ./figures/fig_variant_compare.pdf
-INPUT ./figures/image2.pdf
-INPUT ./figures/image2.pdf
 INPUT ./figures/image4.pdf
 INPUT ./figures/image4.pdf
-INPUT ./figures/image1.pdf
-INPUT ./figures/image1.pdf
 INPUT ./figures/image3.pdf
 INPUT ./figures/image3.pdf
 INPUT ./figures/fig_ref_comprehensive.pdf
@@ -213,8 +213,6 @@ INPUT ./figures/fig_gamma_10blk.pdf
 INPUT ./figures/fig_gamma_10blk.pdf
 INPUT ./figures/fig_adain_compare.pdf
 INPUT ./figures/fig_adain_compare.pdf
-INPUT ./figures/fig_userstudy_docx.pdf
-INPUT ./figures/fig_userstudy_docx.pdf
 INPUT ./figures/fig_canny_res.pdf
 INPUT ./figures/fig_canny_res.pdf
 INPUT ./figures/fig_gradio.pdf

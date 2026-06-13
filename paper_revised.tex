@@ -140,17 +140,17 @@
 
 \subsection{神经风格迁移}
 
-神经风格迁移由Gatys等人[2]开创，他们使用VGG[23]特征的Gram矩阵匹配通过迭代优化实现风格迁移。后续工作主要聚焦于提升速度与泛化能力：Johnson等人[24]引入了基于感知损失的前馈图像变换网络，实现了实时风格迁移；Huang和Belongie[4]提出了自适应实例归一化（AdaIN），实现了前馈式的任意风格迁移。其他值得关注的方法包括基于注意力的方法[25,26,27]、基于流的方法[28]和对比学习框架[29]。尽管这些方法在速度上相比Gatys等人的优化式方法有显著提升，但在处理高度抽象或非写实风格时仍存在局限。
+神经风格迁移由Gatys等人[2]开创，他们使用VGG[23]特征的Gram矩阵匹配通过迭代优化实现风格迁移。后续工作主要聚焦于提升速度与泛化能力：Johnson等人[24]引入了基于感知损失的前馈图像变换网络，实现了实时风格迁移；Huang和Belongie[4]提出了自适应实例归一化（AdaIN），实现了前馈式的任意风格迁移。其他值得关注的方法包括基于注意力的方法[25]、基于Transformer的方法[26]、基于可逆流的方法[27]以及双重风格学习框架[28]。尽管这些方法在速度上相比Gatys等人的优化式方法有显著提升，但在处理高度抽象或非写实风格时仍存在局限。
 
 \subsection{基于GAN的风格迁移}
 
-生成对抗网络在不成对图像翻译任务上取得了显著进展。CycleGAN[5]引入了循环一致性损失，使得无需配对数据即可实现跨域图像转换；StarGAN[6]进一步将其扩展为多领域转换框架，能够以单一模型处理多个目标域之间的翻译任务。此外，以StyleGAN[7]及其变体[30,31]为代表的高质量生成模型，提供了精细且可解释的潜在空间控制能力，被广泛用于领域内的图像编辑与属性操作。但需要指出的是，StyleGAN本质上是一个无条件生成模型，其设计目标并非跨域翻译；在应用于领域外风格迁移时，往往需要额外的微调或特征解耦策略，难以直接实现与CycleGAN等翻译方法等价的任意风格泛化。
+生成对抗网络在不成对图像翻译任务上取得了显著进展。CycleGAN[5]引入了循环一致性损失，使得无需配对数据即可实现跨域图像转换；StarGAN[6]进一步将其扩展为多领域转换框架，能够以单一模型处理多个目标域之间的翻译任务。此外，以StyleGAN[7]及其变体[29,30]为代表的高质量生成模型，提供了精细且可解释的潜在空间控制能力，被广泛用于领域内的图像编辑与属性操作。但需要指出的是，StyleGAN本质上是一个无条件生成模型，其设计目标并非跨域翻译；在应用于领域外风格迁移时，往往需要额外的微调或特征解耦策略，难以直接实现与CycleGAN等翻译方法等价的任意风格泛化。
 
 \subsection{基于扩散模型的风格迁移}
 
 扩散模型已成为高质量图像生成的主导范式。其中，潜在扩散模型（LDM）[11]通过将图像压缩至低维潜在空间，实现了高效的训练与推理。针对风格迁移任务，研究者基于扩散模型提出了多种方法：
 
-InST[12]采用文本反演技术将风格图像嵌入至文本向量空间，能够较好地保留风格特征，但需要对每种风格单独进行优化。StyleDiffusion[13]引入基于CLIP的损失函数与微调策略，以实现内容与风格的解耦。DiffStyle[14]是一种运行于扩散模型H空间的免训练方法，然而将其应用于Stable Diffusion时可能会改变图像的语义布局。Style Injection[16]通过将自注意力层中的键值特征替换为风格图像的特征，实现了免训练的风格迁移，并在一定程度上保留内容结构，但缺少类似ControlNet的显式结构约束，且颜色迁移能力有限。InstantStyle[17]发现仅有特定的UNet块对风格迁移起关键作用，并通过对这些块进行特征嵌入实现了高效的风格注入。相关工作进一步提出了对指定块特征嵌入进行选择性改进的方法。
+InST[12]采用文本反演技术将风格图像嵌入至文本向量空间，能够较好地保留风格特征，但需要对每种风格单独进行优化。StyleDiffusion[13]引入基于CLIP的损失函数与微调策略，以实现内容与风格的解耦。DiffStyle[14]是一种运行于扩散模型H空间的免训练方法，然而将其应用于Stable Diffusion时可能会改变图像的语义布局。Style Injection[16]通过将自注意力层中的键值特征替换为风格图像的特征，实现了免训练的风格迁移，并在一定程度上保留内容结构，但缺少类似ControlNet的显式结构约束，且颜色迁移能力有限。InstantStyle[17]发现仅有特定的UNet块对风格迁移起关键作用，并通过对这些块进行特征嵌入实现了高效的风格注入。StyleStudio[31]进一步探索了文本驱动风格迁移中对风格元素的选择性控制。
 
 \begin{center}
 \resizebox{\columnwidth}{!}{%
@@ -277,7 +277,7 @@ V_{\text{fused}} = (1 - \gamma) V_{\text{content}} + \gamma V_{\text{style}} \la
 
 在艺术风格迁移中，色调与整体氛围占据风格信息的重要部分。然而，我们观察到仅通过KV融合进行风格注入往往难以准确捕捉给定风格的全局色彩统计——纹理和局部图案虽然成功迁移，但文本条件与图像条件之间仍可能存在语义和色彩分布的不一致。
 
-不同于需要训练新适配器的方法，本文不额外训练新的适配器参数，而是在DDIM反演和条件注入过程中，在目标UNet block上对已经嵌入的文本特征与图像特征使用AdaIN进行跨模态融合。本文中的风格图像嵌入由预训练图像编码器提取，实验实现中使用IP-Adapter配置中的image encoder；AdaIN以该图像嵌入的通道统计量调制文本条件特征，使文本语义引导与参考风格图像的视觉统计保持一致。
+借鉴StyleStudio[31]的跨模态AdaIN思想，本文将其适配到StyleKV框架中，并与选择性K/V融合和Canny结构约束结合，以改善色彩协调性与条件一致性。不同于需要训练新适配器的方法，本文不额外训练新的适配器参数，而是在DDIM反演和条件注入过程中，在目标UNet block上对已经嵌入的文本特征与图像特征使用AdaIN进行跨模态融合。本文中的风格图像嵌入由预训练图像编码器提取，实验实现中使用IP-Adapter配置中的image encoder；AdaIN以该图像嵌入的通道统计量调制文本条件特征，使文本语义引导与参考风格图像的视觉统计保持一致。
 
 给定文本嵌入特征$f_{\text{text}}$和风格图像嵌入特征$f_{\text{style}}$，跨模态AdaIN定义为：
 \begin{equation}
@@ -675,7 +675,7 @@ Canny边缘图的精细程度直接影响生成效果和推理效率。表~\ref{
 
 \begin{itemize}
   \setlength{\itemsep}{0pt}
-\item {\bfseries 方法创新：}提出风格图像KV与内容图像KV的加权融合策略，实现自注意力层特征的精确操控；将AdaIN扩展到文本特征与图像特征的跨模态条件融合中，通过对齐嵌入特征的通道统计量改善色彩协调性与条件一致性。
+\item {\bfseries 方法创新：}提出风格图像KV与内容图像KV的加权融合策略，实现自注意力层特征的精确操控；借鉴StyleStudio[31]的跨模态AdaIN思想，将其适配到本文的StyleKV框架中，并与选择性K/V融合和Canny结构约束结合，以改善色彩协调性与条件一致性。
 \item {\bfseries 系统验证：}在COCO+WikiArt数据集上构建7组方法变体，生成5000张图像进行组件消融、方法变体对比与参数敏感性分析。实验表明完整方法在风格保真度与内容保留之间实现了较优平衡。
 \item {\bfseries 实践价值：}基于Gradio构建交互式前端，支持Canny调节、AdaIN参数控制、实时对比等功能。
 \item {\bfseries 经验总结：}详细记录了实验中的关键发现，包括提示词质量的重要性、Canny分辨率与推理时间的权衡等。
@@ -769,21 +769,19 @@ Canny边缘图的精细程度直接影响生成效果和推理效率。表~\ref{
 
 \bibitem{johnson2016} J.~Johnson, A.~Alahi, and L.~Fei-Fei, ``Perceptual losses for real-time style transfer and super-resolution,'' in \emph{Proc. ECCV}, 2016.
 
-\bibitem{park2019} D.~Y.~Park and K.~H.~Lee, ``Arbitrary style transfer with style-attentional networks,'' in \emph{Proc. CVPR}, 2019.
+\bibitem{liu2021} S.~Liu, T.~Lin, D.~He, F.~Li, M.~Wang, X.~Li, Z.~Sun, Q.~Li, and E.~Ding, ``AdaAttN: Revisit attention mechanism in arbitrary neural style transfer,'' in \emph{Proc. ICCV}, 2021.
 
 \bibitem{deng2022} Y.~Deng, F.~Tang, W.~Dong, C.~Ma, X.~Pan, L.~Wang, and C.~Xu, ``StyTr$^2$: Image style transfer with transformers,'' in \emph{Proc. CVPR}, 2022.
 
-\bibitem{liu2021} S.~Liu, T.~Lin, D.~He, F.~Li, M.~Wang, X.~Li, Z.~Sun, Q.~Li, and E.~Ding, ``AdaAttN: Revisit attention mechanism in arbitrary neural style transfer,'' in \emph{Proc. ICCV}, 2021.
-
 \bibitem{an2021} J.~An, S.~Huang, Y.~Song, D.~Dou, W.~Liu, and J.~Luo, ``ArtFlow: Unbiased image style transfer via reversible neural flows,'' in \emph{Proc. CVPR}, 2021.
 
-\bibitem{chen2021contrastive}
-H.~Chen, L.~Zhao, Z.~Wang, H.~Zhang, Z.~Zuo, A.~Li, W.~Xing, and D.~Lu,
-``Artistic style transfer with internal-external learning and contrastive learning,''
-in \emph{Proc. NeurIPS}, 2021.
+\bibitem{chen2021dualast} H.~Chen, L.~Zhao, Z.~Wang, H.~Zhang, Z.~Zuo, A.~Li, W.~Xing, and D.~Lu, ``DualAST: Dual style-learning networks for artistic style transfer,'' in \emph{Proc. CVPR}, 2021.
+
 \bibitem{karras2020} T.~Karras, S.~Laine, M.~Aittala, J.~Hellsten, J.~Lehtinen, and T.~Aila, ``Analyzing and improving the image quality of StyleGAN,'' in \emph{Proc. CVPR}, 2020.
 
 \bibitem{karras2021} T.~Karras, M.~Aittala, S.~Laine, E.~H\"{a}rk\"{o}nen, J.~Hellsten, J.~Lehtinen, and T.~Aila, ``Alias-free generative adversarial networks,'' in \emph{Proc. NeurIPS}, 2021.
+
+\bibitem{lei2025stylestudio} M.~Lei, X.~Song, B.~Zhu, H.~Wang, and C.~Zhang, ``StyleStudio: Text-driven style transfer with selective control of style elements,'' in \emph{Proc. CVPR}, 2025.
 
 \end{thebibliography}
 
