@@ -179,7 +179,7 @@ Table~\ref{tab:method_comparison} places our work against these baselines. What 
 
 \subsection{Conditional Control in Diffusion Models}
 
-ControlNet [15] introduced zero-convolution layers to attach spatial conditions (edges, depth, pose) to a frozen diffusion model without degrading its pretrained weights. We use the Canny variant---it takes an edge map extracted from the content image and feeds it through a trainable copy of the UNet encoder, injecting its outputs into the skip connections and middle block of the frozen decoder. Crucially, the ControlNet must match the base model. All our experiments run on SDXL with \texttt{diffusers/controlnet-canny-sdxl-1.0}. For SD1.5, the equivalent model is \texttt{lllyasviel/control\_v11p\_sd15\_canny}. SDXL was chosen for its higher native resolution and richer semantic representations.
+ControlNet [15] introduced zero-convolution layers to attach spatial conditions (edges, depth, pose) to a frozen diffusion model without degrading its pretrained weights. We use the Canny variant: an edge map extracted from the content image is fed through a trainable copy of the UNet encoder, whose outputs are injected into the skip connections and middle block of the frozen decoder. All experiments use SDXL with the matching ControlNet weights \texttt{diffusers/controlnet-canny-sdxl-1.0}. SDXL was chosen for its higher native resolution and richer semantic representations.
 
 %% ================================================
 %% 3. Method
@@ -200,7 +200,15 @@ AdaIN StyleKV sits on a frozen SDXL backbone with a Canny ControlNet attached. A
 \noindent{\bfseries Stage 3: Cross-Modal AdaIN.} At each denoising timestep, before the UNet forward pass, we intercept the text-condition embeddings at the target block(s) and apply AdaIN using channel statistics extracted from a pretrained image embedding of the style image (IP-Adapter's encoder, in our setup). No new adapters are trained; we just shift mean and scale of the already-computed text features toward the style embedding's distribution.
 
 \medskip
-\noindent{\bfseries Stage 4: KV Fusion.} Target block: \texttt{up\_blocks.0.attentions.1}. During the style image's forward pass at timestep $t$, we record $\{K_{\text{style}}, V_{\text{style}}\}$ from a chosen set of self-attention processors inside that block. Then, during the content image's denoising step at the same $t$, for each selected processor we blend $K_{\text{fused}} = (1{-}\gamma) K_{\text{content}} + \gamma K_{\text{style}}$ and $V_{\text{fused}} = (1{-}\gamma) V_{\text{content}} + \gamma V_{\text{style}}$, with $\gamma \in [0,1]$. Non-target processors run standard self-attention---no caching, no blending. The content query $Q_{\text{content}}$ stays untouched throughout.
+\noindent{\bfseries Stage 4: KV Fusion.} We fix the injection site at UNet block \texttt{up\_blocks.0.attentions.1}. At each timestep $t$, during the style latent's forward pass we cache $\{K_{\text{style}}, V_{\text{style}}\}$ from a selected subset of self-attention processors within this block. During the content latent's denoising step at the same $t$, the cached features are blended with content K/V via:
+\[
+\begin{aligned}
+K_{\text{fused}} &= (1-\gamma)K_{\text{content}} + \gamma K_{\text{style}},\\
+V_{\text{fused}} &= (1-\gamma)V_{\text{content}} + \gamma V_{\text{style}},
+\end{aligned}
+\quad \gamma \in [0,1].
+\]
+Non-target processors run standard self-attention; the content query $Q_{\text{content}}$ is never modified.
 
 \medskip
 \noindent{\bfseries Stage 5: Decoding.} After $T$ denoising steps, $z_0$ goes through the VAE decoder to produce the stylized output.
