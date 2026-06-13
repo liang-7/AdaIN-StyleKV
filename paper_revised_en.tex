@@ -200,12 +200,7 @@ AdaIN StyleKV sits on a frozen SDXL backbone with a Canny ControlNet attached. A
 \noindent{\bfseries Stage 3: Cross-Modal AdaIN.} At each denoising timestep, before the UNet forward pass, we intercept the text-condition embeddings at the target block(s) and apply AdaIN using channel statistics extracted from a pretrained image embedding of the style image (IP-Adapter's encoder, in our setup). No new adapters are trained; we just shift mean and scale of the already-computed text features toward the style embedding's distribution.
 
 \medskip
-\noindent{\bfseries Stage 4: KV Fusion.} Target block: \texttt{up\_blocks.0.attentions.1}. During the style image's forward pass at timestep $t$, we record $\{K_{\text{style}}, V_{\text{style}}\}$ from a chosen set of self-attention processors inside that block. Then, during the content image's denoising step at the same $t$, for each selected processor we blend:
-\begin{equation*}
-K_{\text{fused}} = (1 - \gamma) K_{\text{content}} + \gamma K_{\text{style}}, \qquad
-V_{\text{fused}} = (1 - \gamma) V_{\text{content}} + \gamma V_{\text{style}}
-\end{equation*}
-where $\gamma \in [0,1]$. Non-target processors run the standard self-attention---no caching, no blending. The content query $Q_{\text{content}}$ stays untouched throughout.
+\noindent{\bfseries Stage 4: KV Fusion.} Target block: \texttt{up\_blocks.0.attentions.1}. During the style image's forward pass at timestep $t$, we record $\{K_{\text{style}}, V_{\text{style}}\}$ from a chosen set of self-attention processors inside that block. Then, during the content image's denoising step at the same $t$, for each selected processor we blend $K_{\text{fused}} = (1{-}\gamma) K_{\text{content}} + \gamma K_{\text{style}}$ and $V_{\text{fused}} = (1{-}\gamma) V_{\text{content}} + \gamma V_{\text{style}}$, with $\gamma \in [0,1]$. Non-target processors run standard self-attention---no caching, no blending. The content query $Q_{\text{content}}$ stays untouched throughout.
 
 \medskip
 \noindent{\bfseries Stage 5: Decoding.} After $T$ denoising steps, $z_0$ goes through the VAE decoder to produce the stylized output.
