@@ -1,0 +1,143 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand*\HyPL@Entry[1]{}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Stylization results of AdaIN StyleKV. Horizontally, $\gamma $ increases from 0.2 to 1.0; vertically, 1-proc, 5-proc, and 10-proc configurations are shown with and without AdaIN. The 5-proc + AdaIN configuration (our full method) gives a useful balance between style intensity and content fidelity near $\gamma =0.6$.}}{1}{figure.1}\protected@file@percent }
+\newlabel{fig:gallery}{{1}{1}{Stylization results of AdaIN StyleKV. Horizontally, $\gamma $ increases from 0.2 to 1.0; vertically, 1-proc, 5-proc, and 10-proc configurations are shown with and without AdaIN. The 5-proc + AdaIN configuration (our full method) gives a useful balance between style intensity and content fidelity near $\gamma =0.6$}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Neural Style Transfer}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}GAN-Based Style Transfer}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Diffusion-Based Style Transfer}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of our method with representative style transfer methods. TF: Training-Free (no fine-tuning); SP: Structure Preservation (explicit spatial constraints); CT: Color Transfer (global color handling); CI: Controllable Intensity (explicit continuous control).}}{3}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:method_comparison}{{1}{3}{Comparison of our method with representative style transfer methods. TF: Training-Free (no fine-tuning); SP: Structure Preservation (explicit spatial constraints); CT: Color Transfer (global color handling); CI: Controllable Intensity (explicit continuous control)}{table.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Conditional Control in Diffusion Models}{3}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Overall Framework}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Overall pipeline of AdaIN StyleKV. Content and style images enter the VAE in parallel; a Canny edge map of the content anchors ControlNet. DDIM inversion produces latent trajectories for both images. Cross-modal AdaIN fuses text and image conditions at the target UNet block, and cached style K/V are blended with content K/V inside selected self-attention processors. The VAE decoder produces the final output.}}{3}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:pipeline}{{2}{3}{Overall pipeline of AdaIN StyleKV. Content and style images enter the VAE in parallel; a Canny edge map of the content anchors ControlNet. DDIM inversion produces latent trajectories for both images. Cross-modal AdaIN fuses text and image conditions at the target UNet block, and cached style K/V are blended with content K/V inside selected self-attention processors. The VAE decoder produces the final output}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Selective KV Fusion}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Self-Attention Recap}{3}{subsubsection.3.2.1}\protected@file@percent }
+\newlabel{eq:qkv}{{1}{3}{Self-Attention Recap}{equation.1}{}}
+\newlabel{eq:attention}{{2}{3}{Self-Attention Recap}{equation.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces U-Net architecture in Stable Diffusion, showing the encoder, middle block, and decoder with their ResNet and self-attention layers. We confine KV fusion to the target block \texttt  {up\_blocks.0.attentions.1} (red), leaving all other attention processors untouched.}}{4}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:unet_arch}{{3}{4}{U-Net architecture in Stable Diffusion, showing the encoder, middle block, and decoder with their ResNet and self-attention layers. We confine KV fusion to the target block \texttt {up\_blocks.0.attentions.1} (red), leaving all other attention processors untouched}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Weighted KV Fusion}{4}{subsubsection.3.2.2}\protected@file@percent }
+\newlabel{eq:kfusion}{{3}{4}{Weighted KV Fusion}{equation.3}{}}
+\newlabel{eq:vfusion}{{4}{4}{Weighted KV Fusion}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Target Block and Processor Selection}{4}{subsubsection.3.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Cross-Modal AdaIN for Text and Image Conditions}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Target block configurations in the early naive AdaIN prototype. \texttt  {1blk}/\texttt  {2blk} indicate the number of UNet target blocks where AdaIN is applied; in contrast, StyleKV experiments are fixed at \texttt  {up\_blocks.0.attentions.1} and vary the number of self-attention processors.}}{4}{table.caption.4}\protected@file@percent }
+\newlabel{tab:adain_target_blocks}{{2}{4}{Target block configurations in the early naive AdaIN prototype. \texttt {1blk}/\texttt {2blk} indicate the number of UNet target blocks where AdaIN is applied; in contrast, StyleKV experiments are fixed at \texttt {up\_blocks.0.attentions.1} and vary the number of self-attention processors}{table.caption.4}{}}
+\newlabel{eq:adain}{{5}{4}{Cross-Modal AdaIN for Text and Image Conditions}{equation.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}ControlNet Integration}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Inference}{4}{subsection.3.5}\protected@file@percent }
+\newlabel{eq:inference}{{8}{4}{Inference}{equation.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments and Results}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Experimental Setup}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Datasets}{4}{subsubsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Evaluation Metrics}{5}{subsubsection.4.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Hardware Configuration and Hyperparameters}{5}{subsubsection.4.1.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Hardware configuration and environment.}}{5}{table.caption.6}\protected@file@percent }
+\newlabel{tab:hardware}{{3}{5}{Hardware configuration and environment}{table.caption.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Hyperparameter settings. $\gamma =0.6$ is the default trade-off point selected from the sensitivity analysis in Section~4.4; KV fusion defaults to 5 self-attention processors in \texttt  {up\_blocks.0.attentions.1}; AdaIN fusion intensity defaults to 1.0.}}{5}{table.caption.7}\protected@file@percent }
+\newlabel{tab:hyperparams}{{4}{5}{Hyperparameter settings. $\gamma =0.6$ is the default trade-off point selected from the sensitivity analysis in Section~4.4; KV fusion defaults to 5 self-attention processors in \texttt {up\_blocks.0.attentions.1}; AdaIN fusion intensity defaults to 1.0}{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Method Variant Design}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Design of 7 method variants. CtrlN = ControlNet; Scope = target blocks (blk) or processors (p); KV = KV fusion enabled.}}{5}{table.caption.8}\protected@file@percent }
+\newlabel{tab:variants}{{5}{5}{Design of 7 method variants. CtrlN = ControlNet; Scope = target blocks (blk) or processors (p); KV = KV fusion enabled}{table.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Quantitative comparison of 7 method variants across FID, Art-FID, and LPIPS metrics (lower is better for all three). FID reflects distribution distance from the content domain, Art-FID reflects proximity to the target artistic style domain, and LPIPS reflects the perceptual-level image change magnitude. V6 (Ours w/o AdaIN) achieves the lowest Art-FID, indicating stronger style injection; compared with V6, the full method V7 (Ours AdaIN, $\gamma =0.6$) reduces LPIPS, indicating milder perceptual change.}}{5}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:variants2}{{6}{5}{Quantitative comparison of 7 method variants across FID, Art-FID, and LPIPS metrics (lower is better for all three). FID reflects distribution distance from the content domain, Art-FID reflects proximity to the target artistic style domain, and LPIPS reflects the perceptual-level image change magnitude. V6 (Ours w/o AdaIN) achieves the lowest Art-FID, indicating stronger style injection; compared with V6, the full method V7 (Ours AdaIN, $\gamma =0.6$) reduces LPIPS, indicating milder perceptual change}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Horizontal comparison of outputs from different method configurations on the ``man'' content image. The upper labels indicate the corresponding method configuration and allow comparison of style injection intensity and content preservation.}}{6}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:variant_progress}{{4}{6}{Horizontal comparison of outputs from different method configurations on the ``man'' content image. The upper labels indicate the corresponding method configuration and allow comparison of style injection intensity and content preservation}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Method variant comparison on two different content-style pairings.}}{6}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:variant_compare}{{5}{6}{Method variant comparison on two different content-style pairings}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Quantitative Results}{6}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Quantitative evaluation results of 7 variants on 5000 generated images. FID measures distribution distance from the content domain (lower indicates closer overall feature distribution to original content); Art-FID measures distribution distance from the style domain (lower indicates higher style similarity); LPIPS measures the degree of perceptual change (stylization inevitably introduces perceptual changes; moderate LPIPS values indicate effective style transfer while content remains recognizable). Bold indicates the full method (V7).}}{6}{table.caption.11}\protected@file@percent }
+\newlabel{tab:quant_results}{{6}{6}{Quantitative evaluation results of 7 variants on 5000 generated images. FID measures distribution distance from the content domain (lower indicates closer overall feature distribution to original content); Art-FID measures distribution distance from the style domain (lower indicates higher style similarity); LPIPS measures the degree of perceptual change (stylization inevitably introduces perceptual changes; moderate LPIPS values indicate effective style transfer while content remains recognizable). Bold indicates the full method (V7)}{table.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Ranking heatmap of the 7 method variants across FID, Art-FID, and LPIPS metrics (lower rank indicates better performance).}}{6}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:rank_heatmap}{{7}{6}{Ranking heatmap of the 7 method variants across FID, Art-FID, and LPIPS metrics (lower rank indicates better performance)}{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Content-style trade-off comparison of method variants on FID and Art-FID.}}{6}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:block_adain}{{8}{6}{Content-style trade-off comparison of method variants on FID and Art-FID}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Gamma Intensity Coefficient Sensitivity Analysis}{6}{subsection.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Results of $\gamma $ intensity coefficient sensitivity analysis (5-processor configuration in \texttt  {up\_blocks.0.attentions.1}, fixed AdaIN + ControlNet). $\gamma =0$ mainly retains content features with weak style injection; $\gamma =1$ yields the highest stylization degree but with more noticeable content change. Bold indicates our default configuration, not necessarily the single-metric optimum.}}{7}{table.caption.14}\protected@file@percent }
+\newlabel{tab:gamma_ablation}{{7}{7}{Results of $\gamma $ intensity coefficient sensitivity analysis (5-processor configuration in \texttt {up\_blocks.0.attentions.1}, fixed AdaIN + ControlNet). $\gamma =0$ mainly retains content features with weak style injection; $\gamma =1$ yields the highest stylization degree but with more noticeable content change. Bold indicates our default configuration, not necessarily the single-metric optimum}{table.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Impact of $\gamma $ on FID, Art-FID, and LPIPS. As $\gamma $ increases, style fidelity generally improves but content change also increases; $\gamma =0.6$ is our adopted default trade-off point.}}{7}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:comprehensive}{{9}{7}{Impact of $\gamma $ on FID, Art-FID, and LPIPS. As $\gamma $ increases, style fidelity generally improves but content change also increases; $\gamma =0.6$ is our adopted default trade-off point}{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Style transfer results at different $\gamma $ values under the AdaIN-enabled 5-processor configuration in \texttt  {up\_blocks.0.attentions.1} (our method). From left to right: $\gamma =0.2,0.4,0.8,1.0$. Style texture becomes stronger as $\gamma $ increases.}}{7}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:gamma_5blk}{{10}{7}{Style transfer results at different $\gamma $ values under the AdaIN-enabled 5-processor configuration in \texttt {up\_blocks.0.attentions.1} (our method). From left to right: $\gamma =0.2,0.4,0.8,1.0$. Style texture becomes stronger as $\gamma $ increases}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Qualitative Analysis of StyleKV Target Processor Count}{7}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Comparison of style transfer results under AdaIN-enabled 1-processor and 5-processor configurations in \texttt  {up\_blocks.0.attentions.1} at different $\gamma $ values. Top row: 1-proc StyleKV configuration; bottom row: 5-proc StyleKV configuration (our method). More target processors yield stronger style injection (more pronounced style texture in the bottom row) while still maintaining good content structure in the shown examples.}}{7}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:block_compare}{{11}{7}{Comparison of style transfer results under AdaIN-enabled 1-processor and 5-processor configurations in \texttt {up\_blocks.0.attentions.1} at different $\gamma $ values. Top row: 1-proc StyleKV configuration; bottom row: 5-proc StyleKV configuration (our method). More target processors yield stronger style injection (more pronounced style texture in the bottom row) while still maintaining good content structure in the shown examples}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Style transfer results under the AdaIN-enabled 10-processor configuration in \texttt  {up\_blocks.0.attentions.1} at different $\gamma $ values. Compared with the 5-proc configuration in the same block, 10-proc yields stronger style injection at the same $\gamma $, but content detail preservation is slightly inferior to the 5-proc configuration.}}{7}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:gamma_10blk}{{12}{7}{Style transfer results under the AdaIN-enabled 10-processor configuration in \texttt {up\_blocks.0.attentions.1} at different $\gamma $ values. Compared with the 5-proc configuration in the same block, 10-proc yields stronger style injection at the same $\gamma $, but content detail preservation is slightly inferior to the 5-proc configuration}{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Qualitative Result Analysis}{7}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.1}Comparison of Different Block/Processor Configurations and AdaIN Effects}{7}{subsubsection.4.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Qualitative comparison of different target block counts and AdaIN configurations. Configurations using AdaIN exhibit better color coordination and more uniform style coverage; configurations without AdaIN show stronger style transfer but more noticeable content structure degradation.}}{8}{table.caption.19}\protected@file@percent }
+\newlabel{tab:qual_blocks}{{8}{8}{Qualitative comparison of different target block counts and AdaIN configurations. Configurations using AdaIN exhibit better color coordination and more uniform style coverage; configurations without AdaIN show stronger style transfer but more noticeable content structure degradation}{table.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Impact of the AdaIN module on style transfer (1-block configuration). Top row: results with AdaIN; bottom row: results without AdaIN. The AdaIN module improves color coordination and overall atmospheric consistency, with the difference being more pronounced at higher $\gamma $ values.}}{8}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:adain_compare}{{13}{8}{Impact of the AdaIN module on style transfer (1-block configuration). Top row: results with AdaIN; bottom row: results without AdaIN. The AdaIN module improves color coordination and overall atmospheric consistency, with the difference being more pronounced at higher $\gamma $ values}{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.2}Impact of Prompts}{8}{subsubsection.4.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Key Experimental Findings}{8}{subsection.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.1}Trade-off Between Canny Edge Map Resolution and Inference Time}{8}{subsubsection.4.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Comparison of structural conditions and generation results at different Canny resolutions. Left column: Canny edge maps; right column: corresponding stylized outputs, with the reference style image embedded in the bottom-left corner of each output.}}{8}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:canny_res}{{14}{8}{Comparison of structural conditions and generation results at different Canny resolutions. Left column: Canny edge maps; right column: corresponding stylized outputs, with the reference style image embedded in the bottom-left corner of each output}{figure.caption.21}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Canny resolution vs.\ inference time. Higher resolution provides richer structure but increases latency and may introduce artifacts.}}{8}{table.caption.22}\protected@file@percent }
+\newlabel{tab:resolution_canny}{{9}{8}{Canny resolution vs.\ inference time. Higher resolution provides richer structure but increases latency and may introduce artifacts}{table.caption.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.2}Device Resource Constraints}{8}{subsubsection.4.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Interactive Frontend}{8}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Frontend Functional Modules}{8}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Frontend Features and Value}{9}{subsection.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Interface of the StyleKV Control Studio interactive frontend. Through the left panel, users can upload content and style images, adjust ControlNet/Canny parameters, set AdaIN fusion coefficients, and configure generation parameters; the right panel displays real-time Canny edge map previews and stylized output results.}}{9}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:gradio}{{15}{9}{Interface of the StyleKV Control Studio interactive frontend. Through the left panel, users can upload content and style images, adjust ControlNet/Canny parameters, set AdaIN fusion coefficients, and configure generation parameters; the right panel displays real-time Canny edge map previews and stylized output results}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Future Work}{9}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Quantitative Comparison with Existing Methods}{9}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Adaptive Canny Edge Map Generation}{9}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}VLM-Based Automatic Prompt Generation}{9}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Cross-Architecture Adaptation and Lightweighting}{9}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Incorporating Tile ControlNet}{9}{subsection.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Processor-Level Contribution Analysis}{9}{subsection.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Multi-Condition ControlNet Fusion}{9}{subsection.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion and Limitations}{9}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Conclusion}{9}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Limitations}{9}{subsection.7.2}\protected@file@percent }
+\bibcite{efros1999}{1}
+\bibcite{gatys2016}{2}
+\bibcite{ulyanov2016}{3}
+\bibcite{huang2017}{4}
+\bibcite{zhu2017}{5}
+\bibcite{choi2018}{6}
+\bibcite{karras2019}{7}
+\bibcite{sohl2015}{8}
+\bibcite{ho2020}{9}
+\bibcite{song2020}{10}
+\bibcite{rombach2022}{11}
+\bibcite{zhang2023inst}{12}
+\bibcite{wang2023style}{13}
+\bibcite{jeong2023}{14}
+\bibcite{zhang2023controlnet}{15}
+\bibcite{hertz2023}{16}
+\bibcite{wang2024instantstyle}{17}
+\bibcite{lin2014}{18}
+\bibcite{wikiart}{19}
+\bibcite{artfid}{20}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Major limitations of our method and corresponding improvement directions.}}{10}{table.caption.24}\protected@file@percent }
+\newlabel{tab:limitations}{{10}{10}{Major limitations of our method and corresponding improvement directions}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Future Outlook}{10}{subsection.7.3}\protected@file@percent }
+\bibcite{heusel2017}{21}
+\bibcite{zhang2018lpips}{22}
+\bibcite{simonyan2015}{23}
+\bibcite{johnson2016}{24}
+\bibcite{liu2021}{25}
+\bibcite{deng2022}{26}
+\bibcite{an2021}{27}
+\bibcite{chen2021dualast}{28}
+\bibcite{karras2020}{29}
+\bibcite{karras2021}{30}
+\bibcite{lei2025stylestudio}{31}
+\bibcite{sabrinayuzhibo2026adainstylekv}{32}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Complete quantitative data of the 7 variants (consistent with Table~5 in the main text).}}{11}{table.11}\protected@file@percent }
+\newlabel{tab:appendix_a}{{11}{11}{Complete quantitative data of the 7 variants (consistent with Table~5 in the main text)}{table.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Complete $\gamma $ ablation experiment data (5-processor configuration in \texttt  {up\_blocks.0.attentions.1} + AdaIN + ControlNet, consistent with Table~6 in the main text).}}{11}{table.12}\protected@file@percent }
+\newlabel{tab:appendix_b}{{12}{11}{Complete $\gamma $ ablation experiment data (5-processor configuration in \texttt {up\_blocks.0.attentions.1} + AdaIN + ControlNet, consistent with Table~6 in the main text)}{table.12}{}}
+\gdef \@abspage@last{11}
